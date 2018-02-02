@@ -4,10 +4,10 @@ xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
 
-<display-name>sagaone</display-name>
+<display-name>knit</display-name>
 
 <welcome-file-list>
-	<welcome-file>start.jsp</welcome-file>
+	<welcome-file>index.jsp</welcome-file>
 </welcome-file-list>
 
 <filter>
