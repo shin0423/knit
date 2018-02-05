@@ -12,8 +12,8 @@ import com.internousdev.knit.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemAction extends ActionSupport implements SessionAware{
-	private String searchWord;
-	private BuyItemDAO buyItemDAO=new BuyItemDAO();
+	private String searchWord; //ユーザーが入力した検索ワード
+	private BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
 	private List<BuyItemDTO> buyItemAfterSearchList = new ArrayList<>();
 	public Map<String,Object> session;
 
