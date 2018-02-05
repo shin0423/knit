@@ -13,7 +13,6 @@ public class BuyItemDTO {
 	private String releaseDate;
 
 
-
 	//↓getter setter
 	public int getItemId() {
 		return itemId;

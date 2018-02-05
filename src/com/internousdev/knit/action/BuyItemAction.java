@@ -31,7 +31,6 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	session.put("buyItemAfterSearchList",buyItemAfterSearchList);
 	return SUCCESS;
 
-
 	}
 
 
