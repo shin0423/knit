@@ -22,17 +22,17 @@ update_date datetime,
 admin_flg tinyint(1) not null
 );
 
-drop table if exists product_info;
+drop table if exists item_info;
 
-create table product_info(
+create table item_info(
 id int primary key auto_increment,
-product_id int not null,
-product_name varchar(100) not null,
-product_name_kana varchar(100) not null,
-product_description varchar(200) not null,
+item_id int not null,
+item_name varchar(100) not null,
+item_name_kana varchar(100) not null,
+item_description varchar(200) not null,
 category_id int not null,
 price int,
-product_stock int not null,
+item_stock int not null,
 image_file_path varchar(100),
 image_file_name varchar(50),
 release_date datetime not null,
@@ -48,8 +48,8 @@ create table cart_info(
 id int not null primary key auto_increment,
 user_id varchar(16) not null,
 temp_user_id varchar(128) unique,
-product_id int not null,
-product_count int not null,
+item_id int not null,
+item_count int not null,
 price int not null,
 regist_date datetime not null,
 update_date datetime
@@ -60,7 +60,7 @@ drop table if exists purchase_history_info;
 create table purchase_history_info(
 id int not null primary key auto_increment,
 user_id varchar(16) not null,
-product_count int not null,
+item_count int not null,
 price int not null,
 regist_date datetime not null,
 update_date datetime,
@@ -98,7 +98,7 @@ drop table if exists review_transaction;
 create table review_transaction(
 id int not null primary key auto_increment,
 user_id varchar(16) unique,
-product_id int not null,
+item_id int not null,
 review int not null,
 review_body varchar(100),
 insert_date datetime not null
