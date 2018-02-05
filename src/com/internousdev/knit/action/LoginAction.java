@@ -42,6 +42,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			System.out.println("PASSは半角英数字");
 		}
 
+
 		/**
 		 * IDを保存するか
 		 */
