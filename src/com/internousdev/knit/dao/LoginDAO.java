@@ -12,7 +12,6 @@ public class LoginDAO {
 
 	private LoginDTO loginDTO = new LoginDTO();
 
-
 	/**
 	 *
 	 * ユーザー情報取得

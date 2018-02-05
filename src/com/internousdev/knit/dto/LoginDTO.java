@@ -59,5 +59,4 @@ public class LoginDTO {
 		this.adminFlg = adminFlg;
 	}
 
-
 }
