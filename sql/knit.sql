@@ -1,0 +1,107 @@
+drop database if exists knit;
+create database if not exists knit;
+
+use knit;
+
+drop table if exists user_info;
+
+create table user_info(
+id int primary key auto_increment,
+user_id varchar(16) unique not null,
+password varchar(16) not null,
+family_name varchar(32) not null,
+first_name varchar(32) not null,
+family_name_kana varchar(32) not null,
+first_name_kana varchar(32) not null,
+sex tinyint(1) not null,
+email varchar(32) not null,
+status tinyint(1) not null,
+logined tinyint(1) not null,
+regist_date datetime not null,
+update_date datetime,
+admin_flg tinyint(1) not null
+);
+
+drop table if exists product_info;
+
+create table product_info(
+id int primary key auto_increment,
+product_id int not null,
+product_name varchar(100) not null,
+product_name_kana varchar(100) not null,
+product_description varchar(200) not null,
+category_id int not null,
+price int,
+product_stock int not null,
+image_file_path varchar(100),
+image_file_name varchar(50),
+release_date datetime not null,
+release_company varchar(50),
+status tinyint(1) not null,
+regist_date datetime not null,
+update_date datetime
+);
+
+drop table if exists cart_info;
+
+create table cart_info(
+id int not null primary key auto_increment,
+user_id varchar(16) not null,
+temp_user_id varchar(128) unique,
+product_id int not null,
+product_count int not null,
+price int not null,
+regist_date datetime not null,
+update_date datetime
+);
+
+drop table if exists purchase_history_info;
+
+create table purchase_history_info(
+id int not null primary key auto_increment,
+user_id varchar(16) not null,
+product_count int not null,
+price int not null,
+regist_date datetime not null,
+update_date datetime,
+order_num varchar(8)
+);
+
+drop table if exists destination_info;
+
+create table distination_info(
+id int not null primary key auto_increment,
+user_id varchar(16) not null,
+family_name varchar(32) not null,
+first_name varchar(32) not null,
+family_name_kana varchar(32) not null,
+first_name_kana varchar(32) not null,
+email varchar(32) not null,
+tel_number varchar(13) not null,
+regist_date datetime not null,
+update_date datetime
+);
+
+drop table if exists m_category;
+
+create table m_category(
+id int not null primary key auto_increment,
+category_id int not null unique,
+category_name varchar(20) not null unique,
+category_description varchar(100),
+insert_date datetime not null,
+update_date datetime
+);
+
+drop table if exists review_transaction;
+
+create table review_transaction(
+id int not null primary key auto_increment,
+user_id varchar(16) unique,
+product_id int not null,
+review int not null,
+review_body varchar(100),
+insert_date datetime not null
+);
+
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("internous","internous01","南里","健太","なんり","けんた",0,"nyandy1794@gmail.com",1,1,cast("2018-02-05" as date),1);
