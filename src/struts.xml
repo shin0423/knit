@@ -8,8 +8,11 @@
 
 	<package name="com.internousdevwork.knit.action" extends="struts-default">
 
-	<action name="" class="" method="">
-		<result></result>
+
+	<action name="LoginAction" class="com.internousdev.knit.action.LoginAction" method="execute">
+		<result name="success">home.jsp</result>
+		<result name="admin">admin.jsp</result>
+		<result name="error">login.jsp</result>
 	</action>
 
 
