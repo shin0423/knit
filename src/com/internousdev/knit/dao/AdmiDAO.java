@@ -40,7 +40,7 @@ public class AdmiDAO {
 	}
 
 	public AdminItemInfoDTO getAdminItemInfo(String productId,String productName,String productNameKana,String productDescription,String categoryId,String imageFilePath,String imageFileName,String releadeCompany){
-		String sql="INSERT INTO product_info (product_id,product_name,product_name_kana,product_description,category_id,image_file_path,image_file_name, "
+		String sql="INSERT INTO product_info (product_id,product_name,product_name_kana,product_description,category_id,image_file_path,image_file_name,release_company VALUE(?,?,?,?,?,?,?,?)";
 	}
 
 
