@@ -16,7 +16,7 @@ public class BuyItemDAO {
 
 	public List<BuyItemDTO> selectItem(String searchWord) throws SQLException{
 		Connection connection = dbConnector.getConnection();
-		String sql="SELECT * FROM item_info WHERE ";
+		String sql="SELECT * FROM item_info WHERE "+searchWord;
 		try{
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		ResultSet resultSet= preparedStatement.executeQuery();
