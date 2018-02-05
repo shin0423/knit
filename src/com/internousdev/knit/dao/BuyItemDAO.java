@@ -34,6 +34,7 @@ public class BuyItemDAO {
 			buyItemDTO.setReleaseDate(resultSet.getString("release_date"));
 			buyItemList.add(buyItemDTO);
 
+
 		}
 		}catch(SQLException e){
 			e.printStackTrace();

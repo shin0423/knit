@@ -31,10 +31,12 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	session.put("buyItemAfterSearchList",buyItemAfterSearchList);
 	return SUCCESS;
 
+
 	}
 
 
 	public void setSession(Map<String,Object> session){
 		this.session=session;
+
 	}
 }
