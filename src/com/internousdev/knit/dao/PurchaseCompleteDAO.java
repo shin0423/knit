@@ -21,12 +21,12 @@ public class PurchaseCompleteDAO {
 
 	/**
 	 * カートテーブルを購入履歴に登録するメソッド
-	 * 
+	 *
 	 * 1.カートテーブルを取得
 	 * 2.購入履歴に登録
 	 * @param userId
-	 * @return cartList 
-	 * 				  
+	 * @return cartList
+	 *
 	 */
 
 	public ArrayList<CartInfoDTO> getCartInfo(String userId) throws SQLException {
