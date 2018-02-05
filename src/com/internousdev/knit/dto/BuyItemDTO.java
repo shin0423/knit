@@ -3,6 +3,7 @@ package com.internousdev.knit.dto;
 public class BuyItemDTO {
 	private int itemId;
 	private String itemName;
+	private String itemNameKana;
 	private String itemDescription;
 	private int categoryId;
 	private int price;
@@ -73,6 +74,12 @@ public class BuyItemDTO {
 	}
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+	public String getItemNameKana() {
+		return itemNameKana;
+	}
+	public void setItemNameKana(String itemNameKana) {
+		this.itemNameKana = itemNameKana;
 	}
 
 }
