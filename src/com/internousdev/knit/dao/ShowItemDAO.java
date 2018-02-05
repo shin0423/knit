@@ -12,6 +12,7 @@ import com.internousdev.knit.util.DBConnector;
 
 public class ShowItemDAO {
 
+
 	//コネクタ準備
 	private DBConnector dbConnector = new DBConnector();
 
