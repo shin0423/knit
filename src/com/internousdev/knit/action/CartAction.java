@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
-
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
@@ -38,7 +37,8 @@ public class CartAction extends ActionSupport implements SessionAware{
 			totalPrice=calcTotalPrice(cartList);
 			return SUCCESS;
 		}
-
+		return ERROR;
+	}
 		public Map<String,Object> getSession(){
 			return session;
 		}
@@ -75,4 +75,5 @@ public class CartAction extends ActionSupport implements SessionAware{
 			return totalPrice;
 		}
 
-	}
+
+}
