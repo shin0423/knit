@@ -26,7 +26,7 @@ public class BuyItemInfoDAO {
 				buyItemDTO.setItemName(resultSet.getString("item_name"));
 				buyItemDTO.setItemNameKana(resultSet.getString("item_name_kana"));
 				buyItemDTO.setItemDescription(resultSet.getString("item_description"));
-				buyItemDTO.setCategoryId(resultSet.getInt("categoryId"));
+				buyItemDTO.setCategoryId(resultSet.getInt("category_id"));
 				buyItemDTO.setPrice(resultSet.getInt("price"));
 				buyItemDTO.setItemStock(resultSet.getInt("item_stock"));
 				buyItemDTO.setItemImagePath(resultSet.getString("image_file_path"));
