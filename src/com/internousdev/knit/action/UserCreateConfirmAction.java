@@ -24,125 +24,137 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	private String email;
 
-	/*
 	private String telNumber;
 
 	private String userAddress;
-	 */
+
 
 	public Map<String,Object> session;
 
-	private String errorMassage;
+	private String errorMessage;
 
 	public String execute(){
 		String result = SUCCESS;
 
-		if(!(userId.equals(""))){
-			session.put("userId", userId);
-		}else if(userId.equals("")){
-			setErrorMassage("ユーザーIDを入力してください。");
+		if(userId.equals("")){
+			setErrorMessage("ユーザーIDを入力してください。");
 			result = ERROR;
 		}else if(userId.length()<1 || userId.length()>8){
-			setErrorMassage("ユーザーIDは1文字以上8文字以下で入力してください。");
+			setErrorMessage("ユーザーIDは1文字以上8文字以下で入力してください。");
 			result = ERROR;
-		}else if(userId.matches("^[a-zA-Z0-9]+$")){
-			setErrorMassage("ユーザーIDは半角英数字で入力してください。");
+		}else if(!userId.matches("^[a-zA-Z0-9]+$")){
+			setErrorMessage("ユーザーIDは半角英数字で入力してください。");
 			result = ERROR;
+		}else{
+			session.put("userId", userId);
 		}
 
-		if(!(password.equals(""))){
-			session.put("password",password);
-		}else if(password.equals("")){
-			setErrorMassage("パスワードを入力してください。");
+		if(password.equals("")){
+			setErrorMessage("パスワードを入力してください。");
 			result = ERROR;
 		}else if(password.length()<1 || password.length()>16){
-			setErrorMassage("パスワードは1文字以上16文字以下で入力してください。");
+			setErrorMessage("パスワードは1文字以上16文字以下で入力してください。");
 			result = ERROR;
-		}else if(password.matches("^[a-zA-Z0-9]+$")){
-			setErrorMassage("パスワードは半角英数字で入力してください。");
+		}else if(!password.matches("^[a-zA-Z0-9]+$")){
+			setErrorMessage("パスワードは半角英数字で入力してください。");
 			result = ERROR;
+		}else{
+			session.put("password",password);
 		}
 
-		if(!(familyName.equals(""))){
-			session.put("familyName", familyName);
-		}else if(familyName.equals("")){
-			setErrorMassage("姓を入力してください。");
+		if(familyName.equals("")){
+			setErrorMessage("姓を入力してください。");
 			result = ERROR;
 		}else if(familyName.length()<1 || familyName.length()>16){
-			setErrorMassage("姓は1文字以上16文字以下で入力してください。");
+			setErrorMessage("姓は1文字以上16文字以下で入力してください。");
 			result = ERROR;
-		}else if(familyName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")){
-			setErrorMassage("姓は半角英語、漢字、カタカナ及びひらがなで入力してください。");
+		}else if(!familyName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")){
+			setErrorMessage("姓は半角英語、漢字、カタカナ及びひらがなで入力してください。");
 			result = ERROR;
+		}else{
+			session.put("familyName", familyName);
 		}
 
-		if(!(firstName.equals(""))){
-			session.put("firstName", firstName);
-		}else if(firstName.equals("")){
-			setErrorMassage("名を入力してください。");
+		if(firstName.equals("")){
+			setErrorMessage("名を入力してください。");
 			result = ERROR;
 		}else if(firstName.length()<1 || firstName.length()>16){
-			setErrorMassage("名は1文字以上16文字以下で入力してください。");
+			setErrorMessage("名は1文字以上16文字以下で入力してください。");
 			result = ERROR;
-		}else if(firstName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")){
-			setErrorMassage("名は半角英語、漢字、カタカナ及びひらがなで入力してください。");
+		}else if(!firstName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")){
+			setErrorMessage("名は半角英語、漢字、カタカナ及びひらがなで入力してください。");
 			result = ERROR;
+		}else{
+			session.put("firstName", firstName);
 		}
 
-		if(!(familyNameKana.equals(""))){
-			session.put("familyNameKana", familyNameKana);
-		}else if(familyNameKana.equals("")){
-			setErrorMassage("姓ふりがなを入力してください。");
+		if(familyNameKana.equals("")){
+			setErrorMessage("姓ふりがなを入力してください。");
 			result = ERROR;
 		}else if(familyNameKana.length()<1 || familyNameKana.length()>16){
-			setErrorMassage("姓ふりがなは1文字以上16文字以下で入力してください。");
+			setErrorMessage("姓ふりがなは1文字以上16文字以下で入力してください。");
 			result = ERROR;
-		}else if(familyNameKana.matches("^[ぁ-ん]+$")){
-			setErrorMassage("姓ふりがなはひらがなで入力してください。");
+		}else if(!familyNameKana.matches("^[ぁ-ん]+$")){
+			setErrorMessage("姓ふりがなはひらがなで入力してください。");
 			result = ERROR;
+		}else{
+			session.put("familyNameKana", familyNameKana);
 		}
 
-		if(!(firstNameKana.equals(""))){
-			session.put("firstNameKana", firstNameKana);
-		}else if(firstNameKana.equals("")){
-			setErrorMassage("名ふりがなを入力してください。");
+		if(firstNameKana.equals("")){
+			setErrorMessage("名ふりがなを入力してください。");
 			result = ERROR;
 		}else if(firstNameKana.length()<1 || firstNameKana.length()>16){
-			setErrorMassage("名ふりがなは1文字以上16文字以下で入力してください。");
+			setErrorMessage("名ふりがなは1文字以上16文字以下で入力してください。");
 			result = ERROR;
-		}else if(firstNameKana.matches("^[ぁ-ん]+$")){
-			setErrorMassage("名ふりがなはひらがなで入力してください。");
+		}else if(!firstNameKana.matches("^[ぁ-ん]+$")){
+			setErrorMessage("名ふりがなはひらがなで入力してください。");
 			result = ERROR;
+		}else{
+			session.put("firstNameKana", firstNameKana);
 		}
 
 		if(!(sex.equals(""))){
 			session.put("sex", sex);
 		}else{
-			setErrorMassage("性別を入力してください。");
+			setErrorMessage("性別を入力してください。");
 			result = ERROR;
 		}
 
-		if(!(email.equals(""))){
-			session.put("email", email);
-		}else if(email.equals("")){
-			setErrorMassage("メールアドレスを入力してください。");
+		if(email.equals("")){
+			setErrorMessage("メールアドレスを入力してください。");
 			result = ERROR;
 		}else if(email.length()<14 || email.length()>32){
-			setErrorMassage("メールアドレスは14文字以上32文字以下で入力してください。");
+			setErrorMessage("メールアドレスは14文字以上32文字以下で入力してください。");
 			result = ERROR;
-		}else if(email.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
-			setErrorMassage("メールアドレスは半角英数字及び半角記号で入力してください。");
+		}else if(!email.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+			setErrorMessage("メールアドレスは半角英数字及び半角記号で入力してください。");
 			result = ERROR;
+		}else{
+			session.put("email", email);
 		}
 
-		/*
-		 if(!(telNumber.equals(""))){
+
+		 if(0<telNumber.length() && telNumber.length()<11 || telNumber.length()>13){
+			setErrorMessage("電話番号は11文字以上13文字以下で入力してください。");
+			result = ERROR;
+		}else if(!telNumber.matches("^[0-9]+$")){
+			setErrorMessage("電話番号は半角数字で入力してください。");
+			result = ERROR;
+		}else if(!(telNumber.equals(""))){
 			session.put("telNumber", telNumber);
 		}
-		if(!(userAddress.equals(""))){
+
+		if(0<userAddress.length() && userAddress.length()<15 || userAddress.length()>50){
+			setErrorMessage("住所は15文字以上50文字以下で入力してください。");
+			result = ERROR;
+		}else if(!userAddress.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
+		    setErrorMessage("住所は半角英数字、漢字、カタカナ及び半角記号で入力してください。");
+			result = ERROR;
+		}else if(!(userAddress.equals(""))){
 				session.put("userAddress", userAddress);
 		}
-		*/
+
 		return result;
 	}
 
@@ -209,7 +221,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public void setEmail(String email){
 		this.email = email;
 	}
-/*
+
 	public String getTelNumber(){
 		return telNumber;
 	}
@@ -225,17 +237,17 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public void setUserAddress(String userAddress){
 		this.userAddress = userAddress;
 	}
-*/
+
 	@Override
 	public void setSession(Map<String,Object> session){
 		this.session=session;
 	}
 
-	public String getErrorMassage(){
-		return errorMassage;
+	public String getErrorMessage(){
+		return errorMessage;
 	}
 
-	public void setErrorMassage(String errorMassage){
-		this.errorMassage = errorMassage;
+	public void setErrorMessage(String errorMessage){
+		this.errorMessage = errorMessage;
 	}
 }

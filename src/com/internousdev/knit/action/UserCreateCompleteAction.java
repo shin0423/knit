@@ -18,11 +18,13 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	private String firstNameKana;
 	private int sex;
 	private String email;
+	private String telNumber;
+	private String userAddress;
 
 	public Map<String,Object> session;
 	private UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
 
-	public String execute() throws SQLException{
+	public String execute1() throws SQLException{
 		userCreateCompleteDAO.cerateUser(session.get("userId").toString(),
 				session.get("password").toString(),
 				session.get("familyName").toString(),
@@ -31,6 +33,20 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 				session.get("firstNameKana").toString(),
 				Integer.parseInt(session.get("sex").toString()),
 				session.get("email").toString()
+				);
+		String result=SUCCESS;
+		return result;
+	}
+
+	public String execute2() throws SQLException{
+		userCreateCompleteDAO.cerateUser(session.get("userId").toString(),
+				session.get("familyName").toString(),
+				session.get("firstName").toString(),
+				session.get("familyNameKana").toString(),
+				session.get("firstNameKana").toString(),
+				session.get("email").toString(),
+				session.get("telNumber").toString(),
+				session.get("userAddress").toString()
 				);
 		String result=SUCCESS;
 		return result;
@@ -98,6 +114,22 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	public void setEmail(String email){
 		this.email = email;
+	}
+
+	public String getTelNumber() {
+		return telNumber;
+	}
+
+	public void setTelNumber(String telNumber) {
+		this.telNumber = telNumber;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 
 	@Override

@@ -14,9 +14,8 @@ public class UserCreateCompleteDAO {
 
 	private DateUtil dateUtil = new DateUtil();
 
-	private String sql = "INSERT INTO user_info (user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email) VALUES(?,?,?,?,?,?,?,?)";
-
 	public void cerateUser(String userId,String password,String familyName,String firstName,String familyNameKana,String firstNameKana,int sex,String email) throws SQLException{
+		String sql = "INSERT INTO user_info (user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email) VALUES(?,?,?,?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,userId);
@@ -30,7 +29,29 @@ public class UserCreateCompleteDAO {
 			preparedStatement.setString(9,dateUtil.getDate());
 
 			preparedStatement.execute();
-		} catch(Exception e){
+		} catch (Exception e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+	}
+
+	public void cerateUser(String userId, String familyName,String firstName,String familyNameKana,String firstNameKana,String email,String telNumber,String userAddress) throws SQLException{
+		String sql="INSERT INTO distination_info (user_id,family_name,first_name,family_name_kana,first_name_kana,email,tel_number,user_address) VALUES(?,?,?,?,?,?,?,?)";
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,userId);
+			preparedStatement.setString(2,familyName);
+			preparedStatement.setString(3,firstName);
+			preparedStatement.setString(4,familyNameKana);
+			preparedStatement.setString(5,firstNameKana);
+			preparedStatement.setString(6,email);
+			preparedStatement.setString(7,telNumber);
+			preparedStatement.setString(8,userAddress);
+			preparedStatement.setString(9,dateUtil.getDate());
+
+			preparedStatement.execute();
+		} catch (Exception e){
 			e.printStackTrace();
 		}finally{
 			connection.close();
