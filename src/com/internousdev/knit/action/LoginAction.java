@@ -46,9 +46,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 * IDを保存するか
 		 */
 		if (saveId) {
-			session.put("userId", userId);
+			session.put("saveUserId", userId);
 		} else {
-			session.remove("userId");
+			session.remove("saveUserId");
 		}
 
 		/**
@@ -62,29 +62,33 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				loginDTO = loginDAO.getUserInfo(userId, password);
 
 				/**
-				 * 一般ユーザーログイン判定
+				 * IDパスワード確認
 				 */
-				if ( userId.equals(loginDTO.getUserId())
-								&& password.equals(loginDTO.getPassword())
-								&& loginDTO.getAdminFlg().equals("0")) {
-					loginDAO.login(loginDTO);
-					session.put("userId", loginDTO.getUserId());
-					session.put("loginFlg", true);
-					result = SUCCESS;
+				if (userId.equals(loginDTO.getUserId())
+								&& password.equals(loginDTO.getPassword())) {
 
-				/**
-				 * 管理者ユーザーログイン判定
-				 */
-				} else if ( userId.equals(loginDTO.getUserId())
-										&& password.equals(loginDTO.getPassword())
-										&& loginDTO.getAdminFlg().equals("1")) {
-					loginDAO.login(loginDTO);
-					session.put("userId", loginDTO.getUserId());
-					session.put("loginFlg", true);
-					result = "admin";
+					/**
+					 * 管理者ユーザーか判定してログイン
+					 */
+					if (loginDTO.getAdminFlg().equals("1")) {
+						result = "admin";
+						loginDAO.login(loginDTO);
+						session.put("userId", loginDTO.getUserId());
+						session.put("loginFlg", true);
 
+
+					/**
+					 * 一般ユーザーか判定してログイン
+					 */
+					} else {
+						result = SUCCESS;
+						loginDAO.login(loginDTO);
+						session.put("userId", loginDTO.getUserId());
+						session.put("loginFlg", true);
+
+					}
 				} else {
-					System.out.println("パスワードミス");
+					System.out.println("PASSミス");
 					result = ERROR;
 				}
 			}
