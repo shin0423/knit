@@ -15,6 +15,7 @@ public class AddressDataDAO {
 	Connection con = null;
 
 	public boolean registerAddress(AddressDataDTO dto) throws SQLException{
+
 		int updateCount = 0;
 		boolean result = false;
 		String sql = "INSERT INTO destination(user_id, fanily_name, first_name, "
@@ -45,6 +46,7 @@ public class AddressDataDAO {
 	}
 
 	public ArrayList<AddressDataDTO> obtainingDestinationInfo(String userId) throws SQLException{
+
 		ArrayList<AddressDataDTO> AddressList = new ArrayList<AddressDataDTO>();
 		String sql="SELECT id, family_name, first_name, family_name_kana, first_name_kana, "
 				+ "email, tel_number, user_address FROM destination_info WHERE user_id = ?";
