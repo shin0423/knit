@@ -23,12 +23,12 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 		//loginFlgがあるか
 
-		if(!(boolean) session.containsKey("loginFlg")) {
+		if(!(boolean) session.get("loginFlg")) {
 			session.put("loginFlg", false);
 			System.out.println("TESSSST");
-		}if((boolean) session.containKey("loginFlg")) {
+		}if((boolean) session.get("loginFlg")) {
 			if((boolean) session.get("loginFlg")) {
-				dao.changeUsetId(session.get("tempUserId").toString(),session.get("userId").toString());
+				dao.changeUserId(session.get("tempUserId").toString(),session.get("userId").toString());
 				cartList=dao.showUserCartList(session.get("userId").toString());
 			}else {
 				cartList=dao.showTempUserCartList(session.get("tempUserId").toString());
@@ -66,10 +66,10 @@ public class CartAction extends ActionSupport implements SessionAware{
 		/**
 		 * 合計金額を計算するメソッド
 		 */
-		public int calcTotalPrice(ArrayList<cartDTO> cartList) {
+		public int calcTotalPrice(ArrayList<CartDTO> cartList) {
 			int totalPrice=0;
 			for(CartDTO dto:cartList) {
-				totalPrice = dto.getPrice()*dto.getProductCount();
+				totalPrice = dto.getPrice()*dto.getItemCount();
 				System.out.println("合計" + totalPrice + "円");
 			}
 			return totalPrice;

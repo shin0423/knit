@@ -8,8 +8,14 @@ public class CartDTO {
 	private int id;
 	private String userId;
 	private String tempUserId;
-	private int productCount;
+	private int itemId;
+	private int itemCount;
+	private String itemName;
+	private String itemNameKana;
+	private String imageFileName;
 	private int price;
+	private String releaseCompany;
+	private String releaseDate;
 	private Date registDate;
 	private Date updateDate;
 
@@ -37,20 +43,69 @@ public class CartDTO {
 		this.tempUserId=tempUserId;
 	}
 
-	public int productCount() {
-		return productCount;
+
+	public int getItemId() {
+		return itemId;
 	}
 
-	public void setProductCount(int productCount) {
-		this.productCount=productCount;
+	public void setItemId(int itemId) {
+		this.itemId=itemId;
 	}
 
-	public int price() {
+	public int getItemCount() {
+		return itemCount;
+	}
+
+	public void setItemCount(int itemCount) {
+		this.itemCount=itemCount;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName=itemName;
+	}
+
+	public String getItemNameKana() {
+		return itemNameKana;
+	}
+
+	public void setItemNameKana(String itemNameKana) {
+		this.itemNameKana=itemNameKana;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName=imageFileName;
+	}
+
+	public int getPrice() {
 		return price;
 	}
 
 	public void setPrice(int price) {
 		this.price=price;
+	}
+
+	public String getReleaseCompany() {
+		return releaseCompany;
+	}
+
+	public void setReleaseCompany(String releaseCompany) {
+		this.releaseCompany=releaseCompany;
+	}
+
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate=releaseDate;
 	}
 
 	public Date getRegistDate() {
