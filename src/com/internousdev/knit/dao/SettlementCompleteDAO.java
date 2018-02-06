@@ -1,22 +1,16 @@
 package com.internousdev.knit.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.util.DBConnector;
 
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import com.internousdev.knit.dto.CartInfoDTO;
-//import com.internousdev.knit.util.DBConnector;
-
-public class PurchaseCompleteDAO {
+public class SettlementCompleteDAO {
 
 	private DBConnector db = new DBConnector();
 	private Connection con =db.getConnection();
@@ -31,8 +25,8 @@ public class PurchaseCompleteDAO {
 	 *
 	 */
 
-	public ArrayList<CartInfoDTO> getCartInfo(String userId) throws SQLException {
-		ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
+	public ArrayList<CartDTO> getCartInfo(String userId) throws SQLException {
+		ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
 
 		String sql = "SELECT * FROM cart_info where user_id=?";
 
@@ -42,7 +36,7 @@ public class PurchaseCompleteDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()){
-				CartInfoDTO dto = new CartInfoDTO();
+				CartDTO dto = new CartDTO();
 				dto.setUserId(rs.getString("user_id"));
 				dto.setItemId(rs.getInt("item_id"));
 				dto.setItemCount(rs.getInt("item_count"));
