@@ -11,9 +11,12 @@ import com.internousdev.knit.util.DBConnector;
 
 public class MyPageDAO {
 	
+	//データベースとコネクタ準備
 	DBConnector db = new DBConnector();
 	
 	Connection con = db.getConnection();
+	
+	/**ユーザー情報取得*/
 	
 	public ArrayList<MyPageDTO> getUserInfo(String userId){
 		
@@ -50,6 +53,12 @@ public class MyPageDAO {
 				myPageDTO.setEmail(rs.getString("email"));
 				
 				myPageList.add(myPageDTO);
+				
+				/**確認用↓*/
+				System.out.println(myPageDTO.getPassword());
+				System.out.println(myPageDTO.getFamilyName());
+				System.out.println(myPageDTO.getFamilyNameKana());
+				
 				
 			}
 		}catch(SQLException e) {

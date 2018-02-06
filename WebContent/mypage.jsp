@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!--  
 <link rel="stylesheet" type="text/css"
        href="${pageContext.request.contextPath }/css/reset.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -16,6 +17,7 @@
        href="${pageContext.request.contextPath }/img/favicon.ico">
 <link rel="stylesheet" type="text/css"
        href="${pageContext.request.contextPath }/css/ochiai_style.css">      
+-->
 
 <title>マイページ画面</title>
 </head>

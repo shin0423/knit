@@ -11,12 +11,22 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class MyPageAction extends ActionSupport implements SessionAware {
 	
+	/**
+	 * ログイン状態確認
+	 * 未ログインならhome画面へ返す。
+	 * ログイン状態ならuserId取得。
+	 * */
+	
+	//userId格納
 	private String userId;
 	
+	//session情報格納
 	private Map<String, Object> session;
 	
+	//ログイン情報格納
 	private ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
-			
+		
+	//エラーメッセージ
 	private String message;
 	
 	public String execute() {
@@ -30,6 +40,7 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 		if (session.containsKey("userId")) {
 			
 			userId = session.get("userId").toString();
+		
 			
 			MyPageDAO dao = new MyPageDAO();
 			
@@ -43,14 +54,19 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 	
+	//session情報を取得するメソッド
 	public Map<String, Object> getSession() {
 		return session;
 	}
 	
+	//session情報を格納するメソッド
 	public void setSession1(Map<String, Object> session) {	
 		this.session = session;
 	}
-	
+	/**
+	 * ユーザー情報を取得するメソッド
+	 * userIdを取得するメソッド
+	*/
 	public String getUserId() {
 		return userId;
 	}
@@ -63,18 +79,22 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 		this.myPageList = myPageList;
 	}
 	
+	//userIdを格納するメソッド
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	
+	//セッション情報を格納するメソッド
 	public void setSession(Map<String, Object> arg0) {
 		this.session = arg0;
 	}
 	
+	//エラーメッセージを取得するメソッド
 	public String getMessage() {
 		return message;
 	}
 	
+	//エラーメッセージを格納するメソッド
 	public void setMessage(String message) {
 		this.message = message;
 	}
