@@ -1,6 +1,7 @@
 package com.internousdev.knit.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -12,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport implements SessionAware {
 	private String userId;
 	private String password;
+	private ArrayList<String> errorMessage = new ArrayList<String>();
 	private boolean saveId;
 	private LoginDAO loginDAO = new LoginDAO();
 	private LoginDTO loginDTO = new LoginDTO();
@@ -24,22 +26,24 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 * ユーザーID入力チェック
 		 */
 		if (userId.equals("")) {
-			System.out.println("ID未入力");
+			errorMessage.add("ユーザーIDが未入力です");
 		} else if ( !( 1 < userId.length() && userId.length() < 16 ) ) {
-			System.out.println("ユーザーIDは1文字より大きく16文字未満");
+			errorMessage.add("ユーザーIDは2文字以上15文字以下です");
 		} else if ( !( userId.matches("^[0-9a-zA-Z]+$") ) ) {
-			System.out.println("ユーザーIDは半角英数字");
+			errorMessage.add("ユーザーIDは半角英数字です");
+		} else {
+			errorMessage.add("");
 		}
 
 		/**
 		 * パスワード入力チェック
 		 */
 		if (password.equals("")) {
-			System.out.println("PASS未入力");
-		} else if ( !( 1 < password.length() || password.length() < 16 ) ) {
-			System.out.println("PASSは1文字より大きく16文字未満");
-		} else if ( !( password.matches("^[0-9a-zA-Z]+$") ) ) {
-			System.out.println("PASSは半角英数字");
+			errorMessage.add("パスワードが未入力です");
+		} else if ( !( 1 < password.length() && password.length() < 16 ) ) {
+			errorMessage.add("パスワードは2文字以上15文字以下です");
+		} else {
+			errorMessage.add("");
 		}
 
 		/**
@@ -47,6 +51,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 */
 		if (saveId) {
 			session.put("saveUserId", userId);
+			System.out.println("チェック");
 		} else {
 			session.remove("saveUserId");
 		}
@@ -56,7 +61,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 */
 		if (!userId.equals("") || !password.equals("")) {
 			if (!loginDAO.getExistUserId(userId)) {
-				System.out.println("IDミス");
+				errorMessage.add("IDかパスワードが間違っています");
+				System.out.println(errorMessage);
 				result = ERROR;
 			} else {
 				loginDTO = loginDAO.getUserInfo(userId, password);
@@ -88,7 +94,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 					}
 				} else {
-					System.out.println("PASSミス");
+					errorMessage.add("IDかパスワードが間違っています");
+					System.out.println(errorMessage);
 					result = ERROR;
 				}
 			}
@@ -111,6 +118,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public ArrayList<String> getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(ArrayList<String> errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 	public boolean isSaveId() {

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.ReviewDAO;
+import com.internousdev.knit.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
@@ -14,13 +15,14 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 	private int review;
 	private String reviewBody;
 	private ReviewDAO reviewDAO = new ReviewDAO();
+	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private Map<String, Object> session;
 
 	public String execute() throws SQLException {
 		String result = ERROR;
 
 		userId = session.get("userId").toString();
-		itemId = session.get("itemId").toString();
+		itemId = buyItemDTO.getItemId();
 
 		if (reviewBody.equals("")) {
 			System.out.println("レビュー内容無しエラー");

@@ -1,7 +1,7 @@
 package com.internousdev.knit.dto;
 
 public class BuyItemDTO {
-	private int itemId;
+	private String itemId;
 	private String itemName;
 	private String itemNameKana;
 	private String itemDescription;
@@ -18,10 +18,10 @@ public class BuyItemDTO {
 
 
 	//↓getter setter
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 	public String getItemName() {

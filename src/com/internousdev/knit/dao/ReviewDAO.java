@@ -54,7 +54,7 @@ public class ReviewDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
-		String sql = "INSERT INTO review_transaction (user_id, item_id, review, review_body, insert_date) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO review_transaction (user_id, item_id, review, review_body, insert_date) VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
