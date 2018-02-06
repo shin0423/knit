@@ -21,6 +21,29 @@
 		</action>
 
 
+	<action name="CreateAddressMockAction" class="com.internousdev.knit.action.CreateAddressMockAction" method="execute">
+		<result name="success">createAddress.jsp</result>
+	</action>
+
+	<action name="CreateAddressAction" class="com.internousdev.knit.action.CreateAddressAction" method="execute">
+	<result name="success">createAddress.jsp</result>
+	</action>
+
+	<action name="CreateAddressConfirmAction" class="com.internousdev.knit.action.CreateAddressConfirmAction" method="execute">
+	<result name="success">createAddressConfirm.jsp</result>
+	<result name="error">createAddress.jsp</result>
+	</action>
+
+	<action name="CreateAddressCompleteAction" class="com.internousdev.knit.action.CreateAddressCompleteAction" method="execute">
+	<result name="success">createAddressComplete.jsp</result>
+	<result name="error">createAddress.jsp</result>
+	</action>
+
+
+
+
+
+
 	</package>
 
 </struts>

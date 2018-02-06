@@ -2,9 +2,7 @@ package com.internousdev.knit.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.internousdev.knit.dto.AddressDataDTO;
 import com.internousdev.knit.util.DBConnector;
@@ -13,11 +11,27 @@ public class AddressDataDAO {
 
 	DBConnector db = new DBConnector();
 	Connection con = null;
+	/**
+	 * 宛先情報をDBに登録する
+	 * @param dto
+	 * @return
+	 * @throws SQLException
+	 */
 
-	public boolean registerAddress(AddressDataDTO dto) throws SQLException{
+	public int registerAddress(AddressDataDTO dto) throws SQLException{
+
+		System.out.println("登録する値一覧--------------");
+		System.out.println(dto.getUserId());
+		System.out.println(dto.getFamilyName());
+		System.out.println(dto.getFirstName());
+		System.out.println(dto.getFamilyNameKana());
+		System.out.println(dto.getFirstNameKana());
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getTelNumber());
+		System.out.println(dto.getUserAddress());
+		System.out.println("---------------------------");
 
 		int updateCount = 0;
-		boolean result = false;
 		String sql = "INSERT INTO distination_info(user_id, family_name, first_name, "
 				+ "family_name_kana, first_name_kana, email, tel_number, user_address, "
 				+ "regist_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW())";
@@ -38,41 +52,7 @@ public class AddressDataDAO {
 		}finally{
 			con.close();
 		}
-
-		if(updateCount == 1){
-			result = true;
-		}
-		return result;
+		return updateCount;
 	}
 
-	public ArrayList<AddressDataDTO> obtainingDestinationInfo(String userId) throws SQLException{
-
-		ArrayList<AddressDataDTO> AddressList = new ArrayList<AddressDataDTO>();
-		String sql="SELECT id, family_name, first_name, family_name_kana, first_name_kana, "
-				+ "email, tel_number, user_address FROM destination_info WHERE user_id = ?";
-		try{
-			con = db.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1,  userId);
-			ResultSet rs= ps.executeQuery();
-
-			while(rs.next()){
-				AddressDataDTO dto = new AddressDataDTO();
-				dto.setId(rs.getInt("id"));
-				dto.setFamilyName(rs.getString("family_name"));
-				dto.setFirstName(rs.getString("first_name"));
-				dto.setFamilyNameKana(rs.getString("family_name_kana"));
-				dto.setFirstNameKana(rs.getString("first_name_kana"));
-				dto.setEmail(rs.getString("email"));
-				dto.setTelNumber(rs.getString("tel_number"));
-				dto.setUserAddress(rs.getString("user_address"));
-				AddressList.add(dto);
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			con.close();
-		}
-		return AddressList;
-	}
 }

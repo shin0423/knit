@@ -9,8 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.knit.dto.AddressDataDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CreateAddressAction extends ActionSupport implements SessionAware {
-
+public class CreateAddressMockAction extends ActionSupport implements SessionAware{
 
 	private List<AddressDataDTO> noInpList = new ArrayList<AddressDataDTO>();
 	private String familyName;
@@ -23,8 +22,46 @@ public class CreateAddressAction extends ActionSupport implements SessionAware {
 
 	private Map<String,Object> session;
 
-	public String execute() {
-		return SUCCESS;
+	public String execute(){
+
+		String result=ERROR;
+
+		for(int i=0; i< 5; i++){
+			AddressDataDTO dto = new AddressDataDTO();
+			dto.setId(i+1);
+			dto.setUserId("asd");
+			dto.setFamilyName("内山");
+			dto.setFirstName("英世");
+			dto.setFamilyNameKana("うちやま");
+			dto.setFirstNameKana("うちや");
+			dto.setEmail("aaa@aaaaa.com");
+			dto.setTelNumber("0312345678");
+			dto.setUserAddress("東京都千代田区三番町1");
+			noInpList.add(dto);
+
+		}
+
+		AddressDataDTO dto = new AddressDataDTO();
+		dto.setUserId("asd");
+		dto.setFamilyName("内山");
+		dto.setFirstName("英世");
+		dto.setFamilyNameKana("うちやま");
+		dto.setFirstNameKana("うちや");
+		dto.setEmail("aaa@aaaaa.com");
+		dto.setTelNumber("0312345678");
+		dto.setUserAddress("東京都千代田区三番町1");
+		 familyName=dto.getFamilyName();
+		firstName=dto.getFirstName();
+		 familyNameKana=dto.getFamilyNameKana();
+		 firstNameKana=dto.getFirstNameKana();
+		 email=dto.getEmail();
+		telNumber=dto.getTelNumber();
+		 userAddress=dto.getUserAddress();
+
+
+		session.put("userId","asd");
+		result=SUCCESS;
+		return result;
 	}
 
 	public List<AddressDataDTO> getNoInpList() {

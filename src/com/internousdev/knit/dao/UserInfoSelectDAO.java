@@ -12,9 +12,16 @@ public class UserInfoSelectDAO {
 
 	DBConnector db = new DBConnector();
 	Connection con = null;
-
+	/**
+	 * 宛先情報をDBに登録する
+	 * @param dto
+	 * @return
+	 * @throws SQLException
+	 */
 	public AddressDataDTO getUserInfor(String userId){
-		AddressDataDTO ADDTO = new AddressDataDTO();
+		System.out.println("USERID : " + userId);
+
+		AddressDataDTO dto = new AddressDataDTO();
 		String sql="SELECT * FROM user_info WHERE user_id = ?";
 
 		try{
@@ -24,12 +31,21 @@ public class UserInfoSelectDAO {
 			ResultSet rs= ps.executeQuery();
 
 			while (rs.next()) {
-				ADDTO.setUserId(rs.getString("user_id"));
-				ADDTO.setFamilyName(rs.getString("family_name"));
-				ADDTO.setFirstName(rs.getString("first_name"));
-				ADDTO.setFamilyNameKana(rs.getString("family_name_kana"));
-				ADDTO.setFirstNameKana(rs.getString("first_name_kana"));
-				ADDTO.setEmail(rs.getString("email"));
+				dto.setUserId(rs.getString("user_id"));
+				dto.setFamilyName(rs.getString("family_name"));
+				dto.setFirstName(rs.getString("first_name"));
+				dto.setFamilyNameKana(rs.getString("family_name_kana"));
+				dto.setFirstNameKana(rs.getString("first_name_kana"));
+				dto.setEmail(rs.getString("email"));
+
+				System.out.println("AddressDataDTO---------------");
+				System.out.println(dto.getUserId());
+				System.out.println(dto.getFamilyName());
+				System.out.println(dto.getFirstName());
+				System.out.println(dto.getFamilyNameKana());
+				System.out.println(dto.getEmail());
+				System.out.println("-------------------------------");
+
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -40,6 +56,6 @@ public class UserInfoSelectDAO {
 			e.printStackTrace();
 			}
 		}
-		return ADDTO;
+		return dto;
 		}
 	}

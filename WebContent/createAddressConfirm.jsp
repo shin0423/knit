@@ -8,28 +8,22 @@
  <title>宛先情報確認</title>
  </head>
  <body>
-  <s:form action="CreateAddressComplete">
-   <s:property value="familyName"/>
-   <s:hidden name="familyName" value="%{familyName}" />
-   <br>
-   <s:property value="firstName"/>
-   <s:hidden name="firstName" value="%{firstName}" />
-   <br>
-   <s:property value="familyNameKana"/>
-   <s:hidden name="familyNameKana" value="%{familyNameKana}" />
-   <br>
-   <s:property value="firstNameKana"/>
-   <s:hidden name="firstNameKana" value="%{firstNameKana}"/>
-   <br>
-   <s:property value="email"/>
-   <s:hidden name="email" value="%{email}"/>
-   <br>
-   <s:property value="telNumber"/>
-   <s:hidden name="telNumber" value="%{telNumber}" />
-   <br>
-   <s:property value="userAddress"/>
-   <s:hidden name="userAddress" value="%{userAddress}"/>
-   <br>
+  <s:form action="CreateAddressCompleteAction"><br>
+familyName<s:property value="familyName"/><br>
+firstName<s:property value="firstName"/><br>
+familyNameKana<s:property value="familyNameKana"/><br>
+firstNameKana<s:property value="firstNameKana"/><br>
+email<s:property value="email"/><br>
+telNumber<s:property value="telNumber"/><br>
+userAddress<s:property value="userAddress"/><br>
+
+<s:hidden name="familyName" value="%{familyName}" />
+<s:hidden name="firstName" value="%{firstName}" />
+<s:hidden name="familyNameKana" value="aaa" />
+<s:hidden name="firstNameKana" value="%{firstNameKana}"/>
+<s:hidden name="email" value="%{email}"/>
+<s:hidden name="telNumber" value="%{telNumber}" />
+<s:hidden name="userAddress" value="%{userAddress}"/>
    <button type="submit">登録情報を確定</button>
    <a href="/knit/createAddress.jsp">戻る</a>
   </s:form>

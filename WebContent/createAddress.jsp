@@ -9,11 +9,22 @@
  </head>
  <body>
   <s:form action="CreateAddressConfirmAction">
-   <h5>
-    <s:iterator value="noInpList">
-     <s:property/>
-    </s:iterator>
-   </h5>
+
+<table>
+
+
+
+	<!-- ここから入力エラーメッセージ表示 -->
+		<s:iterator value="errMsgList">
+		<h5>
+			<s:div align="center">
+				<s:property />
+			</s:div>
+		</h5>
+		</s:iterator>
+
+</table>
+
    <br>
    <span>姓</span><span>必須</span>
    <s:textfield name="familyName" value="%{familyName}" />
@@ -31,12 +42,14 @@
    <s:textfield name="email" value="%{email}" />
    <br>
    <span>電話番号</span><span>必須</span>
-   <s:textfield name="telNumber" value="" />
+   <s:textfield name="telNumber" value="%{telNumber}" />
    <br>
    <span>住所</span><span>必須</span>
    <s:textfield name="userAddress" value="" />
    <br>
-   <button type="submit">登録</button>
+   <s:form action="CreateAddressConfirmAction">
+   <s:submit value="登録"/>
+   </s:form>
    <a href="*">戻る</a>
   </s:form>
  </body>
