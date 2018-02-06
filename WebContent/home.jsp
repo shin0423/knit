@@ -9,11 +9,12 @@
 </head>
 <body>
 <h1>商品一覧</h1>
-<s:iterator value="#buyItemList">
+<s:iterator value="#session.buyItemList">
 
-<img src='<s:property value="itemImagePath"/>' alt="画像なし"/>
+
+<p><input type="image" src="<s:property value='itemImagePath' />" alt="画像なし"width="100" height="100" ></p>
 <s:property value="itemName"/>
-<s:property value="price"/>
+<s:property value="price"/>円
 
 
 
