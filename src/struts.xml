@@ -15,6 +15,10 @@
 		<result name="error">login.jsp</result>
 	</action>
 
+<!-- test小池 -->
+<action name="TopAction" class="com.internousdev.knit.action.TopAction">
+			<result name="success">home.jsp</result>
+		</action>
 
 
 	</package>
