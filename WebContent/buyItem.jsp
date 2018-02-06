@@ -9,6 +9,7 @@
 </head>
 <body>
 	<s:iterator value="buyItemAfterSearchList">
+		<img src="<s:property value='itemImagePath' />">
 		<s:property value="itemName"/>
 		<s:property value="itemDescription" />
 		<s:property value="price" />

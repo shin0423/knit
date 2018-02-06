@@ -9,12 +9,36 @@
 </head>
 <body>
 	<s:iterator value="buyItemDTO">
+		<img src="<s:property value='itemImagePath' />" alt="画像なし">
 		<s:property value="itemName" />
 		<s:property value="itemDescription" />
 		<s:property value="price" />
 		<s:property value="itemStock" />
 		<s:property value="releaseCompany" />
 		<s:property value="releaseDate" />
+		<s:form action="CartAction" >
+			<s:hidden name="itemId" value="<s:property value='itemId' />" />
+			<s:hidden name="price" value="<s:property value='price' />"/>
+			<s:hidden name="itemStock" value="<s:property value='itemStock' />" />
+			<s:submit value="カートに入れる" />
+		</s:form>
+	</s:iterator>
+
+	<s:form action="ReviewAction">
+		<select name="review" >
+			<option value="1">★</option>
+			<option value="2">★★</option>
+			<option value="3">★★★</option>
+			<option value="4">★★★★</option>
+			<option value="5">★★★★★</option>
+		</select>
+		<s:textfield name="reviewBody" value=""/>
+	</s:form>
+	レビュー
+	<s:iterator value="reviewList">
+		<s:property value="userName"/>
+		<s:property value="review" />
+		<s:property value="reviewBody" />
 	</s:iterator>
 </body>
 </html>
