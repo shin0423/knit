@@ -152,6 +152,83 @@ public String userAddressChk(String userAddress) {
 	return result;
 }
 
+public String itemIdChk(String itemId){
+	String result="OK";
+
+	if(itemId.equals("")){
+		result="商品Idを入力してください。";
+	}else if(itemId.length()<1 || itemId.length()>999){
+		result="商品Idは1桁以上3桁以下で入力してください。";
+	}else if(!itemId.matches("^[0-9]+$")){
+		result="商品Idは半角数字で入力してください。";
+	}
+	return result;
+}
+
+public String itemNameChk(String itemName){
+	String result="OK";
+
+	if(itemName.equals("")){
+		result="商品名を入力してください。";
+	}else if(itemName.length()<1 || itemName.length()>100){
+		result="商品名は1文字以上100文字以下で入力してください。";
+	}else if(!itemName.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")){
+		result="商品名は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+	}
+	return result;
+}
+
+public String productNameKanaChk(String itemNameKana){
+	String result="OK";
+
+	if(itemNameKana.equals("")){
+		result="商品名ふりがなを入力してください。";
+	}else if(itemNameKana.length()<1 || itemNameKana.length()>100){
+		result="商品名ふりがなは1文字以上100文字以下で入力してください。";
+	}else if(!itemNameKana.matches("^[ぁ-ん]+$")){
+		result="商品名ふりがなはひらがなで入力してください。";
+	}
+	return result;
+}
+
+public String itemDescriptionChk(String itemDescription){
+	String result="OK";
+
+	if(itemDescription.equals("")){
+		result="商品詳細を入力してください。";
+	}else if(itemDescription.length()<1 || itemDescription.length()>255){
+		result="商品詳細は1文字以上255文字以下で入力してください。";
+	}else if(!itemDescription.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")){
+		result="商品詳細は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+	}
+	return result;
+}
+
+public String releaseCompanyChk(String releaseCompany){
+	String result="OK";
+
+	if(releaseCompany.equals("")){
+		result="商品販売会社名を入力してください。";
+	}else if(releaseCompany.length()<1 || releaseCompany.length()>50){
+		result="商品販売会社名は1文字以上50文字以下で入力してください。";
+	}else if(!releaseCompany.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")){
+		result="商品名販売会社名は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+	}
+	return result;
+}
+
+public String insertItemStockChk(String insertItemStock){
+	String result="OK";
+	if(insertItemStock.equals("")){
+		result="追加在庫数を入力してください。";
+	}else if(insertItemStock.length()<1 || insertItemStock.length()>999){
+		result="追加在庫数は1桁以上3桁以下で入力してください。";
+	}else if(!insertItemStock.matches("^[0-9]+$")){
+		result="追加在庫数は半角数字で入力してください。";
+	}
+	return result;
+	}
+
 /**
  * 検索ワードの入力チェック
  * @param keyword

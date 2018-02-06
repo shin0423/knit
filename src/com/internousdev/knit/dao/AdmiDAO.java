@@ -10,18 +10,34 @@ public class AdmiDAO {
 	private DBConnector dbConnector=new DBConnector();
 	private Connection connection=dbConnector.getConnection();
 
-	public void insertAdminItemInfo(String productId,String productName,String productNameKana,String productDescription,String categoryId,String imageFilePath,String imageFileName,String releaseCompany) throws SQLException{
-		String sql="INSERT INTO product_info (product_id,product_name,product_name_kana,product_description,category_id,image_file_path,image_file_name,release_company VALUE(?,?,?,?,?,?,?,?)";
+	public int insertAdminItemInfo(String itemId,String itemName,String itemNameKana,String itemDescription,String categoryId,String releaseCompany) throws SQLException{
+		String sql="INSERT INTO item_info (item_id,item_name,item_name_kana,item_description,category_id,release_company) VALUE(?,?,?,?,?,?)";
+		int test=0;
 		try{
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1,productId);
-			preparedStatement.setString(2,productName);
-			preparedStatement.setString(3,productNameKana);
-			preparedStatement.setString(4,productDescription);
+			preparedStatement.setString(1,itemId);
+			preparedStatement.setString(2,itemName);
+			preparedStatement.setString(3,itemNameKana);
+			preparedStatement.setString(4,itemDescription);
 			preparedStatement.setString(5,categoryId);
-			preparedStatement.setString(6,imageFilePath);
-			preparedStatement.setString(7,imageFileName);
-			preparedStatement.setString(8,releaseCompany);
+			preparedStatement.setString(6,releaseCompany);
+
+			test=preparedStatement.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return test;
+	}
+
+
+	public void insertAdminItemCount(int totalStock,String itemId) throws SQLException{
+		String sql="UPDATE item_info set item_stock=? WHERE item_id=?";
+		try{
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1,totalStock);
+			preparedStatement.setString(2, itemId);
 
 			preparedStatement.execute();
 		}catch(Exception e){
@@ -32,33 +48,19 @@ public class AdmiDAO {
 	}
 
 
-	public void insertAdminItemCount(int productStock,String productId) throws SQLException{
-		String sql="UPDATE product_info set product_stock=? WHERE product_id=?";
+	public int  deleteAdminItemInfo(String itemId) throws SQLException{
+		String sql="DELETE FROM item_info WHERE item_id=?";
+		int result=0;
 		try{
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setInt(1,productStock);
-			preparedStatement.setString(2, productId);
+			preparedStatement.setString(1,itemId);
 
-			preparedStatement.execute();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			connection.close();
-		}
-	}
-
-
-	public void  deleteAdminItemInfo(String productId) throws SQLException{
-		try{
-			String sql="DELETE FROM product_info WHERE product_id=?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1,productId);
-
-			preparedStatement.execute();
+			result=preparedStatement.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
 			connection.close();
-	}
+		}
+		return result;
 	}
 }
