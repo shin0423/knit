@@ -12,6 +12,8 @@
 <s:iterator value="#session.buyItemList">
 
 
+
+
 <p><input type="image" src="<s:property value='itemImagePath' />" alt="画像なし"width="100" height="100" ></p>
 <s:property value="itemName"/>
 <s:property value="price"/>円
