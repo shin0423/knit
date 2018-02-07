@@ -84,6 +84,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	}
 
 
+
 	public String getMoreUp() {
 		return moreUp;
 	}

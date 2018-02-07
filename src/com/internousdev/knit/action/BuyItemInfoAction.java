@@ -18,6 +18,7 @@ public class BuyItemInfoAction extends ActionSupport {
 
 		return SUCCESS;
 
+
 	}
 
 

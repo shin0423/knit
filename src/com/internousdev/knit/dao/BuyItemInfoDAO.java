@@ -16,6 +16,7 @@ public class BuyItemInfoDAO {
 		String sql="SELECT * FROM item_info WHERE item_id=?";
 		Connection connection = dbConnector.getConnection();
 
+
 		try{
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1,item_id);

@@ -16,6 +16,7 @@ public class BuyItemDAO {
 
 
 
+
 	public List<BuyItemDTO> selectItemByList(List<String> searchList,String categoryId,String moreUp,String moreDown) {
 		Connection connection = dbConnector.getConnection();
 
