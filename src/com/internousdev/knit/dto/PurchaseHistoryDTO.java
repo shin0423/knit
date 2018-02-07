@@ -33,15 +33,15 @@ public class PurchaseHistoryDTO {
 	private String itemNameKana;
 
 //	商品画像ファイル名
-	private String imageFileName;
+	private String imageFilePath;
 
-//	商品の履歴表示フラグ [0で表示,1で表示無効]
+//	商品の履歴表示フラグ [0で非表示,1で表示]
 	private int status;
 
 //	商品の発送待機、または発送キャンセル、または発送開始状態
 //	[0で発送待機状態、1で発送キャンセル状態、2で発送開始状態]
 
-	private int XXX ;
+	private int sendFlg ;
 
 //*--------------------------------------	ゲッタセッタ	-------------------------------------------
 
@@ -127,15 +127,15 @@ public class PurchaseHistoryDTO {
 		this.itemNameKana = itemNameKana;
 	}
 
-//	商品画像ファイル名
-	public String getImageFileName() {
-		return imageFileName;
+//	商品画像ファイルパス
+	public String getimageFilePath() {
+		return imageFilePath;
 	}
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
+	public void setimageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
 	}
 
-//	商品の履歴表示フラグ [0で表示無効,1で表示]
+//	商品の履歴表示フラグ [0で非表示,1で表示]
 	public int getStatus() {
 		return status;
 	}
@@ -145,11 +145,11 @@ public class PurchaseHistoryDTO {
 
 //	商品の発送待機、または発送キャンセル、または発送開始状態
 //	[0で発送待機状態、1で発送キャンセル状態、2で発送開始状態]
-	public int getXXX() {
-		return XXX;
+	public int getsendFlg() {
+		return sendFlg;
 	}
-	public void setXXX(int xXX) {
-		XXX = xXX;
+	public void setsendFlg(int sendFlg) {
+		this.sendFlg = sendFlg;
 	}
 
 }
