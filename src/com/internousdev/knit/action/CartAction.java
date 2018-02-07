@@ -69,7 +69,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 		public int calcTotalPrice(ArrayList<CartDTO> cartList) {
 			int totalPrice=0;
 			for(CartDTO dto:cartList) {
-				totalPrice = dto.getPrice()*dto.getItemCount();
+				totalPrice += dto.getPrice()*dto.getItemCount();
 				System.out.println("合計" + totalPrice + "円");
 			}
 			return totalPrice;

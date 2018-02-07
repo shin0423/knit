@@ -82,7 +82,7 @@ public class CartDAO extends ActionSupport{
 		System.out.println("showUserCartList");
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
-		String sql="SELECT cart_info.item_id,ii.item_name,ii.item_name_kana,ii.image_file_name,ii.price,ii.release_company,ii.release_date,item_count"
+		String sql="SELECT cart_info.item_id,ii.item_name,ii.item_name_kana,ii.image_file_path,ii.price,ii.release_company,ii.release_date,cart_info.item_count"
 				+"FROM cart_info LEFT JOIN item_info as ii ON cart_info.item_id=ii.item_id"
 				+"WHERE user_id=?";
 
@@ -97,7 +97,7 @@ public class CartDAO extends ActionSupport{
 				dto.setItemId(rs.getInt("item_id"));
 				dto.setItemName(rs.getString("item_name"));
 				dto.setItemNameKana(rs.getString("item_name_kana"));
-				dto.setImageFileName(rs.getString("image_file_name"));
+				dto.setImageFilePath(rs.getString("image_file_path"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setReleaseDate(rs.getString("release_date"));
@@ -136,7 +136,7 @@ public class CartDAO extends ActionSupport{
 				dto.setItemCount(rs.getInt("item_count"));
 				dto.setItemName(rs.getString("item_name"));
 				dto.setItemNameKana(rs.getString("item_name_kana"));
-				dto.setImageFileName(rs.getString("image_file_name"));
+				dto.setImageFilePath(rs.getString("image_file_path"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setReleaseDate(rs.getString("release_date"));

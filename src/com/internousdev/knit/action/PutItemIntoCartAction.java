@@ -57,7 +57,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		/**
 		 * ログインしている際にカートに入れた場合
 		 */
-		if(session.containsKey("loginFlg")&&(boolean)session.get("loginFlg")) {
+		if((boolean)session.get("loginFlg")) {
 			boolean dupFlg=dao.isAlreadyIntoCart(session.get("userId").toString(),Integer.parseInt(itemId));
 			if(!dupFlg) {
 				count=dao.putItemIntoCart(session.get("userId").toString(), Integer.parseInt(itemId),

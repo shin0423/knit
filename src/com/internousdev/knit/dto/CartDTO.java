@@ -12,7 +12,7 @@ public class CartDTO {
 	private int itemCount;
 	private String itemName;
 	private String itemNameKana;
-	private String imageFileName;
+	private String imageFilePath;
 	private int price;
 	private String releaseCompany;
 	private String releaseDate;
@@ -76,12 +76,12 @@ public class CartDTO {
 		this.itemNameKana=itemNameKana;
 	}
 
-	public String getImageFileName() {
-		return imageFileName;
+	public String getImageFilePath() {
+		return imageFilePath;
 	}
 
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName=imageFileName;
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath=imageFilePath;
 	}
 
 	public int getPrice() {
