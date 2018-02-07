@@ -18,16 +18,21 @@
 	color : red;
 }
 
+.cr {
+	font-size : 12px;
+}
+
 </style>
 
 <title>ログインページ</title>
 </head>
 <body>
+	<h3>ログインページ</h3>
 	<table>
 	<s:form action="LoginAction">
 	<tr>
 		<td>ID:</td>
-		<td><s:textfield name="userId" value="" /></td>
+		<td><s:textfield name="userId" value="%{#session.saveUserId}" /></td>
 	</tr>
 	<tr>
 		<td>パスワード:</td>
@@ -37,11 +42,23 @@
 		<td><s:submit value="確認" /></td>
 		<td><input type="checkbox" value="true" name="saveId" >ID保存の場合はチェック</td>
 	</tr>
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
 	</s:form>
 	</table>
-	<br><br>
-	<s:if test="!errorMessage == '' " >
-		<div id="errorMessage"><s:property value="errorMessage" /></div>
+		<div class="cr">新規ユーザー登録は<a href="<s:url action='UserCreateAction' />">こちら</a></div>
+		<div class="cr">パスワード再設定は<a href="<s:url action='ResetPasswordAction' />">こちら</a></div>
+	<br>
+	<s:if test="errorMessage != null " >
+		<div id="errorMessage">
+			<s:iterator value="errorMessage">
+				<s:property /><br>
+			</s:iterator>
+		</div>
 	</s:if>
 
 </body>
