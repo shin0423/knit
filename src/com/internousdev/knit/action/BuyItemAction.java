@@ -22,6 +22,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 
 	public String execute() throws SQLException{
 
+
 		searchWord = searchWord.replace("　", " ");
 		List<String> searchList = new ArrayList<String>();
 		String[] searchWordList = searchWord.split(" ", 0);
