@@ -1,130 +1,92 @@
-package com.internousdev.knit.dao;
+package com.internousdev.knit.action;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dto.CartDTO;
-import com.internousdev.knit.util.DBConnector;
+import com.internousdev.knit.dto.SettlementConfirmDTO;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class SettlementCompleteDAO {
+public class SettlementCompleteAction extends ActionSupport implements SessionAware{
 
-	private DBConnector db = new DBConnector();
-	private Connection con =db.getConnection();
+	private Map<String,Object> session;
+	private ArrayList<CartDTO> cartInfoList = new ArrayList<CartDTO>();
+	public ArrayList<SettlementConfirmDTO> destinationList = new ArrayList<SettlementConfirmDTO>();
+	private SettlementConfirmDAO settlementConfirmDAO = new SettlementConfirmDAO();
+	private SettlementCompleteDAO settlementCompleteDAO = new SettlementCompleteDAO();
+	private boolean buyCountErrorFlg=false;
+	private ArrayList<CartDTO> buyCountErrorList = new ArrayList<CartDTO>();
 
-	/**
-	 * カートテーブルを購入履歴に登録するメソッド
-	 *
-	 * 1.カートテーブルを取得
-	 * 2.購入履歴に登録
-	 * @param userId
-	 * @return cartList
-	 *
-	 */
+	CartDAO cartDAO = new CartDAO();
 
-	public ArrayList<CartDTO> getCartInfo(String userId) throws SQLException {
-		ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
+//決済処理
 
-		String sql = "SELECT * FROM cart_info where user_id=?";
+	public String execute() throws SQLException{
 
-		try{
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ResultSet rs = ps.executeQuery();
+		if (!(session.containsKey("userId"))){
+			return "loginError";
+		}
 
-			while(rs.next()){
-				CartDTO dto = new CartDTO();
-				dto.setUserId(rs.getString("user_id"));
-				dto.setItemId(rs.getInt("item_id"));
-				dto.setItemCount(rs.getInt("item_count"));
-				dto.setPrice(rs.getInt("price"));
-				dto.setUpdateDate(rs.getDate("update_date"));
-				dto.setRegistDate(rs.getDate("regist_date"));
+		String	result=ERROR;
 
-				//コンソールに処理を表示
-				System.out.println("------getCartInfo");
-				System.out.println(dto.getUserId());
-				System.out.println(dto.getItemId());
-				System.out.println(dto.getItemCount());
-				System.out.println(dto.getPrice());
-				System.out.println(dto.getUpdateDate());
-				System.out.println(dto.getRegistDate());
-				System.out.println("------------------");
-				//
+		destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
+		if(destinationList.size()!=0){
 
-				cartList.add(dto);
+			result = SUCCESS;
+
+			//カート情報読み込み
+			cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
+
+			//カートリストの数だけfor 購入履歴テーブルに登録 在庫数変動
+			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList);
+			System.out.println("購入履歴に入れた数"+i);
 
 			}
+			//購入したユーザーのカート情報を消去
+			cartDAO.deleteCartInfo(session.get("userId").toString());
 
-		}catch(SQLException e){
-			e.printStackTrace();
-
-		}finally{
-			con.close();
-
+			return result;
 		}
-		return cartList;
 
+
+
+	public Map<String,Object> getSession(){
+		return session;
+	}
+	public void setSession(Map<String,Object> session){
+		this.session=session;
 	}
 
-	/**
-	 * 購入情報を購入履歴に保存
-	 *
-	 * @param cartList
-	 * @return ret
-	 */
 
-	public int setPurchaseHistory(List<CartInfoDTO> cartList) throws SQLException{
+	public boolean isBuyCountErrorFlg() {
+		return buyCountErrorFlg;
+	}
 
-		DBConnector db = new DBConnector();
-		Connection con = db.getConnection();
-		String sql = null;
 
-		/*--------------------------------------------------
-		 * int型でActionからcartListを引数で受け取る
-		 * 変数名retの初期値を0(未処理なら0のまま)
-		 --------------------------------------------------------*/
+	public void setBuyCountErrorFlg(boolean buyCountErrorFlg) {
+		this.buyCountErrorFlg = buyCountErrorFlg;
+	}
 
-		int ret = 0;
 
-		/*----------------------------------------------------------------------------------
-		 * for文でcartListを回し、カート情報の件数分検索をかける→件数処理がretに入る
-		 ---------------------------------------------------------------------------------*/
+	public ArrayList<CartDTO> getCartInfoList() {
+		return cartInfoList;
+	}
 
-		try{
-			for (int i = 0; i <cartList.size(); i++){
-				sql = "INSERT INTO purchase_history_info(user_id, price, item_id, item_count, update_date, regist_date) VALUES(?, ?, ?, ?, NOW(), NOW())";
-				PreparedStatement ps = con.prepareStatement(sql);
 
-				ps.setString(1, cartList.get(i).getUserId());
-				ps.setInt(2, cartList.get(i).getPrice());
-				ps.setInt(3, cartList.get(i).getItemId());
-				ps.setInt(4, cartList.get(i).getItemCount());
+	public void setCartInfoList(ArrayList<CartDTO> cartInfoList) {
+		this.cartInfoList = cartInfoList;
+	}
 
-				/*コンソールに処理を表示------------------------------*/
-				System.out.println("------------setPurchaseHistory");
-				System.out.println(cartList.get(i).getUserId());
-				System.out.println(cartList.get(i).getPrice());
-				System.out.println(cartList.get(i).getItemId());
-				System.out.println(cartList.get(i).getItemCount());
-				System.out.println("---------------------");
-				/*----------------------------------------------------*/
 
-				/*------------------------------------------------------
-				 *  += 以上が実行されるたびに足す処理
-				 -----------------------------------------------------*/
+	public ArrayList<CartDTO> getBuyCountErrorList() {
+		return buyCountErrorList;
+	}
 
-				ret += ps.executeUpdate();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.close();
-		}
-		return ret;
+
+	public void setBuyCountErrorList(ArrayList<CartDTO> buyCountErrorList) {
+		this.buyCountErrorList = buyCountErrorList;
 	}
 }
-

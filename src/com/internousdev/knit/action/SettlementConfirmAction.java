@@ -6,139 +6,150 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.knit.dao.CartDeleteDAO;
-import com.internousdev.knit.dao.PurchaseCompleteDAO;
+import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dto.CartDTO;
+import com.internousdev.knit.dto.SettlementConfirmDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SettlementConfirmAction extends ActionSupport implements SessionAware {
+/**
+* 決済確認画面
+*
+*カート情報と宛先情報の取得
+*/
 
-	// userId格納
-	private String userId;
-	// cartInfoDTO格納List
-	private ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
-	// session情報格納
+public class SettlementConfirmAction extends ActionSupport implements SessionAware{
+
+	//session
 	public Map<String,Object> session;
-	//カートの合計金額
-	private int totalPrice = 0;
 
-	public String execute() throws SQLException {
+	//DAO
+	private SettlementConfirmDAO settlementConfirmDAO = new SettlementConfirmDAO();
+	private CartDAO cartDAO =new CartDAO();
 
+	//宛先情報DTOをListに格納
+	public ArrayList<SettlementConfirmDTO> destinationList = new ArrayList<SettlementConfirmDTO>();
+
+	//カート情報受け取り
+	public ArrayList<CartDTO> cartInfoList = new ArrayList<CartDTO>();
+
+	private boolean buyCountErrorFlg = false;
+
+	//購入個数、在庫比較リスト
+	private ArrayList<CartDTO> buyCountErrorList = new ArrayList<CartDTO>();
+
+	//未ログインカートフラグ
+
+	private boolean cartFlg;
+
+
+	public String execute() throws SQLException{
 		String result = ERROR;
 
-		//カート情報取得（List型で受け取る)
+		if(session.containsKey("userId")){
 
-		PurchaseCompleteDAO purchaseCompleteDAO = new PurchaseCompleteDAO();
-		if (session.containsKey("userId")){
-			cartList = purchaseCompleteDAO.getCartInfo(session.get("userId").toString());
+			//宛先情報取得
+			destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
 
-			/*-----------------------------------------------------------
-				カート情報なしの場合
-			 ----------------------------------------------------------*/
+			//カート情報取得
+			cartInfoList = cartDAO.showUserCartList(session.get("userId").toString());
 
-			if (cartList.size() == 0) {
-				return "other";
+
+//			//購入個数、在庫比較処理
+//			for(CartDTO dto:cartInfoList){
+//				int stock=settlementConfirmDAO.getCount(dto.getItemId());
+//				//↓ここがわからない
+//				if(dto.getItemCount()>stock){
+//					buyCountErrorList.add(dto);
+//					System.out.println("カートリスト:"+cartInfoList.size());
+//					System.out.println("カウントエラーリスト:"+buyCountErrorList.size());
+//					buyCountErrorFlg=true;
+//					result="countError";
+//
+//				}
+//			}
+//
+//			if(buyCountErrorList.size()>0){
+//				return result;
+//			}
+
+			session.put("cartInfoList", cartInfoList);
+
+			//カートの合計金額計算
+			if(cartInfoList != null){
+				calcCartTotalPrice();
 			}
 
-			
-			/*-----------------------------------------------------------
-				2.購入履歴に登録
-			 ----------------------------------------------------------*/
-
-			int i = purchaseCompleteDAO.setPurchaseHistory(cartList);
-			System.out.println(cartList);
-
-			/*-----------------------------------------------------------
-				カート情報ありの場合(listの数と処理件数と同じ場合)
-			 ----------------------------------------------------------*/
-
-			if(cartList.size() == i ){
-
-				/*------------------------------------------------------------
-					3.カートテーブル情報を削除
-				 -----------------------------------------------------------*/
-
-				CartDeleteDAO delete = new CartDeleteDAO();
-				delete.deleteCartInfo(session.get("userId").toString());
-				result = SUCCESS;
-			}
+			result = SUCCESS;
 
 		}
-		totalPrice=calcTotalPrice(cartList);
+		if(!(session.containsKey("userId"))){
+			cartFlg=true;
+			session.put("cartFlg", cartFlg);
+		}
 		return result;
 	}
 
-	/**
-	 * ユーザーIDを取得するメソッド
-	 *
-	 * @return userId
-	 */
-	public String getUserId() {
-		return userId;
+	//合計金額を計算
+	public void calcCartTotalPrice(){
+		int cartTotalPrice=0;
+		//System.out.println(cartInfoList.size());
+		for(int i=0; i < cartInfoList.size(); i++) {
+			//+= で足して変数に格納を繰り返す。
+			//System.out.println(cartInfoList.get(i).getTotalPrice());
+			cartTotalPrice += cartInfoList.get(i).getPrice();
+		}
+		session.put("cartTotalPrice", cartTotalPrice);
 	}
 
-	/**
-	 * ユーザーIDを格納するメソッド
-	 *
-	 * @param userId
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
+
+	public ArrayList<SettlementConfirmDTO> getDestinationList() {
+		return destinationList;
 	}
 
-	/**
-	 * ユーザーcartListを取得するメソッド
-	 *
-	 * @return cartList
-	 */
-	public ArrayList<CartInfoDTO> getCartList() {
-		return cartList;
+	public void setDestinationList(ArrayList<SettlementConfirmDTO> destinationList) {
+		this.destinationList = destinationList;
 	}
 
-	/**
-	 * ユーザーcartListを取得するメソッド
-	 *
-	 * @return cartList
-	 */
-	public void setCartList(ArrayList<CartInfoDTO> cartList) {
-		this.cartList = cartList;
+	public boolean getBuyCountErrorFlg() {
+		return buyCountErrorFlg;
 	}
 
-	/**
-	 * セッション情報を取得するメソッド
-	 *
-	 * @return session
-	 */
+	public void setBuyCountErrorFlg(boolean buyCountErrorFlg) {
+		this.buyCountErrorFlg = buyCountErrorFlg;
+	}
+
+	//セッション
 	public Map<String, Object> getSession() {
 		return session;
 	}
 
-	/**
-	 * セッション情報を格納するメソッド
-	 *
-	 * @param session
-	 */
+	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-	/**
-	 * 合計金額を計算するメソッド
-	 */
-	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList){
-		int totalPrice = 0;
-		for (CartInfoDTO dto : cartList){
-			totalPrice += dto.getPrice() * dto.getItemCount();
-			System.out.println("合計" + totalPrice + "円");
-		}
-		return totalPrice;
+	public ArrayList<CartDTO> getCartInfoList() {
+		return cartInfoList;
 	}
 
-	public int getTotalPrice(){
-		return totalPrice;
+	public void setCartInfoList(ArrayList<CartDTO> cartInfoList) {
+		this.cartInfoList = cartInfoList;
 	}
 
-	public void setTotalPrice(int totalPrice){
-		this.totalPrice = totalPrice;
+	public ArrayList<CartDTO> getBuyCountErrorList() {
+		return buyCountErrorList;
+	}
+
+	public void setBuyCountErrorList(ArrayList<CartDTO> buyCountErrorList) {
+		this.buyCountErrorList = buyCountErrorList;
+	}
+
+	public boolean isCartFlg() {
+		return cartFlg;
+	}
+
+	public void setCartFlg(boolean cartFlg) {
+		this.cartFlg = cartFlg;
 	}
 
 }
