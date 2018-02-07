@@ -16,6 +16,9 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	private BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
 	private List<BuyItemDTO> buyItemAfterSearchList = new ArrayList<>();
 	public Map<String,Object> session;
+	private String categoryId;
+	private String moreUp;
+	private String moreDown;
 
 	public String execute() throws SQLException{
 
@@ -29,7 +32,9 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 			}
 		}
 
-		buyItemDAO.selectItemByList(searchList);
+
+
+		buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);
 //
 //		String[] splitedWord = searchWord.split(" ", 0);
 //		String wordForSearch="";
@@ -55,5 +60,45 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 
 	public void setBuyItemAfterSearchList(List<BuyItemDTO> buyItemAfterSearchList) {
 		this.buyItemAfterSearchList = buyItemAfterSearchList;
+	}
+
+
+	public String getSearchWord() {
+		return searchWord;
+	}
+
+
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+	public String getMoreUp() {
+		return moreUp;
+	}
+
+
+	public void setMoreUp(String moreUp) {
+		this.moreUp = moreUp;
+	}
+
+
+	public String getMoreDown() {
+		return moreDown;
+	}
+
+
+	public void setMoreDown(String moreDown) {
+		this.moreDown = moreDown;
 	}
 }
