@@ -29,7 +29,7 @@ public class AdmiDAO {
 			preparedStatement.setString(10, dateUtil.getDate());
 			preparedStatement.setString(11,dateUtil.getDate());
 			res=preparedStatement.executeUpdate();
-		}catch(Exception e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
 			connection.close();
