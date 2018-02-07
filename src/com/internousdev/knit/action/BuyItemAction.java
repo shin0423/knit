@@ -18,18 +18,25 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException{
-		String[] splitedWord = searchWord.split(" ", 0);
-		String wordForSearch="";
-		String count=String.valueOf(splitedWord.length);
-		for(int i = 0;splitedWord.length>i;i++){
-			if(count.equals(String.valueOf(1+i))){
-				wordForSearch=wordForSearch+"item_name LIKE '%"+splitedWord[i]+"%'";
-			}else{
 
-			wordForSearch=wordForSearch+"item_name LIKE '%"+splitedWord[i]+"%' AND ";
+		searchWord = searchWord.replace("　", " ");
+		List<String> searchList = new ArrayList<String>();
+		String[] searchWordList = searchWord.split(" ", 0);
+
+		for(int i=0; i < searchWordList.length; i++){
+			if(String.valueOf(searchWordList[i])!=" "){
+				searchList.add(String.valueOf(searchWordList[i]));
 			}
 		}
-	buyItemAfterSearchList=buyItemDAO.selectItem(wordForSearch);
+
+		buyItemDAO.selectItemByList(searchList);
+//
+//		String[] splitedWord = searchWord.split(" ", 0);
+//		String wordForSearch="";
+//		String count=String.valueOf(splitedWord.length);
+//		String[] searchLikeAnd = new String[searchWord.length()-1];
+//
+
 	return SUCCESS;
 
 	}
