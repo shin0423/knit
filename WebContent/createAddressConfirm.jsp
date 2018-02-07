@@ -19,7 +19,7 @@ userAddress<s:property value="userAddress"/><br>
 
 <s:hidden name="familyName" value="%{familyName}" />
 <s:hidden name="firstName" value="%{firstName}" />
-<s:hidden name="familyNameKana" value="aaa" />
+<s:hidden name="familyNameKana" value="%{familyNameKana}" />
 <s:hidden name="firstNameKana" value="%{firstNameKana}"/>
 <s:hidden name="email" value="%{email}"/>
 <s:hidden name="telNumber" value="%{telNumber}" />

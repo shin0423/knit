@@ -64,7 +64,9 @@ item_count int not null,
 price int not null,
 regist_date datetime not null,
 update_date datetime,
-order_num varchar(8)
+order_num varchar(8),
+status tinyint(1) not null,
+send_flg tinyint not null
 );
 
 drop table if exists destination_info;

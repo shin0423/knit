@@ -22,6 +22,7 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 
 
 	public String execute() throws SQLException{
+		System.out.println(familyNameKana);
 		String result = ERROR;
 //		System.out.println("エラーです");
 
@@ -103,7 +104,7 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 	 * @param familyNameKana セットする familyNameKana
 	 */
 	public void setFamilyNameKana(String familyNameKana){
-		this.familyName = familyNameKana;
+		this.familyNameKana = familyNameKana;
 	}
 	/**
 	 * @return firstNameKana
