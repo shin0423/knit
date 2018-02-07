@@ -55,6 +55,17 @@ regist_date datetime not null,
 update_date datetime
 );
 
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",1,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",2,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",3,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",4,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",5,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",6,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",7,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",8,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",9,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",10,100,1000,NOW());
+
 drop table if exists purchase_history_info;
 
 create table purchase_history_info(
@@ -122,6 +133,6 @@ insert into item_info(item_id,item_name,item_name_kana,item_description,category
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(10,"コーヒー4","コーヒー4","濃厚で香り高いコーヒー",1,500,10,"/knit/images/coffee.jpg","コーヒー","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(11,"レモン4","レモン4","すっぱいレモン",1,200,20,"/knit/images/limon.jpg","レモン","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(12,"ダーツ4","ダーツ4","矢と的のお得なセット",4,3000,15,"/knit/images/darts.jpg","ダーツ","2018-02-06","株式会社South",1,"2018-02-06");
-insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(13,"コーヒー5","コーヒー4","濃厚で香り高いコーヒー",1,500,10,"/knit/images/coffee.jpg","コーヒー","2018-02-06","株式会社South",1,"2018-02-06");
+insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(13,"コーヒー5","コーヒー5","濃厚で香り高いコーヒー",1,500,10,"/knit/images/coffee.jpg","コーヒー","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(14,"レモン5","レモン5","すっぱいレモン",1,200,20,"/knit/images/limon.jpg","レモン","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(15,"ダーツ5","ダーツ5","矢と的のお得なセット",4,3000,15,"/knit/images/darts.jpg","ダーツ","2018-02-06","株式会社South",1,"2018-02-06");
