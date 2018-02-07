@@ -55,7 +55,16 @@ regist_date datetime not null,
 update_date datetime
 );
 
-
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",1,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",2,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",3,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",4,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",5,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",6,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",7,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",8,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",9,100,1000,NOW());
+insert into cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date) values("internous","internous",10,100,1000,NOW());
 
 drop table if exists purchase_history_info;
 
