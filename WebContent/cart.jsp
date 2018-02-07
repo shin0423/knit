@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>カート画面</title>
+
+<script type="text/javascript">
+    function goCartDeleteAction(){
+        document.getElementById('form').action="CartDeleteAction";
+    }
+</script>
+
 </head>
 <body>
 <header>
@@ -27,54 +34,71 @@
 				<p class="message">カートには以下の商品が入っています。</p>
 			</s:else>
 
+
 <!------------------------ カート内容 ------------------------>
-			<s:form action="CartAction">
+			<s:form action="CartAction" id="form" name="form">
 				<s:iterator value="cartList">
 
+			<s:hidden name="itemId" value="%{itemId}"/>
+			<s:checkbox name="checkList" value="checked" fieldValue="%{itemId}" />
 			<div class="border">
 			</div>
 			<div class="pro_img">
-				<img src='<s:property value="image_file_path"/>' alt="画像なし"/>
+				<img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
+				<s:hidden name="imageFilePath" value="%{imageFilePath}"/>
 			</div>
 
 			<div class="kana">
-				<s:property value="item_name_kana"/>
+				<s:property value="itemNameKana"/>
+				<s:hidden name="itemNameKana" value="%{itemNameKana}"/>
 			</div>
 
 			<div class="pro_name">
-				商品名:<s:property value="item_name"/>
+				商品名:<s:property value="itemName"/>
+				<s:hidden name="itemName" value="%{itemName}"/>
+
 			</div>
 
 			<div class="price">
 				価格:<s:property value="price"/><span>円</span>
+				<s:hidden name="price" value="%{price}"/>
+
 			</div>
 
 			<div class="count">
 				購入個数:<s:property value="itemCount"/><span>個</span>
+				<s:hidden name="itemCount" value="%{itemCount}"/>
+
 			</div>
 
 			<div class="company">
-				発売会社:<s:property value="release_company"/>
+				発売会社:<s:property value="releaseCompany"/>
+				<s:hidden name="releaseCompany" value="%{releaseCompany}"/>
+
 			</div>
 
 			<div class="release_date">
-				発売日:<s:property value="release_date"/>
-			</div>
+				発売日:<s:property value="releaseDate"/>
+				<s:hidden name="releaseDate" value="%{releaseDate}"/>
 
-
-<!----------------------- 商品削除 ------------------------->
-			<div class="delete">
-				<s:form action="CartDeleteAction">
-					<a href='<s:url action="CartDeleteAction"><s:param name="itemId" value="itemId"></s:param></s:url>'>削除</a>
-				</s:form>
 			</div>
 
 			</s:iterator>
+
+<!----------------------- 商品削除 ------------------------->
+			<div class="delete">
+					<a href='<s:url action="CartDeleteAction">
+					<s:param name="itemId" value="%{itemId}"/>
+
+					</s:url>'>削除</a>
+			</div>
+			<s:submit value="テスト" onclick="goCartDeleteAction();"/>
+
 			</s:form>
 
 <!------------------------ 合計金額 ------------------------->
 			<div class="totalPrice">
-				合計金額:<s:property value="total_price"/><span>円</span>
+				合計金額:<s:property value="totalPrice"/><span>円</span>
 			</div>
 
 
