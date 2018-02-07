@@ -16,6 +16,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 	ArrayList<CartDTO> cartList=new ArrayList<>();
 	int totalPrice;
 
+
 	public String execute()throws SQLException{
 
 		CartDAO dao=new CartDAO();

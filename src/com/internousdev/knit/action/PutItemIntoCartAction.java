@@ -17,6 +17,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 	private boolean duplicationFlg;
 
+
 	private String itemId;
 	private String itemName;
 	private String itemNameKana;
