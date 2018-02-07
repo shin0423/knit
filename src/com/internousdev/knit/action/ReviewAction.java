@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
 	private String userId;
-	private String itemId;
+	private int itemId;
 	private int review;
 	private String reviewBody;
 	private ReviewDAO reviewDAO = new ReviewDAO();

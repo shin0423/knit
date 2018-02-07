@@ -16,7 +16,7 @@ public class ReviewDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean confirmPurchaseItemHistory(String userId, String itemId) throws SQLException {
+	public boolean confirmPurchaseItemHistory(String userId, int itemId) throws SQLException {
 		boolean result = false;
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -26,7 +26,7 @@ public class ReviewDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userId);
-			preparedStatement.setString(2, itemId);
+			preparedStatement.setInt(2, itemId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
@@ -49,7 +49,7 @@ public class ReviewDAO {
 	 * @param reviewBody
 	 * @throws SQLException
 	 */
-	public void completeReview(String userId, String itemId, int review, String reviewBody) throws SQLException {
+	public void completeReview(String userId, int itemId, int review, String reviewBody) throws SQLException {
 		DateUtil dateUtil = new DateUtil();
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -59,7 +59,7 @@ public class ReviewDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userId);
-			preparedStatement.setString(2, itemId);
+			preparedStatement.setInt(2, itemId);
 			preparedStatement.setInt(3, review);
 			preparedStatement.setString(4, reviewBody);
 			preparedStatement.setString(5, dateUtil.getDate());

@@ -16,16 +16,31 @@ public class BuyItemDAO {
 
 
 
+
 	public List<BuyItemDTO> selectItemByList(List<String> searchList,String categoryId,String moreUp,String moreDown) {
 		Connection connection = dbConnector.getConnection();
 
 		String sql="SELECT * FROM item_info WHERE item_name like '%" + searchList.get(0).toString() + "%'";
 		for(int i=1; i < searchList.size();i++){
-			sql = sql + " and item_name like '%" + searchList.get(i).toString() + "%'";
+			sql = sql + " AND item_name like '%" + searchList.get(i).toString() + "%'";
 		}
 		if(!(categoryId.equals("0"))){
-			sql = sql + "AND category_id ="+categoryId;
+			sql = sql + " AND category_id ="+categoryId;
 		}
+		if(!(moreUp.equals(""))){
+			if(moreDown.equals("")){
+			sql = sql + " AND price = price > "+moreUp;
+			}
+		};
+		if(!(moreDown.equals(""))){
+			if(moreUp.equals("")){
+			sql = sql + " AND price = "+moreDown+" < price";
+			}
+		};
+		if(!(moreDown.equals("")) && !(moreUp.equals(""))){
+			sql = sql + " AND price BETWEEN "+moreUp+" AND "+moreDown;
+		}
+
 
 
 

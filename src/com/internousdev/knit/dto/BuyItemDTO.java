@@ -17,6 +17,7 @@ public class BuyItemDTO {
 
 
 
+
 	//↓getter setter
 	public int getItemId() {
 		return itemId;
