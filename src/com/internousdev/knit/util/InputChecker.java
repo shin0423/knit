@@ -172,7 +172,7 @@ public class InputChecker {
 		return result;
 	}
 
-	public String productNameKanaChk(String itemNameKana) {
+	public String itemNameKanaChk(String itemNameKana) {
 		String result = "OK";
 
 		if (itemNameKana.equals("")) {
@@ -222,6 +222,20 @@ public class InputChecker {
 		}
 		return result;
 	}
+
+	public String itemStockChk(String itemStock) {
+		String result = "OK";
+		if (itemStock.equals("")) {
+			result = "在庫数を入力してください。";
+		} else if (itemStock.length() < 1 || itemStock.length() > 999) {
+			result = "在庫数は1桁以上3桁以下で入力してください。";
+		} else if (!itemStock.matches("^[0-9]+$")) {
+			result = "在庫数は半角数字で入力してください。";
+		}
+		return result;
+	}
+
+
 
 	/**
 	 * 検索ワードの入力チェック
