@@ -13,14 +13,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CartAction extends ActionSupport implements SessionAware{
 
 	Map<String,Object> session;
-	ArrayList<CartDTO> cartList=new ArrayList<>();
+	ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 	int totalPrice;
 
 
 	public String execute()throws SQLException{
 
 		CartDAO dao=new CartDAO();
-
+		session.put("loginFlg", true);
+		session.put("userId", "internous");
+		session.put("tempUserId", "internous");
 		//loginFlgがあるか
 
 		if(!(boolean) session.get("loginFlg")) {
@@ -30,6 +32,21 @@ public class CartAction extends ActionSupport implements SessionAware{
 			if((boolean) session.get("loginFlg")) {
 				dao.changeUserId(session.get("tempUserId").toString(),session.get("userId").toString());
 				cartList=dao.showUserCartList(session.get("userId").toString());
+
+				for(int i=0; i < cartList.size();i++) {
+					System.out.println("-------------------------");
+					System.out.println(cartList.get(i).getItemId());
+					System.out.println(cartList.get(i).getItemName());
+					System.out.println(cartList.get(i).getItemNameKana());
+					System.out.println(cartList.get(i).getImageFilePath());
+					System.out.println(cartList.get(i).getPrice());
+					System.out.println(cartList.get(i).getReleaseCompany());
+					System.out.println(cartList.get(i).getReleaseDate());
+					System.out.println(cartList.get(i).getItemCount());
+					System.out.println("------------------");
+				}
+
+
 			}else {
 				cartList=dao.showTempUserCartList(session.get("tempUserId").toString());
 			}
