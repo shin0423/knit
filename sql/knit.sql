@@ -3,6 +3,7 @@ create database if not exists knit;
 
 use knit;
 
+
 drop table if exists user_info;
 
 create table user_info(
@@ -60,6 +61,7 @@ drop table if exists purchase_history_info;
 create table purchase_history_info(
 id int not null primary key auto_increment,
 user_id varchar(16) not null,
+item_id int not null,
 item_count int not null,
 price int not null,
 regist_date datetime not null,
@@ -68,6 +70,7 @@ order_num varchar(8),
 status tinyint(1) not null,
 send_flg tinyint not null
 );
+
 
 drop table if exists destination_info;
 

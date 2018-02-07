@@ -33,7 +33,7 @@ public class TopAction extends ActionSupport implements SessionAware {
 
 
 		try {
-			//↓商品を表示させるためのDAO(商品登録機能完成後 後日作成)↓
+			//↓商品を表示させるためのDAOのメソッドを使ってリストに入れる↓
 			buyItemList = showItemDAO.ShowItem();
 
 			//sessionに商品一覧を入れる
