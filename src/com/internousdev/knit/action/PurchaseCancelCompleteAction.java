@@ -72,4 +72,18 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 	}
 
 
+
+
+	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
+		return historyList;
+	}
+
+
+
+
+	public void setHistoryList(ArrayList<PurchaseHistoryDTO> historyList) {
+		this.historyList = historyList;
+	}
+
+
 }
