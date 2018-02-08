@@ -400,4 +400,23 @@ public class CartDAO extends ActionSupport{
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * カート情報の削除
+	 * @param userId
+	 * @throws SQLException
+	 */
+	public void deleteCartInfo(String userId) throws SQLException {
+		String sql="DELETE FROM cart_info WHERE user_id=?";
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			con.close();
+		}
+	}
 }

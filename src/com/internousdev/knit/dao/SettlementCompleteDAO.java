@@ -1,92 +1,140 @@
-package com.internousdev.knit.action;
+package com.internousdev.knit.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
+import java.util.List;
 
 import com.internousdev.knit.dto.CartDTO;
-import com.internousdev.knit.dto.SettlementConfirmDTO;
-import com.opensymphony.xwork2.ActionSupport;
+import com.internousdev.knit.util.DBConnector;
+import com.internousdev.knit.util.DateUtil;
+import com.internousdev.knit.util.OrderNum;
 
-public class SettlementCompleteAction extends ActionSupport implements SessionAware{
 
-	private Map<String,Object> session;
-	private ArrayList<CartDTO> cartInfoList = new ArrayList<CartDTO>();
-	public ArrayList<SettlementConfirmDTO> destinationList = new ArrayList<SettlementConfirmDTO>();
-	private SettlementConfirmDAO settlementConfirmDAO = new SettlementConfirmDAO();
-	private SettlementCompleteDAO settlementCompleteDAO = new SettlementCompleteDAO();
-	private boolean buyCountErrorFlg=false;
-	private ArrayList<CartDTO> buyCountErrorList = new ArrayList<CartDTO>();
 
-	CartDAO cartDAO = new CartDAO();
+public class SettlementCompleteDAO {
 
-//決済処理
+	private DBConnector dbConnector = new DBConnector();
+	private Connection connection = dbConnector.getConnection();
 
-	public String execute() throws SQLException{
+	private DateUtil dateUtil =new DateUtil();
+	private OrderNum orderNum = new OrderNum();
 
-		if (!(session.containsKey("userId"))){
-			return "loginError";
-		}
+	public ArrayList<CartDTO> CartDTOList = new ArrayList<CartDTO>();
 
-		String	result=ERROR;
 
-		destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
-		if(destinationList.size()!=0){
+	//指定したログインユーザーのカート情報をすべて取得
+			public ArrayList<CartDTO> getUserCartList(String userId){
 
-			result = SUCCESS;
+				String sql="SELECT * FROM cart_info LEFT JOIN product_info ON cart_info.item_id = item_info.item_id where cart_info.user_id=?";
 
-			//カート情報読み込み
-			cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
+				try{
+					PreparedStatement preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.setString(1, userId);
+					ResultSet resultSet=preparedStatement.executeQuery();
 
-			//カートリストの数だけfor 購入履歴テーブルに登録 在庫数変動
-			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList);
-			System.out.println("購入履歴に入れた数"+i);
+					while(resultSet.next()){
+						CartDTO cartDTO=new CartDTO();
+						cartDTO.setItemName(resultSet.getString("item_name"));
+						cartDTO.setItemNameKana(resultSet.getString("item_name_kana"));
+						cartDTO.setImageFilePath(resultSet.getString("image_file_path"));
+						cartDTO.setPrice(resultSet.getInt("price"));
+						cartDTO.setReleaseCompany(resultSet.getString("release_company"));
+						cartDTO.setReleaseDate(resultSet.getString("release_date"));
+						cartDTO.setItemId(resultSet.getInt("item_id"));
+
+						cartDTO.setId(resultSet.getInt("id"));
+						cartDTO.setItemCount(resultSet.getInt("item_count"));
+
+						CartDTOList.add(cartDTO);
+
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}try{
+					connection.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+				return CartDTOList;
+			}
+
+			//カートの商品を決済後購入履歴に登録
+
+			public void insertPurchaseHistory(String userId,int itemId,int itemCount){
+
+				String sql="INSERT INTO purchase_history_info(user_id, product_id, product_count, regist_date) VALUES( ?, ?, ?, NOW())";
+
+				try {
+					PreparedStatement preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.setString(1, userId);
+					preparedStatement.setInt(2, itemId);
+					preparedStatement.setInt(3, itemCount);
+
+					preparedStatement.execute();
+
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}try{
+					connection.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
 
 			}
-			//購入したユーザーのカート情報を消去
-			cartDAO.deleteCartInfo(session.get("userId").toString());
 
-			return result;
+			//決済後のカート情報を削除
+
+			public void deleteCartInfo(String userId){
+
+				String sql="DELETE FROM cart_info WHERE user_id=?";
+
+				try{
+					PreparedStatement preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.setString(1, userId);
+				}catch(SQLException e){
+					e.printStackTrace();
+				}try{
+					connection.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
 		}
 
+			//購入情報を履歴に渡す
+			public int setPurchaseHistory(List<CartDTO> cartList) throws SQLException {
+
+				String sql;
+
+				int ret = 0;
+
+				try{
+					for (int i = 0; i<cartList.size(); i++){
+						sql = "INSERT INTO purchase_histry_info(user_id, item_id, item_count, price, regist_date, order_num) VALUES(?, ?, ?, ?, ?, ?)";
+						PreparedStatement ps = connection.prepareStatement(sql);
+
+						ps.setString(1, cartList.get(i).getUserId());
+						ps.setInt(2, cartList.get(i).getItemId());
+						ps.setInt(3, cartList.get(i).getItemCount());
+						ps.setInt(4, cartList.get(i).getPrice());
+						ps.setString(5, dateUtil.getDate());
+						ps.setString(6, orderNum.previewOrderNum());
+
+						ret += ps.executeUpdate();
+
+					}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}finally {
+						connection.close();
+					}
+					return ret;
 
 
-	public Map<String,Object> getSession(){
-		return session;
-	}
-	public void setSession(Map<String,Object> session){
-		this.session=session;
-	}
 
+			}
 
-	public boolean isBuyCountErrorFlg() {
-		return buyCountErrorFlg;
-	}
-
-
-	public void setBuyCountErrorFlg(boolean buyCountErrorFlg) {
-		this.buyCountErrorFlg = buyCountErrorFlg;
-	}
-
-
-	public ArrayList<CartDTO> getCartInfoList() {
-		return cartInfoList;
-	}
-
-
-	public void setCartInfoList(ArrayList<CartDTO> cartInfoList) {
-		this.cartInfoList = cartInfoList;
-	}
-
-
-	public ArrayList<CartDTO> getBuyCountErrorList() {
-		return buyCountErrorList;
-	}
-
-
-	public void setBuyCountErrorList(ArrayList<CartDTO> buyCountErrorList) {
-		this.buyCountErrorList = buyCountErrorList;
-	}
 }

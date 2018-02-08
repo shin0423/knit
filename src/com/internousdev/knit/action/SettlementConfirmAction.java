@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dao.SettlementConfirmDAO;
 import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.dto.SettlementConfirmDTO;
 import com.opensymphony.xwork2.ActionSupport;
