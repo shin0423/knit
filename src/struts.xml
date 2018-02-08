@@ -25,7 +25,7 @@
 			<result name="success">home.jsp</result>
 	</action>
 
-
+<!-- 完成（Mockはtest） -->
 	<action name="CreateAddressMockAction" class="com.internousdev.knit.action.CreateAddressMockAction" method="execute">
 		<result name="success">createAddress.jsp</result>
 	</action>
@@ -125,7 +125,7 @@
 		<result name="success">settlementComplete.jsp</result>
 		<result name="error">settlementConfirm.jsp</result>
 	</action>
-	
+
 	<!-- 管理者機能(森屋) -->
 	<action name="AdminDeleteAction" class="com.internousdev.knit.action.AdminDeleteAction" method="execute">
 		<result name="success">admin.jsp</result>
@@ -142,18 +142,18 @@
 	<action name="AdminLogoutAction" class="com.internousdev.knit.action.AdminLogoutAction" method="execute">
 		<result name="success">home.jsp</result>
 	</action>
-	</package>
+
 
     <!--マイページ (齊藤)-->
 	<action name="MyPageAction" class="com.internousdev.knit.action.MyPageAction" method="execute">
 		<result name="success">mypage.jsp</result>
 		<result name="error">home.jsp</result>
 	</action>
-	
+
 	<!--マイページから購入履歴へ移動 (齊藤)-->
 	<action name="GoPuchaseHistoryAction" class="com.internousdev.knit.action.PuchaseHistoryAction" method="execute">
 		<result name="success">purchaseHistory.jsp</result>
 		<result name="error">purchaseHistory.jsp</result>
 	</action>
-		
+</package>
 </struts>

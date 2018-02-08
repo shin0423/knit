@@ -50,7 +50,9 @@
    <s:form action="CreateAddressConfirmAction">
    <s:submit value="登録"/>
    </s:form>
-   <a href="*">戻る</a>
+   <s:form action="SettlementConfirmAction">
+   <s:submit value="戻る"/>
+   </s:form>
   </s:form>
  </body>
 </html>

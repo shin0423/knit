@@ -266,24 +266,6 @@ public class InputChecker {
 	}
 
 	/**
-	 * 検索ワードの入力チェック
-	 *
-	 * @param keyword
-	 * @return
-	 */
-	public String keywordChk(String keywords) {
-		String result = "";
-
-		if (keywords.length() < 1 || keywords.length() > 16) {
-			result = "検索は、1文字以上16文字以下で入力してください。";
-		} else if (!keywords.matches("^[a-zA-Z一-龠ァ-ヴあ-ん\\s\u30A1-\u30FC]+$")) {
-			result = "検索は半角英数字、漢字、カタカナ、ひらがなで入力してください。";
-		}
-
-		return result;
-	}
-
-	/**
 	 * <p>
 	 * [概 要] 全角数字⇒半角数字への変換
 	 * </p>
