@@ -25,7 +25,7 @@
 			<result name="success">home.jsp</result>
 	</action>
 
-
+<!-- 完成（Mockはtest） -->
 	<action name="CreateAddressMockAction" class="com.internousdev.knit.action.CreateAddressMockAction" method="execute">
 		<result name="success">createAddress.jsp</result>
 	</action>
@@ -126,7 +126,56 @@
 		<result name="error">settlementConfirm.jsp</result>
 	</action>
 
+	<!-- 管理者機能(森屋) -->
+	<action name="AdminDeleteAction" class="com.internousdev.knit.action.AdminDeleteAction" method="execute">
+		<result name="success">admin.jsp</result>
+		<result name="error">admin.jsp</result>
+	</action>
+	<action name="AdminInsertCountAction" class="com.internousdev.knit.action.AdminInsertCountAction" method="execute">
+		<result name="success">admin.jsp</result>
+		<result name="error">admin.jsp</result>
+	</action>
+	<action name="AdminInsertItemAction" class="com.internousdev.knit.action.AdminInsertItemAction" method="execute">
+		<result name="success">admin.jsp</result>
+		<result name="error">admin.jsp</result>
+	</action>
+	<action name="AdminLogoutAction" class="com.internousdev.knit.action.AdminLogoutAction" method="execute">
+		<result name="success">home.jsp</result>
+	</action>
 
-	</package>
 
+    <!--マイページ (齊藤)-->
+	<action name="MyPageAction" class="com.internousdev.knit.action.MyPageAction" method="execute">
+		<result name="success">mypage.jsp</result>
+		<result name="error">home.jsp</result>
+	</action>
+
+	<!--マイページから購入履歴へ移動 (齊藤)-->
+	<action name="GoPurchaseHistoryAction" class="com.internousdev.knit.action.PurchaseHistoryAction" method="execute">
+		<result name="success">purchaseHistory.jsp</result>
+		<result name="error">login.jsp</result>
+	</action>
+
+	<!-- 購入履歴表示・履歴削除機能(中村)  -->
+	<action name="PurchaseHistoryAction" class="com.internousdev.knit.action.PurchaseHistoryAction" method="execute">
+		<result name = "success">purchaseHistory.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+
+	<!-- 購入キャンセル機能(中村) -->
+	<action name="PurchaseCancelAction" class="com.internousdev.knit.action.PurchaseCancelAction" method="execute">
+		<result name = "success">purchaseCancel.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+
+	<action name ="PurchaseCancelConfirmAction" class="com.internousdev.knit.action.PurchaseCancelConfirmAction" method="execute">
+		<result name = "success">purchaseCancelConfirm.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+
+	<action name="PurchaseCancelCompleteAction" class="com.internousdev.knit.action.PurchaseCancelCompleteAction">
+		<result name = "success">purchaseCancelComplete.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+</package>
 </struts>

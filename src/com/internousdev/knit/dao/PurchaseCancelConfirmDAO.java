@@ -17,7 +17,7 @@ import com.internousdev.knit.util.DBConnector;
 public class PurchaseCancelConfirmDAO {
 
 
-	//キャンセル可能な購入履歴表示メソッド[status:0で非表示,1で表示]
+	//キャンセルしようとしている購入履歴単体を表示するメソッド[send_flg: 0で発送待機、1で発送キャンセル、2で発送済]
 
 public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String orderNum, int itemId) throws SQLException{
 
@@ -27,16 +27,15 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 
 	String sql = "SELECT ubit.id , "
 			+ "iit.item_name, "
-			+ "iit.item_name_kana "
-			+ "iit.image_file_path "
+			+ "iit.item_name_kana, "
+			+ "iit.image_file_path, "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
 			+ "ubit.regist_date "
 			+ "FROM purchase_history_info as ubit "
 			+ "LEFT JOIN item_info as iit "
 			+ "ON ubit.item_id = iit.item_id "
-			+ "WHERE ubit.status = 1 "
-			+ "AND ubit.send_flg = 0"
+			+ "WHERE ubit.send_flg = 0 "
 			+ "AND ubit.user_id = ? "
 			+ "AND ubit.order_num = ? "
 			+ "AND ubit.item_id = ?"

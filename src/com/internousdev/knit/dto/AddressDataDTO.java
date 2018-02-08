@@ -17,6 +17,9 @@ public class AddressDataDTO {
 	private String userAddress;
 	private Date registDate;
 	private Date updateDate;
+
+	//  getter&setter
+
 	public int getId() {
 		return id;
 	}

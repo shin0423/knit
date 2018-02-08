@@ -67,7 +67,7 @@
 
 				<div class="item_text">
 					 <div class="name">
-           				 <div class="kana"><s:property value="${item_name_kana}"/></div>
+           				 <div class="kana"><s:property value="item_name_kana"/></div>
            				 <div class="pro_name">
            				 	商品名: <s:property value="itemName"/>
            				 </div>
@@ -92,29 +92,27 @@
 					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
-								<input type="hidden" name="itemId" value="${item_id}">
+								<input type="hidden" name="itemId" value="%{itemId}">
 								<s:submit id="deletePart" value="×削除" method="deletePart"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
 
 					 </div>
 
-
-					<div class="cancel">
-						<!-- キャンセルボタン -->
-							<s:form action ="PurchaseCancelAction">
-								<input type="hidden" name= "itemId" value="itemId">
-								<input type="hidden" name= "orderNum" value="orderNum">
-								<s:submit value="注文キャンセル" />
-							</s:form>
-
-					</div>
-
 				</div>
     		</div>
 
 
     		</s:iterator>
+
+						<!-- ボタン押下でキャンセル画面に遷移 -->
+    		<div class="cancel">
+						<!-- 注文キャンセルボタン -->
+							<s:form action ="PurchaseCancelAction">
+								<s:submit value="注文キャンセル" />
+							</s:form>
+
+					</div>
 <!----------------------履歴詳細   ここまで------------------------------->
 		</s:elseif>
 

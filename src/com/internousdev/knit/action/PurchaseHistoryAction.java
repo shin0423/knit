@@ -50,15 +50,22 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		//ログインしてなければログインに飛ばす
 
-		String logind = session.get("logind").toString();
+		String loginFlg = session.get("loginFlg").toString();
 
-		if (!logind.equals("1")) {
+		if (!loginFlg.equals("true")) {
 			return ERROR;
 		}
 
+		/**
+		 * 2つの日付の差分時間数を算出するプログラムです。
+		 * @param args
+		 */
+
+
+
+
+
 		String result = SUCCESS;
-
-
 
 		String userId =session.get("userId").toString();
 
@@ -66,6 +73,9 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		//購入履歴表示メソッド
 
 		if(deleteFlg == null){
+
+
+
 
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 		System.out.println("List = "+ historyList);
@@ -90,7 +100,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		else if(deleteFlg.equals(2)){
 
 			System.out.println("ID:"+itemId);
-			deletePart(itemId);
+			deletePart();
 		}
 
 
@@ -120,13 +130,13 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 			//setMessage("商品の削除に失敗しました。");
 		}
 	}
-		public void deletePart(int item_id) throws SQLException{
+
+
+	public void deletePart() throws SQLException{
 
 			String user_id = session.get("userId").toString();
-			//jspからもってきた
-			item_id = this.itemId;
 
-			purchaseHistoryDAO.deletePart(user_id,item_id);
+			purchaseHistoryDAO.deletePart(user_id,itemId);
 
 	}
 

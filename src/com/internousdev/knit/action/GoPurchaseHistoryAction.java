@@ -19,11 +19,11 @@ public class GoPurchaseHistoryAction extends ActionSupport implements SessionAwa
 		//ログインしてなければログインに飛ばす
 		//それ以外は購入履歴画面へ
 
-		String logind = session.get("logind").toString();
+		String loginFlg = session.get("loginFlg").toString();
 
 		String result = SUCCESS;
 
-		if (!logind.equals("1")) {
+		if (!loginFlg.equals("true")) {
 			return ERROR;
 		}else{
 			return result;}

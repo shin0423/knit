@@ -24,6 +24,8 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 	public String execute(){
 		String result = SUCCESS;
 
+		//  確認用プログラム
+
 		System.out.println("CreateAddressConfirmAction--------------------");
 		System.out.println(familyName);
 		System.out.println(firstName);

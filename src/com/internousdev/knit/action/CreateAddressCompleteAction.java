@@ -22,9 +22,10 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 
 
 	public String execute() throws SQLException{
-		System.out.println(familyNameKana);
 		String result = ERROR;
 //		System.out.println("エラーです");
+
+	//   確認用のプログラム
 
 		AddressDataDTO dto = new AddressDataDTO();
 		dto.setUserId(session.get("userId").toString());
@@ -35,7 +36,6 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
-
 
 		System.out.println("登録する値一覧（CreateAddressCompleteAction）--------------");
 		System.out.println(dto.getUserId());
@@ -58,100 +58,85 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		}
 		return result;
 	}
-	/**
-	 * @return
-	 */
-	public Map<String, Object>getSession(){
+
+	//  getter&setter
+
+	public Map<String, Object> getSession() {
 		return session;
 	}
-	/*
-	 * @param session セットする session
-	 */
-	public void setSession(Map<String, Object> session){
+
+
+	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	/**
-	 * @return firstName
-	 */
-	public String getFirstName(){
-		return firstName;
-	}
-	/**
-	 * @param firstName セットする firstName
-	 */
-	public void setFirstName(String fristName){
-		this.firstName = fristName;
-	}
-	/**
-	 * @return familyName
-	 */
-	public String getFamilyName(){
+
+
+	public String getFamilyName() {
 		return familyName;
 	}
-	/**
-	 * @param familyName セットする familyName
-	 */
-	public void setFamilyName(String familyName){
+
+
+	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
-	/**
-	 * @return firstNameKana
-	 */
-	public String getFamilyNameKana(){
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getFamilyNameKana() {
 		return familyNameKana;
 	}
-	/**
-	 * @param familyNameKana セットする familyNameKana
-	 */
-	public void setFamilyNameKana(String familyNameKana){
+
+
+	public void setFamilyNameKana(String familyNameKana) {
 		this.familyNameKana = familyNameKana;
 	}
-	/**
-	 * @return firstNameKana
-	 */
-	public String getFirstNameKana(){
+
+
+	public String getFirstNameKana() {
 		return firstNameKana;
 	}
-	/**
-	 * @param firstNameKana セットする firstNameKana
-	 */
-	public void setFirstNameKana(String firstNameKana){
+
+
+	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
-	/**
-	 * @return email
-	 */
-	public String getEmail(){
+
+
+	public String getEmail() {
 		return email;
 	}
-	/**
-	 * @param email セットする email
-	 */
-	public void setEmail(String email){
+
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	/**
-	 * @return telNumber
-	 */
-	public String getTelNumber(){
+
+
+	public String getTelNumber() {
 		return telNumber;
 	}
-	/**
-	 * @param telNumber セットする telNumber
-	 */
-	public void setTelNumber(String telNumber){
+
+
+	public void setTelNumber(String telNumber) {
 		this.telNumber = telNumber;
 	}
-	/**
-	 * @return userAddress
-	 */
-	public String getUserAddress(){
+
+
+	public String getUserAddress() {
 		return userAddress;
 	}
-	/**
-	 * @param userAddress セットする userAddress
-	 */
-	public void setUserAddress(String userAddress){
+
+
+	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
 }

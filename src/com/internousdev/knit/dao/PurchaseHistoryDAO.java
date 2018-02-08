@@ -14,7 +14,9 @@ import com.internousdev.knit.util.DBConnector;
 //購入キャンセル機能
 
 
+
 public class PurchaseHistoryDAO {
+
 
 
 	//購入履歴表示メソッド[status:0で非表示,1で表示]
@@ -25,7 +27,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 	Connection con = db.getConnection();
 	ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
 
-	String sql = "SELECT ubit.id , "
+	String sql = "SELECT ubit.item_id , "
 			+ "iit.item_name, "
 			+ "iit.item_name_kana "
 			+ "iit.image_file_path "
@@ -48,7 +50,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
 			PurchaseHistoryDTO dto = new PurchaseHistoryDTO();
-			dto.setId(rs.getInt("id"));
+			dto.setItemId(rs.getInt("item_id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
 			dto.setimageFilePath(rs.getString("image_file_name"));
@@ -57,7 +59,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setRegistDate(rs.getString("regist_date"));
 			dto.setOrderNum(rs.getString("order_num"));
 			dto.setStatus(rs.getInt("status"));
-			dto.setsendFlg(rs.getInt("sendFlg"));
+			dto.setsendFlg(rs.getInt("send_flg"));
 
 			purchaseHistoryDTOList.add(dto);
 
@@ -131,7 +133,7 @@ public int deletePart(String userId,int itemId) throws SQLException{
 }
 
 
-	//購入キャンセルメソッド(個別キャンセル)[sendFlg:0で発送待機、1で発送キャンセル、2で発送開始]
+	//購入キャンセルメソッド(個別キャンセル)[send_flg:0で発送待機、1で発送キャンセル、2で発送開始]
 
 public int cancelPart(String userId,int itemId,String orderNum) throws SQLException{
 	DBConnector db = new DBConnector();
@@ -165,4 +167,6 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 	return resultcp;
 }
 
+
 }
+

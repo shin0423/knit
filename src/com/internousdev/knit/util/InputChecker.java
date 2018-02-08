@@ -235,23 +235,15 @@ public class InputChecker {
 		return result;
 	}
 
-
-
-	/**
-	 * 検索ワードの入力チェック
-	 *
-	 * @param keyword
-	 * @return
-	 */
-	public String keywordChk(String keywords) {
-		String result = "";
-
-		if (keywords.length() < 1 || keywords.length() > 16) {
-			result = "検索は、1文字以上16文字以下で入力してください。";
-		} else if (!keywords.matches("^[a-zA-Z一-龠ァ-ヴあ-ん\\s\u30A1-\u30FC]+$")) {
-			result = "検索は半角英数字、漢字、カタカナ、ひらがなで入力してください。";
+	public String priceChk(String price){
+		String result="OK";
+		if(price.equals("")){
+			result="値段を入力してください";
+		}else if(price.length()<1 || price.length()>999999999){
+			result="値段は1桁以上9桁以下で入力してください。";
+		}else if(!price.matches("^[0-9]+$")){
+			result="値段は半角数字で入力してください。";
 		}
-
 		return result;
 	}
 

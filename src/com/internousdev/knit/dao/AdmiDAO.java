@@ -12,8 +12,8 @@ public class AdmiDAO {
 	private Connection connection=dbConnector.getConnection();
 	private DateUtil dateUtil=new DateUtil();
 
-	public int insertAdminItemInfo(String itemId,String itemName,String itemNameKana,String itemDescription,String categoryId,String releaseCompany,String itemStock) throws SQLException{
-		String sql="INSERT INTO item_info (item_id,item_name,item_name_kana,item_description,category_id,release_company,item_stock,release_date,status,regist_date,update_date) VALUE(?,?,?,?,?,?,?,?,?,?,?)";
+	public int insertAdminItemInfo(String itemId,String itemName,String itemNameKana,String itemDescription,String categoryId,String price,String releaseCompany,String itemStock) throws SQLException{
+		String sql="INSERT INTO item_info (item_id,item_name,item_name_kana,item_description,category_id,price,release_company,item_stock,release_date,status,regist_date,update_date) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 		int res=0;
 		try{
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
@@ -22,12 +22,13 @@ public class AdmiDAO {
 			preparedStatement.setString(3,itemNameKana);
 			preparedStatement.setString(4,itemDescription);
 			preparedStatement.setString(5,categoryId);
-			preparedStatement.setString(6,releaseCompany);
-			preparedStatement.setString(7, itemStock);
-			preparedStatement.setString(8,dateUtil.getDate());
-			preparedStatement.setString(9, "1");
-			preparedStatement.setString(10, dateUtil.getDate());
+			preparedStatement.setString(6,price);
+			preparedStatement.setString(7, releaseCompany);
+			preparedStatement.setString(8,itemStock);
+			preparedStatement.setString(9, dateUtil.getDate());
+			preparedStatement.setString(10, "1");
 			preparedStatement.setString(11,dateUtil.getDate());
+			preparedStatement.setString(12,dateUtil.getDate());
 			res=preparedStatement.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();

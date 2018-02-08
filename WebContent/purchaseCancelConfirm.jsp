@@ -71,8 +71,8 @@
         			<div class="cancel">
 						<!-- キャンセルボタン -->
 							<s:form action ="PurchaseCompleteAction">
-								<input type="hidden" name= "itemId" value="itemId">
-								<input type="hidden" name= "orderNum" value="orderNum">
+								<input type="hidden" name= "itemId" value="%{itemId}">
+								<input type="hidden" name= "orderNum" value="%{orderNum}">
 								<s:submit value="注文キャンセル" />
 							</s:form>
 
@@ -84,7 +84,7 @@
     		</s:iterator>
 
 				<div>
-					<a href='<s:url action="" />'>購入キャンセル画面へもどる</a>
+					<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセル画面へもどる</a>
 				</div>
 		</div>
 	</div>

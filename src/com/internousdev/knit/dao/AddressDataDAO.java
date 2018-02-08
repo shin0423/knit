@@ -20,6 +20,8 @@ public class AddressDataDAO {
 
 	public int registerAddress(AddressDataDTO dto) throws SQLException{
 
+	//  確認用プログラム
+
 		System.out.println("登録する値一覧--------------");
 		System.out.println(dto.getUserId());
 		System.out.println(dto.getFamilyName());
@@ -30,6 +32,8 @@ public class AddressDataDAO {
 		System.out.println(dto.getTelNumber());
 		System.out.println(dto.getUserAddress());
 		System.out.println("---------------------------");
+
+		//  データベース&SQL
 
 		int updateCount = 0;
 		String sql = "INSERT INTO distination_info(user_id, family_name, first_name, "
