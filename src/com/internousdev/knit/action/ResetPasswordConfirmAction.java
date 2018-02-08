@@ -49,19 +49,6 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			return ERROR;
 		}
 
-		/*String result = "OK";
-		if(newPassword.equals("")){
-			result="パスワードを入力してください。";
-
-		}else if(newPassword.length() <4 || newPassword.length() > 16){
-			result="パスワードは4文字以上16文字以下で入力してください。";
-
-		}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
-			result = "パスワードは半角英数字で入力してください。";
-
-		return result;
-
-		}*/
 
 		//新規パスワードと確認パスワードを比較
 		if(newPassword.equals(conPassword)){
