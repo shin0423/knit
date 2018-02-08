@@ -27,7 +27,7 @@
 
 	<!--ログインページへ移動 小池 -->
 <action name="GoLoginPageAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
-	<result name="success">login.jsp</result>
+	<result name="success">login.jsp</result> 
 	</action>
 
 

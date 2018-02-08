@@ -26,6 +26,7 @@
 
 	<button type="submit">検索</button>
 
+
 </s:form>
 
 <div class="top_main clearfix">
