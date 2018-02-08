@@ -402,7 +402,7 @@ public class CartDAO extends ActionSupport{
 	}
 
 	/**
-	 * カート情報の削除
+	 * カート情報削除
 	 * @param userId
 	 * @throws SQLException
 	 */
