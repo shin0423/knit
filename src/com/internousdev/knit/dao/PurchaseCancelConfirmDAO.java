@@ -14,16 +14,16 @@ import com.internousdev.knit.util.DBConnector;
 //購入キャンセル機能
 
 
-public class PurchaseHistoryDAO {
+public class PurchaseCancelConfirmDAO {
 
 
-	//購入履歴表示メソッド[status:0で非表示,1で表示]
+	//キャンセル可能な購入履歴表示メソッド[status:0で非表示,1で表示]
 
-public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQLException{
+public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String orderNum, int itemId) throws SQLException{
 
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
-	ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
+	ArrayList<PurchaseHistoryDTO> purchaseCancelConfirmDTOList = new ArrayList<PurchaseHistoryDTO>();
 
 	String sql = "SELECT ubit.id , "
 			+ "iit.item_name, "
@@ -31,19 +31,22 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			+ "iit.image_file_path "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
-			+ "ubit.regist_date, "
-			+ "ubit.order_num, "
-			+ "ubit.send_flg "
+			+ "ubit.regist_date "
 			+ "FROM purchase_history_info as ubit "
 			+ "LEFT JOIN item_info as iit "
 			+ "ON ubit.item_id = iit.item_id "
 			+ "WHERE ubit.status = 1 "
+			+ "AND ubit.send_flg = 0"
 			+ "AND ubit.user_id = ? "
+			+ "AND ubit.order_num = ? "
+			+ "AND ubit.item_id = ?"
 			+ "ORDER BY regist_date DESC ";
 
 	try{
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1,userId);
+		ps.setString(2,orderNum);
+		ps.setInt(3,itemId);
 
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
@@ -59,75 +62,14 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setStatus(rs.getInt("status"));
 			dto.setsendFlg(rs.getInt("sendFlg"));
 
-			purchaseHistoryDTOList.add(dto);
+			purchaseCancelConfirmDTOList.add(dto);
 
 		}
 	}catch(Exception e){
 		e.printStackTrace();
 	}finally{
 		con.close();
-	}return purchaseHistoryDTOList;
-}
-
-	//購入履歴削除メソッド(全件削除)[status:0で非表示,1で表示]
-
-public int deleteAll(String userId) throws SQLException{
-	DBConnector db = new DBConnector();
-	Connection con = db.getConnection();
-	String sql = "UPDATE FROM purchase_history_info "
-				+ "SET status = 0 "
-				+ "WHERE status = 1 ,"
-				+ "AND send_flg = 0"
-				+ "AND user_id = ? ";
-
-	int resultda = 0;
-	try{
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, userId);
-
-
-		resultda = ps.executeUpdate();
-		System.out.println(resultda);
-
-
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-	finally{
-		con.close();
-		}
-	return resultda;
-}
-
-//購入履歴削除メソッド(個別削除)[status:0で非表示,1で表示]
-
-public int deletePart(String userId,int itemId) throws SQLException{
-	DBConnector db = new DBConnector();
-	Connection con = db.getConnection();
-	String sql = "UPDATE FROM purchase_history_info "
-				+ "SET status = 0 "
-				+ "WHERE status = 1 "
-				+ "AND user_id = ? "
-				+ "AND item_id = ? ";
-
-	int resultdp = 0;
-
-	try{
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1,userId);
-		ps.setInt(2,itemId);
-
-		resultdp = ps.executeUpdate();
-		System.out.println(resultdp);
-
-
-	}catch(SQLException e){
-		e.printStackTrace();
-	}finally{
-		con.close();
-		}
-
-	return resultdp;
+	}return purchaseCancelConfirmDTOList;
 }
 
 

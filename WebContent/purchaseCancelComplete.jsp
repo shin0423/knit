@@ -11,39 +11,36 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 
-	<title>PurchaseComplete画面</title>
+	<title>購入キャンセル完了画面</title>
 
 	<style type="text/css">
-
-
-</style>
+	</style>
 
 </head>
 <body>
 
 	<div id="header">
-<div id="pr">
-</div>
-</div>
-<div id="main">
-<div id="top">
-<p>PurchaseComplete</p>
-</div>
+		<div id="pr">
+		</div>
+	</div>
 
-<div>
-<p>購入手続きが完了致しました。</p>
-<div>
-<a href='<s:url action="MyPageAction" />'>
-マイページ</a><span>から購入履歴の確認が可能です。</span>
-<p>Homeへ戻る場合は<a href='<s:url action="GoHomeAction" />'>
-こちら</a></p>
-</div>
-</div>
-</div>
-<div id="footer">
-<div id="pr">
-</div>
-</div>
+	<div id="main">
+		<div id="top">
+			<p>CancelComplete</p>
+		</div>
+
+		<div>
+			<p>購入キャンセル手続きが完了致しました。</p>
+				<div>
+					<a href='<s:url action="GoPurchaseHistoryAction" />'>購入履歴へ</a>
+				</div>
+		</div>
+	</div>
+
+	<div id="footer">
+	<div id="pr">
+	</div>
+	</div>
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 package com.internousdev.knit.action;
+
 import java.sql.SQLException;
 
 import com.internousdev.knit.dao.AdmiDAO;
@@ -12,19 +13,29 @@ public class AdminInsertCountAction extends ActionSupport {
 	private int totalStock;
 	private int intInsertItemStock;
 	private String errorMessage;
-	private AdmiDAO admiDAO=new AdmiDAO();
+	private AdmiDAO admiDAO = new AdmiDAO();
 
 	public String execute() throws SQLException {
-		String result=SUCCESS;
-		InputChecker i=new InputChecker();
+		System.out.println(itemId);
 
-		if(!i.insertItemStockChk(insertItemStock).equals("OK")){
+
+		String result = SUCCESS;
+		errorMessage=null;
+		InputChecker i = new InputChecker();
+		int res = 0;
+
+		if (!i.insertItemStockChk(insertItemStock).equals("OK")) {
 			setErrorMessage((i.insertItemStockChk(insertItemStock)));
-			result=ERROR;
-		}else{intInsertItemStock=Integer.parseInt(insertItemStock);
-			  totalStock=intInsertItemStock+itemStock;
-			  admiDAO.insertAdminItemCount(totalStock,itemId);
-			  }
+			result = ERROR;
+		} else {
+			intInsertItemStock = Integer.parseInt(insertItemStock);
+			totalStock = intInsertItemStock + itemStock;
+			res = admiDAO.insertAdminItemCount(totalStock, itemId);
+			if (res == 0) {
+				System.out.println("ERROR");
+				result = ERROR;
+			}
+		}
 		return result;
 	}
 
@@ -36,35 +47,44 @@ public class AdminInsertCountAction extends ActionSupport {
 		this.errorMessage = errorMessage;
 	}
 
-	public int getItemStock(){
+	public int getItemStock() {
 		return itemStock;
 	}
-	public void setItemStock(int itemStock){
-		this.itemStock=itemStock;
+
+	public void setItemStock(int itemStock) {
+		this.itemStock = itemStock;
 	}
-	public String getInsertItemStock(){
+
+	public String getInsertItemStock() {
 		return insertItemStock;
 	}
-	public void setInsertItemStock(String insertItemStock){
-		this.insertItemStock=insertItemStock;
+
+	public void setInsertItemStock(String insertItemStock) {
+		this.insertItemStock = insertItemStock;
 	}
-	public String getItemId(){
+
+	public String getItemId() {
 		return itemId;
 	}
-	public void setItemId(String itemId){
-		this.itemId=itemId;
+
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
-	public int getTotalStock(){
+
+	public int getTotalStock() {
 		return totalStock;
 	}
-	public void setTotalStock(int totalStock){
-		this.totalStock=totalStock;
+
+	public void setTotalStock(int totalStock) {
+		this.totalStock = totalStock;
 	}
-	public int getIntInsertItemStock(){
+
+	public int getIntInsertItemStock() {
 		return intInsertItemStock;
 	}
-	public void setIntInsertItemStock(int intInsertItemStock){
-		this.intInsertItemStock=intInsertItemStock;
+
+	public void setIntInsertItemStock(int intInsertItemStock) {
+		this.intInsertItemStock = intInsertItemStock;
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class CartDTO {
 
-
 	private int id;
 	private String userId;
 	private String tempUserId;
@@ -14,6 +13,7 @@ public class CartDTO {
 	private String itemName;
 	private String itemNameKana;
 	private String imageFilePath;
+	private String imageFileName;
 	private int price;
 	private String releaseCompany;
 	private String releaseDate;
@@ -28,7 +28,7 @@ public class CartDTO {
 		this.id=id;
 	}
 
-	public String userId() {
+	public String getUserId() {
 		return userId;
 	}
 
@@ -81,8 +81,16 @@ public class CartDTO {
 		return imageFilePath;
 	}
 
-	public void setImageFilePath(String imageFilePath) {
+	public void setImageFilePath(String imageFilePath){
 		this.imageFilePath=imageFilePath;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName=imageFileName;
 	}
 
 	public int getPrice() {
