@@ -118,7 +118,10 @@ review_body varchar(100),
 insert_date datetime not null
 );
 
-insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("internous","internous01","南里","健太","なんり","けんた",0,"nyandy1794@gmail.com",1,1,cast("2018-02-05" as date),1);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("internous","internous01","南里","健太","なんり","けんた",0,"nyandy1794@gmail.com",1,1,cast("2018-02-05" as date),0);
+
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("admin","admin01","管理","者","かんり","しゃ",0,"nyan1794@gmail.com",1,1,cast("2018-02-05" as date),1);
+
 
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(1,"コーヒー","コーヒー","濃厚で香り高いコーヒー",1,500,10,"/knit/images/coffee.jpg","コーヒー","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(2,"レモン","レモン","すっぱいレモン",1,200,20,"/knit/images/limon.jpg","レモン","2018-02-06","株式会社South",1,"2018-02-06");

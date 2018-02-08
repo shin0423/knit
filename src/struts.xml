@@ -98,6 +98,22 @@
 		<result name="success">userDeleteComplete.jsp</result>
 	</action>
 
+	<!-- 1商品検索機能 2商品情報詳細表示機能 (南里) -->
+	<action name="BuyItemAction" class="com.internousdev.knit.action.BuyItemAction" method="execute">
+		<result name="success">buyItem.jsp</result>
+	</action>
+
+	<action name="BuyItemInfoAction" class="com.internousdev.knit.action.BuyItemInfoAction" method="execute">
+		<result name="success">buyItemInfo.jsp</result>
+	</action>
+
+	<!-- カート機能 (川畑) -->
+	<action name="CartAction" class="com.internousdev.knit.action.CartAction" method="execute">
+		<result name="success">cart.jsp</result>
+	</action>
+	<action name="CartDeleteAction" class="com.internousdev.knit.action.CartDeleteAction" method="execute">
+		<result name="success">cart.jsp</result>
+	</action>
 
 
 	</package>
