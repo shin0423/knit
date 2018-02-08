@@ -10,7 +10,7 @@
 </head>
 <body class="home">
 
-<s:form action="">
+<s:form action="BuyItemAction">
 <select name="categoryId" class="">
 				<option value=0 selected="selected">全てのカテゴリ</option>
 				<option value=1 >飲食</option>
@@ -78,12 +78,12 @@ $(function() {
 });	//function
 </script>
 
-<a href='<s:url action="SettlementConfirmAction"/>'>ログインへ</a>
-<s:if test="userId == 3">
-<a href='<s:url action="SettlementConfirmAction"/>'>マイページへ</a>
+<a href='<s:url action="GoLoginPageAction"/>'>ログインへ</a>
+<s:if test="#session.loginFlg == true">
+<a href='<s:url action="MyPageAction"/>'>マイページへ</a>
 </s:if>
-<a href='<s:url action="SettlementConfirmAction"/>'>カートへ</a>
-<a href='<s:url action="SettlementConfirmAction"/>'>商品一覧へ</a>
+<a href='<s:url action="CartAction"/>'>カートへ</a>
+<a href='<s:url action="BuyItemAction"/>'>商品一覧へ</a>
 
 </body>
 </html>

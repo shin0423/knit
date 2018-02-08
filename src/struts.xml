@@ -20,10 +20,17 @@
 		<result name="error">buyItemInfo.jsp</result>
 	</action>
 
-<!-- test小池 -->
+<!-- home画面へ移動 小池 -->
 	<action name="TopAction" class="com.internousdev.knit.action.TopAction">
 			<result name="success">home.jsp</result>
 	</action>
+
+	<!--ログインページへ移動 小池 -->
+<action name="GoLoginPageAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
+	<result name="success">login.jsp</result>
+	</action>
+
+
 
 <!-- 完成（Mockはtest） -->
 	<action name="CreateAddressMockAction" class="com.internousdev.knit.action.CreateAddressMockAction" method="execute">
