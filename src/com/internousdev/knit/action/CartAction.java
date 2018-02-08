@@ -20,9 +20,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 	public String execute()throws SQLException{
 
 		CartDAO dao=new CartDAO();
-		session.put("loginFlg", true);
-		session.put("userId", "internous");
-		session.put("tempUserId", "internous");
+
 		//loginFlgがあるか
 
 		if(!(boolean) session.get("loginFlg")) {
