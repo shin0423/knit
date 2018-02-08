@@ -44,34 +44,60 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		if(!i.userIdChk(userId).equals("OK")){
 			errMsgList.add(i.userIdChk(userId));
 			result = ERROR;
+		}else{
+			session.put("createUserId", userId);
 		}
 
 		if(!i.passwordChk(password).equals("OK")){
 			errMsgList.add(i.passwordChk(password));
 			result = ERROR;
+		}else{
+			session.put("createPassword", password);
 		}
+
 
 		if(!i.familyNameChk(familyName).equals("OK")){
 			errMsgList.add(i.familyNameChk(familyName));
 			result = ERROR;
+		}else{
+			session.put("createFamilyName", familyName);
 		}
 		if(!i.firstNameChk(firstName).equals("OK")){
 			errMsgList.add(i.firstNameChk(firstName));
 			result = ERROR;
+		}else{
+			session.put("createFirstName", firstName);
 		}
 		if(!i.familyNameKanaChk(familyNameKana).equals("OK")){
 			errMsgList.add(i.familyNameKanaChk(familyNameKana));
 			result = ERROR;
+		}else{
+			session.put("createFamilyNameKana", familyNameKana);
 		}
 		if(!i.firstNameKanaChk(firstNameKana).equals("OK")){
 			errMsgList.add(i.firstNameKanaChk(firstNameKana));
 			result = ERROR;
+		}else{
+			session.put("createFirstNameKana", firstNameKana);
 		}
 		if(!i.emailChk(email).equals("OK")){
 			errMsgList.add(i.emailChk(email));
 			result = ERROR;
+		}else{
+			session.put("createEmail", email);
 		}
 
+		if(!(sex.equals(""))){
+			session.put("createSex", sex);
+		}
+
+		if(!(telNumber.equals(""))){
+			session.put("createTelNumber", telNumber);
+		}
+
+		if(!(userAddress.equals(""))){
+			session.put("createUserAddtress",userAddress);
+		}
 		return result;
 	}
 

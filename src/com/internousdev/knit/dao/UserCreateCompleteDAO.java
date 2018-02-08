@@ -14,8 +14,8 @@ public class UserCreateCompleteDAO {
 
 	private DateUtil dateUtil = new DateUtil();
 
-	public void cerateUser(String userId,String password,String familyName,String firstName,String familyNameKana,String firstNameKana,int sex,String email) throws SQLException{
-		String sql = "INSERT INTO user_info (user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email) VALUES(?,?,?,?,?,?,?,?)";
+	public void createUser1(String userId,String password,String familyName,String firstName,String familyNameKana,String firstNameKana,int sex,String email) throws SQLException{
+		String sql = "INSERT INTO user_info (user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email) VALUES(?,?,?,?,?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,userId);
@@ -35,9 +35,8 @@ public class UserCreateCompleteDAO {
 			connection.close();
 		}
 	}
-
-	public void cerateUser(String userId, String familyName,String firstName,String familyNameKana,String firstNameKana,String email,String telNumber,String userAddress) throws SQLException{
-		String sql="INSERT INTO distination_info (user_id,family_name,first_name,family_name_kana,first_name_kana,email,tel_number,user_address) VALUES(?,?,?,?,?,?,?,?)";
+	public void createUser2(String userId, String familyName,String firstName,String familyNameKana,String firstNameKana,String email,String telNumber,String userAddress) throws SQLException{
+		String sql="INSERT INTO distination_info (user_id,family_name,first_name,family_name_kana,first_name_kana,email,tel_number,user_address) VALUES(?,?,?,?,?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,userId);
@@ -57,4 +56,5 @@ public class UserCreateCompleteDAO {
 			connection.close();
 		}
 	}
+
 }

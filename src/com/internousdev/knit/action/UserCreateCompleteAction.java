@@ -24,29 +24,32 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 	private UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
 
-	public String execute1() throws SQLException{
-		userCreateCompleteDAO.cerateUser(session.get("userId").toString(),
-				session.get("password").toString(),
-				session.get("familyName").toString(),
-				session.get("firstName").toString(),
-				session.get("familyNameKana").toString(),
-				session.get("firstNameKana").toString(),
-				Integer.parseInt(session.get("sex").toString()),
-				session.get("email").toString()
+	public String execute() throws SQLException{
+		userCreateCompleteDAO.createUser1(session.get("createUserId").toString(),
+				session.get("createPassword").toString(),
+				session.get("createFamilyName").toString(),
+				session.get("createFirstName").toString(),
+				session.get("createFamilyNameKana").toString(),
+				session.get("createFirstNameKana").toString(),
+				Integer.parseInt(session.get("createSex").toString()),
+				session.get("createEmail").toString()
 				);
-		String result=SUCCESS;
-		return result;
+
+		String result = SUCCESS;
+
+		return result ;
 	}
 
+
 	public String execute2() throws SQLException{
-		userCreateCompleteDAO.cerateUser(session.get("userId").toString(),
-				session.get("familyName").toString(),
-				session.get("firstName").toString(),
-				session.get("familyNameKana").toString(),
-				session.get("firstNameKana").toString(),
-				session.get("email").toString(),
-				session.get("telNumber").toString(),
-				session.get("userAddress").toString()
+		userCreateCompleteDAO.createUser2(session.get("createUserId").toString(),
+				session.get("createFamilyName").toString(),
+				session.get("createFirstName").toString(),
+				session.get("createFamilyNameKana").toString(),
+				session.get("createFirstNameKana").toString(),
+				session.get("createEmail").toString(),
+				session.get("createTelNumber").toString(),
+				session.get("createUserAddress").toString()
 				);
 		String result=SUCCESS;
 		return result;
