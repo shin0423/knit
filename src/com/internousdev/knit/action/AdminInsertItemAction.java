@@ -2,12 +2,18 @@ package com.internousdev.knit.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AdmiDAO;
+import com.internousdev.knit.dao.ShowItemDAO;
+import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AdminInsertItemAction extends ActionSupport {
+public class AdminInsertItemAction extends ActionSupport implements SessionAware {
 	private String itemId;
 	private String itemName;
 	private String itemNameKana;
@@ -18,6 +24,9 @@ public class AdminInsertItemAction extends ActionSupport {
 	private String price;
 	private ArrayList<String> errorList = new ArrayList<>();
 	private AdmiDAO admiDAO = new AdmiDAO();
+	private ShowItemDAO showItemDAO = new ShowItemDAO();
+	private List<BuyItemDTO> buyItemList = new ArrayList<>();
+	public Map<String,Object> session;
 
 	public String execute() throws SQLException {
 		String result = SUCCESS;
@@ -47,16 +56,19 @@ public class AdminInsertItemAction extends ActionSupport {
 			errorList.add(i.insertItemStockChk(itemStock));
 		}
 
-		if(!i.priceChk(price).equals("OK")){
+		if (!i.priceChk(price).equals("OK")) {
 			errorList.add(i.priceChk(price));
 		}
 
 		if (errorList.size() == 0) {
-			int res = admiDAO.insertAdminItemInfo(itemId, itemName, itemNameKana, itemDescription, categoryId,
-					price,releaseCompany, itemStock);
+			int res = admiDAO.insertAdminItemInfo(itemId, itemName, itemNameKana, itemDescription, categoryId, price,
+					releaseCompany, itemStock);
 			errorList = null;
 			if (res == 0) {
 				result = ERROR;
+			}else {
+				buyItemList = showItemDAO.ShowItem();
+				session.put("buyItemList", buyItemList);
 			}
 		} else {
 
@@ -128,5 +140,17 @@ public class AdminInsertItemAction extends ActionSupport {
 
 	public void setItemStock(String itemStock) {
 		this.itemStock = itemStock;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 }

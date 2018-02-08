@@ -16,30 +16,37 @@
 		<s:property value="itemDescription" />
 		<s:property value="itemStock" />
 		<s:property value="categoryId" />
+		<s:property value="price" />
 		<s:property value="releaseCompany" />
 		<s:property value="releaseDate" />
 
 		<s:form action="AdminDeleteAction" >
-			<s:hidden name="itemId" value="<s:property value='itemId' />"/>
+			<s:hidden name="itemId" value="%{itemId}"/>
  			<s:submit value="削除" />
 		</s:form>
 
 
 		<s:form action="AdminInsertCountAction">
-			<s:textfield name="insertItemStock" />
+			<s:textfield name="insertItemStock" value=""/>
 			<s:hidden name="itemId" value="%{itemId}"/>
 			<s:hidden name="itemStock" value="%{itemStock}"/>
 			<s:submit value="追加" />
 		</s:form>
 	</s:iterator>
 		<s:form action="AdminInsertItemAction">
-			id<s:textfield name="itemId" value="" />
-			name<s:textfield name="itemName" value="" />
-			kana<s:textfield name="itemNameKana" value="" />
-			stock<s:textfield name="itemStock" value="" />
-			description<s:textarea  name="itemDescription" rows="4" cols="40" value=""/>
-			category<s:textfield name="categoryId" value="" />
-			company<s:textfield name="releaseCompany" value="" />
+			商品ID:<s:textfield name="itemId" value="" />
+			商品名:<s:textfield name="itemName" value="" />
+			商品名ふりがな:<s:textfield name="itemNameKana" value="" />
+			在庫数:<s:textfield name="itemStock" value="" />
+			商品詳細:<s:textarea  name="itemDescription" rows="4" cols="40" value=""/>
+			商品カテゴリー:<select name="categoryId">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+			価格:<s:textfield name="price" value="" />
+			商品販売会社名:<s:textfield name="releaseCompany" value="" />
 			<s:submit value="登録" />
 		</s:form>
 
@@ -47,13 +54,13 @@
 			<s:submit value="ログアウト" />
 	</s:form>
 
-	<s:if test="!errorList==null">
+	<s:if test="errorList!= null">
 		<s:iterator value="errorList">
 			<s:property/>
 		</s:iterator>
 	</s:if>
 
-	<s:if test="!errorMessage==null">
+	<s:if test="errorMessage != null">
 		<s:property value="errorMessage" />
 	</s:if>
 </body>
