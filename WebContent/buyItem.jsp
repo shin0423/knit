@@ -17,7 +17,7 @@
 		<s:property value="releaseCompany" />
 		<s:property value="releaseDate" />
 		<s:form action="BuyItemInfoAction" >
-			<s:hidden value="<s:property value='item_id' />" name="itemId" />
+			<s:hidden value="%{itemId}" name="itemId" />
 			<s:submit value="商品詳細" />
 		</s:form>
 	</s:iterator>
