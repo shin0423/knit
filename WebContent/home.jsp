@@ -21,8 +21,8 @@
 
 			<s:textfield name="searchWord" class="h_search" />
 			<br>
-			<s:textfield name="moreDown" class="h_search" />～
-			<s:textfield name="moreUp" class="h_search" />
+			<s:textfield name="moreUp" class="h_search" />～
+			<s:textfield name="moreDown" class="h_search" />
 
 	<button type="submit">検索</button>
 
