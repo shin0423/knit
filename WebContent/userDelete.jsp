@@ -6,25 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <title>会員退会画面</title>
-<script type="text/javascript">
-	function checkValue(check){
-		var btn = document.getElementById('btn');
-		if(check.checked){
-			btn.removeAttribute('disabled');
-		}else{
-			btn.setAttribute('disabled','disabled';);
-		}
-	}
-
-</script>
-
 </head>
 <body>
-	<s:form action="UserDeleteCompleteAction" >
-		<input type="checkbox" id="check" onclick="checkValue(this)" >
-		<s:submit value="削除" />
+	<script type="text/javascript">
+	$(function(){
+		$('#checkBtn').on('change',function(){
+			if($(this).is(':checked')){
+
+				//チェックが入ったら、送信ボタンを押せる
+				$('#submitBtn').prop('disabled',false);
+
+			}else{
+
+				//チェックが入っていなかったら、送信ボタンを押せない
+				$('#submitBtn').prop('disabled',true);
+			}
+		});
+	});
+
+	</script>
+
+	<s:form action="UserDeteleCompleteAction" >
+		<input id="checkBtn" type="checkbox"  >
+		<input id="submitBtn" class="button" disabled="disabled" type="submit" value="削除">
 	</s:form>
+
 </body>
 </html>

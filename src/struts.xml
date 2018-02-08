@@ -16,9 +16,9 @@
 	</action>
 
 <!-- test小池 -->
-<action name="TopAction" class="com.internousdev.knit.action.TopAction">
+	<action name="TopAction" class="com.internousdev.knit.action.TopAction">
 			<result name="success">home.jsp</result>
-		</action>
+	</action>
 
 
 	<action name="CreateAddressMockAction" class="com.internousdev.knit.action.CreateAddressMockAction" method="execute">
@@ -26,49 +26,72 @@
 	</action>
 
 	<action name="CreateAddressAction" class="com.internousdev.knit.action.CreateAddressAction" method="execute">
-	<result name="success">createAddress.jsp</result>
+		<result name="success">createAddress.jsp</result>
 	</action>
 
 	<action name="CreateAddressConfirmAction" class="com.internousdev.knit.action.CreateAddressConfirmAction" method="execute">
-	<result name="success">createAddressConfirm.jsp</result>
-	<result name="error">createAddress.jsp</result>
+		<result name="success">createAddressConfirm.jsp</result>
+		<result name="error">createAddress.jsp</result>
 	</action>
 
 	<action name="CreateAddressCompleteAction" class="com.internousdev.knit.action.CreateAddressCompleteAction" method="execute">
-	<result name="success">createAddressComplete.jsp</result>
-	<result name="error">createAddress.jsp</result>
+		<result name="success">createAddressComplete.jsp</result>
+		<result name="error">createAddress.jsp</result>
 	</action>
 
 	<!-- ユーザー登録 -->
     <action name="UserCreateAction" class="com.internousdev.knit.action.UserCreateAction" method="execute">
-    <result name="success">userCreate.jsp</result>
-    <result name="back">login.jsp</result>
+	    <result name="success">userCreate.jsp</result>
+	    <result name="back">login.jsp</result>
     </action>
 
     <action name="UserCreateConfirmAction" class="com.internousdev.knit.action.UserCreateConfirmAction" method="execute">
-    <result name="success">userCreateConfirm.jsp</result>
-    <result name="error">userCreate.jsp</result>
+	    <result name="success">userCreateConfirm.jsp</result>
+	    <result name="error">userCreate.jsp</result>
     </action>
 
     <action name="UserCreateCompleteAction" class="com.internousdev.knit.action.UserCreateCompleteAction" method="execute">
-    <result name="success">userCreateComplete.jsp</result>
+  	  <result name="success">userCreateComplete.jsp</result>
     </action>
 
     <!-- ユーザー情報変更 -->
     <action name="UserUpdateAction" class="com.internousdev.knit.action.UserUpdateAction" method="execute">
-    <result name="siccess">userUpdate.jsp</result>
-    <result name="back">mypage.jsp</result>
+	    <result name="siccess">userUpdate.jsp</result>
+	    <result name="back">mypage.jsp</result>
     </action>
 
     <action name="UserUpdateConfirmAction" class="com.internousdev.knit.action.UserUpdateConfirmAction" method="execute">
-    <result name="success">userUpdateConfirm.jsp</result>
-    <result name="error">userUpdate.jsp</result>
+	    <result name="success">userUpdateConfirm.jsp</result>
+	    <result name="error">userUpdate.jsp</result>
     </action>
 
     <action name="UserUpdateCompleteAction" class="com.internousdev.knit.action.UserUpdateCompleteAction" method="execute">
-    <result name="success">userUpdateComplete.jsp</result>
+  	 	 <result name="success">userUpdateComplete.jsp</result>
     </action>
 
+<!-- パスワード再設定(永田) -->
+
+	<action name="ResetPasswordAction" class="com.internousdev.knit.action.ResetPasswordAction" method="execute">
+		<result name="success">resetPassword.jsp</result>
+	</action>
+
+	<action name="ResetPasswordConfirmAction" class="com.internousdev.knit.action.ResetPasswordConfirmAction" method="execute">
+		<result name="success">resetPasswordConfirm.jsp</result>
+		<result name="error">resetPassword.jsp</result>
+	</action>
+
+	<action name="ResetPasswordCompleteAction" class="com.internousdev.knit.action.ResetPasswordCompleteAction" method="execute">
+		<result name="success">resetPasswordComplete.jsp</result>
+		<result name="error">resetPassword.jsp</result>
+	</action>
+
+	<!-- 退会機能(永田) -->
+	<action name="UserDeleteAction" class="com.internousdev.knit.action.UserDeleteAction" method="execute">
+		<result name="success">userDelete.jsp</result>
+	</action>
+	<action name="UserDeteleCompleteAction" class="com.internousdev.knit.action.UserDeteleCompleteAction" method="execute">
+		<result name="success">userDeleteComplete.jsp</result>
+	</action>
 
 
 
