@@ -25,6 +25,8 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		String result = ERROR;
 //		System.out.println("エラーです");
 
+	//   確認用のプログラム
+
 		AddressDataDTO dto = new AddressDataDTO();
 		dto.setUserId(session.get("userId").toString());
 		dto.setFamilyName(familyName);
@@ -34,7 +36,6 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
-
 
 		System.out.println("登録する値一覧（CreateAddressCompleteAction）--------------");
 		System.out.println(dto.getUserId());
@@ -58,6 +59,7 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		return result;
 	}
 
+	//  getter&setter
 
 	public Map<String, Object> getSession() {
 		return session;
@@ -137,5 +139,4 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-
 }

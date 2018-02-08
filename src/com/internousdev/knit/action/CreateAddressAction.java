@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateAddressAction extends ActionSupport implements SessionAware {
 
+	//  textfeildの中に入る情報を持ってくるプログラム
 
 	private List<AddressDataDTO> noInpList = new ArrayList<AddressDataDTO>();
 	private String familyName;
@@ -22,6 +23,8 @@ public class CreateAddressAction extends ActionSupport implements SessionAware {
 	private String userAddress;
 
 	private Map<String,Object> session;
+
+	//  getter&setter
 
 	public String execute() {
 		return SUCCESS;
