@@ -9,6 +9,6 @@
 <body>
 <h3>ユーザー情報の変更が完了しました。</h3>
 <br>
-	<a href='<s:url action="MyPageAction" />'>マイページ</a>
+	<a href="/knit/mypage.jsp">マイページ</a>
 </body>
 </html>

@@ -1,10 +1,12 @@
 package com.internousdev.knit.action;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.UserUpdateConfirmDAO;
+import com.internousdev.knit.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
@@ -22,6 +24,8 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	public Map<String,Object> session;
 
+	private ArrayList<String> errMsgList = new ArrayList<>();
+
 	private String errorMessage;
 
 	public String execute(){
@@ -31,6 +35,8 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		}
 
 		String result = SUCCESS;
+
+		InputChecker i = new InputChecker();
 
 		if(newPassword.equals("")){
 			setErrorMessage("パスワードを入力してください。");
@@ -48,23 +54,24 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			return ERROR;
 		}
 
-		if(telNumber.length()<11 || telNumber.length()>13){
-			setErrorMessage("電話番号は11文字以上13文字以下で入力してください。");
-			result = ERROR;
-		}else if(!telNumber.matches("^[0-9]+$")){
-			setErrorMessage("電話番号は半角数字で入力してください。");
+		if(!i.telNumberChk(telNumber).equals("OK")){
+			errMsgList.add(i.telNumberChk(telNumber));
 			result = ERROR;
 		}
-
-		if(userAddress.length()<15 || userAddress.length()>50){
-			setErrorMessage("住所は15文字以上50文字以下で入力してください。");
-			result = ERROR;
-		}else if(!userAddress.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
-		    setErrorMessage("住所は半角英数字、漢字、カタカナ及び半角記号で入力してください。");
+		if(!i.userAddressChk(userAddress).equals("OK")){
+			errMsgList.add(i.userAddressChk(userAddress));
 			result = ERROR;
 		}
 
 		return result;
+	}
+
+	public ArrayList<String> getErrMsgList() {
+		return errMsgList;
+	}
+
+	public void setErrMsgList(ArrayList<String> errMsgList) {
+		this.errMsgList = errMsgList;
 	}
 
 	public String getUserId() {

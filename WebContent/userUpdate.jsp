@@ -8,6 +8,16 @@
  <title>ユーザー情報変更</title>
  </head>
  <body>
+ <s:if test="errorMessage !=''">
+<s:property value="errorMessage" escape="false" />
+</s:if>
+<s:iterator value="errMsgList">
+		<h5>
+			<s:div align="center">
+				<s:property />
+			</s:div>
+		</h5>
+		</s:iterator>
 <s:form action="UserUpdateConfirmAction">
    <br>
    <span>ユーザーID</span><span>必須</span>
@@ -26,7 +36,7 @@
    <s:textfield name="userAddress" value="%{userAddress}" />
    <br>
    <button type="submit">登録</button>
-   <a href='<s:url action="MyPageAction" />'>戻る</a>
+   <a href="/knit/mypage.jsp">戻る</a>
   </s:form>
  </body>
 </html>
