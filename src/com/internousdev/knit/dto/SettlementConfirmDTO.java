@@ -1,6 +1,6 @@
 package com.internousdev.knit.dto;
 
-//宛先情報格納
+//宛先情報の格納
 public class SettlementConfirmDTO {
 
 	private int id;

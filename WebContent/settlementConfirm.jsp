@@ -39,7 +39,7 @@
 </td>
 <td>
 <s:property value="productName" />&nbsp;(<s:property value="productNameKana"/>)<br><br>
-<s:property value="priceComma" /><s:hidden value="price"/>&nbsp;<s:property value="productCount"/>点<br><br>
+<s:hidden value="price"/>&nbsp;<s:property value="itemCount"/>点<br><br>
 合計 <s:property value="totalPriceComma"/><s:hidden value="totalPrice"/><br><br><br><br>
 <s:property value="releaseCompany"/><br>
 <s:property value="releaseDate"/>

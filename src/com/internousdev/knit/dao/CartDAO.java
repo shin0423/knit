@@ -76,7 +76,7 @@ public class CartDAO extends ActionSupport{
 		return count;
 	}
 	/**
-	 * ログインユーザーのカート情報を引き出す
+	 * ログインユーザーのカート情報引き出し
 	 */
 
 	public ArrayList<CartDTO> showUserCartList(String userId) throws SQLException{
@@ -398,6 +398,25 @@ public class CartDAO extends ActionSupport{
 
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * カート情報の削除
+	 * @param userId
+	 * @throws SQLException
+	 */
+	public void deleteCartInfo(String userId) throws SQLException {
+		String sql="DELETE FROM cart_info WHERE user_id=?";
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			con.close();
 		}
 	}
 }
