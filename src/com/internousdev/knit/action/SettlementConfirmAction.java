@@ -97,7 +97,8 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 		for(int i=0; i < cartInfoList.size(); i++) {
 			//+= で足して変数に格納を繰り返す。
 			//System.out.println(cartInfoList.get(i).getTotalPrice());
-			cartTotalPrice += cartInfoList.get(i).getPrice();
+			cartTotalPrice += cartInfoList.get(i).getPrice() *  cartInfoList.get(i).getItemCount();
+
 		}
 		session.put("cartTotalPrice", cartTotalPrice);
 	}
