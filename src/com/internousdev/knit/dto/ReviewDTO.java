@@ -6,6 +6,7 @@ public class ReviewDTO {
 	private int review;
 	private String reviewBody;
 	private String insertDate;
+	private String firstName;
 
 	public String getUserId() {
 		return userId;
@@ -36,5 +37,11 @@ public class ReviewDTO {
 	}
 	public void setInsertDate(String insertDate) {
 		this.insertDate = insertDate;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 }

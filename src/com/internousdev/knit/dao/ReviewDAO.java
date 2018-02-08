@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.internousdev.knit.dto.ReviewDTO;
 import com.internousdev.knit.util.DBConnector;
 import com.internousdev.knit.util.DateUtil;
 
@@ -76,5 +79,31 @@ public class ReviewDAO {
 		} finally {
 			connection.close();
 		}
+	}
+
+	public List<ReviewDTO> selectReviewAll(String item_id) throws SQLException{
+		List<ReviewDTO> reviewList = new ArrayList<>();
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		String sql="SELECT * FROM review_tranasaction rt JOIN user_info ui ON rt.user_id = ui.user_id WHERE item_id=?";
+
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,item_id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				ReviewDTO reviewDTO = new ReviewDTO();
+				reviewDTO.setFirstName(resultSet.getString("first_name"));
+				reviewDTO.setReview(resultSet.getInt("review"));
+				reviewDTO.setReviewBody(resultSet.getString("review_body"));
+				reviewDTO.setInsertDate(resultSet.getString("insert_date"));
+				reviewList.add(reviewDTO);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return reviewList;
 	}
 }
