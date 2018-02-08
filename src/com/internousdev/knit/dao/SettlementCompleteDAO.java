@@ -25,7 +25,7 @@ public class SettlementCompleteDAO {
 	public ArrayList<CartDTO> CartDTOList = new ArrayList<CartDTO>();
 
 
-	//指定したログインユーザーのカート情報をすべて取得
+	//指定ログインユーザーのカート情報をすべて取得
 			public ArrayList<CartDTO> getUserCartList(String userId){
 
 				String sql="SELECT * FROM cart_info LEFT JOIN product_info ON cart_info.item_id = item_info.item_id where cart_info.user_id=?";

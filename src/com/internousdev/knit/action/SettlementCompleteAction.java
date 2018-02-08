@@ -40,7 +40,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 			result = SUCCESS;
 
-			//カート情報読み込み
+			//カート情報の読み込み
 			cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
 
 			//カートリストの数だけfor 購入履歴テーブルに登録 在庫数変動

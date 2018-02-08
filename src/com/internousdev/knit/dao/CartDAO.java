@@ -76,7 +76,7 @@ public class CartDAO extends ActionSupport{
 		return count;
 	}
 	/**
-	 * ログインユーザーのカート情報を引き出す
+	 * ログインユーザーのカート情報引き出し
 	 */
 
 	public ArrayList<CartDTO> showUserCartList(String userId) throws SQLException{
@@ -402,7 +402,7 @@ public class CartDAO extends ActionSupport{
 	}
 
 	/**
-	 * カート情報削除
+	 * カート情報の削除
 	 * @param userId
 	 * @throws SQLException
 	 */

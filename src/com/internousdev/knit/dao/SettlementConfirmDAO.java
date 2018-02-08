@@ -14,7 +14,7 @@ public class SettlementConfirmDAO {
 	private Connection con = db.getConnection();
 
 
-	//宛先情報取得
+	//宛先情報の取得
 	public ArrayList<SettlementConfirmDTO> getDestinationInfo(String userId) {
 
 		ArrayList<SettlementConfirmDTO> destinationList = new ArrayList<SettlementConfirmDTO>();
