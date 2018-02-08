@@ -61,7 +61,7 @@
 
     <!-- ユーザー情報変更 -->
     <action name="UserUpdateAction" class="com.internousdev.knit.action.UserUpdateAction" method="execute">
-	    <result name="siccess">userUpdate.jsp</result>
+	    <result name="success">userUpdate.jsp</result>
 	    <result name="back">mypage.jsp</result>
     </action>
 

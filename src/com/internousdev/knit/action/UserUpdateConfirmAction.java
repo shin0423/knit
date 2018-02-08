@@ -48,7 +48,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			return ERROR;
 		}
 
-		if(0<telNumber.length() && telNumber.length()<11 || telNumber.length()>13){
+		if(telNumber.length()<11 || telNumber.length()>13){
 			setErrorMessage("電話番号は11文字以上13文字以下で入力してください。");
 			result = ERROR;
 		}else if(!telNumber.matches("^[0-9]+$")){
@@ -56,7 +56,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			result = ERROR;
 		}
 
-		if(0<userAddress.length() && userAddress.length()<15 || userAddress.length()>50){
+		if(userAddress.length()<15 || userAddress.length()>50){
 			setErrorMessage("住所は15文字以上50文字以下で入力してください。");
 			result = ERROR;
 		}else if(!userAddress.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
