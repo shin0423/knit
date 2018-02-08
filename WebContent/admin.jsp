@@ -47,9 +47,9 @@
 			<s:submit value="ログアウト" />
 	</s:form>
 
-	<s:if test="!errorList.size()==0">
+	<s:if test="!errorList==null">
 		<s:iterator value="errorList">
-
+			<s:property/>
 		</s:iterator>
 	</s:if>
 

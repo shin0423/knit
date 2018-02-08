@@ -125,8 +125,23 @@
 		<result name="success">settlementComplete.jsp</result>
 		<result name="error">settlementConfirm.jsp</result>
 	</action>
-
-
+	
+	<!-- 管理者機能(森屋) -->
+	<action name="AdminDeleteAction" class="com.internousdev.knit.action.AdminDeleteAction" method="execute">
+		<result name="success">admin.jsp</result>
+		<result name="error">admin.jsp</result>
+	</action>
+	<action name="AdminInsertCountAction" class="com.internousdev.knit.action.AdminInsertCountAction" method="execute">
+		<result name="success">admin.jsp</result>
+		<result name="error">admin.jsp</result>
+	</action>
+	<action name="AdminInsertItemAction" class="com.internousdev.knit.action.AdminInsertItemAction" method="execute">
+		<result name="success">admin.jsp</result>
+		<result name="error">admin.jsp</result>
+	</action>
+	<action name="AdminLogoutAction" class="com.internousdev.knit.action.AdminLogoutAction" method="execute">
+		<result name="success">home.jsp</result>
+	</action>
 	</package>
 
 </struts>

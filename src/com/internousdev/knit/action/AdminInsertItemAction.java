@@ -15,6 +15,7 @@ public class AdminInsertItemAction extends ActionSupport {
 	private String categoryId;
 	private String releaseCompany;
 	private String itemStock;
+	private String price;
 	private ArrayList<String> errorList = new ArrayList<>();
 	private AdmiDAO admiDAO = new AdmiDAO();
 
@@ -46,13 +47,19 @@ public class AdminInsertItemAction extends ActionSupport {
 			errorList.add(i.insertItemStockChk(itemStock));
 		}
 
+		if(!i.priceChk(price).equals("OK")){
+			errorList.add(i.priceChk(price));
+		}
+
 		if (errorList.size() == 0) {
 			int res = admiDAO.insertAdminItemInfo(itemId, itemName, itemNameKana, itemDescription, categoryId,
-					releaseCompany, itemStock);
+					price,releaseCompany, itemStock);
+			errorList = null;
 			if (res == 0) {
 				result = ERROR;
 			}
 		} else {
+
 			result = ERROR;
 		}
 		return result;
