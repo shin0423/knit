@@ -9,6 +9,7 @@
 <body>
 <h3>ユーザー登録が完了しました。</h3>
 <br>
+    <a href='<s:url action="UserCreateAction"/>'>ログイン画面へ</a>
 	<a href="/knit/home.jsp">ホーム</a>
 </body>
 </html>
