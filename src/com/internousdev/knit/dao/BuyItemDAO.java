@@ -20,9 +20,9 @@ public class BuyItemDAO {
 	public List<BuyItemDTO> selectItemByList(List<String> searchList,String categoryId,String moreUp,String moreDown) {
 		Connection connection = dbConnector.getConnection();
 
-		String sql="SELECT * FROM item_info WHERE item_name like '%" + searchList.get(0).toString() + "%'";
+		String sql="SELECT * FROM item_info WHERE (item_name LIKE '%" + searchList.get(0).toString() + "%' OR item_name_kana LIKE '%"+ searchList.get(0).toString() +"%')";
 		for(int i=1; i < searchList.size();i++){
-			sql = sql + " AND item_name like '%" + searchList.get(i).toString() + "%'";
+			sql = sql + " AND (item_name like '%" + searchList.get(i).toString() + "%' OR item_name_kana LIKE '%"+ searchList.get(i).toString()+"%')";
 		}
 		if(!(categoryId.equals("0"))){
 			sql = sql + " AND category_id ="+categoryId;
@@ -38,7 +38,7 @@ public class BuyItemDAO {
 			}
 		};
 		if(!(moreDown.equals("")) && !(moreUp.equals(""))){
-			sql = sql + " AND price BETWEEN "+moreUp+" AND "+moreDown;
+			sql = sql + " AND (price BETWEEN "+moreUp+" AND "+moreDown+")";
 		}
 
 
