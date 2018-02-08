@@ -33,12 +33,14 @@
 			<option value="5">★★★★★</option>
 		</select>
 		<s:textfield name="reviewBody" value=""/>
+		<s:submit value="送信" />
 	</s:form>
 	レビュー
 	<s:iterator value="reviewList">
-		<s:property value="userName"/>
+		<s:property value="firstName"/>
 		<s:property value="review" />
 		<s:property value="reviewBody" />
+		<s:property value="insertDate" />
 	</s:iterator>
 </body>
 </html>
