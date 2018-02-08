@@ -108,7 +108,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						 * ユーザーのカート内商品の商品IDを全取得してリストに入れる
 						 */
 						int i = 0;
-						for (i = 0; i <= userCartList.size(); i++) {
+						for (i = 0; i < userCartList.size(); i++) {
 							userCartItemIdList.add(userCartList.get(i).getItemId());
 						}
 
@@ -116,7 +116,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						 * 仮ユーザーのカート内商品の商品IDを全取得してリストに入れる
 						 */
 						i = 0;
-						for (i = 0; i <= tempUserCartList.size(); i++) {
+						for (i = 0; i < tempUserCartList.size(); i++) {
 							tempUserCartItemIdList.add(tempUserCartList.get(i).getItemId());
 						}
 
@@ -193,14 +193,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						/**
 						 * 宛先情報登録ページへ直接飛ぶ設定
 
-						if ( (boolean) session.get("login") ) {
+						if ( (boolean) session.get("loginFlg") ) {
 							destinationInfoDTOList =
 									destinationInfoDAO.SearchDestination(session.get("userId").toString());
 						}
 
 						if (destinationInfoDTOList.size() > 0) {
 							result = SUCCESS;
-						} else if ( !(boolean) session.get("login") ) {
+						} else if ( !(boolean) session.get("loginFlg") ) {
 							result = ERROR;
 						} else {
 							result = "destination";

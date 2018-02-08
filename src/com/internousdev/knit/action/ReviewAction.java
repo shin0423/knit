@@ -11,11 +11,10 @@ import com.internousdev.knit.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
-	private String userId;
 	private int itemId;
 	private int review;
 	private String reviewBody;
-	private ArrayList<String> reviewStar;
+	private ArrayList<String> reviewStar = new ArrayList<String>();
 	private ArrayList<String> errorMessage = new ArrayList<String>();
 	private ReviewDAO reviewDAO = new ReviewDAO();
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
@@ -23,9 +22,6 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 	public String execute() throws SQLException {
 		String result = ERROR;
-
-		userId = session.get("userId").toString();
-		itemId = buyItemDTO.getItemId();
 
 		if (reviewBody.equals("")) {
 			errorMessage.add("レビューが未入力です");
@@ -35,9 +31,11 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			System.out.println("レビューは100文字まで");
 		}
 
-		if (reviewDAO.confirmPurchaseItemHistory(userId, itemId)) {
-			reviewDAO.completeReview(userId, itemId, review, reviewBody);
-			showReviewStar(review);
+		itemId = buyItemDTO.getItemId();
+
+		if ( reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
+			reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), Integer.valueOf(review), reviewBody);
+			getReviewStar(Integer.valueOf(review));
 			result = SUCCESS;
 			System.out.println("書き込み成功");
 		} else {
@@ -48,12 +46,17 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 
-	public ArrayList<String> showReviewStar(int review) {
+	/**
+	 * レビューの★表示メソッド
+	 * @param review
+	 * @return
+	 */
+	public void getReviewStar(int review) {
 		int i = 0;
 		for (i = 0; i <= review; i++) {
 			reviewStar.add("★");
+			System.out.print(reviewStar);
 		}
-		return reviewStar;
 	}
 
 	public int getReview() {

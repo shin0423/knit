@@ -25,6 +25,7 @@
 	</s:iterator>
 
 	<s:form action="ReviewAction">
+	<s:iterator value="buyItemDTO">
 		<select name="review" >
 			<option value="1">★</option>
 			<option value="2">★★</option>
@@ -34,13 +35,19 @@
 		</select>
 		<s:textfield name="reviewBody" value=""/>
 		<s:submit value="送信" />
+		<s:hidden name="itemId" value="%{itemId}"/>
+		</s:iterator>
 	</s:form>
-	レビュー
+	<s:if test="errorMessage != null">
+		<s:iterator value="errorMessage">
+			<s:property />
+		</s:iterator>
+	</s:if>
+	レビュー<br>
 	<s:iterator value="reviewList">
-		<s:property value="firstName"/>
-		<s:property value="review" />
-		<s:property value="reviewBody" />
-		<s:property value="insertDate" />
+		名前:<s:property value="firstName"/>&nbsp;&nbsp;追加日時:<s:property value="insertDate" /><br>
+		評価:<s:iterator value="reviewStar"><s:property /></s:iterator><br>
+		レビュー内容:<s:property value="reviewBody" /><br>
 	</s:iterator>
 </body>
 </html>
