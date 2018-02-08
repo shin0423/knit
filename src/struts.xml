@@ -39,7 +39,35 @@
 	<result name="error">createAddress.jsp</result>
 	</action>
 
+	<!-- ユーザー登録 -->
+    <action name="UserCreateAction" class="com.internousdev.knit.action.UserCreateAction" method="execute">
+    <result name="success">userCreate.jsp</result>
+    <result name="back">login.jsp</result>
+    </action>
 
+    <action name="UserCreateConfirmAction" class="com.internousdev.knit.action.UserCreateConfirmAction" method="execute">
+    <result name="success">userCreateConfirm.jsp</result>
+    <result name="error">userCreate.jsp</result>
+    </action>
+
+    <action name="UserCreateCompleteAction" class="com.internousdev.knit.action.UserCreateCompleteAction" method="execute">
+    <result name="success">userCreateComplete.jsp</result>
+    </action>
+
+    <!-- ユーザー情報変更 -->
+    <action name="UserUpdateAction" class="com.internousdev.knit.action.UserUpdateAction" method="execute">
+    <result name="siccess">userUpdate.jsp</result>
+    <result name="back">mypage.jsp</result>
+    </action>
+
+    <action name="UserUpdateConfirmAction" class="com.internousdev.knit.action.UserUpdateConfirmAction" method="execute">
+    <result name="success">userUpdateConfirm.jsp</result>
+    <result name="error">userUpdate.jsp</result>
+    </action>
+
+    <action name="UserUpdateCompleteAction" class="com.internousdev.knit.action.UserUpdateCompleteAction" method="execute">
+    <result name="success">userUpdateComplete.jsp</result>
+    </action>
 
 
 
