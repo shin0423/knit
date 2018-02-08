@@ -1,7 +1,10 @@
 package com.internousdev.knit.action;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -9,6 +12,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.PurchaseCancelDAO;
 import com.internousdev.knit.dto.PurchaseHistoryDTO;
+import com.internousdev.knit.util.DateUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -39,17 +43,50 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 		//ログインしていないユーザーをログイン画面へ飛ばす
 
-	String logind = session.get("logind").toString();
+	String loginFlg = session.get("loginFlg").toString();
 
-	if (!logind.equals("1")) {
+	if (!loginFlg.equals("true")) {
 		return ERROR;
 	}
-	String result = SUCCESS;
 
-
-	//購入キャンセル可能商品履歴表示メソッド
 
 	String userId =session.get("userId").toString();
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    Date dateTo = null;
+    Date dateFrom = null;
+    PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
+    DateUtil dateUtil = new DateUtil();
+
+    // 日付を作成します。
+    try {
+        dateFrom = sdf.parse(purchaseHistoryDTO.getRegistDate());
+        dateTo = sdf.parse(dateUtil.getDate());
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+
+    // 日付をlong値に変換します。
+    long dateTimeTo = dateTo.getTime();
+    long dateTimeFrom = dateFrom.getTime();
+
+    // 差分の時間数を算出します。
+    long dayDiff = ( dateTimeTo - dateTimeFrom  ) / (1000 * 60 * 60);
+
+    System.out.println( "注文日時(FROM) : " + sdf.format(dateFrom) );
+    System.out.println( "現在日時(TO) : " + sdf.format(dateTo) );
+    System.out.println( "差分時間数 : " + dayDiff );
+
+    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
+
+    if(dayDiff > 6){
+    	purchaseCancelDAO.sendFlgChange(userId);
+    }
+
+
+    String result = SUCCESS;
+
+	//購入キャンセル可能商品履歴表示メソッド
 
 
 		cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
@@ -111,6 +148,12 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	}
 	public void setReleasecompany(String releasecompany) {
 		this.releasecompany = releasecompany;
+	}
+	public ArrayList<PurchaseHistoryDTO> getCancelList() {
+		return cancelList;
+	}
+	public void setCancelList(ArrayList<PurchaseHistoryDTO> cancelList) {
+		this.cancelList = cancelList;
 	}
 
 

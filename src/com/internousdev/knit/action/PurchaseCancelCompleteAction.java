@@ -28,9 +28,9 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 
 	public String execute()throws SQLException{
 
-	String logind = session.get("logind").toString();
+	String loginFlg = session.get("loginFlg").toString();
 
-	if (!logind.equals("1")) {
+	if (!loginFlg.equals("true")) {
 		return ERROR;
 	}
 

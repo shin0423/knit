@@ -25,7 +25,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 	Connection con = db.getConnection();
 	ArrayList<PurchaseHistoryDTO> purchaseCancelDTOList = new ArrayList<PurchaseHistoryDTO>();
 
-	String sql = "SELECT ubit.id , "
+	String sql = "SELECT ubit.item.id , "
 			+ "iit.item_name, "
 			+ "iit.item_name_kana "
 			+ "iit.image_file_path "
@@ -48,7 +48,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
 			PurchaseHistoryDTO dto = new PurchaseHistoryDTO();
-			dto.setId(rs.getInt("id"));
+			dto.setItemId(rs.getInt("item_id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
 			dto.setimageFilePath(rs.getString("image_file_name"));
@@ -57,7 +57,6 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setRegistDate(rs.getString("regist_date"));
 			dto.setOrderNum(rs.getString("order_num"));
 			dto.setStatus(rs.getInt("status"));
-			dto.setsendFlg(rs.getInt("sendFlg"));
 
 			purchaseCancelDTOList.add(dto);
 
@@ -80,10 +79,10 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 				+ "FROM purchase_history_info as ubit "
 				+ "LEFT JOIN item_info as iit "
 				+ "ON ubit.item_id = iit.item_id "
-				+ "WHERE send_flg = 0 "
-				+ "AND user_id = ? "
-				+ "AND item_id = ? "
-				+ "AND order_num = ? ";
+				+ "WHERE ubit.send_flg = 0 "
+				+ "AND ubit.user_id = ? "
+				+ "AND ubit.item_id = ? "
+				+ "AND ubit.order_num = ? ";
 
 	int resultcp = 0;
 
@@ -102,6 +101,32 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 		con.close();
 	}
 	return resultcp;
+}
+
+//send_flgを0から2(発送待機から発送済み状態へ)にします。
+
+public int sendFlgChange(String userId) throws SQLException{
+	DBConnector db = new DBConnector();
+	Connection con = db.getConnection();
+	String sql = "UPDATE SET purchase_history_info.send_flg = 2, "
+				+ "WHERE send_flg = 0 "
+				+ "AND user_id = ? ";
+
+	int resultsp = 0;
+
+	try{
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1,userId);
+
+		resultsp = ps.executeUpdate();
+		System.out.println(resultsp);
+
+	}catch(SQLException e){
+		e.printStackTrace();
+	}finally{
+		con.close();
+	}
+	return resultsp;
 }
 
 }

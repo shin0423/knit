@@ -153,7 +153,29 @@
 	<!--マイページから購入履歴へ移動 (齊藤)-->
 	<action name="GoPurchaseHistoryAction" class="com.internousdev.knit.action.PurchaseHistoryAction" method="execute">
 		<result name="success">purchaseHistory.jsp</result>
-		<result name="error">purchaseHistory.jsp</result>
+		<result name="error">login.jsp</result>
+	</action>
+
+	<!-- 購入履歴表示・履歴削除機能(中村)  -->
+	<action name="PurchaseHistoryAction" class="com.internousdev.knit.action.PurchaseHistoryAction" method="execute">
+		<result name = "success">purchaseHistory.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+
+	<!-- 購入キャンセル機能(中村) -->
+	<action name="PurchaseCancelAction" class="com.internousdev.knit.action.PurchaseCancelAction" method="execute">
+		<result name = "success">purchaseCancel.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+
+	<action name ="PurchaseCancelConfirmAction" class="com.internousdev.knit.action.PurchaseCancelConfirmAction" method="execute">
+		<result name = "success">purchaseCancelConfirm.jsp</result>
+		<result name = "error">login.jsp</result>
+	</action>
+
+	<action name="PurchaseCancelCompleteAction" class="com.internousdev.knit.action.PurchaseCancelCompleteAction">
+		<result name = "success">purchaseCancelComplete.jsp</result>
+		<result name = "error">login.jsp</result>
 	</action>
 </package>
 </struts>

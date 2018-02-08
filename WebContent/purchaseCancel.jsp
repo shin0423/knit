@@ -71,8 +71,8 @@
         			<div class="cancel">
 						<!-- キャンセルボタン -->
 							<s:form action ="PurchaseCancelConfirmAction">
-								<input type="hidden" name= "itemId" value="itemId">
-								<input type="hidden" name= "orderNum" value="orderNum">
+								<input type="hidden" name= "itemId" value="%{itemId}">
+								<input type="hidden" name= "orderNum" value="%{orderNum}">
 								<s:submit value="注文キャンセル" />
 							</s:form>
 
