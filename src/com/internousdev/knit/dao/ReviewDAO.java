@@ -85,7 +85,7 @@ public class ReviewDAO {
 		List<ReviewDTO> reviewList = new ArrayList<>();
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
-		String sql="SELECT * FROM review_tranasaction rt JOIN user_info ui ON rt.user_id = ui.user_id WHERE item_id=?";
+		String sql="SELECT * FROM review_transaction rt JOIN user_info ui ON rt.user_id = ui.user_id WHERE item_id=?";
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
