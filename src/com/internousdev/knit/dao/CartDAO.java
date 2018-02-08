@@ -398,7 +398,7 @@ public class CartDAO extends ActionSupport{
 
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}
+	}	
 	}
 
 	/**

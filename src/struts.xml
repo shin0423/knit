@@ -61,7 +61,7 @@
 
     <!-- ユーザー情報変更 -->
     <action name="UserUpdateAction" class="com.internousdev.knit.action.UserUpdateAction" method="execute">
-	    <result name="siccess">userUpdate.jsp</result>
+	    <result name="success">userUpdate.jsp</result>
 	    <result name="back">mypage.jsp</result>
     </action>
 
@@ -113,6 +113,17 @@
 	</action>
 	<action name="CartDeleteAction" class="com.internousdev.knit.action.CartDeleteAction" method="execute">
 		<result name="success">cart.jsp</result>
+	</action>
+
+	<!-- 決済確認・完了機能(桑本)-->
+	<action name="SettlementConfirmAction" class="com.internousdev.knit.action.SettlementConfirmAction" method="execute">
+		<result name="success">settlementConfirm.jsp</result>
+		<result name="error">cart.jsp</result>
+	</action>
+
+	<action name="SettlementCompleteAction" class="com.internousdev.knit.action.SettlementCompleteAction" method="execute">
+		<result name="success">settlementComplete.jsp</result>
+		<result name="error">settlementConfirm.jsp</result>
 	</action>
 
 
