@@ -83,7 +83,7 @@
                                <td><p>
                                      <s:property value="password"/>
                                    </p></td>
-                               <td class="change"><a href="" class="btn">変更</a></td>
+                               <td class="change"><a href="UserUpdateAction" class="btn">変更</a></td>
                            </tr>
                      </s:iterator>
                </tbody>
@@ -91,7 +91,7 @@
 
           <div class="buttonBox">
               <div class="btnn">
-                 <a href="" class="button">購入履歴</a>
+                 <a href="PurchaseHistoryAction" class="button">購入履歴</a>
               </div>
 
           </div>
