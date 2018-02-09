@@ -65,6 +65,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				System.out.println(errorMessage);
 				result = ERROR;
 			} else {
+
 				loginDTO = loginDAO.getUserInfo(userId, password);
 
 				/**
@@ -81,7 +82,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						loginDAO.login(loginDTO);
 						session.put("loginFlg", true);
 
-
 					/**
 					 * 一般ユーザーか判定してログイン
 					 */
@@ -90,9 +90,20 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						 * 以下ログイン成功時処理
 						 */
 						result = SUCCESS;
+
+						/**
+						 * 既にログインしてる時
+						 */
+						if ( (boolean) session.get("loginFlg") ) {
+							errorMessage.add("あああああああああああああああ");
+							System.out.println("既にログイン状態");
+							result = ERROR;
+						}
+
 						loginDAO.login(loginDTO);
 						session.put("userId", loginDTO.getUserId());
 						session.put("loginFlg", true);
+						System.out.println((boolean)session.get("loginFlg"));
 
 						CartDAO cartDAO = new CartDAO();
 						//DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
@@ -105,20 +116,22 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						tempUserCartList = cartDAO.showTempUserCartList(session.get("tempUserId").toString());
 
 						/**
-						 * ユーザーのカート内商品の商品IDを全取得してリストに入れる
+						 * ユーザーのカート内商品のこのIDに該当する商品を全取得してリストに入れる
 						 */
 						int i = 0;
 						for (i = 0; i < userCartList.size(); i++) {
 							userCartItemIdList.add(userCartList.get(i).getItemId());
 						}
+						System.out.println("ユーザーカートの商品のIDリスト生成 : " + userCartItemIdList);
 
 						/**
-						 * 仮ユーザーのカート内商品の商品IDを全取得してリストに入れる
+						 * 仮ユーザーのカート内商品のこのIDに該当する商品を全取得してリストに入れる
 						 */
 						i = 0;
 						for (i = 0; i < tempUserCartList.size(); i++) {
 							tempUserCartItemIdList.add(tempUserCartList.get(i).getItemId());
 						}
+						System.out.println("仮ユーザーカートの商品のIDリスト生成 : " + tempUserCartItemIdList);
 
 						/**
 						 * ユーザーカートリストと仮ユーザーカートリストの重複をチェック
@@ -135,6 +148,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 								 * 仮ユーザーカートリストにユーザーカートリストにある物が含まれているか
 								 */
 								boolean exist = tempUserCartItemIdList.contains(userCartItemIdList.get(i));
+								System.out.println("カート重複確認 : " + exist);
 
 								/**
 								 * もし含まれていた場合の処理
@@ -147,20 +161,23 @@ public class LoginAction extends ActionSupport implements SessionAware {
 									cartDAO.changeItemStockId(Integer.valueOf(userCartList.get(i).getItemCount()),
 															  Integer.valueOf(userCartItemIdList.get(i)),
 															  session.get("userId").toString());
+									System.out.println(session.get("userId").toString() + "のカートに" + userCartItemIdList.get(i) + "(このIDに該当する商品)に重複分" + userCartList.get(i).getItemCount() + "個追加");
 
 									/**
 									 * 仮ユーザーカートリストから重複してた商品を削するメソッド
 									 */
 									cartDAO.deleteSeparete(session.get("tempUserId").toString(),
 														   tempUserCartItemIdList.get(i));
+									System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
 								/**
 								 * 含まれていなかった場合の処理
 								 */
 								} else {
 									cartDAO.changeUserId(session.get("tempUserId").toString(),
 											 session.get("userId").toString());
+									System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
 								}
-								System.out.println(exist);
+
 							}
 
 						/**
@@ -170,17 +187,20 @@ public class LoginAction extends ActionSupport implements SessionAware {
 							i = 0;
 							for (i = 0; i <= tempUserCartItemIdList.size(); i++) {
 								boolean exist = userCartItemIdList.contains(tempUserCartItemIdList);
+								System.out.println("カート重複確認 : " + exist);
 								if (exist) {
 									cartDAO.changeItemStockId(Integer.valueOf(tempUserCartList.get(i).getItemCount()),
 															  Integer.valueOf(tempUserCartItemIdList.get(i)),
 															  session.get("userId").toString());
+									System.out.println(session.get("userId").toString() + "のカートに" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)に重複分" + tempUserCartList.get(i).getItemCount() + "個追加");
 									cartDAO.deleteSeparete(session.get("tempUserId").toString(),
 														   tempUserCartItemIdList.get(i));
+									System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
 								} else {
 									cartDAO.changeUserId(session.get("tempUserId").toString(),
 														 session.get("userId").toString());
+									System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
 								}
-								System.out.println(exist);
 							}
 						}
 

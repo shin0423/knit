@@ -52,6 +52,7 @@
 	</table>
 		<div class="cr">新規ユーザー登録は<a href="<s:url action='UserCreateAction' />">こちら</a></div>
 		<div class="cr">パスワード再設定は<a href="<s:url action='ResetPasswordAction' />">こちら</a></div>
+		<div class="cr">ホーム画面へ戻る時は<a href="<s:url action='TopAction' />">こちら</a></div>
 	<br>
 	<s:if test="errorMessage != null " >
 		<div id="errorMessage">

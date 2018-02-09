@@ -40,16 +40,16 @@
 			<option value="5">★★★★★</option>
 		</select>
 		<s:textfield name="reviewBody" value=""/>
+		<s:hidden name="itemId" value="%{itemId}" />
 		<s:submit value="送信" />
-		<s:hidden name="itemId" value="%{itemId}"/>
 		</s:iterator>
 	</s:form>
-	<s:if test="errorMessage != null">
-		<s:iterator value="errorMessage">
+
+		<s:iterator value="reviewErrorMessage">
 			<s:property />
 		</s:iterator>
-	</s:if>
-	レビュー<br>
+
+	<br>レビュー<br>
 	<s:iterator value="reviewList">
 		名前:<s:property value="firstName"/>&nbsp;&nbsp;追加日時:<s:property value="insertDate" /><br>
 		評価:<s:iterator value="reviewStar"><s:property /></s:iterator><br>

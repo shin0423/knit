@@ -81,7 +81,7 @@ public class ReviewDAO {
 		}
 	}
 
-	public List<ReviewDTO> selectReviewAll(String item_id) throws SQLException{
+	public List<ReviewDTO> selectReviewAll(String itemId) throws SQLException{
 		List<ReviewDTO> reviewList = new ArrayList<>();
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -89,7 +89,7 @@ public class ReviewDAO {
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1,item_id);
+			preparedStatement.setString(1,itemId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
 				ReviewDTO reviewDTO = new ReviewDTO();
