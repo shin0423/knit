@@ -86,13 +86,7 @@
 			</s:iterator>
 
 <!----------------------- 商品削除 ------------------------->
-			<div class="delete">
-					<a href='<s:url action="CartDeleteAction">
-					<s:param name="itemId" value="%{itemId}"/>
-
-					</s:url>'>削除</a>
-			</div>
-			<s:submit value="テスト" onclick="goCartDeleteAction();"/>
+			<s:submit value="削除" onclick="goCartDeleteAction();"/>
 
 			</s:form>
 
