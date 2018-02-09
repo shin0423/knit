@@ -32,6 +32,16 @@
 		<div>
 			<p>購入キャンセルの確認をお願いいたします</p>
 
+
+		<!-- リストに応じたトップメッセージ -->
+				<s:if test = "CancelConfirmList.size() == 0">
+					<h2>
+					申し訳ございませんが、商品はすでに発送されています。
+					<br>
+					商品発送後のキャンセルはこのフォームからは受け付けておりません。
+					</h2>
+				</s:if>
+
 			<s:iterator value = "CancelConfirmList">
         			<div class="date">
             			<p>注文日</p>
@@ -67,6 +77,7 @@
            				 	発売日：<s:property value="release_date"/>
            				</div>
         			</div>
+
 
         			<div class="cancel">
 						<!-- キャンセルボタン -->

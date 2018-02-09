@@ -103,7 +103,7 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 	return resultcp;
 }
 
-//send_flgを0から2(発送待機から発送済み状態へ)にします。
+//商品発送状態切り替えメソッド send_flgを0から2(発送待機から発送済み状態へ)にします。
 
 public int sendFlgChange(String userId) throws SQLException{
 	DBConnector db = new DBConnector();

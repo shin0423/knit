@@ -52,6 +52,11 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	String userId =session.get("userId").toString();
 
+	/**
+	 * 2つの日付の差分時間数を算出するプログラムです。
+	 * @param args
+	 */
+
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
     Date dateTo = null;
     Date dateFrom = null;

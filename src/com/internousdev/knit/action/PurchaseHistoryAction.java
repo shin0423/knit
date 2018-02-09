@@ -201,4 +201,12 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 	public void setRegistDate(String registDate) {
 		this.registDate = registDate;
 	}
+
+	public PurchaseHistoryDTO getPurchaseHistoryDTO() {
+		return purchaseHistoryDTO;
+	}
+
+	public void setPurchaseHistoryDTO(PurchaseHistoryDTO purchaseHistoryDTO) {
+		this.purchaseHistoryDTO = purchaseHistoryDTO;
+	}
 }
