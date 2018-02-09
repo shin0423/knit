@@ -14,13 +14,13 @@ family_name varchar(32) not null,
 first_name varchar(32) not null,
 family_name_kana varchar(32) not null,
 first_name_kana varchar(32) not null,
-sex tinyint(1) not null,
+sex tinyint not null default 0,
 email varchar(32) not null,
-status tinyint(1) not null,
-logined tinyint(1) not null,
+status tinyint not null default 0,
+logined tinyint not null default 0,
 regist_date datetime not null,
 update_date datetime,
-admin_flg tinyint(1) not null
+admin_flg tinyint not null default 0
 );
 
 drop table if exists item_info;
@@ -93,8 +93,8 @@ first_name varchar(32) not null,
 family_name_kana varchar(32) not null,
 first_name_kana varchar(32) not null,
 email varchar(32) not null,
-tel_number varchar(13) not null,
-user_address varchar(50) not null,
+tel_number varchar(13),
+user_address varchar(50),
 regist_date datetime not null,
 update_date datetime
 );

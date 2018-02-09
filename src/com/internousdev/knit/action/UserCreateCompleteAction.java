@@ -22,10 +22,20 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	private String userAddress;
 
 	public Map<String,Object> session;
-	private UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
+	private UserCreateCompleteDAO DAO = new UserCreateCompleteDAO();
 
 	public String execute() throws SQLException{
-		userCreateCompleteDAO.createUser1(session.get("createUserId").toString(),
+
+		System.out.println(userId);
+		System.out.println(password);
+		System.out.println(familyName);
+		System.out.println(firstName);
+		System.out.println(familyNameKana);
+		System.out.println(firstNameKana);
+		System.out.println(sex);
+		System.out.println(email);
+
+		DAO.createUser1(session.get("createUserId").toString(),
 				session.get("createPassword").toString(),
 				session.get("createFamilyName").toString(),
 				session.get("createFirstName").toString(),
@@ -40,9 +50,8 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		return result ;
 	}
 
-
 	public String execute2() throws SQLException{
-		userCreateCompleteDAO.createUser2(session.get("createUserId").toString(),
+		DAO.createUser2(session.get("createUserId").toString(),
 				session.get("createFamilyName").toString(),
 				session.get("createFirstName").toString(),
 				session.get("createFamilyNameKana").toString(),
@@ -54,6 +63,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		String result=SUCCESS;
 		return result;
 	}
+
 
 	public String getUserId(){
 		return userId;
