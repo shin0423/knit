@@ -27,12 +27,16 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 		List<String> searchList = new ArrayList<String>();
 		String[] searchWordList = searchWord.split(" ", 0);
 
+
 		for(int i=0; i < searchWordList.length; i++){
 			if(String.valueOf(searchWordList[i])!=" "){
 				searchList.add(String.valueOf(searchWordList[i]));
 			}
 		}
-
+		if(searchList.size() == 0){
+			searchList.add("");
+			}
+		System.out.println(searchList.size());
 
 
 		buyItemAfterSearchList = buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);

@@ -85,7 +85,7 @@ send_flg tinyint not null
 
 drop table if exists destination_info;
 
-create table distination_info(
+create table destination_info(
 id int not null primary key auto_increment,
 user_id varchar(16) not null,
 family_name varchar(32) not null,
