@@ -19,9 +19,9 @@
 		<s:form action="PutItemIntoCartAction" >
 			<s:hidden name="userId" value="%{#session.userId}" />
 			<s:hidden name="tempUserId" value="%{#session.tempUserId}" />
-			<s:hidden name="itemId" value="<s:property value='%{itemId}' />" />
-			<s:hidden name="price" value="<s:property value='%{price}' />"/>
-			<s:hidden name="itemStock" value="<s:property value='%{itemStock}' />" />
+			<s:hidden name="itemId" value="%{itemId}" />
+			<s:hidden name="price" value="%{price}"/>
+			<s:hidden name="itemStock" value="%{itemStock}" />
 			<s:submit value="カートに入れる" />
 		</s:form>
 	</s:iterator>
