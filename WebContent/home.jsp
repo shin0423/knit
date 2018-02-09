@@ -85,6 +85,13 @@ $(function() {
 </s:if>
 <a href='<s:url action="CartAction"/>'>カートへ</a>
 <a href='<s:url action="BuyItemAction"/>'>商品一覧へ</a>
+<s:form action="BuyItemAction">
+	<s:hidden name="categoryId" value="0"/>
+	<s:hidden name="searchWord" value="" />
+	<s:hidden name="moreUp" value="" />
+	<s:hidden name="moreDown" value="" />
+	<s:submit value="全件表示" />
+</s:form>
 
 </body>
 </html>

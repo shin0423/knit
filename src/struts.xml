@@ -118,6 +118,9 @@
 	<action name="CartDeleteAction" class="com.internousdev.knit.action.CartDeleteAction" method="execute">
 		<result name="success">cart.jsp</result>
 	</action>
+	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
+		<result name="success">cart.jsp</result>
+	</action>
 
 	<!-- 決済確認・完了機能(桑本)-->
 	<action name="SettlementConfirmAction" class="com.internousdev.knit.action.SettlementConfirmAction" method="execute">
