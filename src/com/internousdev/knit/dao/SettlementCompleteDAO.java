@@ -87,22 +87,23 @@ public class SettlementCompleteDAO {
 			}
 
 			//決済後のカート情報を削除
-
-			public void deleteCartInfo(String userId){
-
-				String sql="DELETE FROM cart_info WHERE user_id=?";
-
-				try{
-					PreparedStatement preparedStatement=connection.prepareStatement(sql);
-					preparedStatement.setString(1, userId);
-				}catch(SQLException e){
-					e.printStackTrace();
-				}try{
-					connection.close();
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
-		}
+//
+//			public void deleteCartInfo(String userId) throws SQLException{
+//
+//				String sql="DELETE FROM cart_info WHERE user_id=?";
+//
+//				try{
+//					PreparedStatement preparedStatement=connection.prepareStatement(sql);
+//					preparedStatement.setString(1, userId);
+//
+//					preparedStatement.executeUpdate();
+//
+//				}catch(SQLException e){
+//					e.printStackTrace();
+//				}finally {
+//					connection.close();
+//				}
+//		}
 
 			//購入情報を履歴に渡す
 			public int setPurchaseHistory(List<CartDTO> cartList, String UserId) throws SQLException {
