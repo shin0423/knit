@@ -44,7 +44,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
 
 			//カートリストの数だけfor 購入履歴テーブルに登録 在庫数変動
-			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList);
+			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList, session.get("userId").toString());
 			System.out.println("購入履歴に入れた数"+i);
 
 			}

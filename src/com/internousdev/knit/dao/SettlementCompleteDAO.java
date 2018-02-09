@@ -105,7 +105,7 @@ public class SettlementCompleteDAO {
 		}
 
 			//購入情報を履歴に渡す
-			public int setPurchaseHistory(List<CartDTO> cartList) throws SQLException {
+			public int setPurchaseHistory(List<CartDTO> cartList, String UserId) throws SQLException {
 
 				String sql;
 
@@ -113,15 +113,17 @@ public class SettlementCompleteDAO {
 
 				try{
 					for (int i = 0; i<cartList.size(); i++){
-						sql = "INSERT INTO purchase_histry_info(user_id, item_id, item_count, price, regist_date, order_num) VALUES(?, ?, ?, ?, ?, ?)";
+						sql = "INSERT INTO purchase_history_info(user_id, item_id, item_count, price, regist_date, order_num, status, send_flg) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 						PreparedStatement ps = connection.prepareStatement(sql);
 
-						ps.setString(1, cartList.get(i).getUserId());
+						ps.setString(1, UserId);
 						ps.setInt(2, cartList.get(i).getItemId());
 						ps.setInt(3, cartList.get(i).getItemCount());
 						ps.setInt(4, cartList.get(i).getPrice());
 						ps.setString(5, dateUtil.getDate());
 						ps.setString(6, orderNum.previewOrderNum());
+						ps.setInt(7, 1);
+						ps.setInt(8, 0);
 
 						ret += ps.executeUpdate();
 
