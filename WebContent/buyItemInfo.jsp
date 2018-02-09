@@ -19,6 +19,13 @@
 		<s:form action="PutItemIntoCartAction" >
 			<s:hidden name="itemId" value="%{itemId}" />
 			<s:hidden name="price" value="%{price}"/>
+			<select name="itemCount" >
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
 			<s:submit value="カートに入れる" />
 		</s:form>
 	</s:iterator>
