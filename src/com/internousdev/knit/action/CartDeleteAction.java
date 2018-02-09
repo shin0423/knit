@@ -49,8 +49,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 //		System.out.println(imageFilePath);
 //		System.out.println(price);
 //		System.out.println(releaseCompany);
-		session.put("userId", "internous");
-		session.put("tempUserId", "internous");
+
 
 
 		CartDAO dao = new CartDAO();
