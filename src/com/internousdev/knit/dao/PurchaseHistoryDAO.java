@@ -27,10 +27,10 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 	Connection con = db.getConnection();
 	ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
 
-	String sql = "SELECT ubit.item_id , "
+	String sql = "SELECT ubit.item_id, "
 			+ "iit.item_name, "
-			+ "iit.item_name_kana "
-			+ "iit.image_file_path "
+			+ "iit.item_name_kana, "
+			+ "iit.image_file_path, "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
 			+ "ubit.regist_date, "

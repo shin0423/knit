@@ -34,7 +34,7 @@
 
 
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "CancelConfirmList.size() == 0">
+				<s:if test = "CancelConfirmList == null ">
 					<h2>
 					申し訳ございませんが、商品はすでに発送されています。
 					<br>

@@ -49,10 +49,8 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 
 
 
-	@Override
-	public void setSession(Map<String, Object> arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 	public String getOrderNum(){

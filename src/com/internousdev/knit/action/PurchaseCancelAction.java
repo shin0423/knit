@@ -57,7 +57,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	 * @param args
 	 */
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date dateTo = null;
     Date dateFrom = null;
     PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
@@ -107,10 +107,8 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 
 	}
-	@Override
-	public void setSession(Map<String, Object> arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 	public String getOrderNum() {
 		return orderNum;

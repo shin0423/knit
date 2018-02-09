@@ -32,6 +32,16 @@
 		<div>
 			<p>購入キャンセルしたい商品をお選びください</p>
 		</div>
+
+
+		<!-- リストに応じたトップメッセージ -->
+				<s:if test = "cancelList == null">
+					<h2>キャンセル可能な商品はありません</h2>
+				</s:if>
+				<s:elseif test= "cancelList != null">
+					<h2>キャンセル可能な商品は以下になります</h2>
+
+
 			<s:iterator value = "cancelList">
         			<div class="date">
             			<p>注文日</p>
@@ -82,12 +92,11 @@
 
 
     		</s:iterator>
-
-
+		</s:elseif>
 
 
 				<div>
-					<a href='<s:url action="GoPurchaseAction" />'>購入履歴へもどる</a>
+					<a href='<s:url action="GoPurchaseHistoryAction" />'>購入履歴へもどる</a>
 				</div>
 				<div>
 					<a href='<s:url action="MyPageAction" />'>マイページへもどる</a>

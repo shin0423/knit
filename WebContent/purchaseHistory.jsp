@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	  type="text/css"
 	  href="">
-<title>注文履歴</title>
+<title>購入履歴</title>
 </head>
 <body>
 
@@ -18,10 +18,7 @@
 	<div class = "main">
 		<!-- メインのトップ -->
 			<div class = "top">
-				<p class="title">注文履歴</p>
-				<%-- <s:if test="message != null">
-					<h2><s:property value="message"/></h2>
-				</s:if> --%>
+				<p class="title">購入履歴</p>
 			</div>
 		<!-- メインのトップここまで -->
 
@@ -31,17 +28,17 @@
 
 		<div>
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "historyList.size() == 0">
+				<s:if test = "historyList == null">
 					<h2>購入情報はありません</h2>
 				</s:if>
-				<s:elseif test= "historyList != null && historyList.size() != 0">
+				<s:elseif test= "historyList != null">
 					<h2>購入情報は以下になります</h2>
 
 
 
 			<!-- 全件削除ボタン -->
 				<div class="all_delete">
-					<s:form action="PurchaseHistoryAction" onSubmit="return allDel()" >
+					<s:form action="PurchaseHistoryAction" >
 						<input type ="hidden" name="deleteFlg" value="1">
 						<s:submit id="all_delete" value="履歴をすべて削除"/>
 					</s:form>
@@ -105,14 +102,7 @@
 
     		</s:iterator>
 
-						<!-- ボタン押下でキャンセル画面に遷移 -->
-    		<div class="cancel">
-						<!-- 注文キャンセルボタン -->
-							<s:form action ="PurchaseCancelAction">
-								<s:submit value="注文キャンセル画面はこちら" />
-							</s:form>
 
-					</div>
 <!----------------------履歴詳細   ここまで------------------------------->
 		</s:elseif>
 
@@ -121,20 +111,27 @@
 		<div class= "back">
 			<!-- MyPageに戻る-->
 			<div class="link">
-				<a href='<s:url action="MyPageAction" />'><i class="material-icons">&#xE853;</i>マイページに戻る</a>
+				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
 			</div>
 		</div>
+
+		<!-- ボタン押下でキャンセル画面に遷移 -->
+    		<div class="cancel">
+						<!-- 注文キャンセルリンク -->
+						<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセルはこちら</a>
+
+			</div>
 <!-- ページリンクここまで -->
 
 
 
 
 
-<!-- トップに戻れる！ -->
+<!-- トップに戻れる！
 				<div>
 					<a href='<s:url action="TopAction" />'> ＞ページトップへ＜ </a>
 				</div>
-<!-- トップに戻れるここまで -->
+ トップに戻れるここまで -->
 
 		</div>
 	</div>

@@ -48,6 +48,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public String execute()throws SQLException{
 
+
 		//ログインしてなければログインに飛ばす
 
 		String loginFlg = session.get("loginFlg").toString();
@@ -55,16 +56,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		if (!loginFlg.equals("true")) {
 			return ERROR;
 		}
-
-		/**
-		 * 2つの日付の差分時間数を算出するプログラムです。
-		 * @param args
-		 */
-
-
-
-
-
 		String result = SUCCESS;
 
 		String userId =session.get("userId").toString();
@@ -73,10 +64,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		//購入履歴表示メソッド
 
 		if(deleteFlg == null){
-
-
-
-
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 		System.out.println("List = "+ historyList);
 
@@ -140,11 +127,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	}
 
-	@Override
-	public void setSession(Map<String, Object> arg0) {
-		// TODO 自動生成されたメソッド・スタブ
 
-	}
 
 	public String getOrderNum() {
 		return orderNum;
@@ -209,4 +192,9 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 	public void setPurchaseHistoryDTO(PurchaseHistoryDTO purchaseHistoryDTO) {
 		this.purchaseHistoryDTO = purchaseHistoryDTO;
 	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 }
