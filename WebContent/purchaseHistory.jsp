@@ -109,7 +109,7 @@
     		<div class="cancel">
 						<!-- 注文キャンセルボタン -->
 							<s:form action ="PurchaseCancelAction">
-								<s:submit value="注文キャンセル" />
+								<s:submit value="注文キャンセル画面はこちら" />
 							</s:form>
 
 					</div>
@@ -131,7 +131,9 @@
 
 
 <!-- トップに戻れる！ -->
- 	<p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i> ＞ページトップへ＜ </a></p>
+				<div>
+					<a href='<s:url action="TopAction" />'> ＞ページトップへ＜ </a>
+				</div>
 <!-- トップに戻れるここまで -->
 
 		</div>
