@@ -15,11 +15,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
 	private int itemId;
-	private int review;
+	private int review = 0;
 	private String reviewBody;
 	private ArrayList<String> reviewStar = new ArrayList<String>();
 	private ArrayList<String> reviewErrorMessage = new ArrayList<String>();
 	private ReviewDAO reviewDAO = new ReviewDAO();
+	private BuyItemInfoDAO buyItemInfoDAO = new BuyItemInfoDAO();
 	private Map<String, Object> session;
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
@@ -34,43 +35,44 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			reviewErrorMessage.add("レビューは100文字までです");
 			System.out.println("レビューは100文字まで");
 		}
-		if(session.containsKey("userId")){
+
+		setBuyItemDTO(buyItemInfoDAO.selectBuyItemInfo(String.valueOf(itemId)));
+		setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
+		reviewList = reviewDAO.selectReviewAll(String.valueOf(itemId));
+
+		int i;
+		int j;
+		for(i = 0; i < reviewList.size(); i++){
+			String stars = "";
+			for (j = 0; j < reviewList.get(i).getReview(); j++) {
+				stars += "★";
+			}
+			reviewList.get(i).setReviewStar(stars);
+		}
+
+		boolean exist = reviewDAO.confirmReviewHistory(session.get("userId").toString(), Integer.valueOf(itemId));
+
+		if(session.containsKey("userId") && !exist){
 			if ( reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
 				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), Integer.valueOf(review), reviewBody);
-				getReviewStar(Integer.valueOf(review));
 				result = SUCCESS;
 			System.out.println("書き込み成功");
 			} else {
 				reviewErrorMessage.add("この商品の購入情報が無いので書き込みできません");
 				System.out.println("この商品の購入情報が無いので書き込み不可");
 			}
+		} else {
+			reviewErrorMessage.add("一度レビューをしたことがあるので書き込めません");
+			result = ERROR;
 		}
+
 		if ( !(boolean) session.get("loginFlg") ) {
 			System.out.println("てすと");
 			reviewErrorMessage.add("ログインしていない状態ではレビューに書き込めません");
 			result = ERROR;
 		}
 
-		BuyItemInfoDAO buyItemInfoDAO = new BuyItemInfoDAO();
-		setBuyItemDTO(buyItemInfoDAO.selectBuyItemInfo(String.valueOf(itemId)));
-		ReviewDAO reviewDAO = new ReviewDAO();
-		setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
-
 		return result;
-	}
-
-	/**
-	 * レビューの★表示メソッド
-	 * @param review
-	 * @return
-	 */
-
-	public void getReviewStar(int review) {
-		int i = 0;
-		for (i = 0; i <= review; i++) {
-			reviewStar.add("★");
-			System.out.print(reviewStar);
-		}
 	}
 
 	public int getItemId() {
@@ -136,4 +138,5 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 	public void setReviewList(List<ReviewDTO> reviewList) {
 		this.reviewList = reviewList;
 	}
+
 }

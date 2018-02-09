@@ -114,7 +114,7 @@ drop table if exists review_transaction;
 
 create table review_transaction(
 id int not null primary key auto_increment,
-user_id varchar(16),
+user_id varchar(16) unique,
 item_id int not null,
 review int not null,
 review_body varchar(100),

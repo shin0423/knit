@@ -23,6 +23,13 @@ public class BuyItemInfoAction extends ActionSupport {
 		ReviewDAO reviewDAO = new ReviewDAO();
 		setReviewList(reviewDAO.selectReviewAll(itemId));
 
+		for(int i=0;reviewList.size() > i ; i++){
+			String stars="";
+			for(int j=0;reviewList.get(i).getReview() > j; j++){
+				stars+="★";
+			}
+			reviewList.get(i).setReviewStar(stars);
+		}
 
 
 		return SUCCESS;

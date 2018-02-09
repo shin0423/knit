@@ -45,15 +45,18 @@
 		</s:iterator>
 	</s:form>
 
+		<s:if test="reviewErrorMessage != null">
 		<s:iterator value="reviewErrorMessage">
 			<s:property />
 		</s:iterator>
+		</s:if>
 
 	<br>レビュー<br>
 	<s:iterator value="reviewList">
 		名前:<s:property value="firstName"/>&nbsp;&nbsp;追加日時:<s:property value="insertDate" /><br>
-		評価:<s:iterator value="reviewStar"><s:property /></s:iterator><br>
-		レビュー内容:<s:property value="reviewBody" /><br>
+		評価:<s:property value="reviewStar" /><br>
+		レビュー内容:<s:property value="reviewBody" /><br><br>
+
 	</s:iterator>
 </body>
 </html>

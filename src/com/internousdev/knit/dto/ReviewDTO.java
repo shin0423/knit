@@ -7,6 +7,7 @@ public class ReviewDTO {
 	private String reviewBody;
 	private String insertDate;
 	private String firstName;
+	private String reviewStar;
 
 	public String getUserId() {
 		return userId;
@@ -43,5 +44,11 @@ public class ReviewDTO {
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	public String getReviewStar() {
+		return reviewStar;
+	}
+	public void setReviewStar(String reviewStar) {
+		this.reviewStar = reviewStar;
 	}
 }

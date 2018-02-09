@@ -14,6 +14,37 @@ import com.internousdev.knit.util.DateUtil;
 public class ReviewDAO {
 
 	/**
+	 * 書き込んだことがあるか確認
+	 * @param userId
+	 * @param itemId
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean confirmReviewHistory(String userId, int itemId) throws SQLException {
+		boolean result = false;
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+
+		String sql = "SELECT * FROM review_transaction WHERE user_id = ? AND item_id =?";
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, userId);
+			preparedStatement.setInt(2, itemId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+		return result;
+	}
+
+	/**
 	 * 商品を購入したことあるか確認
 	 * @param itemId
 	 * @return
