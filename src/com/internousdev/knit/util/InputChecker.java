@@ -151,7 +151,7 @@ public class InputChecker {
 
 		if (itemId.equals("")) {
 			result = "商品Idを入力してください。";
-		} else if (itemId.length() < 1 || itemId.length() > 999) {
+		} else if (itemId.length() < 1 || itemId.length() > 3) {
 			result = "商品Idは1桁以上3桁以下で入力してください。";
 		} else if (!itemId.matches("^[0-9]+$")) {
 			result = "商品Idは半角数字で入力してください。";
@@ -215,7 +215,7 @@ public class InputChecker {
 		String result = "OK";
 		if (insertItemStock.equals("")) {
 			result = "追加在庫数を入力してください。";
-		} else if (insertItemStock.length() < 1 || insertItemStock.length() > 999) {
+		} else if (insertItemStock.length() < 1 || insertItemStock.length() > 3) {
 			result = "追加在庫数は1桁以上3桁以下で入力してください。";
 		} else if (!insertItemStock.matches("^[0-9]+$")) {
 			result = "追加在庫数は半角数字で入力してください。";
@@ -227,7 +227,7 @@ public class InputChecker {
 		String result = "OK";
 		if (itemStock.equals("")) {
 			result = "在庫数を入力してください。";
-		} else if (itemStock.length() < 1 || itemStock.length() > 999) {
+		} else if (itemStock.length() < 1 || itemStock.length() > 3) {
 			result = "在庫数は1桁以上3桁以下で入力してください。";
 		} else if (!itemStock.matches("^[0-9]+$")) {
 			result = "在庫数は半角数字で入力してください。";
@@ -239,7 +239,7 @@ public class InputChecker {
 		String result="OK";
 		if(price.equals("")){
 			result="値段を入力してください";
-		}else if(price.length()<1 || price.length()>999999999){
+		}else if(price.length()<1 || price.length()>9){
 			result="値段は1桁以上9桁以下で入力してください。";
 		}else if(!price.matches("^[0-9]+$")){
 			result="値段は半角数字で入力してください。";

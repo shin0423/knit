@@ -26,7 +26,7 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 	private AdmiDAO admiDAO = new AdmiDAO();
 	private ShowItemDAO showItemDAO = new ShowItemDAO();
 	private List<BuyItemDTO> buyItemList = new ArrayList<>();
-	public Map<String,Object> session;
+	public Map<String, Object> session;
 
 	public String execute() throws SQLException {
 		String result = SUCCESS;
@@ -60,16 +60,23 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 			errorList.add(i.priceChk(price));
 		}
 
-		if (errorList.size() == 0) {
-			int res = admiDAO.insertAdminItemInfo(itemId, itemName, itemNameKana, itemDescription, categoryId, price,
+		out :if (errorList.size() == 0) {
+			int intItemId=Integer.parseInt(itemId);
+			buyItemList = showItemDAO.ShowItem();
+			for (int j = 0; buyItemList.size() > j; j++) {
+				if (itemName.equals(buyItemList.get(j).getItemName()) || intItemId==(buyItemList.get(j).getItemId())
+						|| itemNameKana.equals(buyItemList.get(j).getItemNameKana())) {
+					errorList.add("入力された商品はすでに登録されています。");
+					result= ERROR;
+					break out;
+				}
+			}
+			admiDAO.insertAdminItemInfo(itemId, itemName, itemNameKana, itemDescription, categoryId, price,
 					releaseCompany, itemStock);
 			errorList = null;
-			if (res == 0) {
-				result = ERROR;
-			}else {
-				buyItemList = showItemDAO.ShowItem();
-				session.put("buyItemList", buyItemList);
-			}
+			buyItemList.clear();
+			buyItemList = showItemDAO.ShowItem();
+			session.put("buyItemList", buyItemList);
 		} else {
 
 			result = ERROR;

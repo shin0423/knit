@@ -14,6 +14,7 @@ public class AdmiDAO {
 
 	public int insertAdminItemInfo(String itemId, String itemName, String itemNameKana, String itemDescription,
 			String categoryId, String price, String releaseCompany, String itemStock) throws SQLException {
+		Connection connection = dbConnector.getConnection();
 		String sql = "INSERT INTO item_info (item_id,item_name,item_name_kana,item_description,category_id,price,release_company,item_stock,release_date,status,regist_date,update_date) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 		int res = 0;
 		try {

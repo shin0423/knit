@@ -26,7 +26,6 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException {
-		System.out.println(itemId);
 
 		String result = SUCCESS;
 		errorMessage = null;

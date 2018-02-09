@@ -5,7 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>admin.jsp</title>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<title>管理者画面</title>
 </head>
 <body>
 	<s:iterator value="session.buyItemList">
@@ -56,7 +62,7 @@
 
 	<s:if test="errorList!= null">
 		<s:iterator value="errorList">
-			<s:property/>
+			<s:property/><br>
 		</s:iterator>
 	</s:if>
 
