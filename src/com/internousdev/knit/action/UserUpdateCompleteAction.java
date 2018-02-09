@@ -15,22 +15,26 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	private String userAddress;
 
 	public Map<String,Object> session;
-	private UserUpdateCompleteDAO userUpdateCompleteDAO = new UserUpdateCompleteDAO();
 
 	public String execute() throws SQLException{
-		userUpdateCompleteDAO.userUpdate(session.get("newPassword").toString(),
+		String result=ERROR;
+		int count1=0;
+		int count2=0;
+	    UserUpdateCompleteDAO dao = new UserUpdateCompleteDAO();
+
+		count1 = dao.userUpdate(session.get("newPassword").toString(),
 				session.get("userId").toString()
 				);
-		String result=SUCCESS;
-		return result;
-	}
 
-	public String execute2() throws SQLException{
-		userUpdateCompleteDAO.userUpdate(session.get("telNumber").toString(),
+		if(count1>0){
+		count2 = dao.userUpdate(session.get("telNumber").toString(),
 				session.get("userAddress").toString(),
 				session.get("userId").toString()
 				);
-		String result=SUCCESS;
+		}
+		if(count2>0){
+		result=SUCCESS;
+		}
 		return result;
 	}
 

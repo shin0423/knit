@@ -22,10 +22,9 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	private String userAddress;
 
 	public Map<String,Object> session;
-	private UserCreateCompleteDAO DAO = new UserCreateCompleteDAO();
 
 	public String execute() throws SQLException{
-
+		String result = ERROR;
 		System.out.println(userId);
 		System.out.println(password);
 		System.out.println(familyName);
@@ -35,7 +34,11 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		System.out.println(sex);
 		System.out.println(email);
 
-		DAO.createUser1(session.get("createUserId").toString(),
+		int count1 = 0;
+		int count2 = 0;
+		UserCreateCompleteDAO dao = new UserCreateCompleteDAO();
+
+		count1 = dao.createUser1(session.get("createUserId").toString(),
 				session.get("createPassword").toString(),
 				session.get("createFamilyName").toString(),
 				session.get("createFirstName").toString(),
@@ -44,21 +47,22 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 				Integer.parseInt(session.get("createSex").toString()),
 				session.get("createEmail").toString()
 				);
-		String result = SUCCESS;
 
-		return result;
-	}
-		public String execute1() throws SQLException{
-		DAO.createUser2(session.get("createUserID").toString(),
-				session.get("createPassword").toString(),
+		if(count1 >0){
+			count2 = dao.createUser2(session.get("createUserId").toString(),
 				session.get("createFamilyName").toString(),
 				session.get("createFirstName").toString(),
 				session.get("createFamilyNameKana").toString(),
 				session.get("createFirstNameKana").toString(),
+				session.get("createEmail").toString(),
 				session.get("createTelNumber").toString(),
 				session.get("createUserAddress").toString()
 				);
-		String result = SUCCESS;
+		}
+		if(count2 >0){
+			result=SUCCESS;
+		}
+
 
 		return result ;
 	}

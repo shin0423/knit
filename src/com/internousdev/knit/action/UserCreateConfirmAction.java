@@ -101,11 +101,18 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		}
 
 		if(!(telNumber.equals(""))){
+
+			session.put("createTelNumber", telNumber);
+		}else{
+			telNumber="未入力";
 			session.put("createTelNumber", telNumber);
 		}
 
 		if(!(userAddress.equals(""))){
-			session.put("createUserAddtress",userAddress);
+			session.put("createUserAddress",userAddress);
+		}else{
+			userAddress="未入力";
+			session.put("createUserAddress",userAddress);
 		}
 		return result;
 	}
