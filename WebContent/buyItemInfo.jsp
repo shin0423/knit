@@ -17,11 +17,8 @@
 		<s:property value="releaseCompany" />
 		<s:property value="releaseDate" />
 		<s:form action="PutItemIntoCartAction" >
-			<s:hidden name="userId" value="%{#session.userId}" />
-			<s:hidden name="tempUserId" value="%{#session.tempUserId}" />
 			<s:hidden name="itemId" value="%{itemId}" />
 			<s:hidden name="price" value="%{price}"/>
-			<s:hidden name="itemStock" value="%{itemStock}" />
 			<s:submit value="カートに入れる" />
 		</s:form>
 	</s:iterator>

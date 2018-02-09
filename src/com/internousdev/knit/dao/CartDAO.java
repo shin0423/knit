@@ -28,7 +28,7 @@ public class CartDAO extends ActionSupport{
 		System.out.println("itemId");
 		System.out.println("itemCount");
 
-		String sql="INSERT INTO cart_info(user_id,temp_user_id,item_id,item_count,price,regist_data)"
+		String sql="INSERT INTO cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date)"
 				+"VALUES(?,?,?,?,?,NOW())";
 
 		try {
@@ -398,7 +398,7 @@ public class CartDAO extends ActionSupport{
 
 		}catch(SQLException e) {
 			e.printStackTrace();
-	}	
+	}
 	}
 
 	/**
