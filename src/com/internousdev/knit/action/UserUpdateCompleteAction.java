@@ -17,7 +17,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 	private UserUpdateCompleteDAO userUpdateCompleteDAO = new UserUpdateCompleteDAO();
 
-	public String execute1() throws SQLException{
+	public String execute() throws SQLException{
 		userUpdateCompleteDAO.userUpdate(session.get("newPassword").toString(),
 				session.get("userId").toString()
 				);

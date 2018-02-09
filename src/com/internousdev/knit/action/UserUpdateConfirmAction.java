@@ -32,6 +32,8 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		if(!userUpdateConfirmDAO.getUserId(userId)){
 			setErrorMessage("入力されたIDが異なります。");
 			return ERROR;
+		}else{
+			session.put("userId", userId);
 		}
 
 		String result = SUCCESS;
@@ -47,6 +49,8 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
 			setErrorMessage("パスワードは半角英数字で入力してください。");
 			result = ERROR;
+		}else{
+			session.put("newPassword", newPassword);
 		}
 
 		if(!(newPassword.equals(conPassword))){
@@ -57,10 +61,14 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		if(!i.telNumberChk(telNumber).equals("OK")){
 			errMsgList.add(i.telNumberChk(telNumber));
 			result = ERROR;
+		}else{
+			session.put("telNumber", telNumber);
 		}
 		if(!i.userAddressChk(userAddress).equals("OK")){
 			errMsgList.add(i.userAddressChk(userAddress));
 			result = ERROR;
+		}else{
+			session.put("userAddress",userAddress);
 		}
 
 		return result;

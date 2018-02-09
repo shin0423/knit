@@ -44,25 +44,26 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 				Integer.parseInt(session.get("createSex").toString()),
 				session.get("createEmail").toString()
 				);
+		String result = SUCCESS;
 
+		return result;
+	}
+		public String execute1() throws SQLException{
+		DAO.createUser2(session.get("createUserID").toString(),
+				session.get("createPassword").toString(),
+				session.get("createFamilyName").toString(),
+				session.get("createFirstName").toString(),
+				session.get("createFamilyNameKana").toString(),
+				session.get("createFirstNameKana").toString(),
+				session.get("createTelNumber").toString(),
+				session.get("createUserAddress").toString()
+				);
 		String result = SUCCESS;
 
 		return result ;
 	}
 
-	public String execute2() throws SQLException{
-		DAO.createUser2(session.get("createUserId").toString(),
-				session.get("createFamilyName").toString(),
-				session.get("createFirstName").toString(),
-				session.get("createFamilyNameKana").toString(),
-				session.get("createFirstNameKana").toString(),
-				session.get("createEmail").toString(),
-				session.get("createTelNumber").toString(),
-				session.get("createUserAddress").toString()
-				);
-		String result=SUCCESS;
-		return result;
-	}
+
 
 
 	public String getUserId(){
