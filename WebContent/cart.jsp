@@ -4,12 +4,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <title>カート画面</title>
 
 <script type="text/javascript">
     function goCartDeleteAction(){
         document.getElementById('form').action="CartDeleteAction";
+    }
+
+    function checkboxTest(){
+    	o=document.createElement('input');
+    	o.name="flg";
+    	f = document.getElementByClassName("sample01");
+    	alert(f);
+    	if(f==0){
+    	o.value=1;
+    	}else{
+    	o.value=0;
+    	}
+    	document.form.appendChild(o);
+
     }
 </script>
 
@@ -37,10 +55,10 @@
 
 <!------------------------ カート内容 ------------------------>
 			<s:form action="CartAction" id="form" name="form">
-				<s:iterator value="cartList">
+				<s:iterator value="cartList" status="st">
 
 			<s:hidden name="itemId" value="%{itemId}"/>
-			<s:checkbox name="checkList" value="checked" fieldValue="%{itemId}" />
+			<td ><s:checkbox name="checkList" value="checked" fieldValue="%{id}" class="sample01" onclick="checkboxTest();"/></td>
 			<div class="border">
 			</div>
 			<div class="pro_img">
@@ -86,8 +104,15 @@
 			</s:iterator>
 
 <!----------------------- 商品削除 ------------------------->
-			<s:submit value="削除" onclick="goCartDeleteAction();"/>
-
+		<div>
+			<input type="hidden" name="deleteFlg" value="1"  class="sample02"/>
+			<s:if test="flg==0">
+			<s:submit id="delete02" value="削除"  onclick="goCartDeleteAction();"/>
+			</s:if>
+			<s:else>
+			<s:submit id="delete02" value="削除" disabled="disabled"/>
+			</s:else>
+		</div>
 			</s:form>
 
 <!------------------------ 合計金額 ------------------------->
@@ -102,6 +127,55 @@
 					<a href='<s:url action="SettlementConfirmAction"/>'>決済画面へ</a>
 				</div>
 			</s:if>
+<script type="text/javascript">
+$(function() {
+	  $('.sample02 ').attr('disabled', 'disabled');
+
+	  $('.sample01').click(function() {
+	    if ( $(this).prop('checked') == false ) {
+	      $('.sample02').attr('disabled', 'disabled');
+	    } else {
+	      $('.sample02').removeAttr('disabled');
+	    }
+	  });
+	});
+</script>
+<%-- <script type="text/javascript">
+	$(function(){
+		$('#check').on('change',function(){
+			if($(this).is(':checked')){
+
+				//チェックが入ったら、送信ボタンを押せる
+				$('#delete02').prop('disabled',false);
+
+			}else{
+
+				//チェックが入っていなかったら、送信ボタンを押せない
+				$('#delete02').prop('disabled',true);
+			}
+		});
+	});
+
+	</script> --%>
+<!--
+<script type="text/javascript">
+
+
+
+
+$(function checkValue(check){
+	//チェックボックスがクリックされると送信ボタンが有効
+	$('#check').on('change',function(){
+		if($('#check').is(':checked')){
+			$('#delete02').prop('disabled',false);
+		}else{
+			$('#delete02').prop('disabled',true);
+		}
+	});
+});
+
+</script>
+-->
 
 </div>
 </body>
