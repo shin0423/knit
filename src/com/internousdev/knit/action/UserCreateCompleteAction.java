@@ -63,9 +63,6 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		return result ;
 	}
 
-
-
-
 	public String getUserId(){
 		return userId;
 	}

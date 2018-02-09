@@ -11,10 +11,10 @@ public class UserUpdateAction extends ActionSupport implements SessionAware{
 
 	public String execute(){
 		String result = "login";
-		if(session.containsKey("user_id")){
+		if(session.containsKey("userId")){
 			result = SUCCESS;
 		}else{
-			result = ERROR;
+			result = "back";
 		}
 		return result;
 	}
