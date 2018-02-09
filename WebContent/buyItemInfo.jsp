@@ -50,13 +50,17 @@
 			<s:property />
 		</s:iterator>
 		</s:if>
-
+	
+	自分のレビューを消す<br>
+	<s:form action="ReviewDeleteAction">
+		<s:submit value="確認" />
+	</s:form>
+	
 	<br>レビュー<br>
 	<s:iterator value="reviewList">
 		名前:<s:property value="firstName"/>&nbsp;&nbsp;追加日時:<s:property value="insertDate" /><br>
 		評価:<s:property value="reviewStar" /><br>
 		レビュー内容:<s:property value="reviewBody" /><br><br>
-
 	</s:iterator>
 </body>
 </html>
