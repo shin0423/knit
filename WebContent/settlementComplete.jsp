@@ -32,7 +32,7 @@
 <div>
 <p>購入手続きが完了致しました。</p>
 <div>
-<p>Home<a href='<s:url action="TopAction" />'></a></p>
+<p><a href='<s:url action="TopAction" />'>ホーム</a></p>
 </div>
 </div>
 </div>

@@ -19,6 +19,8 @@ public class CartDTO {
 	private String releaseDate;
 	private Date registDate;
 	private Date updateDate;
+	//個別価格合計 桑本
+	private int total;
 
 	public int getId() {
 		return id;
@@ -131,6 +133,16 @@ public class CartDTO {
 
 	public void setUpdateDate(Date updateDate){
 		this.updateDate=updateDate;
+		
+	}
+	
+	//桑本作成
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 }
 

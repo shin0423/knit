@@ -26,7 +26,9 @@
 <s:property value="itemNameKana" />
 <s:property value="price" />円
 <s:property value="itemCount" />個
+合計：<s:property value="total" />円
 <s:property value="releaseCompany" />
+
 
 </s:iterator>
 

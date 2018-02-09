@@ -107,6 +107,7 @@ public class CartDAO extends ActionSupport{
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setReleaseDate(rs.getString("release_date"));
 				dto.setItemCount(rs.getInt("item_count"));
+				dto.setTotal(rs.getInt("item_count")*(rs.getInt("price")));
 				cartList.add(dto);
 			}
 		}catch(SQLException e) {
