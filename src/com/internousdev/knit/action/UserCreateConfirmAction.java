@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.UserCreateConfirmDAO;
 import com.internousdev.knit.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -30,13 +31,21 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	private String userAddress;
 
+	private String errorMessage;
+
+
 	private ArrayList<String> errMsgList = new ArrayList<>();
 
+	private UserCreateConfirmDAO userCreateConfirmDAO = new UserCreateConfirmDAO();
 
 	public Map<String,Object> session;
 
 
 	public String execute(){
+		if(userCreateConfirmDAO.getUserId(userId)){
+			setErrorMessage("入力されたIDがすでに使われています。");
+			return ERROR;
+		}
 		String result = SUCCESS;
 
 		InputChecker i = new InputChecker();
@@ -179,6 +188,14 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	public void setUserAddress(String userAddress){
 		this.userAddress = userAddress;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 	@Override

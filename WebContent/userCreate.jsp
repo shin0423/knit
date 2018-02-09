@@ -8,6 +8,9 @@
  <title>ユーザー登録</title>
  </head>
  <body>
+  <s:if test="errorMessage !=''">
+<s:property value="errorMessage" escape="false" />
+</s:if>
 <s:iterator value="errMsgList">
 		<h5>
 			<s:div align="center">
