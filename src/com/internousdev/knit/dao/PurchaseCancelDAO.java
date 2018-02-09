@@ -25,10 +25,10 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 	Connection con = db.getConnection();
 	ArrayList<PurchaseHistoryDTO> purchaseCancelDTOList = new ArrayList<PurchaseHistoryDTO>();
 
-	String sql = "SELECT ubit.item.id , "
+	String sql = "SELECT ubit.item_id, "
 			+ "iit.item_name, "
-			+ "iit.item_name_kana "
-			+ "iit.image_file_path "
+			+ "iit.item_name_kana, "
+			+ "iit.image_file_path, "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
 			+ "ubit.regist_date, "
@@ -37,7 +37,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			+ "LEFT JOIN item_info as iit "
 			+ "ON ubit.item_id = iit.item_id "
 			+ "WHERE ubit.status = 1 "
-			+ "AND ubit.send_flg = 0"
+			+ "AND ubit.send_flg = 0 "
 			+ "AND ubit.user_id = ? "
 			+ "ORDER BY regist_date DESC ";
 
@@ -51,7 +51,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setItemId(rs.getInt("item_id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
-			dto.setimageFilePath(rs.getString("image_file_name"));
+			dto.setimageFilePath(rs.getString("image_file_path"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setItemCount(rs.getInt("item_count"));
 			dto.setRegistDate(rs.getString("regist_date"));

@@ -41,16 +41,22 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	public String execute()throws SQLException{
 
-		//ログインしていないユーザーをログイン画面へ飛ばす
+	//ログインしていないユーザーをログイン画面へ飛ばす
 
 	String loginFlg = session.get("loginFlg").toString();
+
+	String userId =session.get("userId").toString();
+
+    String result = SUCCESS;
+
+	cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
 
 	if (!loginFlg.equals("true")) {
 		return ERROR;
 	}
 
-
-	String userId =session.get("userId").toString();
+	//キャンセル可能な商品が０でないときに以下の処理を実行します
+	else if(!cancelList.equals(null)){
 
 	/**
 	 * 2つの日付の差分時間数を算出するプログラムです。
@@ -88,11 +94,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     	purchaseCancelDAO.sendFlgChange(userId);
     }
 
-
-    String result = SUCCESS;
-
-	//購入キャンセル可能商品履歴表示メソッド
-
+    //購入キャンセル可能商品履歴表示メソッド
 
 		cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
 		System.out.println("List = "+ cancelList);
@@ -102,9 +104,13 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 		if(!(iterator.hasNext())){
 		cancelList = null;
 
-		}
 		return result;
 
+		}return result;
+	}
+	//キャンセル可能な商品が0のときに以下の処理を実行します
+	else if(cancelList.equals(null)){
+	}return result;
 
 	}
 	public void setSession(Map<String, Object> session) {

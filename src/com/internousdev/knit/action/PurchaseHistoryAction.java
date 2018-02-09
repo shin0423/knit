@@ -29,8 +29,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	private String registDate;
 
-	private String imageFilePath;
-
 	private String itemNameKana;
 
 	private int count;
@@ -39,7 +37,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	private String orderNum;
 
-	private int itemId;
+	private String itemId;
 
 	private String deleteFlg;
 
@@ -47,16 +45,17 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 
 	public String execute()throws SQLException{
-
+		System.out.println("きたよー");
 
 		//ログインしてなければログインに飛ばす
 
 		String loginFlg = session.get("loginFlg").toString();
 
+
 		if (!loginFlg.equals("true")) {
 			return ERROR;
 		}
-		String result = SUCCESS;
+
 
 		String userId =session.get("userId").toString();
 
@@ -65,6 +64,14 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		if(deleteFlg == null){
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
+
+		for (int i = 0; i < historyList.size(); i++) {
+
+
+		System.out.println(historyList.get(i).getimageFilePath());
+		}
+
+
 		System.out.println("List = "+ historyList);
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
@@ -76,20 +83,36 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		//購入履歴削除機能メソッド(全件削除)
 
-		else if(deleteFlg.equals(1)){
+		else if(deleteFlg.equals("1")){
 
-			deleteAll();
+			String user_id = session.get("userId").toString();
+
+			int res = purchaseHistoryDAO.deleteAll(user_id);
+			System.out.println("削除候補件数：" + res);
+			if(res > 0){
+				System.out.println("削除した");
+				historyList = null;
+				setMessage("注文履歴をすべて削除しました");
+
+			}else if(res == 0){
+				System.out.println("削除失敗");
+				//setMessage("商品の削除に失敗しました。");
+			}
 
 		}
 
 		//購入履歴削除機能メソッド(個別削除)
 
-		else if(deleteFlg.equals(2)){
+		else if(deleteFlg.equals("2")){
 
 			System.out.println("ID:"+itemId);
-			deletePart();
-		}
 
+			String user_id = session.get("userId").toString();
+
+			purchaseHistoryDAO.deletePart(user_id,Integer.parseInt(itemId));
+		}
+		String result = SUCCESS;
+		System.out.println("きたよー");
 
 		return result;
 
@@ -102,30 +125,8 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		this.message = message;
 	}
 
-	public void deleteAll() throws SQLException{
-		String user_id = session.get("userId").toString();
-
-		int res = purchaseHistoryDAO.deleteAll(user_id);
-		System.out.println("削除候補件数：" + res);
-		if(res > 0){
-			System.out.println("削除した");
-			historyList = null;
-			setMessage("注文履歴をすべて削除しました");
-
-		}else if(res == 0){
-			System.out.println("削除失敗");
-			//setMessage("商品の削除に失敗しました。");
-		}
-	}
 
 
-	public void deletePart() throws SQLException{
-
-			String user_id = session.get("userId").toString();
-
-			purchaseHistoryDAO.deletePart(user_id,itemId);
-
-	}
 
 
 
@@ -137,21 +138,14 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		this.orderNum = orderNum;
 	}
 
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 
-	public String getimageFilePath() {
-		return imageFilePath;
-	}
-
-	public void setimageFilePath(String imageFilePath) {
-		this.imageFilePath = imageFilePath;
-	}
 
 	public String getItemNameKana() {
 		return itemNameKana;
@@ -195,6 +189,23 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
+		return historyList;
+	}
+
+	public void setHistoryList(ArrayList<PurchaseHistoryDTO> historyList) {
+		this.historyList = historyList;
+	}
+
+
+	public String getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(String deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 
 }

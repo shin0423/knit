@@ -7,9 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	  type="text/css"
-	  href="">
+
 <title>購入履歴</title>
 </head>
 <body>
@@ -54,12 +52,17 @@
             			<p>注文日</p>
             			<p><s:property value="registDate" /></p>
             		</div>
+				<div>
 
+					<s:property value="itemId"/>
+				</div>
 
+				<!--  画像ファイル -->
 			<div class="main_content clearfix_hon">
 				<div class="item_image">
-					<img src="<s:property value="itemPath"/>">
-				</div>
+					<input type="image" src="<s:property value="imageFilePath" />" alt="画像なし" >
+
+			</div>
 
 
 				<div class="item_text">
@@ -73,15 +76,15 @@
 					<div class="price_count">
             			<div class="price">
             			<span>金額:\</span>
-            			<%-- <s:property value="price"/> --%>
+            			<s:property value="price"/>
             			</div>
-            			<div class="count">(購入数:  <s:property value="count"/>点)</div>
+            			<div class="count">(購入数:  <s:property value="itemCount"/>点)</div>
        				 </div>
 
 					 <div class="comp_info">
-           				 <div class="company">発売会社：<s:property value="releasecompany"/></div>
+           				 <div class="company">発売会社：<s:property value="releaseCompany"/></div>
            				 <div class="release_date">
-           				 	発売日：<s:property value="release_date"/>
+           				 	発売日：<s:property value="releaseDate"/>
            				 </div>
         			</div>
 
@@ -89,8 +92,8 @@
 					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
-								<input type="hidden" name="itemId" value="%{itemId}">
-								<s:submit id="deletePart" value="×削除" method="deletePart"/>
+								<input type="hidden" name="itemId" value="1">
+								<s:submit  value="×削除"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
 
@@ -101,6 +104,7 @@
 
 
     		</s:iterator>
+
 
 
 <!----------------------履歴詳細   ここまで------------------------------->
@@ -114,13 +118,14 @@
 				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
 			</div>
 		</div>
-
 		<!-- ボタン押下でキャンセル画面に遷移 -->
     		<div class="cancel">
 						<!-- 注文キャンセルリンク -->
 						<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセルはこちら</a>
 
 			</div>
+
+
 <!-- ページリンクここまで -->
 
 

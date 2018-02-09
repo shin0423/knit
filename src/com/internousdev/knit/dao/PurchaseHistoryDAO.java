@@ -27,10 +27,12 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 	Connection con = db.getConnection();
 	ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
 
-	String sql = "SELECT ubit.item_id, "
+	String sql ="SELECT ubit.item_id, "
 			+ "iit.item_name, "
 			+ "iit.item_name_kana, "
 			+ "iit.image_file_path, "
+			+ "iit.release_company, "
+			+ "iit.release_date, "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
 			+ "ubit.regist_date, "
@@ -41,7 +43,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			+ "ON ubit.item_id = iit.item_id "
 			+ "WHERE ubit.status = 1 "
 			+ "AND ubit.user_id = ? "
-			+ "ORDER BY regist_date DESC ";
+			+ "ORDER BY regist_date DESC";
 
 	try{
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -53,13 +55,19 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setItemId(rs.getInt("item_id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
-			dto.setimageFilePath(rs.getString("image_file_name"));
+			dto.setimageFilePath(rs.getString("image_file_path"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setItemCount(rs.getInt("item_count"));
 			dto.setRegistDate(rs.getString("regist_date"));
 			dto.setOrderNum(rs.getString("order_num"));
-			dto.setStatus(rs.getInt("status"));
 			dto.setsendFlg(rs.getInt("send_flg"));
+			dto.setReleaseCompany(rs.getString("release_company"));
+			dto.setReleaseDate(rs.getDate("release_date"));
+
+
+			System.out.println("購入履歴"+ dto.getPrice());
+			System.out.println("購入履歴"+ dto.getItemCount());
+			System.out.println("購入履歴"+ dto.getimageFilePath());
 
 			purchaseHistoryDTOList.add(dto);
 

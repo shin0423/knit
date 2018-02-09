@@ -1,5 +1,7 @@
 package com.internousdev.knit.dto;
 
+import java.util.Date;
+
 public class PurchaseHistoryDTO {
 
 //	ID
@@ -34,6 +36,13 @@ public class PurchaseHistoryDTO {
 
 //	商品画像ファイル名
 	private String imageFilePath;
+
+//	発売日
+	private Date releaseDate;
+
+//	発売会社
+
+	private String releaseCompany;
 
 //	商品の履歴表示フラグ [0で非表示,1で表示]
 	private int status;
@@ -150,6 +159,18 @@ public class PurchaseHistoryDTO {
 	}
 	public void setsendFlg(int sendFlg) {
 		this.sendFlg = sendFlg;
+	}
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+	public String getReleaseCompany() {
+		return releaseCompany;
+	}
+	public void setReleaseCompany(String releaseCompany) {
+		this.releaseCompany = releaseCompany;
 	}
 
 }
