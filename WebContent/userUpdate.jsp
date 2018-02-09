@@ -36,7 +36,7 @@
    <s:textfield name="userAddress" value="%{userAddress}" />
    <br>
    <button type="submit">登録</button>
-   <a href="/knit/mypage.jsp">戻る</a>
+   <a href="<s:url action='MyPageAction'/>">戻る</a>
   </s:form>
  </body>
 </html>
