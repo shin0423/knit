@@ -21,18 +21,38 @@
 <!-- 決済情報 -->
 <s:iterator value="cartInfoList">
 
+<div class="img">
 <img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
-<s:property value="itemName" />
-<s:property value="itemNameKana" />
-<s:property value="price" />円
-<s:property value="itemCount" />個
-合計：<s:property value="total" />円
-<s:property value="releaseCompany" />
+</div>
+<div class="name">
+商品名：<s:property value="itemName" />
+</div>
+<div class="kana">
+ふりがな：<s:property value="itemNameKana" />
+</div>
+<div class="price">
+価格：<s:property value="price" />円
+</div>
+<div class="count">
+個数：<s:property value="itemCount" />個
+</div>
+<div class="total">
+合計価格：<s:property value="total" />円
+</div>
+<div class="company">
+発売会社<s:property value="releaseCompany" />
+</div>
+<br>
+<br>
 
 
 </s:iterator>
+<br>
+<br>
+<br>
 
-合計金額:<s:property value="#session.cartTotalPrice" />
+
+合計金額:<s:property value="#session.cartTotalPrice" />円
 
 <!-- 宛先情報一覧 -->
 
