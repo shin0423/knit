@@ -15,20 +15,22 @@
 </head>
 <body>
 
-<s:form action="settlementCompleteAction">
+<s:form action="SettlementCompleteAction">
 		<p class="message">購入情報は以下になります</p>
 
 <!-- 決済情報 -->
 <s:iterator value="cartInfoList">
-<p><input type="image" src="<s:property value='itemImagePath' />" alt="画像なし"width="100" height="100" ></p>
+
+<img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 <s:property value="itemName" />
 <s:property value="itemNameKana" />
-<s:property value="itemPrice" />円
-<s:property value="itemCount" />
-<s:property value="itemCompany" />
+<s:property value="price" />円
+<s:property value="itemCount" />個
+<s:property value="releaseCompany" />
+
 </s:iterator>
 
-<s:property value="itemTotalPrice" />
+合計金額:<s:property value="#session.cartTotalPrice" />
 
 <!-- 宛先情報一覧 -->
 
