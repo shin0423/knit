@@ -21,7 +21,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 		int count1=0;
 		int count2=0;
 	    UserUpdateCompleteDAO dao = new UserUpdateCompleteDAO();
-
+//ユーザー情報変更の登録
 		count1 = dao.userUpdate(session.get("newPassword").toString(),
 				session.get("userId").toString()
 				);
@@ -37,7 +37,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 		}
 		return result;
 	}
-
+//セッターゲッターの設定
 	public String getUserId() {
 		return userId;
 	}

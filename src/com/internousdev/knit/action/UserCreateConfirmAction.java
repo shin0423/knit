@@ -40,7 +40,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	public Map<String,Object> session;
 
-
+//ユーザー情報が条件に合うかの確認と登録
 	public String execute(){
 		if(userCreateConfirmDAO.getUserId(userId)){
 			setErrorMessage("入力されたIDがすでに使われています。");
@@ -101,7 +101,6 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		}
 
 		if(!(telNumber.equals(""))){
-
 			session.put("createTelNumber", telNumber);
 		}else{
 			telNumber="未入力";
@@ -114,9 +113,11 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			userAddress="未入力";
 			session.put("createUserAddress",userAddress);
 		}
+
+
 		return result;
 	}
-
+//セッターゲッターの設定
 	public String getUserId(){
 		return userId;
 	}
@@ -204,6 +205,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+
 
 	@Override
 	public void setSession(Map<String,Object> session){

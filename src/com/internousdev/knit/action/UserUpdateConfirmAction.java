@@ -29,6 +29,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 	private String errorMessage;
 
 	public String execute(){
+		//入力情報の確認と登録
 		if(!userUpdateConfirmDAO.getUserId(userId)){
 			setErrorMessage("入力されたIDが異なります。");
 			return ERROR;
@@ -73,7 +74,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 		return result;
 	}
-
+//ゲッターセッターの設定
 	public ArrayList<String> getErrMsgList() {
 		return errMsgList;
 	}

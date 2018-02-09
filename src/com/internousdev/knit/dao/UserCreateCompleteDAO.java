@@ -11,7 +11,8 @@ public class UserCreateCompleteDAO {
 
 
 	private DateUtil dateUtil = new DateUtil();
-	public int createUser1(String userId, String password, String familyName, String firstName, String familyNameKana, String firstNameKana, int sex, String email) throws SQLException{
+	//DB接続ならびに情報の登録
+	public int createUser1(String userId, String password, String familyName, String firstName, String familyNameKana, String firstNameKana, int sex, String email ) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;

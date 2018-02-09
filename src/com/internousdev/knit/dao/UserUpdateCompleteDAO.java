@@ -14,7 +14,7 @@ public class UserUpdateCompleteDAO {
 		DBConnector db = new DBConnector();
 
 	    Connection con = db.getConnection();
-
+//DB接続　情報の登録
 	    int count=0;
 		String sql = "UPDATE user_info SET password = ?, update_date = ? WHERE user_id = ? ";
 		try{

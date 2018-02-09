@@ -25,6 +25,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	public String execute() throws SQLException{
 		String result = ERROR;
+		//入力された値の確認
 		System.out.println(userId);
 		System.out.println(password);
 		System.out.println(familyName);
@@ -33,11 +34,15 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		System.out.println(firstNameKana);
 		System.out.println(sex);
 		System.out.println(email);
+		System.out.println(telNumber);
+		System.out.println(userAddress);
+
 
 		int count1 = 0;
 		int count2 = 0;
 		UserCreateCompleteDAO dao = new UserCreateCompleteDAO();
 
+		//ユーザー情報の登録
 		count1 = dao.createUser1(session.get("createUserId").toString(),
 				session.get("createPassword").toString(),
 				session.get("createFamilyName").toString(),
@@ -46,6 +51,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 				session.get("createFirstNameKana").toString(),
 				Integer.parseInt(session.get("createSex").toString()),
 				session.get("createEmail").toString()
+
 				);
 
 		if(count1 >0){
@@ -66,7 +72,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 		return result ;
 	}
-
+//セッターゲッターの設定
 	public String getUserId(){
 		return userId;
 	}
