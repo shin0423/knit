@@ -86,8 +86,8 @@ public int deleteAll(String userId) throws SQLException{
 	Connection con = db.getConnection();
 	String sql = "UPDATE FROM purchase_history_info "
 				+ "SET status = 0 "
-				+ "WHERE status = 1 ,"
-				+ "AND send_flg = 0"
+				+ "WHERE status = 1 "
+				+ "AND send_flg = 0 "
 				+ "AND user_id = ? ";
 
 	int resultda = 0;
@@ -114,7 +114,7 @@ public int deleteAll(String userId) throws SQLException{
 public int deletePart(String userId,int itemId) throws SQLException{
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
-	String sql = "UPDATE FROM purchase_history_info "
+	String sql = "UPDATE purchase_history_info "
 				+ "SET status = 0 "
 				+ "WHERE status = 1 "
 				+ "AND user_id = ? "

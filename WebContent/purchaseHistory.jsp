@@ -92,7 +92,7 @@
 					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
-								<input type="hidden" name="itemId" value="1">
+								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
 								<s:submit  value="×削除"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
