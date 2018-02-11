@@ -19,7 +19,7 @@ public class PurchaseHistoryDTO {
 //	商品ID
 	private int itemId;
 
-//	登録日
+//	注文日
 	private String registDate;
 
 //	更新日
@@ -96,7 +96,7 @@ public class PurchaseHistoryDTO {
 		this.itemId = itemId;
 	}
 
-//	登録日
+//	注文日
 	public String getRegistDate() {
 		return registDate;
 	}

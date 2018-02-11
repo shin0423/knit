@@ -1,13 +1,11 @@
 package com.internousdev.knit.action;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.PurchaseCancelCompleteDAO;
-import com.internousdev.knit.dto.PurchaseHistoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -17,10 +15,6 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 	public Map<String,Object> session;
 
 	private PurchaseCancelCompleteDAO purchaseCancelCompleteDAO = new PurchaseCancelCompleteDAO();
-
-	private PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
-
-	public ArrayList<PurchaseHistoryDTO> historyList = new ArrayList<PurchaseHistoryDTO>();
 
 	private int itemId;
 
@@ -40,7 +34,12 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 
 	String userId =session.get("userId").toString();
 
-		purchaseCancelCompleteDAO.cancelPart(userId, itemId, orderNum);
+	System.out.println(userId);
+	System.out.println("アイテムID" + itemId);
+	System.out.println("注文番号" + orderNum);
+
+		int cancel = purchaseCancelCompleteDAO.cancelPart(userId, itemId, orderNum);
+		System.out.println(cancel);
 
 		return result;
 
@@ -67,34 +66,6 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
-	}
-
-
-
-
-	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
-		return historyList;
-	}
-
-
-
-
-	public void setHistoryList(ArrayList<PurchaseHistoryDTO> historyList) {
-		this.historyList = historyList;
-	}
-
-
-
-
-	public PurchaseHistoryDTO getPurchaseHistoryDTO() {
-		return purchaseHistoryDTO;
-	}
-
-
-
-
-	public void setPurchaseHistoryDTO(PurchaseHistoryDTO purchaseHistoryDTO) {
-		this.purchaseHistoryDTO = purchaseHistoryDTO;
 	}
 
 

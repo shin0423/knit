@@ -43,6 +43,8 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	private String message;
 
+	private String imageFilePath;
+
 
 	public String execute()throws SQLException{
 		System.out.println("きたよー");
@@ -65,14 +67,14 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		if(deleteFlg == null){
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
-		for (int i = 0; i < historyList.size(); i++) {
+			//imageFilePathがとれているかどうかの確認
+			for (int i = 0; i < historyList.size(); i++) {
+				System.out.println(historyList.get(i).getimageFilePath());
+			}
 
+			//Listの中身が取れているかどうかの確認
+			System.out.println("List = "+ historyList);
 
-		System.out.println(historyList.get(i).getimageFilePath());
-		}
-
-
-		System.out.println("List = "+ historyList);
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
@@ -124,11 +126,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 	public void setMessage(String message){
 		this.message = message;
 	}
-
-
-
-
-
 
 	public String getOrderNum() {
 		return orderNum;
@@ -206,6 +203,14 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public void setDeleteFlg(String deleteFlg) {
 		this.deleteFlg = deleteFlg;
+	}
+
+	public String getImageFilePath() {
+		return imageFilePath;
+	}
+
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
 	}
 
 }

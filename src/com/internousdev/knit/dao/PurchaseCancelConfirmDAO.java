@@ -17,6 +17,10 @@ import com.internousdev.knit.util.DBConnector;
 public class PurchaseCancelConfirmDAO {
 
 
+	String userId;
+	String orderNum;
+	int itemId;
+
 	//キャンセルしようとしている購入履歴単体を表示するメソッド[send_flg: 0で発送待機、1で発送キャンセル、2で発送済]
 
 public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String orderNum, int itemId) throws SQLException{
@@ -29,6 +33,8 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 			+ "iit.item_name, "
 			+ "iit.item_name_kana, "
 			+ "iit.image_file_path, "
+			+ "iit.release_company, "
+			+ "iit.release_date, "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
 			+ "ubit.regist_date "
@@ -38,7 +44,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 			+ "WHERE ubit.send_flg = 0 "
 			+ "AND ubit.user_id = ? "
 			+ "AND ubit.order_num = ? "
-			+ "AND ubit.item_id = ?"
+			+ "AND ubit.item_id = ? "
 			+ "ORDER BY regist_date DESC ";
 
 	try{
@@ -53,16 +59,25 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 			dto.setId(rs.getInt("id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
-			dto.setimageFilePath(rs.getString("image_file_name"));
+			dto.setimageFilePath(rs.getString("image_file_path"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setItemCount(rs.getInt("item_count"));
 			dto.setRegistDate(rs.getString("regist_date"));
-			dto.setOrderNum(rs.getString("order_num"));
-			dto.setStatus(rs.getInt("status"));
-			dto.setsendFlg(rs.getInt("sendFlg"));
+			dto.setReleaseCompany(rs.getString("release_company"));
+			dto.setReleaseDate(rs.getDate("release_date"));
+			dto.setItemId(itemId);
+			dto.setOrderNum(orderNum);
+			dto.setUserId(userId);
 
 			purchaseCancelConfirmDTOList.add(dto);
 
+			System.out.println("購入履歴"+ dto.getPrice());
+			System.out.println("購入履歴"+ dto.getItemCount());
+			System.out.println("購入履歴"+ dto.getimageFilePath());
+			System.out.println("購入履歴"+ dto.getRegistDate());
+			System.out.println("購入履歴"+ dto.getItemId());
+			System.out.println("購入履歴"+ dto.getOrderNum());
+			System.out.println("購入履歴"+ dto.getUserId());
 		}
 	}catch(Exception e){
 		e.printStackTrace();
@@ -71,39 +86,28 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 	}return purchaseCancelConfirmDTOList;
 }
 
+public String getUserId() {
+	return userId;
+}
 
-	//購入キャンセルメソッド(個別キャンセル)[sendFlg:0で発送待機、1で発送キャンセル、2で発送開始]
+public void setUserId(String userId) {
+	this.userId = userId;
+}
 
-public int cancelPart(String userId,int itemId,String orderNum) throws SQLException{
-	DBConnector db = new DBConnector();
-	Connection con = db.getConnection();
-	String sql = "UPDATE SET ubit.send_flg = 1, "
-				+ "iit.item_stock = iit.item_count + ubit.item_stock "
-				+ "FROM purchase_history_info as ubit "
-				+ "LEFT JOIN item_info as iit "
-				+ "ON ubit.item_id = iit.item_id "
-				+ "WHERE send_flg = 0 "
-				+ "AND user_id = ? "
-				+ "AND item_id = ? "
-				+ "AND order_num = ? ";
+public String getOrderNum() {
+	return orderNum;
+}
 
-	int resultcp = 0;
+public void setOrderNum(String orderNum) {
+	this.orderNum = orderNum;
+}
 
-	try{
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1,userId);
-		ps.setInt(2,itemId);
-		ps.setString(3,orderNum);
+public int getItemId() {
+	return itemId;
+}
 
-		resultcp = ps.executeUpdate();
-		System.out.println(resultcp);
-
-	}catch(SQLException e){
-		e.printStackTrace();
-	}finally{
-		con.close();
-	}
-	return resultcp;
+public void setItemId(int itemId) {
+	this.itemId = itemId;
 }
 
 }

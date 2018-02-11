@@ -57,7 +57,7 @@
 
 				<div class="item_text">
 					 <div class="name">
-           				 <div class="kana"><s:property value="itemnamekana"/></div>
+           				 <div class="kana"><s:property value="itemNameKana"/></div>
            				 <div class="pro_name">
            				 	商品名: <s:property value="itemName"/>
            				 </div>
@@ -66,26 +66,27 @@
 					<div class="price_count">
             			<div class="price">
             			<span>金額:\</span>
-            			<%-- <s:property value="price"/> --%>
+            			<s:property value="price"/>
             			</div>
-            			<div class="count">(購入数:  <s:property value="count"/>点)</div>
+            			<div class="count">(購入数:  <s:property value="itemCount"/>点)</div>
        				 </div>
 
 					 <div class="comp_info">
-           				 <div class="company">発売会社：<s:property value="releasecompany"/></div>
+           				 <div class="company">発売会社：<s:property value="releaseCompany"/></div>
            				 <div class="release_date">
-           				 	発売日：<s:property value="release_date"/>
-           				</div>
+           				 	発売日：<s:property value="releaseDate"/>
+           				 </div>
         			</div>
 
         			<div class="cancel">
 						<!-- キャンセルボタン -->
 							<s:form action ="PurchaseCancelConfirmAction">
-								<input type="hidden" name= "itemId" value="%{itemId}">
-								<input type="hidden" name= "orderNum" value="%{orderNum}">
+								<input type="hidden" name= "itemId" value="<s:property value= 'itemId'/>">
+								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
 								<s:submit value="注文キャンセル" />
+								注文番号<s:property value= 'orderNum'/>
+								アイテムId<s:property value= 'itemId'/>
 							</s:form>
-
 					</div>
 				</div>
     		</div>

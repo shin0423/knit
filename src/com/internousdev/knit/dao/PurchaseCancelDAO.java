@@ -29,6 +29,8 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			+ "iit.item_name, "
 			+ "iit.item_name_kana, "
 			+ "iit.image_file_path, "
+			+ "iit.release_company, "
+			+ "iit.release_date, "
 			+ "ubit.price, "
 			+ "ubit.item_count, "
 			+ "ubit.regist_date, "
@@ -56,7 +58,15 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setItemCount(rs.getInt("item_count"));
 			dto.setRegistDate(rs.getString("regist_date"));
 			dto.setOrderNum(rs.getString("order_num"));
-			dto.setStatus(rs.getInt("status"));
+			dto.setReleaseCompany(rs.getString("release_company"));
+			dto.setReleaseDate(rs.getDate("release_date"));
+
+			System.out.println("購入履歴"+ dto.getPrice());
+			System.out.println("購入履歴"+ dto.getItemCount());
+			System.out.println("購入履歴"+ dto.getimageFilePath());
+			System.out.println("購入履歴"+ dto.getRegistDate());
+			System.out.println("購入履歴"+ dto.getOrderNum());
+			System.out.println("購入履歴"+ dto.getItemId());
 
 			purchaseCancelDTOList.add(dto);
 
@@ -67,8 +77,6 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 		con.close();
 	}return purchaseCancelDTOList;
 }
-
-
 	//購入キャンセルメソッド(個別キャンセル)[sendFlg:0で発送待機、1で発送キャンセル、2で発送開始]
 
 public int cancelPart(String userId,int itemId,String orderNum) throws SQLException{
@@ -93,7 +101,7 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 		ps.setString(3,orderNum);
 
 		resultcp = ps.executeUpdate();
-		System.out.println(resultcp);
+		System.out.println(resultcp+"件キャンセルしました");
 
 	}catch(SQLException e){
 		e.printStackTrace();
@@ -108,7 +116,8 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 public int sendFlgChange(String userId) throws SQLException{
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
-	String sql = "UPDATE SET purchase_history_info.send_flg = 2, "
+	String sql = "UPDATE purchase_history_info "
+				+ "SET send_flg = 2 "
 				+ "WHERE send_flg = 0 "
 				+ "AND user_id = ? ";
 

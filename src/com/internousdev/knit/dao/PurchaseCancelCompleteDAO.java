@@ -18,15 +18,15 @@ public class PurchaseCancelCompleteDAO {
 public int cancelPart(String userId,int itemId,String orderNum) throws SQLException{
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
-	String sql = "UPDATE SET ubit.send_flg = 1, "
-				+ "iit.item_stock = iit.item_count + ubit.item_stock "
-				+ "FROM purchase_history_info as ubit "
+	String sql = "UPDATE purchase_history_info as ubit "
 				+ "LEFT JOIN item_info as iit "
 				+ "ON ubit.item_id = iit.item_id "
-				+ "WHERE send_flg = 0 "
-				+ "AND user_id = ? "
-				+ "AND item_id = ? "
-				+ "AND order_num = ? ";
+				+ "SET ubit.send_flg = 1, "
+				+ "iit.item_stock = ubit.item_count + iit.item_stock "
+				+ "WHERE ubit.send_flg = 0 "
+				+ "AND ubit.user_id = ? "
+				+ "AND iit.item_id = ? "
+				+ "AND ubit.order_num = ? ";
 
 	int resultcp = 0;
 
@@ -37,7 +37,8 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 		ps.setString(3,orderNum);
 
 		resultcp = ps.executeUpdate();
-		System.out.println(resultcp);
+		System.out.println(resultcp+"要素を操作しました");
+
 
 	}catch(SQLException e){
 		e.printStackTrace();

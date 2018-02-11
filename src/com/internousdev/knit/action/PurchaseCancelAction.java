@@ -49,8 +49,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
     String result = SUCCESS;
 
-	cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
-
 	if (!loginFlg.equals("true")) {
 		return ERROR;
 	}
@@ -63,15 +61,29 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	 * @param args
 	 */
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+	//userIdに紐づいたsend_flgが0の商品を検索します
+	cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
+
+
+	System.out.println("List = "+ cancelList);
+
+	for (int i = 0; i < cancelList.size(); i++) {
+		System.out.println(cancelList.get(i).getRegistDate());
+	}
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date dateTo = null;
     Date dateFrom = null;
-    PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
     DateUtil dateUtil = new DateUtil();
 
     // 日付を作成します。
+
+
+
+    for (int i = 0; i < cancelList.size(); i++){
     try {
-        dateFrom = sdf.parse(purchaseHistoryDTO.getRegistDate());
+        dateFrom = sdf.parse(cancelList.get(i).getRegistDate());
         dateTo = sdf.parse(dateUtil.getDate());
     } catch (ParseException e) {
         e.printStackTrace();
@@ -105,7 +117,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 		cancelList = null;
 
 		return result;
-
+		}
 		}return result;
 	}
 	//キャンセル可能な商品が0のときに以下の処理を実行します
@@ -113,6 +125,11 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	}return result;
 
 	}
+
+
+
+
+	//ゲッタセッタ
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
