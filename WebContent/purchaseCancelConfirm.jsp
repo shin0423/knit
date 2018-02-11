@@ -34,14 +34,14 @@
 
 
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "cancelConfirmList == null ">
+				<s:if test = "cancelConfirmList.size() == 0 ">
 					<h2>
 					申し訳ございませんが、商品はすでに発送されています。
 					<br>
 					商品発送後のキャンセルはこのフォームからは受け付けておりません。
 					</h2>
 				</s:if>
-				<s:elseif test= "cancelConfirmList != null">
+				<s:elseif test= "cancelConfirmList.size() != 0">
 					<h2>キャンセル情報は以下になります</h2>
 
 			<s:iterator value = "cancelConfirmList">

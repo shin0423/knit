@@ -76,6 +76,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 		}
 
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	    Date dateTo = null;
 	    Date dateFrom = null;
 	    DateUtil dateUtil = new DateUtil();
@@ -87,7 +88,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 	    for (int i = 0; i < cancelConfirmList.size(); i++){
 	    try {
 	        dateFrom = sdf.parse(cancelConfirmList.get(i).getRegistDate());
-	        dateTo = sdf.parse(dateUtil.getDate());
+	        dateTo = SDF.parse(dateUtil.getDate());
 	    } catch (ParseException e) {
 	        e.printStackTrace();
 	    }
@@ -105,7 +106,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 	    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
-	    if(dayDiff > 6){
+	    if(dayDiff > 0){
 	    	purchaseCancelDAO.sendFlgChange(userId);
 	    }
     }

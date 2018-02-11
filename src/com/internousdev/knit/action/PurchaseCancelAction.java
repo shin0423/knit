@@ -73,6 +73,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	}
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date dateTo = null;
     Date dateFrom = null;
     DateUtil dateUtil = new DateUtil();
@@ -84,7 +85,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     for (int i = 0; i < cancelList.size(); i++){
     try {
         dateFrom = sdf.parse(cancelList.get(i).getRegistDate());
-        dateTo = sdf.parse(dateUtil.getDate());
+        dateTo = SDF.parse(dateUtil.getDate());
     } catch (ParseException e) {
         e.printStackTrace();
     }
@@ -102,8 +103,9 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
     //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
-    if(dayDiff > 6){
+    if(dayDiff >= 0){
     	purchaseCancelDAO.sendFlgChange(userId);
+    }
     }
 
     //購入キャンセル可能商品履歴表示メソッド
@@ -116,8 +118,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 		if(!(iterator.hasNext())){
 		cancelList = null;
 
-		return result;
-		}
+
 		}return result;
 	}
 	//キャンセル可能な商品が0のときに以下の処理を実行します
