@@ -25,11 +25,14 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public ArrayList<PurchaseHistoryDTO> historyList = new ArrayList<PurchaseHistoryDTO>();
 
+
+
 	private String itemId;
 
 	private String deleteFlg;
 
 	private String message;
+
 
 
 
@@ -135,28 +138,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		}
 
-	public void totalPrice(){
-		int totalPrice = 0 ;
-		//System.out.println(historyList.size());
-		for(int i=0; i < historyList.size(); i++) {
-			System.out.println("商品の値段"+historyList.get(i).getPrice());
-			System.out.println("商品の個数"+historyList.get(i).getItemCount());
-			totalPrice = historyList.get(i).getPrice() * historyList.get(i).getItemCount();
 
-		}
-		System.out.println("商品価格合計"+totalPrice);
-	}
-
-	public void imageFilePath(){
-		String imageFilePath= null ;
-		//System.out.println(historyList.size());
-		for(int i=0; i < historyList.size(); i++) {
-			System.out.println("商品の画像リンク"+historyList.get(i).getImageFilePath());
-			imageFilePath = historyList.get(i).getImageFilePath();
-
-		}
-		System.out.println("画像リンク"+imageFilePath);
-	}
 
 
 	public Map<String, Object> getSession() {

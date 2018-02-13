@@ -60,6 +60,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setOrderNum(rs.getString("order_num"));
 			dto.setReleaseCompany(rs.getString("release_company"));
 			dto.setReleaseDate(rs.getDate("release_date"));
+			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
 
 			System.out.println("購入履歴"+ dto.getPrice());
 			System.out.println("購入履歴"+ dto.getItemCount());

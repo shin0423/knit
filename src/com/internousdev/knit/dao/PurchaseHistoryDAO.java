@@ -63,12 +63,13 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setsendFlg(rs.getInt("send_flg"));
 			dto.setReleaseCompany(rs.getString("release_company"));
 			dto.setReleaseDate(rs.getDate("release_date"));
-
+			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
 
 			System.out.println("購入履歴"+ dto.getPrice());
 			System.out.println("購入履歴"+ dto.getItemCount());
 			System.out.println("購入履歴"+ dto.getImageFilePath());
 			System.out.println("購入履歴"+ dto.getRegistDate());
+			System.out.println("購入履歴"+ dto.getTotalPrice());
 
 			purchaseHistoryDTOList.add(dto);
 
