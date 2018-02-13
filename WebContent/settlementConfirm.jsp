@@ -20,15 +20,18 @@
 
 <!-- 決済情報 -->
 
+
+<s:iterator value="cartInfoList">
+
 <table border="1">
 <tr>
-<s:iterator value="cartInfoList">
-<td>
 
+<td>
 <div class="img">
 <img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 </div>
 </td>
+
 <td>
 <div class="name">
 商品名：<s:property value="itemName" />
@@ -50,13 +53,14 @@
 </div>
 </td>
 
-<br>
-<br>
+</tr>
+</table>
 
+<br>
+<br>
 
 </s:iterator>
 
-</table>
 <br>
 <br>
 <br>
@@ -64,32 +68,42 @@
 
 合計金額:<s:property value="#session.cartTotalPrice" />円
 
-
+<br>
 <!-- 宛先情報一覧 -->
-
+<br>
+<table border="1">
+<tr>
 <s:iterator value="destinationList">
-
-<input type="radio" name="destination" checked="checked"/>
+<td>
+<input type="radio" name="id" value="id" checked="checked"/>
 お届け先住所
+</td>
+<td>
+ふりがな:
 
-ふりがな
-<s:property value="family_name_kana"/>
-<s:property value="first_name_kana"/>
+<s:property value="familyNameKana"/>
+<s:property value="firstNameKana"/>
+
 <br>
-名前
-<s:property value="family_name"/>
-<s:property value="first_name"/>
+名前:
+
+<s:property value="familyName"/>
+<s:property value="firstName"/>
+
 <br>
-住所
-<s:property value="user_address"/>
+住所:
+<s:property value="userAddress"/>
 <br>
-電話番号
-<s:property value="tel_number"/>
+電話番号:
+<s:property value="telNumber"/>
 <br>
-メールアドレス
+メールアドレス:
 <s:property value="email"/>
+</td>
 
 </s:iterator>
+</tr>
+</table>
 
 <button type="submit">購入</button>
 

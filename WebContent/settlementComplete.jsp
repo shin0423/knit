@@ -25,15 +25,27 @@
 </div>
 </div>
 <div id="main">
-<div id="top">
-<p>PurchaseComplete</p>
+<div class ="top">
+<h1>Thank You!</h1>
 </div>
-
-<div>
-<p>購入手続きが完了致しました。</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div><h1>購入手続きが完了致しました。</h1></div>
+<br>
+<br>
+<br>
+<br>
 <div>
 <p><a href='<s:url action="TopAction" />'>ホーム</a></p>
-</div>
 </div>
 </div>
 <div id="footer">

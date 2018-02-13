@@ -52,6 +52,9 @@ public class PurchaseHistoryDTO {
 
 	private int sendFlg ;
 
+//合計金額
+	private int totalPrice;
+
 //*--------------------------------------	ゲッタセッタ	-------------------------------------------
 
 
@@ -136,13 +139,7 @@ public class PurchaseHistoryDTO {
 		this.itemNameKana = itemNameKana;
 	}
 
-//	商品画像ファイルパス
-	public String getimageFilePath() {
-		return imageFilePath;
-	}
-	public void setimageFilePath(String imageFilePath) {
-		this.imageFilePath = imageFilePath;
-	}
+
 
 //	商品の履歴表示フラグ [0で非表示,1で表示]
 	public int getStatus() {
@@ -160,17 +157,38 @@ public class PurchaseHistoryDTO {
 	public void setsendFlg(int sendFlg) {
 		this.sendFlg = sendFlg;
 	}
+//	発売日
 	public Date getReleaseDate() {
 		return releaseDate;
 	}
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
+//	発売会社
 	public String getReleaseCompany() {
 		return releaseCompany;
 	}
 	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
 	}
+
+//合計金額
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	//画像パス
+	public String getImageFilePath() {
+		return imageFilePath;
+	}
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
+	}
+
+
+
 
 }

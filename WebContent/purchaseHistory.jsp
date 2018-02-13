@@ -14,15 +14,12 @@
 
 <!-- メイン -->
 	<div class = "main">
+
 		<!-- メインのトップ -->
 			<div class = "top">
 				<p class="title">購入履歴</p>
 			</div>
 		<!-- メインのトップここまで -->
-
-
-
-
 
 		<div>
 		<!-- リストに応じたトップメッセージ -->
@@ -48,67 +45,126 @@
 <!----------------------履歴詳細   ここから------------------------------->
 
 				<s:iterator value = "historyList">
-        			<div class="date">
-            			<p>注文日</p>
-            			<p><s:property value="registDate" /></p>
-            		</div>
 
-				<div>
+				<table>
+
+				<tr>
+					<td>
+					<p>注文日</p>
+					</td>
+
+            		<td>
+            		<p><s:property value="registDate" /></p>
+            		</td>
+            	</tr>
+
+
+
+				<!--
 					<s:property value="itemId"/>
+					<img src='<s:property value="imageFilePath"/>'>
+					<img src="./images/coffee.jpg"/>
 				</div>
 
 
-				<div>
 				<s:property value="imageFilePath" />
-				</div>
+
+				</div>  -->
 
 				<!--  画像ファイル -->
-			<div class="main_content clearfix_hon">
-				<div class="item_image">
-					<input type="image" src="<s:property value="imageFilePath" />" alt="画像なし" >
-					<input type="image" src="<s:property value='imageFilePath' />" alt="画像なし" >
-					<input type="image" src="/knit/images/coffee.jpg" alt="画像なし" >
-				</div>
 
 
-				<div class="item_text">
-					 <div class="name">
-           				 <div class="kana"><s:property value="itemNameKana"/></div>
-           				 <div class="pro_name">
-           				 	商品名: <s:property value="itemName"/>
-           				 </div>
-        			</div>
+				 <tr>
 
-					<div class="price_count">
-            			<div class="price">
-            			<span>金額:\</span>
-            			<s:property value="price"/>
-            			</div>
-            			<div class="count">(購入数:  <s:property value="itemCount"/>点)</div>
-       				 </div>
+					<td>
+					<img src="<s:property value='imageFilePath' />" alt="画像なし" >
+					</td>
 
-					 <div class="comp_info">
-           				 <div class="company">発売会社：<s:property value="releaseCompany"/></div>
-           				 <div class="release_date">
-           				 	発売日：<s:property value="releaseDate"/>
-           				 </div>
-        			</div>
+				</tr>
 
-        			<div class="delete">
-					 	<!--  履歴個別削除ボタン-->
+				<tr>
+					<td>
+					ふりがな:
+					</td>
+					<td>
+					<s:property value="itemNameKana"/>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					商品名:
+					</td>
+
+					<td>
+					<s:property value="itemName"/>
+					</td>
+				</tr>
+
+				<tr>
+            		<td>
+            		単価:
+            		</td>
+
+            		<td>
+            		<s:property value="price"/>円
+            		</td>
+            	</tr>
+
+				<tr>
+            		<td>
+            		購入数:
+            		</td>
+
+            		<td>
+            		<s:property value="itemCount"/>
+            		</td>
+
+				</tr>
+
+				<tr>
+					<td>
+					合計購入金額:
+					</td>
+					<td>
+					<s:property value='totalPrice'/>円
+					</td>
+					<td>
+					<s:property value="('price' * 'itemCount')"/>円
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					発売会社：
+					</td>
+
+					<td>
+					<s:property value="releaseCompany"/>
+           			</td>
+           		</tr>
+           		<tr>
+           			<td>
+           			発売日：
+           			</td>
+
+           			<td>
+           			<s:property value="releaseDate"/>
+           			</td>
+
+
+        		<tr>
+					<td>
+					<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
 								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
 								<s:submit  value="×削除"/>
 							</s:form>
-						<!--  履歴個別削除ボタンここまで-->
-
-					 </div>
-
-				</div>
-    		</div>
-
-
+					<!--  履歴個別削除ボタンここまで-->
+					</td>
+				</tr>
+			</table>
     		</s:iterator>
 
 

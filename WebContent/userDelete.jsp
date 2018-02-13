@@ -11,6 +11,8 @@
 <title>会員退会画面</title>
 </head>
 <body>
+<h1>本当に退会しますか？</h1>
+退会される方はチェックボックスにチェックを入れて削除を押してください。
 	<script type="text/javascript">
 	$(function(){
 		$('#checkBtn').on('change',function(){

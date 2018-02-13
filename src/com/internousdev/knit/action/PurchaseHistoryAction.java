@@ -32,6 +32,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 	private String message;
 
 
+
 	public String execute()throws SQLException{
 		System.out.println("きたよー");
 
@@ -46,6 +47,9 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 
 		String userId =session.get("userId").toString();
+		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
+
+
 
 
 		//購入履歴表示メソッド
@@ -55,11 +59,17 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 			//imageFilePathがとれているかどうかの確認
 			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println(historyList.get(i).getimageFilePath());
+				System.out.println(historyList.get(i).getImageFilePath());
+
 			}
+			for (int i = 0; i < historyList.size(); i++) {
+				System.out.println("合計金額" + (historyList.get(i).getItemCount() * historyList.get(i).getPrice()));
+
+			};
 
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+
 
 		if(!(iterator.hasNext())){
 		historyList = null;
@@ -108,7 +118,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 			//imageFilePathがとれているかどうかの確認
 			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println(historyList.get(i).getimageFilePath());
+				System.out.println(historyList.get(i).getImageFilePath());
 			}
 
 
@@ -125,23 +135,67 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		}
 
-	public String getMessage(){
-		return message;
+	public void totalPrice(){
+		int totalPrice = 0 ;
+		//System.out.println(historyList.size());
+		for(int i=0; i < historyList.size(); i++) {
+			System.out.println("商品の値段"+historyList.get(i).getPrice());
+			System.out.println("商品の個数"+historyList.get(i).getItemCount());
+			totalPrice = historyList.get(i).getPrice() * historyList.get(i).getItemCount();
+
+		}
+		System.out.println("商品価格合計"+totalPrice);
 	}
-	public void setMessage(String message){
-		this.message = message;
+
+	public void imageFilePath(){
+		String imageFilePath= null ;
+		//System.out.println(historyList.size());
+		for(int i=0; i < historyList.size(); i++) {
+			System.out.println("商品の画像リンク"+historyList.get(i).getImageFilePath());
+			imageFilePath = historyList.get(i).getImageFilePath();
+
+		}
+		System.out.println("画像リンク"+imageFilePath);
 	}
+
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
+
+	public PurchaseHistoryDAO getPurchaseHistoryDAO() {
+		return purchaseHistoryDAO;
+	}
+
+
+	public void setPurchaseHistoryDAO(PurchaseHistoryDAO purchaseHistoryDAO) {
+		this.purchaseHistoryDAO = purchaseHistoryDAO;
+	}
+
+
 	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
 		return historyList;
 	}
 
+
 	public void setHistoryList(ArrayList<PurchaseHistoryDTO> historyList) {
 		this.historyList = historyList;
+	}
+
+
+	public String getItemId() {
+		return itemId;
+	}
+
+
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 
 
@@ -149,16 +203,22 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		return deleteFlg;
 	}
 
+
 	public void setDeleteFlg(String deleteFlg) {
 		this.deleteFlg = deleteFlg;
 	}
 
-	public String getItemId() {
-		return itemId;
+
+	public String getMessage() {
+		return message;
 	}
 
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
+
+
 
 }

@@ -256,7 +256,7 @@ public class CartDAO extends ActionSupport{
 		int count=0;
 
 		String sql="UPDATE cart_info SET item_count=item_count+" +itemCount
-			+"WHERE user_id=? AND item_id=?";
+			+" WHERE user_id=? AND item_id=?";
 
 		try {
 			con=db.getConnection();
@@ -306,13 +306,14 @@ public class CartDAO extends ActionSupport{
 		System.out.println(itemCount);
 
 		String sql="UPDATE cart_info SET item_count=item_count +" +itemCount
-				+"WHERE user_id=? AND item_id=?";
+				+" WHERE user_id=? AND item_id=?";
 
 		try {
 			con=db.getConnection();
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setInt(2, itemId);
+			System.out.println("----------------------------------------");
 			count=ps.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
