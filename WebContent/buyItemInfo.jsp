@@ -50,17 +50,24 @@
 			<s:property />
 		</s:iterator>
 		</s:if>
-	
-	自分のレビューを消す<br>
+
+	<br>
+	<s:if test=" #session.userId != null ">
+	<br>自分のレビューを消す<br>
 	<s:form action="ReviewDeleteAction">
+		<s:hidden name="itemId" value="%{itemId}" />
 		<s:submit value="確認" />
 	</s:form>
-	
+	</s:if>
+
 	<br>レビュー<br>
 	<s:iterator value="reviewList">
 		名前:<s:property value="firstName"/>&nbsp;&nbsp;追加日時:<s:property value="insertDate" /><br>
 		評価:<s:property value="reviewStar" /><br>
 		レビュー内容:<s:property value="reviewBody" /><br><br>
 	</s:iterator>
+	<br>
+
+	ホームに戻る方は<a href="<s:url action='TopAction' />" >こちら</a>
 </body>
 </html>
