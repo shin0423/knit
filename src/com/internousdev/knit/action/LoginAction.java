@@ -2,13 +2,16 @@ package com.internousdev.knit.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.LoginDAO;
 import com.internousdev.knit.dto.CartDTO;
+import com.internousdev.knit.dto.CategoryDTO;
 import com.internousdev.knit.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,6 +25,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private ArrayList<CartDTO> userCartList = new ArrayList<CartDTO>();
 	private int totalPrice;
 	private Map<String, Object> session;
+
+	private List<CategoryDTO> categoryList = new ArrayList<>();
 
 	public String execute() throws SQLException {
 		String result = ERROR;
@@ -78,6 +83,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					 * 管理者ユーザーか判定してログイン
 					 */
 					if (loginDTO.getAdminFlg().equals("1")) {
+						CategoryDAO categoryDAO = new CategoryDAO();
+						setCategoryList(categoryDAO.getCategoryList());
 						result = "admin";
 						loginDAO.login(loginDTO);
 						session.put("loginFlg", true);
@@ -308,5 +315,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public List<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(List<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 }

@@ -99,11 +99,6 @@ regist_date datetime not null,
 update_date datetime
 );
 
-insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values( 'internous','南里','健太','なんり','けんた','nyandy1794@gmail.com','12345678','東京都練馬区','2018-02-06');
-insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('internous','桑本','直樹','くわもと','なおき','kuwamoto0721@gmail.com','12345678','東京都墨田区錦糸町','2018-02-06');
-
-
-
 drop table if exists m_category;
 
 create table m_category(
@@ -147,3 +142,7 @@ insert into item_info(item_id,item_name,item_name_kana,item_description,category
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(13,"コーヒー5","コーヒー5","濃厚で香り高いコーヒー",1,500,10,"/knit/images/coffee.jpg","コーヒー","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(14,"レモン5","レモン5","すっぱいレモン",1,200,20,"/knit/images/limon.jpg","レモン","2018-02-06","株式会社South",1,"2018-02-06");
 insert into item_info(item_id,item_name,item_name_kana,item_description,category_id,price,item_stock,image_file_path,image_file_name,release_date,release_company,status,regist_date) values(15,"ダーツ5","ダーツ5","矢と的のお得なセット",4,3000,15,"/knit/images/darts.jpg","ダーツ","2018-02-06","株式会社South",1,"2018-02-06");
+insert into m_category(category_id,category_name,category_description) values(1,"トップス","トップスのカテゴリー");
+insert into m_category(category_id,category_name,category_description) values(2,"ボトム","ボトムのカテゴリー");
+insert into m_category(category_id,category_name,category_description) values(3,"アウター","アウターのカテゴリー");
+insert into m_category(category_id,category_name,category_description) values(4,"小物","小物のカテゴリー");
