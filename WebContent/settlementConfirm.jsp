@@ -58,22 +58,22 @@
 
 <s:iterator value="destinationList">
 
-<input type="radio" name="destination" checked="checked"/>
+<input type="radio" name="destinationId" value="id" checked="checked"/>
 お届け先住所
 
 ふりがな
-<s:property value="family_name_kana"/>
-<s:property value="first_name_kana"/>
+<s:property value="familyNameKana"/>
+<s:property value="firstNameKana"/>
 <br>
 名前
-<s:property value="family_name"/>
-<s:property value="first_name"/>
+<s:property value="familyName"/>
+<s:property value="firstName"/>
 <br>
 住所
-<s:property value="user_address"/>
+<s:property value="userAddress"/>
 <br>
 電話番号
-<s:property value="tel_number"/>
+<s:property value="telNumber"/>
 <br>
 メールアドレス
 <s:property value="email"/>

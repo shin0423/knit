@@ -4,17 +4,15 @@ package com.internousdev.knit.dto;
 public class SettlementConfirmDTO {
 
 	private int id;
-	private String user_id;
+	private String userId;
 
-	private String family_name;
-	private String first_name;
-	private String family_name_kana;
-	private String first_name_kana;
+	private String familyName;
+	private String firstName;
+	private String familyNameKana;
+	private String firstNameKana;
 	private String email;
-	private String tel_number;
-	private String user_address;
-
-
+	private String telNumber;
+	private String userAddress;
 	public int getId() {
 		return id;
 	}
@@ -22,59 +20,55 @@ public class SettlementConfirmDTO {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return user_id;
-	}
-	public void setUserId(String user_id) {
-		this.user_id = user_id;
-	}
-
 	public String getFamilyName() {
-		return family_name;
+		return familyName;
 	}
-	public void setFamilyName(String family_name) {
-		this.family_name = family_name;
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
 	}
-
 	public String getFirstName() {
-		return first_name;
+		return firstName;
 	}
-	public void setFirstName(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-
 	public String getFamilyNameKana() {
-		return family_name_kana;
+		return familyNameKana;
 	}
-	public void setFamilyNameKana(String family_name_kana) {
-		this.family_name_kana = family_name_kana;
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana = familyNameKana;
 	}
-
 	public String getFirstNameKana() {
-		return first_name_kana;
+		return firstNameKana;
 	}
-	public void setFirstNameKana(String first_name_kana) {
-		this.first_name_kana = first_name_kana;
+	public void setFirstNameKana(String firstNameKana) {
+		this.firstNameKana = firstNameKana;
 	}
-
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getTelNumber() {
-		return tel_number;
+		return telNumber;
 	}
-	public void setTelNumber(String tel_number) {
-		this.tel_number = tel_number;
+	public void setTelNumber(String telNumber) {
+		this.telNumber = telNumber;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getUserAddress() {
-		return user_address;
-	}
-	public void setUserAddress(String user_address) {
-		this.user_address = user_address;
-	}
+
+
 }

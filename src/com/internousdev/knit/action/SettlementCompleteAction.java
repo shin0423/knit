@@ -92,4 +92,20 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	public void setBuyCountErrorList(ArrayList<CartDTO> buyCountErrorList) {
 		this.buyCountErrorList = buyCountErrorList;
 	}
+
+
+
+	public ArrayList<SettlementConfirmDTO> getDestinationList() {
+		return destinationList;
+	}
+
+
+
+	public void setDestinationList(ArrayList<SettlementConfirmDTO> destinationList) {
+		this.destinationList = destinationList;
+	}
+
+
+
+
 }
