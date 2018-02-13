@@ -34,6 +34,11 @@
 </head>
 <body>
 <header>
+	<ul>
+		<li><a href='<s:url action="MyPageAction"/>'>マイページ</a></li>
+		<li><a href='<s:url action="LoginAction"/>'>ログイン</a></li>
+		<li><a href='<s:url action="CartAction"/>'>カート</a></li>
+	</ul>
 </header>
 
 
@@ -59,13 +64,14 @@
 
 			<s:hidden name="itemId" value="%{itemId}"/>
 			<td ><s:checkbox name="checkList" value="checked" fieldValue="%{id}" class="sample01" onclick="checkboxTest();"/></td>
-			<div class="border">
-			</div>
+
+			<td>
 			<div class="pro_img">
 				<img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 				<s:hidden name="imageFilePath" value="%{imageFilePath}"/>
 			</div>
-
+			</td>
+			<td>
 			<div class="kana">
 				<s:property value="itemNameKana"/>
 				<s:hidden name="itemNameKana" value="%{itemNameKana}"/>
@@ -100,7 +106,7 @@
 				<s:hidden name="releaseDate" value="%{releaseDate}"/>
 
 			</div>
-
+			</td>
 			</s:iterator>
 
 <!----------------------- 商品削除 ------------------------->
