@@ -8,6 +8,7 @@
 <title>商品一覧</title>
 </head>
 <body>
+	<table>
 	<s:iterator value="buyItemAfterSearchList">
 		<img src="<s:property value='itemImagePath' />">
 		<s:property value="itemName"/>
