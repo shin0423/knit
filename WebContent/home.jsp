@@ -80,6 +80,8 @@ $(function() {
 </script>
 
 <a href='<s:url action="GoLoginPageAction"/>'>ログインへ</a>
+<a href='<s:url action="UserLogoutAction"/>'>ログアウト</a>
+
 <s:if test="#session.loginFlg == true">
 <a href='<s:url action="MyPageAction"/>'>マイページへ</a>
 <a href='<s:url action="UserLogoutAction"/>'>ログアウト</a>
