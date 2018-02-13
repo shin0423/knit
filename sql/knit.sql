@@ -99,6 +99,10 @@ regist_date datetime not null,
 update_date datetime
 );
 
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values( 'internous','南里','健太','なんり','けんた','nyandy1794@gmail.com','12345678','東京都練馬区','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('internous','桑本','直樹','くわもと','なおき','kuwamoto0721@gmail.com','12345678','東京都墨田区錦糸町','2018-02-06');
+
+
 drop table if exists m_category;
 
 create table m_category(
