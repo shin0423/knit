@@ -34,15 +34,17 @@
 
 
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "CancelConfirmList == null ">
+				<s:if test = "cancelConfirmList.size() == 0 ">
 					<h2>
 					申し訳ございませんが、商品はすでに発送されています。
 					<br>
 					商品発送後のキャンセルはこのフォームからは受け付けておりません。
 					</h2>
 				</s:if>
+				<s:elseif test= "cancelConfirmList.size() != 0">
+					<h2>キャンセル情報は以下になります</h2>
 
-			<s:iterator value = "CancelConfirmList">
+			<s:iterator value = "cancelConfirmList">
         			<div class="date">
             			<p>注文日</p>
             			<p><s:property value="registDate" /></p>
@@ -66,24 +68,32 @@
 					<div class="price_count">
             			<div class="price">
             			<span>金額:\</span>
-            			<%-- <s:property value="price"/> --%>
+            			<s:property value="price"/>
             			</div>
-            			<div class="count">(購入数:  <s:property value="count"/>点)</div>
+
+            			<div class="count">
+            			(購入数:  <s:property value="itemCount"/>点)
+            			</div>
        				 </div>
 
 					 <div class="comp_info">
-           				 <div class="company">発売会社：<s:property value="releasecompany"/></div>
+           				 <div class="company">
+           				 発売会社：<s:property value="releaseCompany"/>
+           				 </div>
+
            				 <div class="release_date">
-           				 	発売日：<s:property value="release_date"/>
+           				 	発売日：<s:property value="releaseDate"/>
            				</div>
         			</div>
 
 
         			<div class="cancel">
 						<!-- キャンセルボタン -->
-							<s:form action ="PurchaseCompleteAction">
-								<input type="hidden" name= "itemId" value="%{itemId}">
-								<input type="hidden" name= "orderNum" value="%{orderNum}">
+							<s:form action ="PurchaseCancelCompleteAction">
+								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
+								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
+								注文番号<s:property value= 'orderNum'/>
+								アイテムId<s:property value= 'itemId'/>
 								<s:submit value="注文キャンセル" />
 							</s:form>
 
@@ -93,7 +103,7 @@
 
 
     		</s:iterator>
-
+			</s:elseif>
 				<div>
 					<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセル画面へもどる</a>
 				</div>

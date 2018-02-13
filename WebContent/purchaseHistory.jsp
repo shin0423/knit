@@ -52,22 +52,28 @@
             			<p>注文日</p>
             			<p><s:property value="registDate" /></p>
             		</div>
-				<div>
 
+				<div>
 					<s:property value="itemId"/>
+				</div>
+
+
+				<div>
+				<s:property value="imageFilePath" />
 				</div>
 
 				<!--  画像ファイル -->
 			<div class="main_content clearfix_hon">
 				<div class="item_image">
 					<input type="image" src="<s:property value="imageFilePath" />" alt="画像なし" >
-
-			</div>
+					<input type="image" src="<s:property value='imageFilePath' />" alt="画像なし" >
+					<input type="image" src="/knit/images/coffee.jpg" alt="画像なし" >
+				</div>
 
 
 				<div class="item_text">
 					 <div class="name">
-           				 <div class="kana"><s:property value="item_name_kana"/></div>
+           				 <div class="kana"><s:property value="itemNameKana"/></div>
            				 <div class="pro_name">
            				 	商品名: <s:property value="itemName"/>
            				 </div>
@@ -92,7 +98,7 @@
 					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
-								<input type="hidden" name="itemId" value="1">
+								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
 								<s:submit  value="×削除"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
@@ -141,24 +147,6 @@
 		</div>
 	</div>
 <!-- メインここまで -->
-
-
-
-<!-- js全件削除の確認 -->
-<script type="text/javascript">
-   function allDel(){
-	   //OKの処理
-
-	   if(window.confirm('すべて削除しますか？')){
-		   return true;
-	   }else{
-		   //キャンセルの処理
-		   return false;
-	   }
-   }
-
- </script>
- <!-- js全件削除の確認ここまで -->
 
 
 </body>

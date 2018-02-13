@@ -68,6 +68,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			System.out.println("購入履歴"+ dto.getPrice());
 			System.out.println("購入履歴"+ dto.getItemCount());
 			System.out.println("購入履歴"+ dto.getimageFilePath());
+			System.out.println("購入履歴"+ dto.getRegistDate());
 
 			purchaseHistoryDTOList.add(dto);
 
@@ -84,10 +85,9 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 public int deleteAll(String userId) throws SQLException{
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
-	String sql = "UPDATE FROM purchase_history_info "
+	String sql = "UPDATE purchase_history_info "
 				+ "SET status = 0 "
-				+ "WHERE status = 1 ,"
-				+ "AND send_flg = 0"
+				+ "WHERE status = 1 "
 				+ "AND user_id = ? ";
 
 	int resultda = 0;
@@ -114,7 +114,7 @@ public int deleteAll(String userId) throws SQLException{
 public int deletePart(String userId,int itemId) throws SQLException{
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
-	String sql = "UPDATE FROM purchase_history_info "
+	String sql = "UPDATE purchase_history_info "
 				+ "SET status = 0 "
 				+ "WHERE status = 1 "
 				+ "AND user_id = ? "
@@ -138,41 +138,6 @@ public int deletePart(String userId,int itemId) throws SQLException{
 		}
 
 	return resultdp;
-}
-
-
-	//購入キャンセルメソッド(個別キャンセル)[send_flg:0で発送待機、1で発送キャンセル、2で発送開始]
-
-public int cancelPart(String userId,int itemId,String orderNum) throws SQLException{
-	DBConnector db = new DBConnector();
-	Connection con = db.getConnection();
-	String sql = "UPDATE SET ubit.send_flg = 1, "
-				+ "iit.item_stock = iit.item_count + ubit.item_stock "
-				+ "FROM purchase_history_info as ubit "
-				+ "LEFT JOIN item_info as iit "
-				+ "ON ubit.item_id = iit.item_id "
-				+ "WHERE send_flg = 0 "
-				+ "AND user_id = ? "
-				+ "AND item_id = ? "
-				+ "AND order_num = ? ";
-
-	int resultcp = 0;
-
-	try{
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1,userId);
-		ps.setInt(2,itemId);
-		ps.setString(3,orderNum);
-
-		resultcp = ps.executeUpdate();
-		System.out.println(resultcp);
-
-	}catch(SQLException e){
-		e.printStackTrace();
-	}finally{
-		con.close();
-	}
-	return resultcp;
 }
 
 

@@ -49,8 +49,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
     String result = SUCCESS;
 
-	cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
-
 	if (!loginFlg.equals("true")) {
 		return ERROR;
 	}
@@ -63,16 +61,31 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	 * @param args
 	 */
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+	//userIdに紐づいたsend_flgが0の商品を検索します
+	cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
+
+
+	System.out.println("List = "+ cancelList);
+
+	for (int i = 0; i < cancelList.size(); i++) {
+		System.out.println(cancelList.get(i).getRegistDate());
+	}
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date dateTo = null;
     Date dateFrom = null;
-    PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
     DateUtil dateUtil = new DateUtil();
 
     // 日付を作成します。
+
+
+
+    for (int i = 0; i < cancelList.size(); i++){
     try {
-        dateFrom = sdf.parse(purchaseHistoryDTO.getRegistDate());
-        dateTo = sdf.parse(dateUtil.getDate());
+        dateFrom = sdf.parse(cancelList.get(i).getRegistDate());
+        dateTo = SDF.parse(dateUtil.getDate());
     } catch (ParseException e) {
         e.printStackTrace();
     }
@@ -88,10 +101,11 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     System.out.println( "現在日時(TO) : " + sdf.format(dateTo) );
     System.out.println( "差分時間数 : " + dayDiff );
 
-    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
+    //差分時間数が6時間(今はテスト用に即座に変更する)より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
-    if(dayDiff > 6){
+    if(dayDiff >= 6){
     	purchaseCancelDAO.sendFlgChange(userId);
+    }
     }
 
     //購入キャンセル可能商品履歴表示メソッド
@@ -104,7 +118,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 		if(!(iterator.hasNext())){
 		cancelList = null;
 
-		return result;
 
 		}return result;
 	}
@@ -113,6 +126,11 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	}return result;
 
 	}
+
+
+
+
+	//ゲッタセッタ
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
