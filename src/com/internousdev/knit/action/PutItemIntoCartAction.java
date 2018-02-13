@@ -50,6 +50,8 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		System.out.println("userId:"+session.get("userId"));
 		System.out.println("duplicationFlg"+duplicationFlg);
 
+		System.out.println("仮ユーザーID:"+session.get("tempUserId").toString());
+
 		int iPrice=Integer.parseInt(price);
 		if(!(session.containsKey("loginFlg"))){
 			session.put("loginFlg", false);
