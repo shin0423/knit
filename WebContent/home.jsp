@@ -86,6 +86,7 @@ $(function() {
 <a href='<s:url action="MyPageAction"/>'>マイページへ</a>
 <a href='<s:url action="UserLogoutAction"/>'>ログアウト</a>
 </s:if>
+
 <a href='<s:url action="CartAction"/>'>カートへ</a>
 <a href='<s:url action="BuyItemAction"/>'>商品一覧へ</a>
 <s:form action="BuyItemAction">
