@@ -106,7 +106,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 	    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
-	    if(dayDiff >= 0){
+	    if(dayDiff >= 6){
 	    	purchaseCancelDAO.sendFlgChange(userId);
 	    }
     }
@@ -130,6 +130,30 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 		}
 		return result;
 	}
+
+	public void totalPrice(){
+		int totalPrice = 0 ;
+		//System.out.println(historyList.size());
+		for(int i=0; i < cancelConfirmList.size(); i++) {
+			System.out.println("商品の値段"+cancelConfirmList.get(i).getPrice());
+			System.out.println("商品の個数"+cancelConfirmList.get(i).getItemCount());
+			totalPrice = cancelConfirmList.get(i).getPrice() * cancelConfirmList.get(i).getItemCount();
+
+		}
+		System.out.println("商品価格合計"+totalPrice);
+	}
+
+	public void imageFilePath(){
+		String imageFilePath= null ;
+		//System.out.println(historyList.size());
+		for(int i=0; i < cancelConfirmList.size(); i++) {
+			System.out.println("商品の画像リンク"+cancelConfirmList.get(i).getImageFilePath());
+			imageFilePath = cancelConfirmList.get(i).getImageFilePath();
+
+		}
+		System.out.println("画像リンク"+imageFilePath);
+	}
+
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
