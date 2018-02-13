@@ -16,6 +16,7 @@
 <meta charset="UTF-8">
 <title>パスワード再設定完了</title>
 </head>
+
 <body>
 	<header>
 	</header>
