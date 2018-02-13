@@ -13,7 +13,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemAction extends ActionSupport implements SessionAware{
 	private String searchWord; //ユーザーが入力した検索ワード
-	private BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
 	private List<BuyItemDTO> buyItemAfterSearchList = new ArrayList<>();
 	public Map<String,Object> session;
 	private String categoryId;
@@ -22,6 +21,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 
 	public String execute() throws SQLException{
 
+		BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
 
 		searchWord = searchWord.replace("　", " ");
 		List<String> searchList = new ArrayList<String>();

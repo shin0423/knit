@@ -19,11 +19,17 @@
 		<p class="message">購入情報は以下になります</p>
 
 <!-- 決済情報 -->
+
+<table border="1">
+<tr>
 <s:iterator value="cartInfoList">
+<td>
 
 <div class="img">
 <img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 </div>
+</td>
+<td>
 <div class="name">
 商品名：<s:property value="itemName" />
 </div>
@@ -42,17 +48,22 @@
 <div class="company">
 発売会社<s:property value="releaseCompany" />
 </div>
+</td>
+
 <br>
 <br>
 
 
 </s:iterator>
+
+</table>
 <br>
 <br>
 <br>
 
 
 合計金額:<s:property value="#session.cartTotalPrice" />円
+
 
 <!-- 宛先情報一覧 -->
 

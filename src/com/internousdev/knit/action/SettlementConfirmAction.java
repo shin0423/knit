@@ -51,6 +51,8 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 			//宛先情報の取得
 			destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
 
+			session.put("destinationList", destinationList);
+
 			//カート情報取得
 			cartInfoList = cartDAO.showUserCartList(session.get("userId").toString());
 
