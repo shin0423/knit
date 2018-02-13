@@ -20,15 +20,18 @@
 
 <!-- 決済情報 -->
 
+
+<s:iterator value="cartInfoList">
+
 <table border="1">
 <tr>
-<s:iterator value="cartInfoList">
-<td>
 
+<td>
 <div class="img">
 <img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 </div>
 </td>
+
 <td>
 <div class="name">
 商品名：<s:property value="itemName" />
@@ -50,13 +53,14 @@
 </div>
 </td>
 
-<br>
-<br>
-
-
-</s:iterator>
 </tr>
 </table>
+
+<br>
+<br>
+
+</s:iterator>
+
 <br>
 <br>
 <br>
