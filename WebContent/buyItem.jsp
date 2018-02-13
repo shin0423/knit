@@ -8,19 +8,38 @@
 <title>商品一覧</title>
 </head>
 <body>
-	<table>
+	<table border="1">
 	<s:iterator value="buyItemAfterSearchList">
-		<img src="<s:property value='itemImagePath' />">
-		<s:property value="itemName"/>
-		<s:property value="itemDescription" />
-		<s:property value="price" />
-		<s:property value="itemStock" />
-		<s:property value="releaseCompany" />
-		<s:property value="releaseDate" />
-		<s:form action="BuyItemInfoAction" >
+		<tr>
+			<td><img src="<s:property value='itemImagePath' />"></td>
+		</tr>
+		<tr>
+			<td><s:property value="itemName"/></td>
+		</tr>
+		<tr>
+			<td><s:property value="itemDescription" /></td>
+		</tr>
+		<tr>
+			<td><s:property value="price" /></td>
+		</tr>
+		<tr>
+			<td><s:property value="itemStock" /></td>
+		</tr>
+		<tr>
+			<td><s:property value="releaseCompany" /></td>
+		</tr>
+		<tr>
+			<td><s:property value="releaseDate" /></td>
+		</tr>
+		<tr>
+		<td>
+		<s:form action="BuyItemInfoAction" theme="simple" >
 			<s:hidden value="%{itemId}" name="itemId" />
 			<s:submit value="商品詳細" />
 		</s:form>
+		</td>
+		</tr>
 	</s:iterator>
+	</table>
 </body>
 </html>
