@@ -101,9 +101,9 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     System.out.println( "現在日時(TO) : " + sdf.format(dateTo) );
     System.out.println( "差分時間数 : " + dayDiff );
 
-    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
+    //差分時間数が6時間(今はテスト用に即座に変更する)より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
-    if(dayDiff >= 0){
+    if(dayDiff >= 6){
     	purchaseCancelDAO.sendFlgChange(userId);
     }
     }

@@ -88,7 +88,6 @@ public int deleteAll(String userId) throws SQLException{
 	String sql = "UPDATE purchase_history_info "
 				+ "SET status = 0 "
 				+ "WHERE status = 1 "
-				+ "AND send_flg = 0 "
 				+ "AND user_id = ? ";
 
 	int resultda = 0;

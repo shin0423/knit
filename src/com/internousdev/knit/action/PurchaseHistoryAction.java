@@ -23,27 +23,13 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	private PurchaseHistoryDAO purchaseHistoryDAO = new PurchaseHistoryDAO();
 
-	private PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
-
 	public ArrayList<PurchaseHistoryDTO> historyList = new ArrayList<PurchaseHistoryDTO>();
-
-	private String registDate;
-
-	private String itemNameKana;
-
-	private int count;
-
-	private String releasecompany;
-
-	private String orderNum;
 
 	private String itemId;
 
 	private String deleteFlg;
 
 	private String message;
-
-	private String imageFilePath;
 
 
 	public String execute()throws SQLException{
@@ -72,9 +58,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 				System.out.println(historyList.get(i).getimageFilePath());
 			}
 
-			//Listの中身が取れているかどうかの確認
-			System.out.println("List = "+ historyList);
-
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
@@ -93,12 +76,20 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 			System.out.println("削除候補件数：" + res);
 			if(res > 0){
 				System.out.println("削除した");
-				historyList = null;
 				setMessage("注文履歴をすべて削除しました");
+				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
-			}else if(res == 0){
+				if(!(iterator.hasNext())){
+				historyList = null;}
+
+			}
+			else if(res == 0){
 				System.out.println("削除失敗");
 				//setMessage("商品の削除に失敗しました。");
+				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+
+				if(!(iterator.hasNext())){
+				historyList = null;}
 			}
 
 		}
@@ -112,6 +103,20 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 			String user_id = session.get("userId").toString();
 
 			purchaseHistoryDAO.deletePart(user_id,Integer.parseInt(itemId));
+
+			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
+
+			//imageFilePathがとれているかどうかの確認
+			for (int i = 0; i < historyList.size(); i++) {
+				System.out.println(historyList.get(i).getimageFilePath());
+			}
+
+
+		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+
+		if(!(iterator.hasNext())){
+		historyList = null;
+		}
 		}
 		String result = SUCCESS;
 		System.out.println("きたよー");
@@ -125,63 +130,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 	}
 	public void setMessage(String message){
 		this.message = message;
-	}
-
-	public String getOrderNum() {
-		return orderNum;
-	}
-
-	public void setOrderNum(String orderNum) {
-		this.orderNum = orderNum;
-	}
-
-	public String getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
-	}
-
-
-	public String getItemNameKana() {
-		return itemNameKana;
-	}
-
-	public void setItemNameKana(String itemNameKana) {
-		this.itemNameKana = itemNameKana;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	public String getReleasecompany() {
-		return releasecompany;
-	}
-
-	public void setReleasecompany(String releasecompany) {
-		this.releasecompany = releasecompany;
-	}
-
-	public String getRegistDate() {
-		return registDate;
-	}
-
-	public void setRegistDate(String registDate) {
-		this.registDate = registDate;
-	}
-
-	public PurchaseHistoryDTO getPurchaseHistoryDTO() {
-		return purchaseHistoryDTO;
-	}
-
-	public void setPurchaseHistoryDTO(PurchaseHistoryDTO purchaseHistoryDTO) {
-		this.purchaseHistoryDTO = purchaseHistoryDTO;
 	}
 
 	public void setSession(Map<String, Object> session) {
@@ -205,12 +153,12 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		this.deleteFlg = deleteFlg;
 	}
 
-	public String getImageFilePath() {
-		return imageFilePath;
+	public String getItemId() {
+		return itemId;
 	}
 
-	public void setImageFilePath(String imageFilePath) {
-		this.imageFilePath = imageFilePath;
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 
 }

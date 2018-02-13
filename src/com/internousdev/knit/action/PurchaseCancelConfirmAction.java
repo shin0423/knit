@@ -106,7 +106,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 	    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
-	    if(dayDiff > 0){
+	    if(dayDiff >= 0){
 	    	purchaseCancelDAO.sendFlgChange(userId);
 	    }
     }
