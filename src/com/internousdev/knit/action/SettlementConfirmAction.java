@@ -7,8 +7,10 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dao.DestinationInfoDAO;
 import com.internousdev.knit.dao.SettlementConfirmDAO;
 import com.internousdev.knit.dto.CartDTO;
+import com.internousdev.knit.dto.DestinationInfoDTO;
 import com.internousdev.knit.dto.SettlementConfirmDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -26,9 +28,14 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 	//DAO
 	private SettlementConfirmDAO settlementConfirmDAO = new SettlementConfirmDAO();
 	private CartDAO cartDAO =new CartDAO();
+	private DestinationInfoDAO DestinationInfoDAO = new DestinationInfoDAO();
 
 	//宛先情報DTOをListに格納
 	public ArrayList<SettlementConfirmDTO> destinationList = new ArrayList<SettlementConfirmDTO>();
+
+	public ArrayList<DestinationInfoDTO> oneDestinationList = new ArrayList<DestinationInfoDTO>();
+
+
 
 	//カート情報受け取り
 	public ArrayList<CartDTO> cartInfoList = new ArrayList<CartDTO>();
@@ -43,6 +50,9 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 	private boolean cartFlg;
 
 
+	private String destinationFlg;
+
+
 	public String execute() throws SQLException{
 		String result = ERROR;
 
@@ -53,6 +63,16 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 			session.put("destinationList", destinationList);
 
+			//宛先登録する時に一番最初に表示してあげるための宛先情報を取得
+			oneDestinationList = DestinationInfoDAO.OneDestination(session.get("userId").toString());
+
+
+
+			//登録された宛先があるかどうかチェック
+			if (destinationList.size() ==0) {
+				destinationFlg ="Error";
+				session.put("destinationFlg", destinationFlg);
+			}
 			//カート情報取得
 			cartInfoList = cartDAO.showUserCartList(session.get("userId").toString());
 
@@ -151,12 +171,16 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 		this.buyCountErrorList = buyCountErrorList;
 	}
 
-	public boolean isCartFlg() {
-		return cartFlg;
+	public ArrayList<DestinationInfoDTO> getOneDestinationList() {
+		return oneDestinationList;
 	}
 
-	public void setCartFlg(boolean cartFlg) {
-		this.cartFlg = cartFlg;
+	public void setOneDestinationList(ArrayList<DestinationInfoDTO> oneDestinationList) {
+		this.oneDestinationList = oneDestinationList;
 	}
+
+
+
+
 
 }
