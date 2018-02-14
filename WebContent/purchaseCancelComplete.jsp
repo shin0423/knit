@@ -10,6 +10,9 @@
 	<meta http-equiv="imagetoolbar" content="no" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
+	<link rel="stylesheet"
+		  type="text/css"
+		  href="${pageContext.request.contextPath}/css/purchaseCancelComplete_style.css">
 
 	<title>購入キャンセル完了画面</title>
 

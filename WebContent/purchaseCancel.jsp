@@ -5,11 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/purchaseCancel_style.css">
 
 	<title>購入キャンセル画面</title>
 
@@ -43,55 +39,110 @@
 
 
 			<s:iterator value = "cancelList">
-        			<div class="date">
-            			<p>注文日</p>
-            			<p><s:property value="registDate" /></p>
-            		</div>
 
 
-			<div class="main_content clearfix_hon">
-				<div class="item_image">
-					<img src="<s:property value="imageFilePath"/>">
-				</div>
+			<table>
+
+				<!--  画像ファイル -->
+				 <tr>
+
+					<td>
+					<img src="<s:property value='imageFilePath' />" alt="画像なし">
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+					商品名:
+					</td>
+
+					<td>
+					<s:property value="itemName"/>
+					</td>
+				</tr>
+
+				<tr>
+            		<td>
+            		単価:
+            		</td>
+
+            		<td>
+            		<s:property value="price"/>円
+            		</td>
+            	</tr>
+
+            	<tr>
+            		<td>
+            		購入数:
+            		</td>
+
+            		<td>
+            		<s:property value="itemCount"/>
+            		</td>
+
+				</tr>
+
+				<tr>
+					<td>
+					合計購入金額:
+					</td>
+					<td>
+					<s:property value='totalPrice'/>円
+					</td>
+				</tr>
 
 
-				<div class="item_text">
-					 <div class="name">
-           				 <div class="kana"><s:property value="itemNameKana"/></div>
-           				 <div class="pro_name">
-           				 	商品名: <s:property value="itemName"/>
-           				 </div>
-        			</div>
+				<tr>
+					<td>
+					発売会社:
+					</td>
 
-					<div class="price_count">
-            			<div class="price">
-            			<span>金額:\</span>
-            			<s:property value="price"/>
-            			</div>
-            			<div class="count">(購入数:  <s:property value="itemCount"/>点)</div>
-       				 </div>
+					<td>
+					<s:property value="releaseCompany"/>
+           			</td>
+           		</tr>
 
-					 <div class="comp_info">
-           				 <div class="company">発売会社：<s:property value="releaseCompany"/></div>
-           				 <div class="release_date">
-           				 	発売日：<s:property value="releaseDate"/>
-           				 </div>
-        			</div>
+           		<tr>
+           			<td>
+           			発売日:
+           			</td>
 
-        			<div class="cancel">
+           			<td>
+           			<s:property value="releaseDate"/>
+           			</td>
+           		</tr>
+
+				<tr>
+					<td>
+					注文日:
+					</td>
+
+            		<td>
+            		<s:property value="registDate" />
+            		</td>
+            	</tr>
+
+        		<tr>
+        			<td>
+        			<s:form action = "BuyItemInfoAction">
+					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
+					<s:submit value="商品詳細ページへ"/>
+					</s:form>
+        			</td>
+
+        			<td class="cancel">
 						<!-- キャンセルボタン -->
 							<s:form action ="PurchaseCancelConfirmAction">
 								<input type="hidden" name= "itemId" value="<s:property value= 'itemId'/>">
 								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
 								<s:submit value="注文キャンセル" />
-								注文番号<s:property value= 'orderNum'/>
-								アイテムId<s:property value= 'itemId'/>
+								<!--  注文番号<s:property value= 'orderNum'/>
+								アイテムId<s:property value= 'itemId'/>  -->
 							</s:form>
-					</div>
-				</div>
-    		</div>
-
-
+					</td>
+			</tr>
+			</table>
     		</s:iterator>
 		</s:elseif>
 
