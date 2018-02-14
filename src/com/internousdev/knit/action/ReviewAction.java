@@ -32,26 +32,27 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 		setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
 		starDisplay();
 
-		boolean exist = reviewDAO.confirmReviewHistory(session.get("userId").toString(), Integer.valueOf(itemId));
-
-		if (reviewBody.equals("")) {
-			reviewErrorMessage.add("レビューが未入力です");
-			System.out.println("レビュー内容無しエラー");
-		} else if (reviewBody.length() > 100) {
-			reviewErrorMessage.add("レビューは100文字までです");
-			System.out.println("レビューは100文字まで");
-		} else if ( !(boolean) session.get("loginFlg") ) {
-			reviewErrorMessage.add("ログインしていない状態でレビューに書き込めません");
-		} else if (session.containsKey("userId") && exist) {
-			reviewErrorMessage.add("一度レビューに書き込んだことがある場合は書き込めません");
-		} else if ( !reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
-			reviewErrorMessage.add("この商品の購入情報が無いので書き込みできません");
-			System.out.println("この商品の購入情報が無いので書き込み不可");
+		if ((boolean) session.get("loginFlg")) {
+			boolean exist = reviewDAO.confirmReviewHistory(session.get("userId").toString(), Integer.valueOf(itemId));
+			if (reviewBody.equals("")) {
+				reviewErrorMessage.add("レビューが未入力です");
+				System.out.println("レビュー内容無しエラー");
+			} else if (reviewBody.length() > 100) {
+				reviewErrorMessage.add("レビューは100文字までです");
+				System.out.println("レビューは100文字まで");
+			} else if (session.containsKey("userId") && exist) {
+				reviewErrorMessage.add("一度レビューに書き込んだことがある場合は書き込めません");
+			} else if ( !reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
+				reviewErrorMessage.add("この商品の購入情報が無いので書き込みできません");
+				System.out.println("この商品の購入情報が無いので書き込み不可");
+			} else {
+				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), Integer.valueOf(review), reviewBody);
+				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
+				starDisplay();
+				result = SUCCESS;
+			}
 		} else {
-			reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), Integer.valueOf(review), reviewBody);
-			setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
-			starDisplay();
-			result = SUCCESS;
+			reviewErrorMessage.add("ログインしていない状態でレビューに書き込めません");
 		}
 
 		return result;
