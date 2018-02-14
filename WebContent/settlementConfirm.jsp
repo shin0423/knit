@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlementConfirm.css">
 	<title>決済確認画面</title>
 
 	<style type="text/css">
@@ -65,18 +65,30 @@
 <br>
 <br>
 
-
+<div class="totalPrice">
 合計金額:<s:property value="#session.cartTotalPrice" />円
-
+</div>
 <br>
 <!-- 宛先情報一覧 -->
 <br>
-<table border="1">
+<table border="1" class="destinationTable">
 <tr>
-<s:iterator value="destinationList">
+<s:if test="destinationFlg = Error">
+宛先情報がありませんので宛先を登録してください。
+</s:if>
+
+
+
+
+
+<s:else>
+<br>
+<p class="center">お届け先住所を選択してください。</p>
+
+<s:iterator value="destinationList" status="st">
 <td>
-<input type="radio" name="id" value="id" checked="checked"/>
-お届け先住所
+<input type="radio" name="id" value="#st.index" checked="checked"/>
+
 </td>
 <td>
 ふりがな:
@@ -99,21 +111,50 @@
 <br>
 メールアドレス:
 <s:property value="email"/>
-</td>
 
+<input type="text" value="<s:property value="id"/>">
+</td>
+<input type="hidden" name="familyName" value="<s:property value="familyName"/>"  >
+<input type="hidden" name="firstName" value="<s:property value="firstName"/>" >
+<input type="hidden" name="familyNameKana" value="<s:property value="familyNameKana"/>"  >
+<input type="hidden" name="firstNameKana" value="<s:property value="firstNameKana"/>"  >
+<input type="hidden" name="email" value="<s:property value="email"/>"  >
+<input type="hidden" name="telNumber" value="<s:property value="telNumber"/>"  >
+<input type="hidden" name="userAddress" value="<s:property value="userAddress"/>"  >
 </s:iterator>
+</s:else>
 </tr>
 </table>
 
 <button type="submit">購入</button>
-
 </s:form>
+
 
 <br>
 <p><a href='<s:url action="CartAction" />'>カートに戻る</a></p>
+
+<s:form action="CreateAddressAction">
+
+<s:iterator value="oneDestinationList">
+<
+<input type="hidden" name="familyName" value="<s:property value="familyName"/>"  >
+<input type="hidden" name="firstName" value="<s:property value="firstName"/>" >
+<input type="hidden" name="familyNameKana" value="<s:property value="familyNameKana"/>"  >
+<input type="hidden" name="firstNameKana" value="<s:property value="firstNameKana"/>"  >
+<input type="hidden" name="email" value="<s:property value="email"/>"  >
+<input type="hidden" name="telNumber" value="<s:property value="telNumber"/>"  >
+<input type="hidden" name="userAddress" value="<s:property value="userAddress"/>"  >
+
+
+</s:iterator>
+
+
+<button type="submit">宛先登録</button>
+
+</s:form>
+
 <p><a href='<s:url action="CreateAddressAction" />'>宛先登録</a></p>
 <br>
-
 
 <footer>
 </footer>
