@@ -7,8 +7,26 @@ top:30px;
 left:30;
 }
 
+
 itemImage{
 
 clear:right;
 float:left;
+}
+
+div.reviewForm{
+	float:left;
+	margin-top:30px;
+}
+div.deleteReview{
+	width:200px;
+	height:100px;
+	float:left;
+	margin-top:30px;
+	border:1px solid black;
+}
+div.review{
+	clear:both;
+	width:40%;
+	border:1px solid black;
 }

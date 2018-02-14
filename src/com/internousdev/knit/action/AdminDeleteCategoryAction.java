@@ -19,14 +19,29 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException {
+		result=SUCCESS;
+		System.out.println(categoryId);
+		categoryList = categoryDAO.getCategoryList();
+
+
 		int res = categoryDAO.deleteCategory(categoryId);
 		System.out.println(res);
 		if (res > 0) {
 			System.out.println("success");
+			categoryList.clear();
+			categoryList = categoryDAO.getCategoryList();
+			String[] categoryIdArray = new String[categoryList.size()];
+			for(int i = 0;categoryList.size() > i ; i++){
+				categoryIdArray[i] = categoryList.get(i).getId();
+			}
+			for(int i = 0 ; categoryList.size() > i ; i++){
+				categoryDAO.updateCategoryId(i+1,categoryIdArray[i]);
+			}
 		} else{
 			result =ERROR;
 
 		}
+		categoryList.clear();
 		categoryList = categoryDAO.getCategoryList();
 		return result;
 	}

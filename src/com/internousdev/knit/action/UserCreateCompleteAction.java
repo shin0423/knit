@@ -65,11 +65,10 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 				session.get("createUserAddress").toString()
 				);
 		}
+
 		if(count2 >0){
 			result=SUCCESS;
 		}
-
-
 		return result ;
 	}
 //セッターゲッターの設定

@@ -26,6 +26,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 	public String execute() throws SQLException{
 		String result=SUCCESS;
 		categoryList = categoryDAO.getCategoryList();
+
 		InputChecker i = new InputChecker();
 
 		if (!i.categoryNameChk(categoryName).equals("OK")) {
@@ -52,10 +53,18 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 				}
 			}
 			categoryDAO.insertCategoryName(categoryId,categoryName,categoryDescription);
-			errorList = null;
 			categoryList.clear();
 			categoryList = categoryDAO.getCategoryList();
-
+			String[] categoryIdArray = new String[categoryList.size()];
+			for(int j = 0;categoryList.size() > j ; j++){
+				categoryIdArray[j] = categoryList.get(j).getId();
+			}
+			for(int o = 0 ; categoryList.size() > o ; o++){
+				categoryDAO.updateCategoryId(o+1,categoryIdArray[o]);
+			}
+			categoryList.clear();
+			categoryList = categoryDAO.getCategoryList();
+			errorList=null;
 			}else{
 			result=ERROR;
 		}
