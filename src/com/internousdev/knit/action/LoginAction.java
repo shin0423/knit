@@ -120,6 +120,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public void makeCartList() throws SQLException {
 		userCartList = cartDAO.showUserCartList(session.get("userId").toString());
 		tempUserCartList = cartDAO.showTempUserCartList(session.get("tempUserId").toString());
+		System.out.println("確認用です" + session.get("tempUserId").toString());
 
 		/**
 		 * ユーザーのカート内商品のIDを全取得してリストに入れる

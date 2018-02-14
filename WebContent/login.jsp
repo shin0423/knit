@@ -77,6 +77,7 @@
 
 	<div id="footer">
 	</div>
-
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<font size="50" face="ＭＳ 明朝,平成明朝"><b>（＾c。＾ ）</b></font>
 </body>
 </html>
