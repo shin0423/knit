@@ -40,7 +40,7 @@ public class DestinationInfoDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			//MySQLから受け取った値を宛先情報DTOに格納
-			if (resultSet.next()) {
+			while (resultSet.next()) {
 				DestinationInfoDTO DistinationInfoDTO = new DestinationInfoDTO();
 
 				DistinationInfoDTO.setUserId(resultSet.getString("user_id"));
@@ -73,4 +73,58 @@ public class DestinationInfoDAO {
 		return destinationList;
 
 	}
+
+	 public ArrayList<DestinationInfoDTO> OneDestination(String loginId){
+
+		 Connection connection = dbConnector.getConnection();
+
+		 ArrayList<DestinationInfoDTO> oneDestinationList = new ArrayList<DestinationInfoDTO>();
+
+		 String sql ="SELECT * FROM destination_info WHERE user_id = ? LIMIT 1";
+
+		 try {
+			 PreparedStatement preparedStatement =connection.prepareStatement(sql);
+
+			 preparedStatement.setString(1, loginId);
+
+			 ResultSet resultSet = preparedStatement.executeQuery();
+
+while (resultSet.next()) {
+
+
+				 DestinationInfoDTO DistinationInfoDTO = new DestinationInfoDTO();
+				 DistinationInfoDTO.setUserId(resultSet.getString("user_id"));
+					DistinationInfoDTO.setFamilyName(resultSet.getString("family_name"));
+					DistinationInfoDTO.setFirstName(resultSet.getString("first_name"));
+					DistinationInfoDTO.setFamilyNameKana(resultSet.getString("family_name_kana"));
+					DistinationInfoDTO.setFirstNameKana(resultSet.getString("first_name_kana"));
+					DistinationInfoDTO.setEmail(resultSet.getString(("email")));
+					DistinationInfoDTO.setTelNumber(resultSet.getString("tel_number"));
+					 oneDestinationList.add(DistinationInfoDTO);
+
+						//MySQLから受け取った値をDTOに入れてるか確認
+						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getUserId());
+						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFamilyName());
+						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFirstName());
+						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFamilyNameKana());
+						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFirstNameKana());
+						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getEmail());
+						//MySQLから受け取った値をDTOに入れてるか確認
+}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		 return oneDestinationList;
+
+	 }
 }

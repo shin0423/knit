@@ -55,6 +55,8 @@ public class SettlementConfirmDAO {
 		return destinationList;
 	}
 
+
+
 //	//在庫情報取得
 //	public int getCount(int itemId){
 //		int count = 0;

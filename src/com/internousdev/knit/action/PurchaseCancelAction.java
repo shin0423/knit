@@ -25,16 +25,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	public ArrayList<PurchaseHistoryDTO> cancelList = new ArrayList<PurchaseHistoryDTO>();
 
-	private String registDate;
-
-	private String imageFilePath;
-
-	private String itemNameKana;
-
-	private int count;
-
-	private String releasecompany;
-
 	private String orderNum;
 
 	private int itemId;
@@ -127,29 +117,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	}
 
-	public void totalPrice(){
-		int totalPrice = 0 ;
-		//System.out.println(historyList.size());
-		for(int i=0; i < cancelList.size(); i++) {
-			System.out.println("商品の値段"+cancelList.get(i).getPrice());
-			System.out.println("商品の個数"+cancelList.get(i).getItemCount());
-			totalPrice = cancelList.get(i).getPrice() * cancelList.get(i).getItemCount();
-
-		}
-		System.out.println("商品価格合計"+totalPrice);
-	}
-
-	public void imageFilePath(){
-		String imageFilePath= null ;
-		//System.out.println(historyList.size());
-		for(int i=0; i < cancelList.size(); i++) {
-			System.out.println("商品の画像リンク"+cancelList.get(i).getImageFilePath());
-			imageFilePath = cancelList.get(i).getImageFilePath();
-
-		}
-		System.out.println("画像リンク"+imageFilePath);
-	}
-
 
 
 	//ゲッタセッタ
@@ -167,36 +134,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	}
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
-	}
-	public String getRegistDate() {
-		return registDate;
-	}
-	public void setRegistDate(String registDate) {
-		this.registDate = registDate;
-	}
-	public String getImageFilePath() {
-		return imageFilePath;
-	}
-	public void setImageFilePath(String imageFilePath) {
-		this.imageFilePath = imageFilePath;
-	}
-	public String getItemNameKana() {
-		return itemNameKana;
-	}
-	public void setItemNameKana(String itemNameKana) {
-		this.itemNameKana = itemNameKana;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
-	public String getReleasecompany() {
-		return releasecompany;
-	}
-	public void setReleasecompany(String releasecompany) {
-		this.releasecompany = releasecompany;
 	}
 	public ArrayList<PurchaseHistoryDTO> getCancelList() {
 		return cancelList;
