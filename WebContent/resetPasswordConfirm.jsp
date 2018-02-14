@@ -11,6 +11,7 @@
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/resetPassword.css">
 <title>パスワード再設定確認</title>
 </head>
 <body>
@@ -19,17 +20,17 @@
 	<div id="main">
 	<br>
 		<div id="title">
-			<span>パスワード再設定確認</span>
+			<p>パスワード再設定確認</p>
 		</div>
 		<s:form action="ResetPasswordCompleteAction">
 		<div>入力内容をご確認ください</div>
 		<table>
 			<tr>
-				<td>USERID</td>
+				<th>ユーザーID</th>
 				<td><s:property value="hideUserId"/></td>
 			</tr>
 			<tr>
-				<td>PASSWORD</td>
+				<th>パスワード</th>
 				<td><s:property value="hideNewLoginPassword"/></td>
 			</tr>
 		</table>
@@ -37,8 +38,8 @@
 		<s:hidden name="userId" value="%{userId}"/>
 		<s:hidden name="newPassword" value="%{newPassword}"/>
 		<div id="button">
-			<a href='<s:url action = "ResetPasswordAction"/>'>戻る</a>
-			<button type="submit"><span>確定</span></button>
+			<button type ="button" onclick ="location.href='/knit/resetPassword.jsp'">戻る</button>
+			<button type="submit"><span>変更する</span></button>
 			</div>
 		</s:form>
 

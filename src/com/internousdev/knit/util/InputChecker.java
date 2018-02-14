@@ -259,6 +259,34 @@ public class InputChecker {
 	return result;
 	}
 
+	public String categoryIdChk(String categoryId) {
+		String result = "OK";
+
+		if (categoryId.equals("")) {
+			result = "カテゴリーIdを入力してください。";
+		} else if (categoryId.length() < 1 || categoryId.length() > 3) {
+			result = "カテゴリーIdは1桁以上3桁以下で入力してください。";
+		} else if (!categoryId.matches("^[0-9]+$")) {
+			result = "カテゴリーIdは半角数字で入力してください。";
+		}
+		return result;
+	}
+
+	public String categoryDescriptionChk(String categoryDescription) {
+		String result = "OK";
+
+		if (categoryDescription.equals("")) {
+			result = "カテゴリー詳細を入力してください。";
+		} else if (categoryDescription.length() < 1 || categoryDescription.length() > 255) {
+			result = "カテゴリー詳細は1文字以上255文字以下で入力してください。";
+		} else if (!categoryDescription.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
+			result = "カテゴリー詳細は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+		}
+		return result;
+	}
+
+
+
 	/**
 	 * 検索ワードの入力チェック
 	 *

@@ -6,10 +6,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="imagetoolbar" content="text/javascript"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<link rel="stylesheet" type="text/css" href="./css/userDelete.css">
+<meta charset="UTF-8">
+
+<title>退会完了画面</title>
 </head>
 <body>
-	<a href="<s:url action='TopAction' />">ホーム</a>
+	<header>
+	</header>
+	<div id="main">
+	<br>
+		<div id ="title"><h1>退会しました</h1>
+		</div>
+	<div id="button">
+	<button type="button" onclick="location.href='/knit/home.jsp'">ホームへ</button>
+	</div>
+	<!-- <a href="<s:url action='TopAction' />">ホーム</a> -->
+
+	</div>
+
 </body>
 </html>

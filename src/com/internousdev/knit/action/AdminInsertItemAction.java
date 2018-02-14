@@ -29,6 +29,7 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 	public Map<String, Object> session;
 
 	public String execute() throws SQLException {
+		System.out.println(categoryId);
 		String result = SUCCESS;
 		InputChecker i = new InputChecker();
 

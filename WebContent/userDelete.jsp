@@ -6,13 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+<meta http-equiv="imagetoolbar" content="text/javascript"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<meta charset="UTF-8">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/userDelete.css">
 <title>会員退会画面</title>
 </head>
 <body>
-<h1>本当に退会しますか？</h1>
-退会される方はチェックボックスにチェックを入れて削除を押してください。
+	<header>
+	</header>
+	<div id="main">
+		<br>
+		<div id="title">
+		<h1>退会する</h1>
+		</div>
 	<script type="text/javascript">
 	$(function(){
 		$('#checkBtn').on('change',function(){
@@ -30,11 +41,18 @@
 	});
 
 	</script>
-
+	<div id="button">
 	<s:form action="UserDeteleCompleteAction" >
-		<input id="checkBtn" type="checkbox"  >
+	<div>退会される方はチェックを入れて削除を押してください</div>
+	<br>
+
+		<input id="checkBtn" type="checkbox">
 		<input id="submitBtn" class="button" disabled="disabled" type="submit" value="削除">
+
 	</s:form>
+	</div>
+</div>
+<footer></footer>
 
 </body>
 </html>
