@@ -5,62 +5,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="./css/home.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <title>knit</title>
 </head>
-<body class="home">
+<body>
+<div class="header">
 
-<s:form action="BuyItemAction">
-<select name="categoryId" class="">
-				<option value=0 selected="selected">全てのカテゴリ</option>
-				<option value=1 >飲食</option>
-				<option value=2 >家電・パソコン</option>
-				<option value=3 >おもちゃ・ゲーム</option>
-				<option value=4 >おもちゃ・ゲーム</option>
-			</select>
+  <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
 
-			<s:textfield name="searchWord" class="h_search" />
-			<br>
-			<s:textfield name="moreUp" class="h_search" />～
-			<s:textfield name="moreDown" class="h_search" />
+<button class="search"><p>Q</p></button>
+ <div class="inside">
+  <div class="hide_box">
+  <s:form action="BuyItemAction">
+   <s:textfield name="searchWord" class="h_search" />
+   <select name="categoryId" class="">
+    <option value=0 selected="selected">全てのカテゴリ</option>
+    <option value=1 >飲食</option>
+    <option value=2 >家電・パソコン</option>
+    <option value=3 >おもちゃ・ゲーム</option>
+    <option value=4 >おもちゃ・ゲーム</option>
+   </select>
+   <br>
+   <s:textfield name="moreUp" class="h_search" />～
+   <s:textfield name="moreDown" class="h_search" />
+   <button type="submit">検索</button>
+  </s:form>
+  </div>
+ </div>
+<script>
+$(function(){
+	$(".search").click(function(){
+		$(".inside").stop().fadeToggle();
+	});
+});
+</script>
 
-	<button type="submit">検索</button>
+
+  <a href="/knit/home.jsp" class="home">Home</a>
+
+ <s:if test="#session.loginFlg == false">
+  <a href='<s:url action="GoLoginPageAction"/>' class="user">ログインへ</a>
+ </s:if>
+
+  <s:elseif test="#session.loginFlg == true">
+   <a href='<s:url action="MyPageAction"/>' class="user">マイページへ</a>
+   <a href='<s:url action="UserLogoutAction"/>' class="user">ログアウト</a>
+  </s:elseif>
 
 
-</s:form>
-
-<div class="top_main clearfix">
-<h1>商品一覧</h1>
-<ul>
-<s:iterator value="#session.buyItemList">
-
-<li>
-<s:url id ="url" action="BuyItemInfoAction">
-<s:param name="itemId" value="%{itemId}"/>
-</s:url>
-
-<s:a href="%{url}">
-<s:if test="categoryId == 1">
-<span class="category orange">飲食</span>
-</s:if>
-<s:if test="categoryId == 2">
-<span class="category blue">&nbsp;&nbsp;家電&amp;パソコン</span>
-</s:if>
-<s:if test="categoryId == 3">
-aaaa
-</s:if>
-<s:if test="categoryId == 4">
-おもちゃ
-</s:if>
-
-<div><input type="image" src="<s:property value='itemImagePath' />" alt="画像なし" ></div>
-<p class="name"><s:property value="itemName"/></p>
-<p class="price">\<span><s:property value="price"/>円</span></p>
-</s:a>
-</li>
-</s:iterator>
-</ul>
+  <a href='<s:url action="BuyItemAction"/>' class="item">商品一覧へ</a>
 </div>
+
+
+
+
+<div class="main">
 
 <script>
 $(function() {
@@ -77,25 +80,16 @@ $(function() {
 	};	//配列をまわす
 
 });	//function
+
 </script>
 
-<a href='<s:url action="GoLoginPageAction"/>'>ログインへ</a>
-<a href='<s:url action="UserLogoutAction"/>'>ログアウト</a>
-
-<s:if test="#session.loginFlg == true">
-<a href='<s:url action="MyPageAction"/>'>マイページへ</a>
-<a href='<s:url action="UserLogoutAction"/>'>ログアウト</a>
-</s:if>
-
-<a href='<s:url action="CartAction"/>'>カートへ</a>
-<a href='<s:url action="BuyItemAction"/>'>商品一覧へ</a>
-<s:form action="BuyItemAction">
-	<s:hidden name="categoryId" value="0"/>
-	<s:hidden name="searchWord" value="" />
-	<s:hidden name="moreUp" value="" />
-	<s:hidden name="moreDown" value="" />
-	<s:submit value="全件表示" />
-</s:form>
-
+ <s:form action="BuyItemAction">
+  <s:hidden name="categoryId" value="0"/>
+  <s:hidden name="searchWord" value="" />
+  <s:hidden name="moreUp" value="" />
+  <s:hidden name="moreDown" value="" />
+  <s:submit value="全件表示" />
+ </s:form>
+</div>
 </body>
 </html>
