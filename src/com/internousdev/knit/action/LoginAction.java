@@ -102,7 +102,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						 * 既にログインしてる時
 						 */
 						if ( (boolean) session.get("loginFlg") ) {
-							errorMessage.add("あああああああああああああああ");
+							errorMessage.add("ログイン状態です");
 							System.out.println("既にログイン状態");
 							result = ERROR;
 						}
