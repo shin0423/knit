@@ -80,4 +80,21 @@ public class CategoryDAO {
 		}
 		return res;
 	}
+	public int updateCategoryId(int id,String oldId) throws SQLException{
+		DBConnector dbConnector=new DBConnector();
+		Connection connection=dbConnector.getConnection();
+		String sql="UPDATE m_category SET id=? WHERE id=?";
+		int res=0;
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1,id);
+			preparedStatement.setString(2,oldId);
+			res = preparedStatement.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			connection.close();
+		}
+		return res;
+	}
 }
