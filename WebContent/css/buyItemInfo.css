@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.itemInfoBox{
+float:right;
+border:1px solid black;
+position:relative;
+top:30px;
+left:30;
+}
+
+itemImage{
+
+clear:right;
+float:left;
+}

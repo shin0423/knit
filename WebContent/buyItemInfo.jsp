@@ -4,20 +4,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/knit/css/buyItemInfo.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商品詳細ページ</title>
 </head>
 <body>
-<table>
+<s:iterator value="buyItemDTO">
+<img src="<s:property value='itemImagePath' />" alt="画像なし">
+</s:iterator>
+<table class="itemInfoBox">
 	<s:iterator value="buyItemDTO">
-		<tr>
-			<td><img src="<s:property value='itemImagePath' />" alt="画像なし"></td>
-		</tr>
+
 		<tr>
 			<td><s:property value="itemName" /></td>
 		</tr>
 		<tr>
-			<td><s:property value="itemDescription" /></td>
+			<td id="itemDescription"><s:property value="itemDescription" /></td>
 		</tr>
 		<tr>
 			<td><s:property value="price" /></td>
