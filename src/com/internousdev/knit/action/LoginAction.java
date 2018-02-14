@@ -75,7 +75,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
             System.out.println("errorMessage");
 		}
 
-		if (userId.equals(loginDTO.getUserId()) && password.equals(loginDTO.getPassword())) {
+		if ( userId.equals(loginDTO.getUserId()) && password.equals(loginDTO.getPassword()) )  {
 			/**
 			 * 既にログイン状態ならエラー
 			 */
@@ -90,7 +90,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				CategoryDAO categoryDAO = new CategoryDAO();
 				setCategoryList(categoryDAO.getCategoryList());
 				loginDAO.login(loginDTO);
-				session.put("loginFlg", true);
+				session.put("adminLoginFlg", true);
 				System.out.println("管理者ログイン成功");
 				result = "admin";
 
