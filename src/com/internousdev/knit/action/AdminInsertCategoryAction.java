@@ -8,28 +8,85 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CategoryDAO;
-import com.internousdev.knit.dao.ShowItemDAO;
-import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.CategoryDTO;
 import com.internousdev.knit.util.InputChecker;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminInsertCategoryAction extends ActionSupport implements SessionAware  {
 
-	private String errorMessage;
 	private CategoryDAO categoryDAO = new CategoryDAO();
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 	public Map<String,Object> session;
 	private String categoryName;
+	private String categoryId;
+	private String categoryDescription;
+	private ArrayList<String> errorList = new ArrayList<>();
 
-	public String execute throws SQLException{
+
+	public String execute() throws SQLException{
 		String result=SUCCESS;
-		errorMessage = null;
+		errorList = null;
 		InputChecker i = new InputChecker();
 
 		if (!i.categoryNameChk(categoryName).equals("OK")) {
-			setErrorMessage((i.insertItemStockChk(categoryName)));
-			result = ERROR;
+			errorList.add(i.categoryNameChk(categoryName));
+		}
+
+		if (!i.categoryIdChk(categoryId).equals("OK")) {
+			errorList.add(i.categoryIdChk(categoryId));
+		}
+
+		if (!i.categoryDescriptionChk(categoryDescription).equals("OK")) {
+			errorList.add(i.categoryDescriptionChk(categoryDescription));
+		}
+
+		out :if (errorList.size() == 0) {
+			categoryList = categoryDAO.getCategoryList();
+			for (int j = 0; categoryList.size() > j; j++) {
+				if (categoryName.equals(categoryList.get(j).getCategoryName()) || categoryId.equals(categoryList.get(j).getCategoryId())
+						|| categoryDescription.equals(categoryList.get(j).getCategoryDescription())) {
+					errorList.add("入力された商品はすでに登録されています。");
+					result= ERROR;
+					break out;
+				}
+			}
+			categoryDAO.insertCategoryName(categoryId,categoryName,categoryDescription);
+			errorList = null;
+			categoryList.clear();
+			categoryList = categoryDAO.getCategoryList();
+			session.put("categoryList", categoryList);
+			}else{
+			result=ERROR;
+		}
+		return result;
 	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
+
+	public void setSession(Map<String,Object> session){
+		this.session=session;
+	}
+
 }

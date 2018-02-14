@@ -127,7 +127,7 @@
 			商品詳細:<s:textarea  name="itemDescription" rows="4" cols="40" value=""/><br>
 			商品カテゴリー:<select name="categoryId">
 			<s:iterator value="categoryList" status="st">
-				<option value="%{#st.count}"><s:property value="categoryName" /></option>
+				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
 			</select><br>
 			価格:<s:textfield name="price" value="" /><br>
@@ -136,10 +136,20 @@
 		</s:form>
 
 		<s:form action="CategoryInsertAction">
-			カテゴリ名:<s:textfield name="categoryName"/>
+			カテゴリーID:<s:textfield name="categoryId"/>
+			カテゴリー名:<s:textfield name="categoryName"/>
+			カテゴリー詳細<s:textfield name="categoryDescription"/>
 			<s:submit value="新規登録" />
 		</s:form>
 
+		<s:form action="CategoryDeleteAction">
+			商品カテゴリー:<select name="categoryId">
+			<s:iterator value="categoryList" status="st">
+				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
+			</s:iterator>
+			<s:submit value="削除"/>
+			</select>
+		</s:form>
 	<div id="footer">
 	</div>
 
