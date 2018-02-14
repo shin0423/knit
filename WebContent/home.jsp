@@ -19,6 +19,7 @@
 
 <button class="search"><p>Q</p></button>
  <div class="inside">
+ <div class="center">
   <div class="hide_box">
   <s:form action="BuyItemAction">
    <s:textfield name="searchWord" class="h_search" />
@@ -35,6 +36,7 @@
    <button type="submit">検索</button>
   </s:form>
   </div>
+  </div>
  </div>
 <script>
 $(function(){
@@ -45,19 +47,19 @@ $(function(){
 </script>
 
 
-  <a href="/knit/home.jsp" class="home">Home</a>
+  <a href="/knit/home.jsp"><button class="home">Home</button></a>
 
  <s:if test="#session.loginFlg == false">
-  <a href='<s:url action="GoLoginPageAction"/>' class="user">ログインへ</a>
+  <a href='<s:url action="GoLoginPageAction"/>' ><button class="user">ログインへ</button></a>
  </s:if>
 
   <s:elseif test="#session.loginFlg == true">
-   <a href='<s:url action="MyPageAction"/>' class="user">マイページへ</a>
-   <a href='<s:url action="UserLogoutAction"/>' class="user">ログアウト</a>
+   <a href='<s:url action="MyPageAction"/>' ><button class="user">マイページへ</button></a>
+   <a href='<s:url action="UserLogoutAction"/>'><button class="user">ログアウト</button></a>
   </s:elseif>
 
 
-  <a href='<s:url action="BuyItemAction"/>' class="item">商品一覧へ</a>
+  <a href='<s:url action="BuyItemAction"/>'><button  class="item">商品一覧へ</button></a>
 </div>
 
 
