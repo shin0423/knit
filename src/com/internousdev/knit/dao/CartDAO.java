@@ -127,7 +127,7 @@ public class CartDAO extends ActionSupport{
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
 		String sql="SELECT cart_info.item_id,cart_info.item_count,ii.item_name,ii.item_name_kana,ii.image_file_name,ii.price,ii.release_company,ii.release_date "
-				+"FROM cart_info LEFT JOIN item_info as ii ON cart_info.item_id=ii.item_id"
+				+"FROM cart_info LEFT JOIN item_info as ii ON cart_info.item_id=ii.item_id "
 				+"WHERE temp_user_id=?";
 
 		try {
