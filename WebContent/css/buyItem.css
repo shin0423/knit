@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+	body{
+	white-space: nowrap;
+	}
+	.main{
+		displey:inline-block;
+		margin-left:10%;
+		margin-right:10%;
+		width:1000px;
+		font-family:serif;
+	}
+	.itemBox img{
+	clear:both;
+	border:3px solid black;
+	width:200px;
+	height:200px;
+	}
+	.itemBoxFirst img{
+
+	border:3px solid black;
+	width:200px;
+	height:200px;
+	}
+	table.itemBox{
+	white-space: nowrap;
+	position:relative;
+	top:0;
+	left:0;
+	float:left;
+	border:1px solid black;
+	width:25%;
+	height:25%;
+	overflow:hidden;
+	}
+	table.itemBoxFirst{
+	white-space: nowrap;
+	position:relative;
+	top:0;
+	left:0;
+	float:left;
+	border:1px solid black;
+	width:25%;
+	height:25%;
+	clear:both;
+	overflow:hidden;
+	}
