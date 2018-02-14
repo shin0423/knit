@@ -1,108 +1,126 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- https://qiita.com/yukinaka/items/c4fcb7f0878702485f70  -->
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css">
+	
 
 <title>マイページ画面</title>
+
 </head>
 <body>
 
-  <div class="header"></div>
-
-  <div class="main">
-
-    <div id="secRegist" class="section">
-
-       <div class="sectionInner">
-
-         <div class="sectionHeader">
-           <h3>会員登録情報</h3>
+	<!-- ヘッダー -->
+	
+	<div class="header"></div>
 
 
-         </div>
 
-         <div class="contBody">
-           <table>
-               <tbody>
-                    <s:iterator value="myPageList">
-                        <tr>
-                            <th>氏名</th>
-                           <td>
-                                <p>
-                                  <s:property value="familyName"/>
-                                  <s:property value="firstName"/>
-                                </p>
-                            </td>
-                            <td class="change">
-                            </td>
-                        </tr>
+	<div class="main">
 
-                        <tr>
-                            <th>ふりがな</th>
-                            <td><p>
-                                  <s:property value="familyNameKana"/>
-                                  <s:property value="firstNameKana"/>
-                                </p></td>
-                             <td class="change">
-                             </td>
-                         </tr>
+		<div id="secRegist" class="section">
 
-                         <tr>
-                             <th>性別</th>
-                             <td><p>
-                                   <s:if test="sex==0">男性</s:if>
-                                   <s:else>女性</s:else>
-                                 </p></td>
-                             <td class="change">
-                             </td>
-                          </tr>
+			<div class="sectionInner">
 
-                          <tr>
-                              <th>メールアドレス</th>
-                              <td><s:property value="email"/></td>
-                              <td class="change">
-                              </td>
-                          </tr>
+				<div class="sectionHeader">
+				
+					<h3>会員登録情報</h3>
+					<!-- sectionHeader -->
+				</div>
 
-                          <tr>
-                               <th>ID</th>
-                               <td><p>
-                                     <s:property value="userId"/>
-                                   </p></td>
-                                <td class="change">
-                                </td>
-                          </tr>
+				<div class="contBody">
+					<table>
+						<tbody>
+							<s:iterator value="myPageList">
+								<tr>
+									<th>ふりがな</th>
+									<td>
+										<p>
+											<s:property value="familyNameKana" />
+											<s:property value="firstNameKana" />
+										</p>
+									</td>
+									
+								</tr>
 
-                          <tr>
-                               <th>パスワード</th>
-                               <td><p>
-                                     <s:property value="password"/>
-                                   </p></td>
-                               <td class="change"><a href="UserUpdateAction" class="btn">変更</a></td>
-                           </tr>
-                     </s:iterator>
-               </tbody>
-          </table>
+								<tr>
+									<th>氏名</th>
+									<td><p>
+											<s:property value="familyName" />
+											<s:property value="firstName" />
+										</p></td>
+									
+								</tr>
 
-          <div class="buttonBox">
-              <div class="btnn">
-                 <a href="PurchaseHistoryAction" class="button">購入履歴</a>
-              </div>
+								<tr>
+									<th>性別</th>
+									<td><p>
+											<s:if test="sex==0">男性</s:if>
+											<s:else>女性</s:else>
+										</p></td>
+									
+								</tr>
 
-          </div>
+								<tr>
+									<th>メールアドレス</th>
+									<td><s:property value="email" /></td>
+									
+								</tr>
 
-          </div>
+								<tr>
+									<th>ID</th>
+									<td><p>
+											<s:property value="userId" />
+										</p></td>
+									
+								</tr>
 
-         </div>
+								<tr>
+									<th>password</th>
+									<td><p>
+											<s:property value="password" />
+										</p></td>
+									
+							</s:iterator>
+						</tbody>
+					</table>
 
-       </div>
+					<div class="buttonBox">
+						<div class="btnn">
+							<a href="/knit/PurchaseHistoryAction" class="button">購入履歴</a>
+						</div>
+					</div>
+					
+					
+					<div class="buttonBox">
+						<div class="btn">
+							<a href="/knit/ResetPasswordAction" class="button">変更</a>
+						</div>
+					</div>
+					
+					<div class="buttonBox">
+						<div class="btn0">
+							<a href="/knit/UserDeleteAction" class="button">退会</a>
+						</div>
+					</div>							
+				
+				</div>
 
-    </div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- フッター -->
+	
+	<div class="footer"></div>
+	
 
 
 </body>

@@ -23,6 +23,8 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	private boolean buyCountErrorFlg=false;
 	private ArrayList<CartDTO> buyCountErrorList = new ArrayList<CartDTO>();
 
+
+
 	CartDAO cartDAO = new CartDAO();
 
 //決済処理
@@ -36,7 +38,8 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		String	result=ERROR;
 
 		destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
-//		if(destinationList.size()!=0){
+
+
 
 			result = SUCCESS;
 
@@ -47,7 +50,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList, session.get("userId").toString());
 			System.out.println("購入履歴に入れた数"+i);
 
-//			}
+
 			//購入したユーザーのカート情報を消去
 			cartDAO.deleteCartInfo(session.get("userId").toString());
 
@@ -104,6 +107,9 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	public void setDestinationList(ArrayList<SettlementConfirmDTO> destinationList) {
 		this.destinationList = destinationList;
 	}
+
+
+
 
 
 
