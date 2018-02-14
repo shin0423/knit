@@ -37,12 +37,13 @@
 		<s:hidden name="userId" value="%{userId}"/>
 		<s:hidden name="newPassword" value="%{newPassword}"/>
 		<div id="button">
+			<a href='<s:url action = "ResetPasswordAction"/>'>戻る</a>
 			<button type="submit"><span>確定</span></button>
 			</div>
 		</s:form>
-		<br><br>
-		パスワード再設定に戻る場合は<a href='<s:url action = "ResetPasswordAction"/>'>こちら</a>
-		<br><br>
+
+
+
 	</div>
 		<br>
 	<footer>

@@ -247,6 +247,18 @@ public class InputChecker {
 		return result;
 	}
 
+	public String categoryNameChk(String categoryName){
+		String result="OK";
+	if (categoryName.equals("")) {
+		result = "カテゴリー名を入力してください。";
+	} else if (categoryName.length() < 1 || categoryName.length() > 10) {
+		result = "カテゴリー名は1文字以上10文字以下で入力してください。";
+	} else if (!categoryName.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
+		result = "カテゴリー名は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+	}
+	return result;
+	}
+
 	/**
 	 * 検索ワードの入力チェック
 	 *

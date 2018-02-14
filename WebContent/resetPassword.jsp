@@ -40,9 +40,9 @@
 			</table>
 			<br>
 			<div id="button">
+				<a href='/knit/login.jsp' >戻る</a>
 				<button type="submit"><span>確認画面へ</span></button>
 			</div>
-			<a href="/knit/login.jsp" >戻る</a>
 			</s:form>
 			<div id="error">
 			<br>

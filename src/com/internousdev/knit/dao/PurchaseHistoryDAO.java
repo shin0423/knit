@@ -55,7 +55,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setItemId(rs.getInt("item_id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
-			dto.setimageFilePath(rs.getString("image_file_path"));
+			dto.setImageFilePath(rs.getString("image_file_path"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setItemCount(rs.getInt("item_count"));
 			dto.setRegistDate(rs.getString("regist_date"));
@@ -63,12 +63,13 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setsendFlg(rs.getInt("send_flg"));
 			dto.setReleaseCompany(rs.getString("release_company"));
 			dto.setReleaseDate(rs.getDate("release_date"));
-
+			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
 
 			System.out.println("購入履歴"+ dto.getPrice());
 			System.out.println("購入履歴"+ dto.getItemCount());
-			System.out.println("購入履歴"+ dto.getimageFilePath());
+			System.out.println("購入履歴"+ dto.getImageFilePath());
 			System.out.println("購入履歴"+ dto.getRegistDate());
+			System.out.println("購入履歴"+ dto.getTotalPrice());
 
 			purchaseHistoryDTOList.add(dto);
 

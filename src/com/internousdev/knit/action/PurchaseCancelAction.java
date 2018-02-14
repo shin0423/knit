@@ -127,6 +127,28 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	}
 
+	public void totalPrice(){
+		int totalPrice = 0 ;
+		//System.out.println(historyList.size());
+		for(int i=0; i < cancelList.size(); i++) {
+			System.out.println("商品の値段"+cancelList.get(i).getPrice());
+			System.out.println("商品の個数"+cancelList.get(i).getItemCount());
+			totalPrice = cancelList.get(i).getPrice() * cancelList.get(i).getItemCount();
+
+		}
+		System.out.println("商品価格合計"+totalPrice);
+	}
+
+	public void imageFilePath(){
+		String imageFilePath= null ;
+		//System.out.println(historyList.size());
+		for(int i=0; i < cancelList.size(); i++) {
+			System.out.println("商品の画像リンク"+cancelList.get(i).getImageFilePath());
+			imageFilePath = cancelList.get(i).getImageFilePath();
+
+		}
+		System.out.println("画像リンク"+imageFilePath);
+	}
 
 
 

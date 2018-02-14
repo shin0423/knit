@@ -25,11 +25,15 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public ArrayList<PurchaseHistoryDTO> historyList = new ArrayList<PurchaseHistoryDTO>();
 
+
+
 	private String itemId;
 
 	private String deleteFlg;
 
 	private String message;
+
+
 
 
 	public String execute()throws SQLException{
@@ -46,6 +50,9 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 
 		String userId =session.get("userId").toString();
+		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
+
+
 
 
 		//購入履歴表示メソッド
@@ -55,11 +62,17 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 			//imageFilePathがとれているかどうかの確認
 			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println(historyList.get(i).getimageFilePath());
+				System.out.println(historyList.get(i).getImageFilePath());
+
 			}
+			for (int i = 0; i < historyList.size(); i++) {
+				System.out.println("合計金額" + (historyList.get(i).getItemCount() * historyList.get(i).getPrice()));
+
+			};
 
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+
 
 		if(!(iterator.hasNext())){
 		historyList = null;
@@ -108,7 +121,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 			//imageFilePathがとれているかどうかの確認
 			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println(historyList.get(i).getimageFilePath());
+				System.out.println(historyList.get(i).getImageFilePath());
 			}
 
 
@@ -125,23 +138,46 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		}
 
-	public String getMessage(){
-		return message;
+
+
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
-	public void setMessage(String message){
-		this.message = message;
-	}
+
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
+
+	public PurchaseHistoryDAO getPurchaseHistoryDAO() {
+		return purchaseHistoryDAO;
+	}
+
+
+	public void setPurchaseHistoryDAO(PurchaseHistoryDAO purchaseHistoryDAO) {
+		this.purchaseHistoryDAO = purchaseHistoryDAO;
+	}
+
+
 	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
 		return historyList;
 	}
 
+
 	public void setHistoryList(ArrayList<PurchaseHistoryDTO> historyList) {
 		this.historyList = historyList;
+	}
+
+
+	public String getItemId() {
+		return itemId;
+	}
+
+
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 
 
@@ -149,16 +185,22 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		return deleteFlg;
 	}
 
+
 	public void setDeleteFlg(String deleteFlg) {
 		this.deleteFlg = deleteFlg;
 	}
 
-	public String getItemId() {
-		return itemId;
+
+	public String getMessage() {
+		return message;
 	}
 
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
+
+
 
 }

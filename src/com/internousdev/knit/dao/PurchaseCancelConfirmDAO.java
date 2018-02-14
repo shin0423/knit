@@ -59,21 +59,19 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 			dto.setId(rs.getInt("id"));
 			dto.setItemName(rs.getString("item_name"));
 			dto.setItemNameKana(rs.getString("item_name_kana"));
-			dto.setimageFilePath(rs.getString("image_file_path"));
+			dto.setImageFilePath(rs.getString("image_file_path"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setItemCount(rs.getInt("item_count"));
 			dto.setRegistDate(rs.getString("regist_date"));
 			dto.setReleaseCompany(rs.getString("release_company"));
 			dto.setReleaseDate(rs.getDate("release_date"));
-			dto.setItemId(itemId);
-			dto.setOrderNum(orderNum);
-			dto.setUserId(userId);
+			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
 
 			purchaseCancelConfirmDTOList.add(dto);
 
 			System.out.println("購入履歴"+ dto.getPrice());
 			System.out.println("購入履歴"+ dto.getItemCount());
-			System.out.println("購入履歴"+ dto.getimageFilePath());
+			System.out.println("購入履歴"+ dto.getImageFilePath());
 			System.out.println("購入履歴"+ dto.getRegistDate());
 			System.out.println("購入履歴"+ dto.getItemId());
 			System.out.println("購入履歴"+ dto.getOrderNum());
