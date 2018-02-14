@@ -41,12 +41,18 @@
 				<td>パスワード:</td>
 				<td><s:password name="password" /></td>
 			</tr>
+			<tr>
+				<td colspan="2">
+				<div>
+					<s:submit value="確認" />
+					<input type="checkbox" value="true" name="saveId" >ID保存の場合はチェック
+				</div>
+				</td>
+			</tr>
 			</s:form>
 		</table>
-		<s:submit value="確認" />
-		<div>
-			<input type="checkbox" value="true" name="saveId" >ID保存の場合はチェック
-		</div>
+
+
 		<div>
 			<s:if test="errorMessage != null " >
 			<div id="errorMessage">
