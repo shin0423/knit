@@ -25,7 +25,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 
 	public String execute() throws SQLException{
 		String result=SUCCESS;
-		errorList = null;
+		categoryList = categoryDAO.getCategoryList();
 		InputChecker i = new InputChecker();
 
 		if (!i.categoryNameChk(categoryName).equals("OK")) {
@@ -37,6 +37,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 		}
 
 		if (!i.categoryDescriptionChk(categoryDescription).equals("OK")) {
+			System.out.println(i.categoryDescriptionChk(categoryDescription));
 			errorList.add(i.categoryDescriptionChk(categoryDescription));
 		}
 
@@ -54,7 +55,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 			errorList = null;
 			categoryList.clear();
 			categoryList = categoryDAO.getCategoryList();
-			session.put("categoryList", categoryList);
+
 			}else{
 			result=ERROR;
 		}
@@ -87,6 +88,22 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 
 	public void setSession(Map<String,Object> session){
 		this.session=session;
+	}
+
+	public List<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(List<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	public ArrayList<String> getErrorList() {
+		return errorList;
+	}
+
+	public void setErrorList(ArrayList<String> errorList) {
+		this.errorList = errorList;
 	}
 
 }

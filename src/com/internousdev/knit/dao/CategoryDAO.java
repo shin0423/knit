@@ -67,7 +67,7 @@ public class CategoryDAO {
 		DBConnector dbConnector=new DBConnector();
 		Connection connection=dbConnector.getConnection();
 
-		String sql="DELETE FROM m_category WHERE category_id=?";
+		String sql="DELETE FROM m_category WHERE id=?";
 		int res=0;
 		try{
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);

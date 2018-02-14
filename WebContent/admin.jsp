@@ -10,32 +10,9 @@
 <meta http-equiv="imagetoolbar" content="no">
 <meta name="description" content="">
 <meta name="keywords" content="">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css">
 
 <title>管理者画面</title>
-
-<style>
-	#header{
-		width:100%;
-		height:50px;
-		background-color:black;
-		}
-
-	#pageName{
-		text-aligin:right;
-		color:red;
-		}
-
-	#logout{
-		text-aligin:left;
-		}
-
-	#footer{
-		width:100%;
-		height:50px;
-		background-color:black;
-		}
-
-</style>
 </head>
 <body>
 	<div id="header">
@@ -48,7 +25,7 @@
 		</div>
 	</div>
 
-
+	<div id="error">
 	<s:if test="errorList!= null">
 		<s:iterator value="errorList">
 			<s:property/><br>
@@ -58,7 +35,8 @@
 	<s:if test="errorMessage != null">
 		<s:property value="errorMessage" />
 	</s:if>
-
+	</div>
+	<div id="left">
 	<s:iterator value="session.buyItemList">
 		<table>
 			<tr>
@@ -117,8 +95,10 @@
 		<br>
 		---------------------------------------------------------
 	</s:iterator>
+	</div>
 
-
+		<div id="right">
+			<div id="insert">
 		<s:form action="AdminInsertItemAction" theme="simple">
 			商品ID:<s:textfield name="itemId" value="" /><br>
 			商品名:<s:textfield name="itemName" value="" /><br>
@@ -134,15 +114,17 @@
 			商品販売会社名:<s:textfield name="releaseCompany" value="" /><br>
 			<s:submit value="登録" />
 		</s:form>
+		</div>
 
-		<s:form action="CategoryInsertAction">
-			カテゴリーID:<s:textfield name="categoryId"/>
-			カテゴリー名:<s:textfield name="categoryName"/>
-			カテゴリー詳細<s:textfield name="categoryDescription"/>
+		<div id="category">
+		<s:form action="AdminInsertCategoryAction">
+			カテゴリーID:<s:textfield name="categoryId" value=""/>
+			カテゴリー名:<s:textfield name="categoryName" value=""/>
+			カテゴリー詳細<s:textfield name="categoryDescription" value=""/>
 			<s:submit value="新規登録" />
 		</s:form>
 
-		<s:form action="CategoryDeleteAction">
+		<s:form action="AdminDeleteCategoryAction">
 			商品カテゴリー:<select name="categoryId">
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
@@ -150,6 +132,9 @@
 			<s:submit value="削除"/>
 			</select>
 		</s:form>
+		</div>
+
+		</div>
 	<div id="footer">
 	</div>
 
