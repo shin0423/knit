@@ -12,6 +12,7 @@
 </head>
 <body>
 	<div class="main">
+
 	<s:iterator value="buyItemAfterSearchList" status="st">
 	<s:if test="#st.count % 3 == 1" >
 	<table class="itemBoxFirst">

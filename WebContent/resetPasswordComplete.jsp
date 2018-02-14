@@ -14,6 +14,7 @@
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/resetPassword.css">
 <title>パスワード再設定完了</title>
 </head>
 
@@ -26,11 +27,12 @@
 			<span>再設定完了</span>
 		</div>
 	<div>
-		<h1>パスワード再設定しました。</h1>
+		<p>パスワード再設定しました。</p>
 	</div>
-	<br><br>
-<a href="<s:url action='TopAction' />">ホーム画面へ</a>
-	<br><br>
+	<div id="button">
+	<button type ="button" onclick ="location.href='/knit/home.jsp'">ホーム画面へ</button>
+	</div>
+
 
 	<footer>
 	</footer>

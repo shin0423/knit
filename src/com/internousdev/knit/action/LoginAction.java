@@ -146,7 +146,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			/**
 			 * ユーザーカートの商品数より仮ユーザーカートの商品数の方が多いとき
 			 */
-		if (userCartList.size() < tempUserCartList.size()) {
+		if (userCartItemIdList.size() < tempUserCartItemIdList.size()) {
 			i = 0;
 			for (i = 0; i <= userCartItemIdList.size(); i++) {
 
@@ -189,7 +189,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			/**
 			 * 仮ユーザーリストよりユーザーカートリストが多いとき
 			 */
-		} else {
+		} else if (userCartItemIdList.size() > tempUserCartItemIdList.size()) {
 			i = 0;
 			for (i = 0; i <= tempUserCartItemIdList.size(); i++) {
 				boolean exist = userCartItemIdList.contains(tempUserCartItemIdList);

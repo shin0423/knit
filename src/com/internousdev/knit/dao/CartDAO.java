@@ -17,6 +17,7 @@ public class CartDAO extends ActionSupport{
 	DBConnector db=new DBConnector();
 	Connection con=null;
 
+
 	/**
 	 * ログインユーザーが商品をカートに入れる
 	 */
@@ -126,9 +127,7 @@ public class CartDAO extends ActionSupport{
 		System.out.println("showTempUserCartList");
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
-		String sql="SELECT cart_info.item_id,cart_info.item_count,ii.item_name,ii.item_name_kana,ii.image_file_name,ii.price,ii.release_company,ii.release_date"
-				+"FROM cart_info LEFT JOIN item_info as ii ON cart_info.item_id=ii.item_id"
-				+"WHERE temp_user_id=?";
+		String sql="SELECT cart_info.item_id as item_id,ii.item_name as item_name,ii.item_name_kana as item_name_kana, ii.image_file_path as image_file_path,ii.price as price,ii.release_company as release_company,ii.release_date as release_date, cart_info.item_count as item_count FROM cart_info LEFT JOIN item_info ii ON cart_info.item_id = ii.item_id where user_id = ?";
 
 		try {
 			con=db.getConnection();
@@ -147,6 +146,7 @@ public class CartDAO extends ActionSupport{
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setReleaseDate(rs.getString("release_date"));
 				cartList.add(dto);
+				System.out.println("イメージファイルパス確認用"+dto.getImageFilePath());
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

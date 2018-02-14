@@ -4,11 +4,32 @@
 <!DOCTYPE html>
 <html>
  <head>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
  <title>ユーザー情報変更</title>
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
- <s:if test="errorMessage !=''">
+ <div id="header">
+ <div id="logo">
+  <ul>
+ <li>検索画面</li>
+ <li>カテゴリ</li>
+ <li><a href="/knit/mypage.jsp" >マイページ</a></li>
+ <li><a href="/knit/login.jsp" >ログイン</a></li>
+ <li><a href="/knit/cart.jsp" >カート</a></li>
+</ul>
+ </div>
+</div>
+
+<div id="main">
+<s:form action="UserUpdateConfirmAction">
+<div id="main_contents">
+<s:if test="errorMessage !=''">
 <s:property value="errorMessage" escape="false" />
 </s:if>
 <s:iterator value="errMsgList">
@@ -18,7 +39,7 @@
 			</s:div>
 		</h5>
 		</s:iterator>
-<s:form action="UserUpdateConfirmAction">
+
    <br>
    <span>ユーザーID</span><span>必須</span>
    <s:textfield name="userId" value="%{userId}" />
@@ -35,8 +56,16 @@
    <span>住所</span><span>必須</span>
    <s:textfield name="userAddress" value="%{userAddress}" />
    <br>
-   <button type="submit">登録</button>
+   </div>
+   <div id="rt">
    <a href="<s:url action='MyPageAction'/>">戻る</a>
+   </div>
+   <div id="com">
+   <button type="submit">登録</button>
+   </div>
   </s:form>
+  </div>
+  <div id="footer">
+  </div>
  </body>
 </html>
