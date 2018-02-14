@@ -24,21 +24,9 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 	private PurchaseCancelConfirmDAO purchaseCancelConfirmDAO = new PurchaseCancelConfirmDAO();
 
-	private PurchaseHistoryDTO purchaseHistoryDTO = new PurchaseHistoryDTO();
-
 	private PurchaseCancelDAO purchaseCancelDAO = new PurchaseCancelDAO();
 
 	public ArrayList<PurchaseHistoryDTO> cancelConfirmList = new ArrayList<PurchaseHistoryDTO>();
-
-	private String registDate;
-
-	private String imageFilePath;
-
-	private String itemNameKana;
-
-	private int count;
-
-	private String releasecompany;
 
 	private String orderNum;
 
@@ -131,28 +119,6 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 		return result;
 	}
 
-	public void totalPrice(){
-		int totalPrice = 0 ;
-		//System.out.println(historyList.size());
-		for(int i=0; i < cancelConfirmList.size(); i++) {
-			System.out.println("商品の値段"+cancelConfirmList.get(i).getPrice());
-			System.out.println("商品の個数"+cancelConfirmList.get(i).getItemCount());
-			totalPrice = cancelConfirmList.get(i).getPrice() * cancelConfirmList.get(i).getItemCount();
-
-		}
-		System.out.println("商品価格合計"+totalPrice);
-	}
-
-	public void imageFilePath(){
-		String imageFilePath= null ;
-		//System.out.println(historyList.size());
-		for(int i=0; i < cancelConfirmList.size(); i++) {
-			System.out.println("商品の画像リンク"+cancelConfirmList.get(i).getImageFilePath());
-			imageFilePath = cancelConfirmList.get(i).getImageFilePath();
-
-		}
-		System.out.println("画像リンク"+imageFilePath);
-	}
 
 
 	public void setSession(Map<String, Object> session) {
@@ -167,45 +133,6 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 		this.itemId = itemId;
 	}
 
-	public String getRegistDate() {
-		return registDate;
-	}
-
-	public void setRegistDate(String registDate) {
-		this.registDate = registDate;
-	}
-
-	public String getImageFilePath() {
-		return imageFilePath;
-	}
-
-	public void setImageFilePath(String imageFilePath) {
-		this.imageFilePath = imageFilePath;
-	}
-
-	public String getItemNameKana() {
-		return itemNameKana;
-	}
-
-	public void setItemNameKana(String itemNameKana) {
-		this.itemNameKana = itemNameKana;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	public String getReleasecompany() {
-		return releasecompany;
-	}
-
-	public void setReleasecompany(String releasecompany) {
-		this.releasecompany = releasecompany;
-	}
 
 	public String getOrderNum() {
 		return orderNum;
@@ -214,13 +141,4 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-
-	public PurchaseHistoryDTO getPurchaseHistoryDTO() {
-		return purchaseHistoryDTO;
-	}
-
-	public void setPurchaseHistoryDTO(PurchaseHistoryDTO purchaseHistoryDTO) {
-		this.purchaseHistoryDTO = purchaseHistoryDTO;
-	}
-
 }

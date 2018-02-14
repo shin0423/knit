@@ -3,11 +3,11 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/purchaseHistory_style.css">
 <title>購入履歴</title>
 </head>
 <body>
@@ -32,13 +32,20 @@
 
 
 			<!-- 全件削除ボタン -->
-				<div class="all_delete">
+				<div class="alldelete">
 					<s:form action="PurchaseHistoryAction" >
 						<input type ="hidden" name="deleteFlg" value="1">
 						<s:submit id="all_delete" value="履歴をすべて削除"/>
 					</s:form>
 				</div>
 			<!-- 全件削除ボタンここまで -->
+
+			<!-- ボタン押下でキャンセル画面に遷移 -->
+    		<div class="cancel">
+					<s:form action="PurchaseCancelAction">
+						<s:submit value="購入キャンセルはこちら"/>
+					</s:form>
+			</div>
 
 		<!-- リストに応じたトップメッセージここまで -->
 
@@ -48,47 +55,15 @@
 
 				<table>
 
-				<tr>
-					<td>
-					<p>注文日</p>
-					</td>
 
-            		<td>
-            		<p><s:property value="registDate" /></p>
-            		</td>
-            	</tr>
-
-
-
-				<!--
-					<s:property value="itemId"/>
-					<img src='<s:property value="imageFilePath"/>'>
-					<img src="./images/coffee.jpg"/>
-				</div>
-
-
-				<s:property value="imageFilePath" />
-
-				</div>  -->
 
 				<!--  画像ファイル -->
-
-
 				 <tr>
 
 					<td>
-					<img src="<s:property value='imageFilePath' />" alt="画像なし" >
+					<img src="<s:property value='imageFilePath' />" alt="画像なし">
 					</td>
 
-				</tr>
-
-				<tr>
-					<td>
-					ふりがな:
-					</td>
-					<td>
-					<s:property value="itemNameKana"/>
-					</td>
 				</tr>
 
 				<tr>
@@ -111,7 +86,7 @@
             		</td>
             	</tr>
 
-				<tr>
+            	<tr>
             		<td>
             		購入数:
             		</td>
@@ -129,40 +104,65 @@
 					<td>
 					<s:property value='totalPrice'/>円
 					</td>
-					<td>
-					<s:property value="('price' * 'itemCount')"/>円
-					</td>
 				</tr>
+
 
 				<tr>
 					<td>
-					発売会社：
+					発売会社:
 					</td>
 
 					<td>
 					<s:property value="releaseCompany"/>
            			</td>
            		</tr>
+
            		<tr>
            			<td>
-           			発売日：
+           			発売日:
            			</td>
 
            			<td>
            			<s:property value="releaseDate"/>
            			</td>
+           		</tr>
 
+				<tr>
+					<td>
+					注文日:
+					</td>
+
+            		<td>
+            		<s:property value="registDate" />
+            		</td>
+            	</tr>
 
         		<tr>
+        			<td>
+        			<s:form action = "BuyItemInfoAction">
+					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
+					<s:submit value="商品詳細ページへ"/>
+					</s:form>
+        			</td>
+
 					<td>
 					<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
 								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-								<s:submit  value="×削除"/>
+								<s:submit  value="×履歴削除"/>
 							</s:form>
 					<!--  履歴個別削除ボタンここまで-->
 					</td>
+				</tr>
+
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><br></td>
 				</tr>
 			</table>
     		</s:iterator>
@@ -180,12 +180,7 @@
 				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
 			</div>
 		</div>
-		<!-- ボタン押下でキャンセル画面に遷移 -->
-    		<div class="cancel">
-						<!-- 注文キャンセルリンク -->
-						<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセルはこちら</a>
 
-			</div>
 
 
 <!-- ページリンクここまで -->

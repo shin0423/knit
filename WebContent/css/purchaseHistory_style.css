@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+table{width: 60%;
+      margin-left: 20%;}
+img{width: 200px;
+    height:auto;}
+
+.cancel{position: fixed;
+        top:250px;
+        left:80%;}
