@@ -5,14 +5,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
 	<link rel="stylesheet"
 		  type="text/css"
-		  href="${pageContext.request.contextPath}/css/purchaseCancelConfirm_style.css">
+		  href="knit/css/purchaseCancelConfirm_style.css">
 
 	<title>購入キャンセル確認画面</title>
 
@@ -141,12 +136,12 @@
 
         			<td class="cancel">
 						<!-- キャンセルボタン -->
-							<s:form action ="PurchaseCancelConfirmAction">
+							<s:form action ="PurchaseCancelCompleteAction">
 								<input type="hidden" name= "itemId" value="<s:property value= 'itemId'/>">
 								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
 								<s:submit value="注文キャンセル" />
-								<!--  注文番号<s:property value= 'orderNum'/>
-								アイテムId<s:property value= 'itemId'/>  -->
+								注文番号<s:property value= 'orderNum'/>
+								アイテムId<s:property value= 'itemId'/>
 							</s:form>
 					</td>
 			</tr>

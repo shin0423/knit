@@ -6,6 +6,7 @@
 <head>
 	<meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlementConfirm.css">
+	
 	<title>決済確認画面</title>
 
 	<style type="text/css">

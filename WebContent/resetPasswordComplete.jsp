@@ -29,11 +29,12 @@
 	<div>
 		<p>パスワード再設定しました。</p>
 	</div>
+	<div class="complete">
 	<div>5秒後にホーム画面に遷移します</div>
-
 	<div id="button">
 	すぐに遷移する場合はこちら
-	<button type ="button" onclick ="location.href='/knit/home.jsp'">ホーム画面へ</button>
+	<button type ="button" onclick ="location.href='/knit/home.jsp'">ホーム</button>
+	</div>
 	</div>
 
 

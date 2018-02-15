@@ -2,8 +2,15 @@
 
 html{overflow:scroll;}
 
-table{width: 60%;
-      margin-left: 20%;}
+table{white-space: nowrap;
+	border-spacing : 5px 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width:400px;
+	margin-top:5px;
+	background-color:white;
+	border-bottom:1px solid lightgray;
+	border-top:1px solid lightgray;}
 img{width: 200px;
     height:auto;}
 

@@ -66,7 +66,9 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId , String o
 			dto.setReleaseCompany(rs.getString("release_company"));
 			dto.setReleaseDate(rs.getDate("release_date"));
 			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
-
+			dto.setUserId(userId);
+			dto.setOrderNum(orderNum);
+			dto.setItemId(itemId);
 			purchaseCancelConfirmDTOList.add(dto);
 
 			System.out.println("購入履歴"+ dto.getPrice());

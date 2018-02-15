@@ -137,8 +137,8 @@
 								<input type="hidden" name= "itemId" value="<s:property value= 'itemId'/>">
 								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
 								<s:submit value="注文キャンセル" />
-								<!--  注文番号<s:property value= 'orderNum'/>
-								アイテムId<s:property value= 'itemId'/>  -->
+								 注文番号<s:property value= 'orderNum'/>
+								アイテムId<s:property value= 'itemId'/>
 							</s:form>
 					</td>
 			</tr>

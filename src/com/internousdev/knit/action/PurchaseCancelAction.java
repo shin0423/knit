@@ -39,6 +39,8 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
     String result = SUCCESS;
 
+    cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
+
 	if (!loginFlg.equals("true")) {
 		return ERROR;
 	}

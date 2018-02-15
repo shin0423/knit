@@ -7,6 +7,4 @@ table{width: 60%;
 img{width: 200px;
     height:auto;}
 
-.cancel{position: fixed;
-        top:250px;
-        left:80%;}
+.cancel{}

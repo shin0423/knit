@@ -141,4 +141,5 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
+
 }
