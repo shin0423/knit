@@ -109,7 +109,8 @@
 <!-- 宛先情報一覧 -->
 <br>
 
-<s:if test="destinationFlg = Error">
+
+<s:if test="destinationList.isEmpty()">
 宛先情報がありませんので宛先を登録してください。
 </s:if>
 

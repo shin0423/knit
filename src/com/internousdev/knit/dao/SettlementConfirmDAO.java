@@ -31,6 +31,8 @@ public class SettlementConfirmDAO {
 
 			while(resultSet.next()) {
 				SettlementConfirmDTO settlementConfirmDTO = new SettlementConfirmDTO();
+
+				if (!(resultSet.getString("tel_number").equals("未入力"))||(!(resultSet.getString("user_address").equals("未入力")))) {
 				settlementConfirmDTO.setId(resultSet.getInt("id"));
 				settlementConfirmDTO.setUserId(resultSet.getString("user_id"));
 				settlementConfirmDTO.setFamilyName(resultSet.getString("family_name"));
@@ -41,6 +43,8 @@ public class SettlementConfirmDAO {
 				settlementConfirmDTO.setTelNumber(resultSet.getString("tel_number"));
 				settlementConfirmDTO.setUserAddress(resultSet.getString("user_address"));
 				destinationList.add(settlementConfirmDTO);
+			}
+
 
 				System.out.println("宛先ID"+settlementConfirmDTO.getId());
 				System.out.println("苗字"+settlementConfirmDTO.getFamilyName());

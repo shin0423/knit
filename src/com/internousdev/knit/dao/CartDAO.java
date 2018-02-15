@@ -422,4 +422,25 @@ public class CartDAO extends ActionSupport{
 			con.close();
 		}
 	}
+	//ミニカート用 小池 ユーザーIDから6件以下検索し取得する
+	public  void miniCart(String userId){
+		String sql="SELECT * FROM cart_info WHERE user_id = 'internous' LIMIT 6";
+		con=db.getConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			
+			ResultSet rs=ps.executeQuery();
+			
+			while (rs.next()) {
+				CartDTO CartDTO=new CartDTO();
+				CartDTO.setItemCount(rs.getInt("item_count"));
+				CartDTO.setItemName(rs.getString("item_name"));
+				CartDTO.setPrice(rs.getInt("price"));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }

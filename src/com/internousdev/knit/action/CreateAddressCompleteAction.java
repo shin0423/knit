@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AddressDataDAO;
+import com.internousdev.knit.dao.DestinationInfoDAO;
 import com.internousdev.knit.dto.AddressDataDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -19,6 +20,8 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 	private String email;
 	private String telNumber;
 	private String userAddress;
+
+	DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 
 
 	public String execute() throws SQLException{
@@ -56,6 +59,9 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 			System.out.println("宛先DBに登録完了");
 			result = SUCCESS;
 		}
+
+
+		destinationInfoDAO.DeleteInComplete(session.get("userId").toString());
 		return result;
 	}
 

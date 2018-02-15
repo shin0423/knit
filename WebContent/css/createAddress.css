@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+  table{
+     border-spacing : 5px 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width:400px;
+	margin-top:5px;
+	background-color:white;
+	border-bottom:1px solid lightgray;
+	border-top:1px solid lightgray;
+	white-space: nowrap;
+	overflow:hidden;
+  }
+
+   .message{
+     text-align: center;
+     font-size:150%;
+     white-space: nowrap;
+     overflow:hidden;
+     }
+
+     .button{
+     position:relative; top: 15px; left: 700px;
+     white-space: nowrap;
+     overflow:hidden;
+     }
+
+     .returnButton{
+     position:relative; top: 15px; left: 705px;
+     white-space: nowrap;
+     overflow:hidden;
+     }
+
+
+

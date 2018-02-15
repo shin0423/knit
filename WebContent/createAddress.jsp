@@ -5,6 +5,8 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createAddress.css">
  <title>宛先情報登録</title>
  </head>
  <body>
@@ -25,33 +27,55 @@
 
 </table>
 
-   <br>
-   <span>姓</span><span>必須</span>
-   <s:textfield name="familyName" value="%{familyName}" />
-   <br>
-   <span>名</span><span>必須</span>
-   <s:textfield name="firstName" value="%{firstName}" />
-   <br>
-   <span>せい</span><span>必須</span>
-   <s:textfield name="familyNameKana" value="%{familyNameKana}" />
-   <br>
-   <span>めい</span><span>必須</span>
-   <s:textfield name="firstNameKana" value="%{firstNameKana}" />
-   <br>
-   <span>E-mail</span><span>必須</span>
-   <s:textfield name="email" value="%{email}" />
-   <br>
-   <span>電話番号</span><span>必須</span>
-   <s:textfield name="telNumber" value="%{telNumber}" />
-   <br>
-   <span>住所</span><span>必須</span>
-   <s:textfield name="userAddress" value="" />
-   <br>
+<p class="message">宛先登録画面</p>
+
+<table>
+<tr>
+
+   <th>姓必須</th>
+   <td><s:textfield name="familyName" value="%{familyName}" /></td>
+</tr>
+
+<tr>
+   <th>名必須</th>
+  <td> <s:textfield name="firstName" value="%{firstName}" /></td>
+</tr>
+
+<tr>
+<th>せい必須</th>
+<td>	<s:textfield name="familyNameKana" value="%{familyNameKana}" /></td>
+
+</tr>
+
+<tr>
+   <th>めい必須</th>
+   <td><s:textfield name="firstNameKana" value="%{firstNameKana}" /><td>
+</tr>
+
+   <tr>
+   <th>E-mail必須</th>
+   <td><s:textfield name="email" value="%{email}" /></td>
+</tr>
+
+<tr>
+   <th>電話番号必須</th>
+   <td><s:textfield name="telNumber" value="%{telNumber}" /></td>
+</tr>
+
+<tr>
+   <th>住所必須</th>
+   <td><s:textfield name="userAddress" value="" /></td>
+</tr>
+</table>
+
    <s:form action="CreateAddressConfirmAction">
-   <s:submit value="登録"/>
+   <s:submit class="button" value="登録"/>
    </s:form>
+
+   <br>
+
    <s:form action="SettlementConfirmAction">
-   <s:submit value="戻る"/>
+   <s:submit class="returnButton" value="戻る"/>
    </s:form>
   </s:form>
  </body>

@@ -127,4 +127,27 @@ while (resultSet.next()) {
 		 return oneDestinationList;
 
 	 }
+	 public void DeleteInComplete(String loginId){
+		 Connection connection = dbConnector.getConnection();
+		 String sql ="DELETE FROM destination_info WHERE user_id = ? AND tel_number ='未入力' OR user_address ='未入力'";
+
+	 try {
+		 PreparedStatement preparedStatement =connection.prepareStatement(sql);
+
+		 preparedStatement.setString(1, loginId);
+
+		 preparedStatement.execute();
+
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+	 }
 }

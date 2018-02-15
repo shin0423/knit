@@ -50,7 +50,9 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 	private boolean cartFlg;
 
 
-	private String destinationFlg;
+
+
+	String destinationError;
 
 
 	public String execute() throws SQLException{
@@ -63,16 +65,33 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 			session.put("destinationList", destinationList);
 
+System.out.println("destinationリスト"+destinationList.size());
+
+			if (destinationList.size() ==0) {
+				System.out.println("宛先Errorif");
+				destinationError ="a";
+				session.put("destinationError", destinationError);
+				System.out.println(session.get("destinationError").toString());
+			}else {
+				System.out.println("リムーブ");
+				session.remove("destinationError");
+			}
+
+
+
+
+
 			//宛先登録する時に一番最初に表示してあげるための宛先情報を取得
 			oneDestinationList = DestinationInfoDAO.OneDestination(session.get("userId").toString());
 
 
 
 			//登録された宛先があるかどうかチェック
-			if (destinationList.size() ==0) {
-				destinationFlg ="Error";
-				session.put("destinationFlg", destinationFlg);
-			}
+			//if (destinationList.size() ==0) {
+				//System.out.println("宛先flg");
+				//destinationFlg ="Error";
+				//session.put("destinationFlg", destinationFlg);
+			//}
 			//カート情報取得
 			cartInfoList = cartDAO.showUserCartList(session.get("userId").toString());
 
