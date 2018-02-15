@@ -50,12 +50,12 @@
 
 
  <s:if test="#session.loginFlg == false">
-  <a href='<s:url action="GoLoginPageAction"/>' ><button class="user">ログインへ</button></a>
+  <a href='<s:url action="GoLoginPageAction"/>' ><button class="login">ログインへ</button></a>
  </s:if>
 
   <s:elseif test="#session.loginFlg == true">
-   <a href='<s:url action="MyPageAction"/>' ><button class="user">マイページへ</button></a>
-   <a href='<s:url action="UserLogoutAction"/>'><button class="user">ログアウト</button></a>
+   <a href='<s:url action="MyPageAction"/>' ><button class="mypage">マイページへ</button></a>
+   <a href='<s:url action="UserLogoutAction"/>'><button class="logout">ログアウト</button></a>
   </s:elseif>
 
 
@@ -70,7 +70,7 @@
 
 
 $(function(){
-	$(".home ,.cart ,.search ,.user ,.item").hover(
+	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
 			function(){
 				$(this).animate({
 					width:"55px",
