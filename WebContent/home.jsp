@@ -16,6 +16,7 @@
 <body>
 <div class="header">
 
+ <div class="menu">
   <a href="/knit/home.jsp"><button class="home">Home</button></a>
 
   <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
@@ -58,36 +59,22 @@
   </s:elseif>
 
 
-  <a href='<s:url action="BuyItemAction"/>'><button  class="item">商品一覧へ</button></a>
+  <a href='<s:url action="BuyItemAction"/>'><button  class="item">+</button></a>
 </div>
-
-
+</div>
 
 
 <div class="main">
 
 <script>
-$(function() {
 
-	for(var i = 0; i < $(".home .top_main ul li img").length; i++){
-	var arra_w = $('.home .top_main ul li img').eq(i).width() - 14;
-
-	var arra_h = $('.home .top_main ul li img').eq(i).height();
-	if(arra_w < arra_h || arra_w == arra_h){
-		$('.home .top_main ul li img').eq(i).css('max-height','245px');
-	}else{
-		$('.home .top_main ul li img').eq(i).css('max-width','288px');
-	}
-	};	//配列をまわす
-
-});	//function
 
 $(function(){
 	$(".home ,.cart ,.search ,.user ,.item").hover(
 			function(){
 				$(this).animate({
-					width:"205px",
-					height:"205px",
+					width:"55px",
+					height:"55px",
 					}, 50 );
 			},
 			function(){

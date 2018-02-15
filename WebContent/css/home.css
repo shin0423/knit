@@ -6,17 +6,25 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 51px;
+	height: 70px;
 	width: 100%;
 	margin:0;
+	background:black;
+}
+.menu{
+	top: 7px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
 	text-align:center;
-
 }
 .cart{
 	width: 50px;
 	height: 50px;
-	background-image:;
-	display:inline-block;
+	background:#00CC99;
+	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
 	box-shadow:2px 2px 2px #555;
@@ -28,7 +36,7 @@ body{
 	width: 50px;
 	height: 50px;
 	background-image: url("/knit/images/SearchLogo.jpg");
-	display:inline-block;
+	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
 	box-shadow:2px 2px 2px #555;
@@ -40,7 +48,7 @@ body{
 	width: 50px;
 	height: 50px;
 	background: #CC33FF;
-	display:inline-block;
+	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
 	box-shadow:2px 2px 2px #555;
@@ -52,7 +60,7 @@ body{
 	width: 50px;
 	height: 50px;
 	background: #FF0066;
-	display:inline-block;
+	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
 	box-shadow:2px 2px 2px #555;
@@ -64,7 +72,7 @@ body{
 	width: 50px;
 	height: 50px;
 	background: blue;
-	display:inline-block;
+	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
 	box-shadow:2px 2px 2px #555;
