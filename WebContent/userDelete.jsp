@@ -22,7 +22,7 @@
 	<div id="main">
 		<br>
 		<div id="title">
-		<h1>退会する</h1>
+		<p>退会する</p>
 		</div>
 	<script type="text/javascript">
 	$(function(){
