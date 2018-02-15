@@ -26,9 +26,12 @@
  </div>
 </div>
 <div id="main">
+<div id="main_title"><p>ユーザー情報変更完了<p></div>
+<div id="main_contents">
 <h3>ユーザー情報の変更が完了しました。</h3>
 <br>
-	<a href="/knit/mypage.jsp">マイページ</a>
+<button type ="button" onclick ="location.href='/knit/mypage.jsp'">マイページ</button>
+</div>
 </div>
 <div id="footer">
 </div>

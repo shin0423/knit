@@ -27,6 +27,7 @@
 </div>
 
 <div id="main">
+<div id="main_title"><p>ユーザー情報変更<p></div>
 <s:form action="UserUpdateConfirmAction">
 <div id="main_contents">
 <s:if test="errorMessage !=''">
@@ -57,10 +58,8 @@
    <s:textfield name="userAddress" value="%{userAddress}" />
    <br>
    </div>
-   <div id="rt">
+   <div id="button">
    <a href="<s:url action='MyPageAction'/>">戻る</a>
-   </div>
-   <div id="com">
    <button type="submit">登録</button>
    </div>
   </s:form>

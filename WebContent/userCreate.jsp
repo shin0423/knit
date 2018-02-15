@@ -29,7 +29,9 @@
  <div id="main">
 
    <s:form action="UserCreateConfirmAction">
+     <div id="main_title"><p>ユーザー登録<p></div>
    <div id="main_contents">
+
    <s:if test="errorMessage !=''">
     <s:property value="errorMessage" escape="false" />
    </s:if>
@@ -75,10 +77,8 @@
 
           </div>
 
-          <div id="rt">
-       <a href="/knit/login.jsp" >戻る</a>
-       </div>
-       <div id="com">
+          <div id="button">
+       <button type ="button" onclick ="location.href='/knit/login.jsp'">戻る</button>
      <button type="submit">登録</button>
      </div>
 

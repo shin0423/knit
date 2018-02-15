@@ -38,6 +38,7 @@ document.loginAction.submit();
 </div>
 
 <div id="main">
+<div id="main_title"><p>ユーザー登録完了</p></div>
 <div id="main_contents">
 <h3>ユーザー登録が完了しました。</h3>
 <h3>5秒後にホーム画面に遷移します</h3>

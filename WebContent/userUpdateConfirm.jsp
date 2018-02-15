@@ -26,6 +26,7 @@
  </div>
 </div>
 <div id="main">
+<div id="main_title"><p>入力情報確認</p></div>
   <s:form action="UserUpdateCompleteAction">
   <div id="main_contents">
    ユーザーID<s:property value="userId"/>
@@ -41,10 +42,8 @@
    <s:hidden name="userAddress" value="%{userAddress}"/>
    </div>
    <br>
-   <div id="rt">
-   <a href="/knit/userUpdate.jsp">戻る</a>
-   </div>
-   <div id="com">
+   <div id="button">
+   <button type ="button" onclick ="location.href='/knit/userUpdate.jsp'">戻る</button>
    <button type="submit">登録情報を確定</button>
    </div>
   </s:form>

@@ -29,40 +29,32 @@ li{float:left;
 .main{
 	clear:both;
 	}
-
+#main_title{
+	margin:0 auto;
+	margin-top:80px;
+	text-align:center;
+	color:black;
+}
 #main_contents{
 	width:95%;
 	margin:0 auto;
-	margin-top:80px;
+	margin-top:20px;
 	text-align:center;
 	margin-bottom:30px;
 }
 
 
-#rt{
-    float:left;
-    position:relative;
-    top:20px;
-    left:45%;
-    width:5%;
-	margin-bottom:40px;
-	padding-right:0px;
-}
-#com{
-    float:left;
-    position:relative;
-    top:20px;
-    left:50%;
-    width:30%;
-	margin-bottom:40px;
-	padding-left:0px;
+#button{
+	margin:0px 20px;
+	text-align:center;
+	margin-bottom:70px;
 }
 
 #footer{
 	clera:left;
 	width:100%;
 	height:60px;
-	position:absolute;
+	position:fixed;
 	bottom:0px;
 	left:0px;
 	color:white;
