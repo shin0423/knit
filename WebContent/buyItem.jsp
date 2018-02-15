@@ -23,16 +23,22 @@
 			<td><img src="<s:property value='itemImagePath' />" class="itemImg"></td>
 		</tr>
 		<tr>
-			<td><s:property value="itemName"/></td>
+			<td> <div class="mais"><s:property value="itemName"/></div> </td>
 		</tr>
+	
 		<tr>
 			<td><s:property value="itemDescription" /></td>
 		</tr>
 		<tr>
-			<td><s:property value="price" /></td>
+			<td><s:property value="price" />円</td>
 		</tr>
 		<tr>
-			<td><s:property value="itemStock" /></td>
+		<s:if test="itemStock == '0'">
+			<td>在庫切れ</td>
+		</s:if>
+		<s:else>
+			<td><div class="mais"><s:property value="itemStock" />個</div></td>
+		</s:else>
 		</tr>
 		<tr>
 			<td><s:property value="releaseCompany" /></td>
@@ -42,10 +48,11 @@
 		</tr>
 		<tr>
 		<td>
-		<s:form action="BuyItemInfoAction" theme="simple" >
-			<s:hidden value="%{itemId}" name="itemId" />
-			<s:submit value="商品詳細" />
-		</s:form>
+		<div class="buttonBox">
+						<div class="btnn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
 		</td>
 		</tr>
 	</table>
@@ -56,16 +63,21 @@
 			<td><img src="<s:property value='itemImagePath' />" class="itemImg"></td>
 		</tr>
 		<tr>
-			<td><s:property value="itemName"/></td>
+			<td> <div class="mais"><s:property value="itemName"/></div> </td>
 		</tr>
 		<tr>
 			<td><s:property value="itemDescription" /></td>
 		</tr>
 		<tr>
-			<td><s:property value="price" /></td>
+			<td><s:property value="price" />円</td>
 		</tr>
 		<tr>
-			<td><s:property value="itemStock" /></td>
+		<s:if test="itemStock == '0'">
+			<td>在庫切れ</td>
+		</s:if>
+		<s:else>
+			<td><div class="mais"><s:property value="itemStock" />個</div></td>
+		</s:else>
 		</tr>
 		<tr>
 			<td><s:property value="releaseCompany" /></td>
@@ -75,16 +87,19 @@
 		</tr>
 		<tr>
 		<td>
-		<s:form action="BuyItemInfoAction" theme="simple" >
-			<s:hidden value="%{itemId}" name="itemId" />
-			<s:submit value="商品詳細" />
-		</s:form>
+		
+　　　　<div class="buttonBox">
+						<div class="btn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
 		</td>
 		</tr>
 	</table>
 	</s:else>
 	</s:iterator>
 	</div>
+						
 
 </body>
 </html>
