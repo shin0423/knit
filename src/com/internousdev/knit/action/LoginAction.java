@@ -148,7 +148,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			 */
 		if (userCartItemIdList.size() < tempUserCartItemIdList.size()) {
 			i = 0;
-			for (i = 0; i <= userCartItemIdList.size(); i++) {
+			for (i = 0; i < userCartItemIdList.size(); i++) {
 
 				/**
 				 * 仮ユーザーカートリストにユーザーカートリストにある物が含まれているか

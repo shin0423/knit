@@ -8,9 +8,9 @@ body{
 	left: 0;
 	height: 90px;
 	width: 100%;
+	border-bottom:1px solid black;
 	margin:0;
 	text-align:center;
-	background: red;
 }
 .cart{
 	width: 80px;
@@ -25,7 +25,7 @@ body{
 .search{
 	width: 80px;
 	height: 80px;
-	background: blue;
+	background: lightgray;
 	display:inline-block;
 	text-decoration: none;
 	border-radius: 50%;

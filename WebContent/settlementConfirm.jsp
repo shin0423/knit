@@ -128,7 +128,7 @@
 <tr>
 
 <td rowspan="6">
-<input type="radio" name="id" value="#st.index" checked="checked"/>
+<input type="radio" name="id" value="<s:property value='#st.index'/>" checked="checked"/>
 
 </td>
 <td class="midasi">ふりがな</td>
@@ -171,7 +171,7 @@
 
 <s:form action="CreateAddressAction">
 
-<s:iterator value="oneDestinationList">
+<s:iterator value="destinationList" >
 
 <input type="hidden" name="familyName" value="<s:property value="familyName"/>"  >
 <input type="hidden" name="firstName" value="<s:property value="firstName"/>" >

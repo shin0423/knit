@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+body{
+min-width:600px;
+}
 .itemInfoBox{
 float:right;
 border:1px solid black;
