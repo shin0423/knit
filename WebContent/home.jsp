@@ -8,8 +8,9 @@
  <meta charset="utf-8">
  <link rel="stylesheet" href="./css/home.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/jquery.plainmodal.js"></script>
+
 <title>knit</title>
 </head>
 <body>
@@ -21,9 +22,9 @@
  <div class="inside">
  <div class="center">
   <div class="hide_box">
-  <s:form action="BuyItemAction">
+  <s:form action="BuyItemAction" class="BOX">
    <s:textfield name="searchWord" class="h_search" />
-   <select name="categoryId" class="">
+   <select name="categoryId">
     <option value=0 selected="selected">全てのカテゴリ</option>
     <option value=1 >飲食</option>
     <option value=2 >家電・パソコン</option>
@@ -39,12 +40,23 @@
   </div>
  </div>
 <script>
-$(function(){
+/* $(function(){
 	$(".search").click(function(){
-		$(".inside").stop().fadeToggle();
+		$(".inside").stop().fadeIn();
 	});
 });
-</script>
+$(function(){
+	$(".inside").click(function(){
+		$(".inside").stop().fadeOut();
+	});
+});
+ */
+
+ $('.search').click(function() {
+	  $('.inside').plainModal('open', {overlay: {color: '#fff', opacity: 0.5}});
+	});
+
+ </script>
 
 
   <a href="/knit/home.jsp"><button class="home">Home</button></a>

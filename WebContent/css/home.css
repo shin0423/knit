@@ -63,15 +63,11 @@ body{
     -moz-border-radius: 50%;
 }
 .inside{
-	position: fixed;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	width:100%;
-	height:100%;
-	display: none;
-	background-color: rgba(100,100,100,0.5);
+ padding: 10px;
+  background-color: #fff;
+  border: blue solid 1px;
+  display: none;
+
 }
 .center{
 	width:100%;
@@ -82,7 +78,7 @@ body{
 }
 .hide_box{
 	width:300px;
-	hieght:40%;
+	height:40%;
 	min-width:400px;
 	min-hieght:250px;
 	background:yellow;
