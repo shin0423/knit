@@ -11,63 +11,73 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報確認</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
  </head>
  <body>
- <div id="header">
- <div id="logo">
-  <ul>
- <li>検索画面</li>
- <li>カテゴリ</li>
- <li><a href="/knit/mypage.jsp" >マイページ</a></li>
- <li><a href="/knit/login.jsp" >ログイン</a></li>
- <li><a href="/knit/cart.jsp" >カート</a></li>
-</ul>
- </div>
-</div>
+
 
 <div id="main">
-<div id="main_title"><p>入力情報確認</p></div>
+<div id="title"><p>入力情報確認</p></div>
   <s:form action="UserCreateCompleteAction">
-  <div id="main_contents">
-   ユーザーID:<s:property value="userId"/>
-   <s:hidden name="userId" value="%{userId}" />
-   <br>
-   パスワード:<s:property value="password"/>
-   <s:hidden name="password" value="%{password}" />
-   <br>
-   姓:<s:property value="familyName"/>
-   <s:hidden name="familyName" value="%{familyName}" />
-   <br>
-   名:<s:property value="firstName"/>
-   <s:hidden name="firstName" value="%{firstName}" />
-   <br>
-   姓ふりがな:<s:property value="familyNameKana"/>
-   <s:hidden name="familyNameKana" value="%{familyNameKana}" />
-   <br>
-   名ふりがな:<s:property value="firstNameKana"/>
-   <s:hidden name="firstNameKana" value="%{firstNameKana}"/>
-   <br>
-   性別:<s:property value="sex"/>
-   <s:hidden name="sex" value="%{sex}"/>
-   <br>
-   メール:<s:property value="email"/>
-   <s:hidden name="email" value="%{email}"/>
-   <br>
-   電話番号:<s:property value="telNumber"/>
-   <s:hidden name="telNumber" value="%{telNumber}" />
-   <br>
-   住所:<s:property value="userAddress"/>
-   <s:hidden name="userAddress" value="%{userAddress}"/>
-   <br>
-</div>
+  <div>入力内容をご確認ください</div>
+  <table>
+  <tr>
+   <th>ユーザーID:</th>
+   <td><s:property value="userId"/>
+   <s:hidden name="userId" value="%{userId}" /></td>
+   </tr>
+   <tr>
+   <th>パスワード:</th>
+   <td><s:property value="password"/>
+   <s:hidden name="password" value="%{password}" /></td>
+   </tr>
+   <tr>
+   <th>姓:</th>
+   <td><s:property value="familyName"/>
+   <s:hidden name="familyName" value="%{familyName}" /></td>
+   </tr>
+   <tr>
+   <th>名:</th>
+   <td><s:property value="firstName"/>
+   <s:hidden name="firstName" value="%{firstName}" /></td>
+   </tr>
+   <tr>
+   <th>姓ふりがな:</th>
+   <td><s:property value="familyNameKana"/>
+   <s:hidden name="familyNameKana" value="%{familyNameKana}" /></td>
+   </tr>
+   <tr>
+   <th>名ふりがな:</th>
+   <td><s:property value="firstNameKana"/>
+   <s:hidden name="firstNameKana" value="%{firstNameKana}"/></td>
+   </tr>
+   <tr>
+   <th>性別:</th>
+   <td><s:property value="sex"/>
+   <s:hidden name="sex" value="%{sex}"/></td>
+   </tr>
+   <tr>
+   <th>メール:</th>
+   <td><s:property value="email"/>
+   <s:hidden name="email" value="%{email}"/></td>
+   </tr>
+   <tr>
+   <th>電話番号:</th>
+   <td><s:property value="telNumber"/>
+   <s:hidden name="telNumber" value="%{telNumber}" /></td>
+   </tr>
+   <tr>
+   <th>住所:</th>
+   <td><s:property value="userAddress"/>
+   <s:hidden name="userAddress" value="%{userAddress}"/></td>
+   </tr>
+</table>
    <div id="button">
    <button type ="button" onclick ="location.href='/knit/userCreate.jsp'">戻る</button>
    <button type="submit">登録情報を確定</button>
    </div>
    </s:form>
   </div>
-  <div id="footer">
-  </div>
+
  </body>
 </html>

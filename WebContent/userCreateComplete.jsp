@@ -11,7 +11,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title>ユーザー登録完了</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
 <script language="JavaScript">
 <!--
 function autoLoginAction(){
@@ -25,33 +25,22 @@ document.loginAction.submit();
 </head>
 <body onload="setTimeout( 'autoLoginAction()', 5000 )">
 
-<div id="header">
- <div id="logo">
- <ul>
- <li>検索画面</li>
- <li>カテゴリ</li>
- <li><a href="/knit/mypage.jsp" >マイページ</a></li>
- <li><a href="/knit/login.jsp" >ログイン</a></li>
- <li><a href="/knit/cart.jsp" >カート</a></li>
-</ul>
-</div>
-</div>
+
 
 <div id="main">
-<div id="main_title"><p>ユーザー登録完了</p></div>
-<div id="main_contents">
-<h3>ユーザー登録が完了しました。</h3>
-<h3>5秒後にホーム画面に遷移します</h3>
-<br>
+<div id="title"><p>ユーザー登録完了</p></div>
+
+<div>
+<p>ユーザー登録が完了しました。</p>
+</div>
+<div>
+<p>5秒後にホーム画面に遷移します</p>
+</div>
+
 <s:form name="loginAction" action="LoginAction" method="post">
 <s:hidden name="userId" VALUE="{$userId}" />
 <s:hidden name="password" VALUE="{$password}" />
 すぐに遷移する場合はこちら<input type="submit" VALUE="ホーム">
 </s:form>
+
 </div>
-</div>
-<div id="footer">
-コピーライト
-</div>
-</body>
-</html>

@@ -11,44 +11,42 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報変更確認</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
  </head>
  <body>
-  <div id="header">
- <div id="logo">
- <ul>
- <li>検索画面</li>
- <li>カテゴリ</li>
- <li><a href="/knit/mypage.jsp" >マイページ</a></li>
- <li><a href="/knit/login.jsp" >ログイン</a></li>
- <li><a href="/knit/cart.jsp" >カート</a></li>
-</ul>
- </div>
-</div>
 <div id="main">
-<div id="main_title"><p>入力情報確認</p></div>
+<div id="title"><p>入力情報確認</p></div>
+<div>入力内容をご確認ください</div>
   <s:form action="UserUpdateCompleteAction">
-  <div id="main_contents">
-   ユーザーID<s:property value="userId"/>
-   <s:hidden name="userId" value="%{userId}" />
-   <br>
-   新規パスワード<s:property value="newPassword"/>
-   <s:hidden name="newPassword" value="%{newPassword}" />
-   <br>
-   電話番号<s:property value="telNumber"/>
-   <s:hidden name="telNumber" value="%{telNumber}" />
-   <br>
-   住所<s:property value="userAddress"/>
-   <s:hidden name="userAddress" value="%{userAddress}"/>
-   </div>
+  <table>
+  <tr>
+   <th>ユーザーID<th>
+   <td><s:property value="userId"/>
+   <s:hidden name="userId" value="%{userId}" /><td>
+   </tr>
+   <tr>
+   <th>新規パスワード</th>
+   <td><s:property value="newPassword"/>
+   <s:hidden name="newPassword" value="%{newPassword}" /></td>
+   </tr>
+   <tr>
+   <th>電話番号</th>
+   <td><s:property value="telNumber"/>
+   <s:hidden name="telNumber" value="%{telNumber}" /></td>
+   </tr>
+   <tr>
+   <th>住所</th>
+   <td><s:property value="userAddress"/>
+   <s:hidden name="userAddress" value="%{userAddress}"/></td>
+   </tr>
+  </table>
    <br>
    <div id="button">
    <button type ="button" onclick ="location.href='/knit/userUpdate.jsp'">戻る</button>
    <button type="submit">登録情報を確定</button>
    </div>
   </s:form>
-  </div>
-  <div id="footer">
+
   </div>
  </body>
 </html>

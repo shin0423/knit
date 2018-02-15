@@ -11,26 +11,44 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報変更</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
  </head>
  <body>
- <div id="header">
- <div id="logo">
-  <ul>
- <li>検索画面</li>
- <li>カテゴリ</li>
- <li><a href="/knit/mypage.jsp" >マイページ</a></li>
- <li><a href="/knit/login.jsp" >ログイン</a></li>
- <li><a href="/knit/cart.jsp" >カート</a></li>
-</ul>
- </div>
-</div>
+
 
 <div id="main">
-<div id="main_title"><p>ユーザー情報変更<p></div>
+<div id="title"><p>ユーザー情報変更<p></div>
+<div>ユーザー情報を変更してください</div>
 <s:form action="UserUpdateConfirmAction">
-<div id="main_contents">
-<s:if test="errorMessage !=''">
+<table>
+
+
+   <tr>
+   <th>ユーザーID()</th>
+   <td><s:textfield name="userId" value="%{userId}" /></td>
+   </tr>
+   <tr>
+   <th>新規パスワード(必須)</th>
+   <td><s:password name="newPassword" value="%{newPassword}" /></td>
+   </tr>
+   <tr>
+   <th>確認用パスワード(必須)</th>
+   <td><s:password name="conPassword" value="%{conPassword}" /></td>
+   </tr>
+   <tr>
+   <th>電話番号(必須)</th>
+   <td><s:textfield name="telNumber" value="%{telNumber}" /></td>
+   </tr>
+   <tr>
+   <th>住所(必須)</th>
+   <td><s:textfield name="userAddress" value="%{userAddress}" /></td>
+   </tr>
+   </table>
+   <div id="button">
+   <button type ="button" onclick ="location.href='/knit/MyPageAction'">戻る</button>
+   <button type="submit">登録</button>
+   </div>
+   <s:if test="errorMessage !=''">
 <s:property value="errorMessage" escape="false" />
 </s:if>
 <s:iterator value="errMsgList">
@@ -40,31 +58,7 @@
 			</s:div>
 		</h5>
 		</s:iterator>
-
-   <br>
-   <span>ユーザーID</span><span>必須</span>
-   <s:textfield name="userId" value="%{userId}" />
-   <br>
-   <span>新規パスワード</span><span>必須</span>
-   <s:password name="newPassword" value="%{newPassword}" />
-   <br>
-   <span>確認用パスワード</span><span>必須</span>
-   <s:password name="conPassword" value="%{conPassword}" />
-   <br>
-   <span>電話番号</span><span>必須</span>
-   <s:textfield name="telNumber" value="%{telNumber}" />
-   <br>
-   <span>住所</span><span>必須</span>
-   <s:textfield name="userAddress" value="%{userAddress}" />
-   <br>
-   </div>
-   <div id="button">
-   <a href="<s:url action='MyPageAction'/>">戻る</a>
-   <button type="submit">登録</button>
-   </div>
   </s:form>
-  </div>
-  <div id="footer">
   </div>
  </body>
 </html>

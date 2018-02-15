@@ -11,29 +11,17 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title>ユーザー情報変更完了</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
 </head>
 <body>
- <div id="header">
- <div id="logo">
-  <ul>
- <li>検索画面</li>
- <li>カテゴリ</li>
- <li><a href="/knit/mypage.jsp" >マイページ</a></li>
- <li><a href="/knit/login.jsp" >ログイン</a></li>
- <li><a href="/knit/cart.jsp" >カート</a></li>
-</ul>
- </div>
-</div>
+
 <div id="main">
-<div id="main_title"><p>ユーザー情報変更完了<p></div>
-<div id="main_contents">
+<div id="title"><p>ユーザー情報変更完了<p></div>
+<div>
 <h3>ユーザー情報の変更が完了しました。</h3>
 <br>
 <button type ="button" onclick ="location.href='/knit/mypage.jsp'">マイページ</button>
 </div>
-</div>
-<div id="footer">
 </div>
 </body>
 </html>
