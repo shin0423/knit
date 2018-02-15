@@ -45,3 +45,11 @@
 	clear:both;
 	overflow:hidden;
 	}
+	@font-face {
+	font-family: 'DoverHeights';
+	src: local('DoverHeights') ,url('DoverHeights.otf');
+}
+	.fontTest{
+		font-size:144px;
+		font-family:'DoverHeights';
+	}

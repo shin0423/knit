@@ -95,15 +95,17 @@
 
 
 	<br>
-	<div class="deleteReview">
+
 	<s:if test=" #session.userId != null ">
-	<br>自分のレビューを消す<br>
-	<s:form action="ReviewDeleteAction">
-		<s:hidden name="itemId" value="%{itemId}" />
-		<s:submit value="確認" />
-	</s:form>
+		<div class="deleteReview">
+		<br>自分のレビューを消す<br>
+			<s:form action="ReviewDeleteAction">
+				<s:hidden name="itemId" value="%{itemId}" />
+				<s:submit value="確認" />
+			</s:form>
+		</div>
 	</s:if>
-	</div>
+
 	<div class="review">
 	<br>レビュー<br>
 	<s:iterator value="reviewList">

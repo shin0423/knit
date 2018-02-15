@@ -11,6 +11,9 @@
 
 </head>
 <body>
+	<div class="fontTest">
+	knitaaaaa
+	</div>
 	<div class="main">
 
 	<s:iterator value="buyItemAfterSearchList" status="st">
