@@ -15,6 +15,7 @@
 
 
 
+
  </head>
  <body >
   <p class="message">宛先情報登録完了しました。</p>

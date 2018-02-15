@@ -36,7 +36,7 @@ public class AddressDataDAO {
 		//  データベース&SQL
 
 		int updateCount = 0;
-		String sql = "INSERT INTO distination_info(user_id, family_name, first_name, "
+		String sql = "INSERT INTO destination_info(user_id, family_name, first_name, "
 				+ "family_name_kana, first_name_kana, email, tel_number, user_address, "
 				+ "regist_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 		try{

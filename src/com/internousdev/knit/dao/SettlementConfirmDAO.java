@@ -23,6 +23,7 @@ public class SettlementConfirmDAO {
 				+ "FROM destination_info "
 				+ "where user_id = ?";
 
+		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);

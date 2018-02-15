@@ -9,6 +9,7 @@
  <title>宛先情報確認</title>
  </head>
  <body>
+ 
 
  <p class="message">宛先確認</p>
   <s:form action="CreateAddressCompleteAction"><br>

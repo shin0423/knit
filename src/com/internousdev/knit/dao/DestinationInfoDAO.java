@@ -39,6 +39,7 @@ public class DestinationInfoDAO {
 			//MysqlにSQL文を送り結果を受け取る
 			ResultSet resultSet = preparedStatement.executeQuery();
 
+			
 			//MySQLから受け取った値を宛先情報DTOに格納
 			while (resultSet.next()) {
 				DestinationInfoDTO DistinationInfoDTO = new DestinationInfoDTO();

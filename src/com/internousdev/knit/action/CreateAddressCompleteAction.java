@@ -39,6 +39,7 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
+		
 
 		System.out.println("登録する値一覧（CreateAddressCompleteAction）--------------");
 		System.out.println(dto.getUserId());

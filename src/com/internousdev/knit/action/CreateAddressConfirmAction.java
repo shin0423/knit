@@ -18,6 +18,7 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 	private String telNumber;
 	private String userAddress;
 	private ArrayList<String> errMsgList = new ArrayList<>();
+	
 
 	private Map<String,Object> session;
 
