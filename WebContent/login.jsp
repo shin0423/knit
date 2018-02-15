@@ -11,73 +11,61 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 
-<link href="${pageContext.request.contextPath}/css/login_style.css" rel="stylesheet" type="text/css">
+<link href="./css/login_style.css" rel="stylesheet" type="text/css">
 
 <title>ログインページ</title>
 </head>
 <body>
 
-	<div id="header">
-		<div id="logo_container"></div>
-		<ul>
-			<li>aaaaaaaaa</li>
-			<li>bbbbbbbbb</li>
-			<li>ccccccccc</li>
-		</ul>
-	</div>
+		<header>
+		</header>
 
-	<div id="main">
-		<div id="main_container">
-		<h3>ログインページ</h3>
-
-		<div id="left_contents">
-		<table>
-			<s:form action="LoginAction">
-			<tr>
-				<td>ID:</td>
-				<td><s:textfield name="userId" value="%{#session.saveUserId}" /></td>
-			</tr>
-			<tr>
-				<td>パスワード:</td>
-				<td><s:password name="password" /></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<div>
-					<s:submit value="確認" />
-					<input type="checkbox" value="true" name="saveId" >ID保存の場合はチェック
-				</div>
-				</td>
-			</tr>
-			</s:form>
-		</table>
-
-
-		<div>
-			<s:if test="errorMessage != null " >
-			<div id="errorMessage">
-				<s:iterator value="errorMessage">
-					<s:property /><br>
-				</s:iterator>
+		<div id="main">
+		<br>
+			<div id="title"><p>ログインページ</p>
 			</div>
-		</s:if>
-		</div>
-		</div>
+			<s:form action="LoginAction">
+				<div>ログイン情報を入力してください</div>
+				<table>
+					<tr>
+						<th>ユーザーID</th>
+						<td><s:textfield name="userId" value="%{#session.saveUserId}"
+								placeholder="IDを入力" /></td>
+					</tr>
+					<tr>
+						<th>パスワード</th>
+						<td><s:password name="password" placeholder="4～16文字の半角英数字" /></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="checkbox" id="checkbox" value="true" name="saveId">ID保存の場合はチェック
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div id="button">
+					<button type="submit"
+						onclick="<s:url action='TopAction' />">戻る</button>
+					<button type="submit">確認</button>
 
-		<div id="right_contents">
+				</div>
+			</s:form>
 
+			<br><br>
+			<s:if test="errorMessage != null " >
+				<div id="error">
+					<s:iterator value="errorMessage">
+						<s:property /><br>
+					</s:iterator>
+				</div>
+			</s:if>
+			<br><br>
 			<div>新規ユーザー登録は<a href="<s:url action='UserCreateAction' />">こちら</a></div>
 			<div>パスワード再設定は<a href="<s:url action='ResetPasswordAction' />">こちら</a></div>
-			<div>ホーム画面へ戻る時は<a href="<s:url action='TopAction' />">こちら</a></div>
-
 		</div>
 
-		</div>
-	</div>
+		<footer>
+		</footer>
 
-	<div id="footer">
-	</div>
-	<br><br><br><br><br><br><br><br><br><br><br>
-	<font size="50" face="ＭＳ 明朝,平成明朝"><b>（＾c。＾ ）</b></font>
 </body>
 </html>

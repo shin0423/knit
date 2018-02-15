@@ -1,80 +1,75 @@
 @CHARSET "UTF-8";
+#main{
+	text-align:center;
+}
+#title{
+	text-align:center;
+	padding:8px 19px;
+	margin:2em 0;
+	color:#2c2c2f;
+	background:#eeeeee;
+	border-top:solid 5px #555555;
+	border-bottom:solid 5px #555555;
+}
+#title p{
+	font-size:20px;
+	margin:0;
+	padding:0;
+}
 
-body {
+table{
+	border-spacing : 5px 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:10px;
+	width:400px;
+	margin-top:5px;
+	background-color:white;
+	border-bottom:1px solid lightgray;
+	border-top:1px solid lightgray;
+}
+td{
 
 }
 
-#header {
-	width : 100%;
-	height : 60px;
-	position : absolute;
-	float : left;
-	background-color : black;
-
+input:focus,select:focus,textfield:focus{
+	background-color:#D3D3D3;
 }
 
-#header ul {
-	margin-right : 30px;
-	padding : 5px;
-	float : right;
+#checkbox{
+	box-sizing: border-box;
+	display:inline-block;
+	margin-right:10px;
+	padding-left:10px;
+	border-radius:8px;
+	vertical-align:middle;
+	cursor: pointer;
 }
 
-#header ul li {
-	list-style-type : none;
-	padding-left : 10px;
-	border-bottom : 2px border #fff;
-	color : #fff;
-	float : left;
+button{
+	width:90px;
+	height:40px;
+	font-size:14px;
+	font-weight:bold;
+	color:#fff;
+	background-color:#000;
+	border-style:none;
+	margin:0;
+	padding: 10px 30px;
 }
 
-#logo_container {
-	float : left;
-	padding-left : 50px;
-	line-height : 60px;
+button:hover {
+	width:90px;
+	height:40px;
+	font-size:14px;
+	font-weight:bold;
+	background-color: #fff;
+	color: #000;
+	border-style:none;
+	margin:0;
+	padding: 10px 30px;
 }
 
-#main {
-	width : 100%;
-	height : 300px;
-	text-align : center;
-	clear : both;
-	margin : auto 0;
-}
-
-#main_container {
-	border:1px solid black;
-	width : 520px;
-	padding-top : 100px;
-
-}
-
-#left_contents {
-	border:1px solid black;
-	width : 250px;
-	text-align : left;
-	float : left;
-}
-
-#right_contents {
-	border:1px solid black;
-	width : 220px;
-	margin-left:0;
-	text-align : left;
-	position : relative;
-	top:0;
-	left:0;
-	float : right;
-}
-
-#footer {
-	width : 100%;
-	height : 100px;
-	position : absolute;
-	float : left;
-	background-color : black;
-	clear : both;
-}
-
-#errorMessage {
-	color : red;
+#error{
+	color:red;
 }
