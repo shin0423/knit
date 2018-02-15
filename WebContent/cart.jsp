@@ -5,6 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cart.css">
 <title>カート画面</title>
 
 <script type="text/javascript">
@@ -38,6 +44,7 @@
 <!------------------------ カート内容 ------------------------>
 			<s:form action="CartAction" id="form" name="form">
 				<s:iterator value="cartList">
+				<div id="item">
 
 			<s:hidden name="itemId" value="%{itemId}"/>
 			<s:checkbox name="checkList" value="checked" fieldValue="%{itemId}" />
@@ -47,58 +54,68 @@
 				<img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 				<s:hidden name="imageFilePath" value="%{imageFilePath}"/>
 			</div>
-
-			<div class="kana">
-				<s:property value="itemNameKana"/>
+		<table>
+			<tr>
+				<th>商品名かな:</th>
+				<td><s:property value="itemNameKana"/></td>
+			</tr>
 				<s:hidden name="itemNameKana" value="%{itemNameKana}"/>
-			</div>
 
-			<div class="pro_name">
-				商品名:<s:property value="itemName"/>
+
+			<tr>
+				<th>商品名:</th>
+				<td><s:property value="itemName"/></td>
+			</tr>
 				<s:hidden name="itemName" value="%{itemName}"/>
 
-			</div>
 
-			<div class="price">
-				価格:<s:property value="price"/><span>円</span>
+
+			<tr>
+				<th>価格:</th>
+				<td><span id="color"><s:property value="price"/></span><span>円</span></td>
+			</tr>
 				<s:hidden name="price" value="%{price}"/>
 
-			</div>
 
-			<div class="count">
-				購入個数:<s:property value="itemCount"/><span>個</span>
+
+			<tr>
+				<th>購入個数:</th>
+				<td><span id="color"><s:property value="itemCount"/></span><span>個</span></td>
+			</tr>
 				<s:hidden name="itemCount" value="%{itemCount}"/>
 
-			</div>
 
-			<div class="company">
-				発売会社:<s:property value="releaseCompany"/>
+
+			<tr>
+				<th>発売会社:</th>
+				<td><s:property value="releaseCompany"/></td>
+			</tr>
 				<s:hidden name="releaseCompany" value="%{releaseCompany}"/>
 
-			</div>
 
-			<div class="release_date">
-				発売日:<s:property value="releaseDate"/>
+
+			<tr>
+				<th>発売日:</th>
+				<td><s:property value="releaseDate"/></td>
+			</tr>
 				<s:hidden name="releaseDate" value="%{releaseDate}"/>
 
-			</div>
 
+			</table>
+			</div>
 			</s:iterator>
 
 <!----------------------- 商品削除 ------------------------->
 			<div class="delete">
-					<a href='<s:url action="CartDeleteAction">
-					<s:param name="itemId" value="%{itemId}"/>
 
-					</s:url>'>削除</a>
+
+			<s:submit  id="delete_b" value="削除" onclick="goCartDeleteAction();"/>
 			</div>
-			<s:submit value="テスト" onclick="goCartDeleteAction();"/>
-
 			</s:form>
 
 <!------------------------ 合計金額 ------------------------->
 			<div class="totalPrice">
-				合計金額:<s:property value="totalPrice"/><span>円</span>
+				合計金額:<span id="color"><s:property value="totalPrice"/></span><span>円</span>
 			</div>
 
 
@@ -108,6 +125,26 @@
 					<a href='<s:url action="SettlementConfirmAction"/>'>決済画面へ</a>
 				</div>
 			</s:if>
+
+	<script>
+		$(function(){
+			$("#item")
+				.on("mouseover",function(){
+					$("#item").stop(true).animete()({
+						backgroundColor:'blue'
+					},
+					500
+				);
+			})
+				.on("mouseout",function(){
+					("#item").stop(true).anamate()({
+						backgroundColor:'white'
+					},
+					500
+				);
+			});
+		};
+	</script>
 
 </div>
 </body>
