@@ -56,10 +56,34 @@ body{
 	-webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
-.user{
+.login{
+	width: 50px;
+	height: 50px;
+	background: #3300CC;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.mypage{
 	width: 50px;
 	height: 50px;
 	background: #FF0066;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.logout{
+	width: 50px;
+	height: 50px;
+	background: #00FFFF;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
