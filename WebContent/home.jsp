@@ -16,12 +16,12 @@
 <body>
 <div class="header">
 
+  <a href="/knit/home.jsp"><button class="home">Home</button></a>
+
   <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
 
-<button class="search"><p>Q</p></button>
+<button class="search"></button>
  <div class="inside">
- <div class="center">
-  <div class="hide_box">
   <s:form action="BuyItemAction" class="BOX">
    <s:textfield name="searchWord" class="h_search" />
    <select name="categoryId">
@@ -36,21 +36,8 @@
    <s:textfield name="moreDown" class="h_search" />
    <button type="submit">検索</button>
   </s:form>
-  </div>
-  </div>
  </div>
 <script>
-/* $(function(){
-	$(".search").click(function(){
-		$(".inside").stop().fadeIn();
-	});
-});
-$(function(){
-	$(".inside").click(function(){
-		$(".inside").stop().fadeOut();
-	});
-});
- */
 
  $('.search').click(function() {
 	  $('.inside').plainModal('open', {overlay: {color: '#fff', opacity: 0.5}});
@@ -59,7 +46,7 @@ $(function(){
  </script>
 
 
-  <a href="/knit/home.jsp"><button class="home">Home</button></a>
+
 
  <s:if test="#session.loginFlg == false">
   <a href='<s:url action="GoLoginPageAction"/>' ><button class="user">ログインへ</button></a>
@@ -95,15 +82,23 @@ $(function() {
 
 });	//function
 
+$(function(){
+	$(".home ,.cart ,.search ,.user ,.item").hover(
+			function(){
+				$(this).animate({
+					width:"205px",
+					height:"205px",
+					}, 50 );
+			},
+			function(){
+				$(this).animate({
+					width:"50px",
+					height:"50px",
+					}, 50 );
+			});
+});
 </script>
 
- <s:form action="BuyItemAction">
-  <s:hidden name="categoryId" value="0"/>
-  <s:hidden name="searchWord" value="" />
-  <s:hidden name="moreUp" value="" />
-  <s:hidden name="moreDown" value="" />
-  <s:submit value="全件表示" />
- </s:form>
 </div>
 </body>
 </html>

@@ -6,80 +6,76 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 90px;
+	height: 51px;
 	width: 100%;
-	border-bottom:1px solid black;
 	margin:0;
 	text-align:center;
+
 }
 .cart{
-	width: 80px;
-	height: 80px;
-	background: blue;
+	width: 50px;
+	height: 50px;
+	background-image:;
 	display:inline-block;
 	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
 .search{
-	width: 80px;
-	height: 80px;
-	background: lightgray;
+	width: 50px;
+	height: 50px;
+	background-image: url("/knit/images/SearchLogo.jpg");
 	display:inline-block;
 	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
 .home{
-	width: 80px;
-	height: 80px;
-	background: blue;
+	width: 50px;
+	height: 50px;
+	background: #CC33FF;
 	display:inline-block;
 	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
 .user{
-	width: 80px;
-	height: 80px;
-	background: blue;
+	width: 50px;
+	height: 50px;
+	background: #FF0066;
 	display:inline-block;
 	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
 .item{
-	width: 80px;
-	height: 80px;
+	width: 50px;
+	height: 50px;
 	background: blue;
 	display:inline-block;
 	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
 .inside{
- padding: 10px;
-  background-color: #fff;
-  border: blue solid 1px;
-  display: none;
-
-}
-.center{
-	width:100%;
-	height:100%;
-	display:flex;
-	align-items:center;
-	justify-content: center;
-}
-.hide_box{
-	width:300px;
-	height:40%;
-	min-width:400px;
-	min-hieght:250px;
-	background:yellow;
+	width:400px;
+	height:50px;
+	padding: 10px;
+	background-color: yellow;
+	display: none;
 }
