@@ -142,72 +142,43 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		/**
 		 * ユーザーカートリストと仮ユーザーカートリストの重複をチェック
 		 */
+		i = 0;
+		for (i = 0; i < tempUserCartItemIdList.size(); i++) {
 
 			/**
-			 * ユーザーカートの商品数より仮ユーザーカートの商品数の方が多いとき
+			 * 仮ユーザーカートリストにユーザーカートリストにある物が含まれているか
 			 */
-		if (userCartItemIdList.size() < tempUserCartItemIdList.size()) {
-			i = 0;
-			for (i = 0; i < userCartItemIdList.size(); i++) {
-
-				/**
-				 * 仮ユーザーカートリストにユーザーカートリストにある物が含まれているか
-				 */
-				boolean exist = tempUserCartItemIdList.contains(userCartItemIdList.get(i));
-				System.out.println("カート重複確認 : " + exist);
-
-				/**
-				 * もし含まれていた場合の処理
-				 */
-				if (exist) {
-
-					/**
-					 * 重複商品の選択数をユーザーのカート情報の選択数に足すメソッド
-					 */
-					cartDAO.changeItemStockId(Integer.valueOf(userCartList.get(i).getItemCount()),
-							Integer.valueOf(userCartItemIdList.get(i)),
-							session.get("userId").toString());
-					System.out.println(session.get("userId").toString() + "のカートに" + userCartItemIdList.get(i) + "(このIDに該当する商品)に重複分" + userCartList.get(i).getItemCount() + "個追加");
-
-					/**
-					 * 仮ユーザーカートリストから重複してた商品を削するメソッド
-					 */
-					cartDAO.deleteSeparete(session.get("tempUserId").toString(),
-							tempUserCartItemIdList.get(i));
-					System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
-					/**
-					 * 含まれていなかった場合の処理
-					 */
-				} else {
-					cartDAO.changeUserId(session.get("tempUserId").toString(),
-							session.get("userId").toString());
-					System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
-				}
-
-			}
+			boolean exist = userCartItemIdList.contains(Integer.valueOf(tempUserCartItemIdList.get(i)) );
+			System.out.println("カート重複確認 : " + exist);
 
 			/**
-			 * 仮ユーザーリストよりユーザーカートリストが多いとき
+			 * もし含まれていた場合の処理
 			 */
-		} else if (userCartItemIdList.size() > tempUserCartItemIdList.size()) {
-			i = 0;
-			for (i = 0; i <= tempUserCartItemIdList.size(); i++) {
-				boolean exist = userCartItemIdList.contains(tempUserCartItemIdList);
-				System.out.println("カート重複確認 : " + exist);
-				if (exist) {
-					cartDAO.changeItemStockId(Integer.valueOf(tempUserCartList.get(i).getItemCount()),
-							Integer.valueOf(tempUserCartItemIdList.get(i)),
-							session.get("userId").toString());
-					System.out.println(session.get("userId").toString() + "のカートに" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)に重複分" + tempUserCartList.get(i).getItemCount() + "個追加");
-					cartDAO.deleteSeparete(session.get("tempUserId").toString(),
-							tempUserCartItemIdList.get(i));
-					System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
-				} else {
-					cartDAO.changeUserId(session.get("tempUserId").toString(),
-							session.get("userId").toString());
-					System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
-				}
+			if (exist) {
+
+				/**
+				 * 重複商品の選択数をユーザーのカート情報の選択数に足すメソッド
+				 */
+				cartDAO.changeItemStockId(Integer.valueOf(tempUserCartList.get(i).getItemCount()),
+						Integer.valueOf(tempUserCartItemIdList.get(i)),
+						session.get("userId").toString());
+				System.out.println(session.get("userId").toString() + "のカートに" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)の重複分" + tempUserCartList.get(i).getItemCount() + "個追加");
+
+				/**
+				 * 仮ユーザーカートリストから重複してた商品を削するメソッド
+				 */
+				cartDAO.deleteSeparete(session.get("tempUserId").toString(),
+						tempUserCartItemIdList.get(i));
+				System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
+				/**
+				 * 含まれていなかった場合の処理
+				 */
+			} else {
+				cartDAO.changeUserId(session.get("tempUserId").toString(),
+						session.get("userId").toString());
+				System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
 			}
+
 		}
 	}
 
