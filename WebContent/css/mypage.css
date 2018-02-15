@@ -2,13 +2,16 @@
 
 
 header{
+	
 	background: #F48FB1;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	
 }
 
 html, body, h3, p, center,
 table,  tr, th, td,
  footer, header, section {
+ 
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -40,12 +43,15 @@ footer, section {
 }
 
 .sectionHeader {
-	background-color:#000;
+	
+	background-color:#808080;
+	
     position: relative; top: 45px; left: 155px;
-    border-radius: 40px 5px;
+    
 	width: 140px;
 	height: 35px;
     margin: 25px 0 16px 0;
+    
 	text-align: center;
 	font-weight: bold;
 	padding: 0.3em 0.5em;
@@ -67,31 +73,33 @@ footer, section {
 }
 
 .btnn { 
-    position: absolute;top: 100px;left: 700px;
+	position: absolute;top: 100px;left: 700px;
     float: right;
-    
+	
 	width: 193px;
 	margin: 0 auto;
 	margin-top: 5em;
 	z-index: 2;
 	color: #fff;
 	
-	line-height: 50px;
 	-webkit-perspective: 300px;
 	perspective: 300px;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
+	
 }
 
 .btn0 {
     position: absolute;top: 190px;left: 700px;
     float: right;
+    
 	width: 193px;
 	margin: 0 auto;
 	margin-top: 4em;
 	z-index: 2;
 	color: #fff;
 	line-height: 50px;
+	
 	-webkit-perspective: 300px;
 	perspective: 300px;
 	-webkit-transform-style: preserve-3d;
@@ -99,14 +107,17 @@ footer, section {
 }
 
 .btn {
+	
     position: absolute;top: 260px;left: 700px;
    float: right;
+   
 	width: 193px;
 	margin: 0 auto;
 	margin-top: 4em;
 	z-index: 2;
 	color: #fff;
 	line-height: 50px;
+	
 	-webkit-perspective: 300px;
 	perspective: 300px;
 	-webkit-transform-style: preserve-3d;
@@ -115,6 +126,7 @@ footer, section {
 
 
 .btnn a,.btn a,.btn0 a{
+	
 	color: #fff;
 	font-family: 'Covered By Your Grace', cursive;
 	font-size: 15px;
@@ -127,7 +139,6 @@ footer, section {
 
 
 .button {
-    border-radius: 40px 5px;
 	position: relative;
 	display: inline-block;
 	padding: .65em 4em;
@@ -135,19 +146,21 @@ footer, section {
 	color: #333;
 	text-decoration: none;
 	text-align: center;
+	
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
+	
 }
 
 .button::after {
-    border-radius: 40px 5px;
-	position: absolute;
+    position: absolute;
 	top: 4px;
 	left: 4px;
 	z-index: -1;
 	content: '';
 	width: 102%;
 	height: 102%;
+	background-color: #808080;
     
 	-webkit-transform: rotate(1deg);
 	transform: rotate(1deg);
@@ -156,42 +169,52 @@ footer, section {
 }
 
 .button:hover {
+	
 	color: #C0C0C0;
+	
 }
 
 .button:hover::after {
+	
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
+	
 	-webkit-transform: rotate(0);
 	transform: rotate(0);
+	
 }
 
 <!--テーブル-->
 
-.table {
+table {
 	width: 400px;
 }
 
 table {
+	
     position:relative;top: 80px; left:150px;
     margin-top: 1em;
+    
 	width: 500px;
 	border-collapse: separate;
 	border-spacing: 0px 9px;
 	font-size: 12px;
+	
 	padding-bottom:20px; 
 }
 
 table th, table td {
-    border-radius: 40px 5px;
+	
 	padding: 10px;
 	padding-left: 30px;
+	
 }
 
 table th {
-	background:#000;
+	
+	background:#808080;
 	vertical-align: middle;
 	text-align: left;
 	width: 100px;
@@ -200,14 +223,18 @@ table th {
 	color: #fff;
 	font-weight: normal;
 	font-size: 15px;
+	
 }
 
 
-
 td {
+	
 	font-size: 13px;
-	background:#C0C0C0;
+	background:#fff;
 	border-width: 0.3px;
+	
+	border-bottom: solid 4px #808080;
+	
 }
 
 <!--フッター-->
@@ -224,25 +251,6 @@ footer{
 }
 
 <!--練習-->
-
-<!--背景変化-->
-
-@-webkit-keyframes bg-color {
-  0% { background-color: #e74c3c; }
-  20% { background-color: #f1c40f; }
-  40% { background-color: #1abc9c; }
-  60% { background-color: #3498db; }
-  80% { background-color: #9b59b6; }
-  100% { background-color: #e74c3c; }
-}
-@keyframes bg-color {
-  0% { background-color: #e74c3c; }
-  20% { background-color: #f1c40f; }
-  40% { background-color: #1abc9c; }
-  60% { background-color: #3498db; }
-  80% { background-color: #9b59b6; }
-  100% { background-color: #e74c3c; }
-}
 
 
 .button::after{
