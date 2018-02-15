@@ -44,8 +44,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 */
 		if (userId.equals("")) {
 			errorMessage.add("ユーザーIDが未入力です");
-		} else if ( !( 1 < userId.length() && userId.length() < 9 ) ) {
-			errorMessage.add("ユーザーIDは2文字以上8文字以下です");
+		} else if ( !( 1 <= userId.length() && userId.length() < 9 ) ) {
+			errorMessage.add("ユーザーIDは1文字以上8文字以下です");
 		} else if ( !( userId.matches("^[0-9a-zA-Z]+$") ) ) {
 			errorMessage.add("ユーザーIDは半角英数字です");
         }
@@ -55,8 +55,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 */
 		if (password.equals("")) {
 			errorMessage.add("パスワードが未入力です");
-		} else if ( !( 1 < password.length() && password.length() < 17 ) ) {
-			errorMessage.add("パスワードは2文字以上16文字以下です");
+		} else if ( !( 1 <= password.length() && password.length() < 17 ) ) {
+			errorMessage.add("パスワードは1文字以上16文字以下です");
 		}
 
 		/**

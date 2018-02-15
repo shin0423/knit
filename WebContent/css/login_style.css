@@ -1,75 +1,288 @@
 @CHARSET "UTF-8";
-#main{
-	text-align:center;
-}
-#title{
-	text-align:center;
-	padding:8px 19px;
-	margin:2em 0;
-	color:#2c2c2f;
-	background:#eeeeee;
-	border-top:solid 5px #555555;
-	border-bottom:solid 5px #555555;
-}
-#title p{
-	font-size:20px;
-	margin:0;
-	padding:0;
-}
 
-table{
-	border-spacing : 5px 10px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top:10px;
-	width:400px;
-	margin-top:5px;
-	background-color:white;
-	border-bottom:1px solid lightgray;
-	border-top:1px solid lightgray;
-}
-td{
+
+header{
+
+	background: #F48FB1;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
 }
 
-input:focus,select:focus,textfield:focus{
-	background-color:#D3D3D3;
+html, body, h3, p, center,
+table,  tr, th, td,
+ footer, header, section {
+
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 
-#checkbox{
-	box-sizing: border-box;
-	display:inline-block;
-	margin-right:10px;
-	padding-left:10px;
-	border-radius:8px;
-	vertical-align:middle;
-	cursor: pointer;
+
+footer, section {
+	display: block;
 }
 
-button{
-	width:90px;
-	height:40px;
-	font-size:14px;
-	font-weight:bold;
+.main {
+	width: 100%;
+}
+
+.contBody {
+	width: 100%;
+	margin-top: 20px;
+}
+
+<!--会員登録情報-->
+
+#secRegist {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.sectionHeader {
+
+	background-color:#808080;
+
+    position: relative; top: 45px; left: 155px;
+
+	width: 140px;
+	height: 35px;
+    margin: 25px 0 16px 0;
+
+	text-align: center;
+	font-weight: bold;
+	padding: 0.3em 0.5em;
 	color:#fff;
-	background-color:#000;
-	border-style:none;
-	margin:0;
-	padding: 10px 30px;
+	font-family: “游ゴシック Medium”, “Yu Gothic Medium”,sans-serif;
 }
 
-button:hover {
-	width:90px;
-	height:40px;
-	font-size:14px;
-	font-weight:bold;
-	background-color: #fff;
-	color: #000;
-	border-style:none;
-	margin:0;
-	padding: 10px 30px;
+.sectionHeader h3 {
+	text-align: center;
+	margin: 0 auto;
+	line-height: 37px;
 }
 
-#error{
-	color:red;
+
+<!--ボタン関連-->
+
+.buttonBox {
+	width: 100%;
+	text-align: center;
+}
+
+.btnn {
+	/* position: absolute;top: 100px;left: 700px; */
+    float: left;
+
+	width: 193px;
+	margin: 0 auto;
+	z-index: 2;
+	color: #fff;
+
+	-webkit-perspective: 300px;
+	perspective: 300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+}
+
+.btn0 {
+	/* position: absolute;top: 100px;left: 700px; */
+    float: left;
+
+	width: 250px;
+	margin: 0 auto;
+	margin-top:20px;
+	z-index: 2;
+	color: #fff;
+
+	-webkit-perspective: 300px;
+	perspective: 300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+}
+
+.btn {
+
+    /*position: absolute;top: 260px;left: 700px; */
+	float: left;
+
+	width: 193px;
+	margin: 0 auto;
+	z-index: 2;
+	color: #fff;
+	line-height: 50px;
+
+	-webkit-perspective: 300px;
+	perspective: 300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+
+.btnn a,.btn a,.btn0 a{
+
+	color: #fff;
+	font-family: 'Covered By Your Grace', cursive;
+	font-size: 15px;
+	line-height: 11px;
+}
+
+
+
+/*------*/
+
+
+.button {
+	position: relative;
+	display: inline-block;
+	padding: .65em 4em;
+	border: 2px solid #C0C0C0;
+	color: #333;
+	text-decoration: none;
+	text-align: center;
+
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+
+}
+
+.button::after {
+    position: absolute;
+	top: 4px;
+	left: 4px;
+	z-index: -1;
+	content: '';
+	width: 102%;
+	height: 102%;
+	background-color: #808080;
+
+	-webkit-transform: rotate(1deg);
+	transform: rotate(1deg);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.button:hover {
+
+	color: #C0C0C0;
+
+}
+
+.button:hover::after {
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+
+}
+
+<!--テーブル-->
+
+table {
+	width: 400px;
+}
+
+table {
+
+    position:relative;top: 80px; left:150px;
+    margin-top: 1em;
+
+	width: 450px;
+	border-collapse: separate;
+	border-spacing: 0px 9px;
+	font-size: 12px;
+
+	padding-bottom:20px;
+}
+
+table th, table td {
+
+	padding: 10px;
+	padding-left: 30px;
+
+}
+
+table th {
+
+	background:#808080;
+	vertical-align: middle;
+	text-align: left;
+	width: 100px;
+	overflow: visible;
+	position: relative;
+	color: #fff;
+	font-weight: normal;
+	font-size: 15px;
+
+}
+
+
+td {
+
+	font-size: 13px;
+	background:#fff;
+	border-width: 0.3px;
+
+	border-bottom: solid 4px #808080;
+
+}
+
+<!--フッター-->
+
+
+footer{
+	background: #F48FB1;
+	clear: both;
+	text-align: center;
+	height: 100px;
+	line-height: 100px;
+	margin-top: 100px;
+	color: #fff;
+}
+
+<!--練習-->
+
+
+.button::after{
+background-color: #e74c3c;
+    animation: bg-color 10s infinite;
+    -webkit-animation: bg-color 10s infinite;
+}
+
+<!--透過-->
+
+table th {
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+/*ホバー時に透明度50%*/
+table th:hover {
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+}
+
+.sectionHeader{
+-webkit-transition: transform 0.3s ease-out;
+transition: transform 0.3s ease-out;
+}
+.sectionHeader:hover {
+-webkit-transform: rotate(10deg);
+transform: rotate(20deg);
+}
+
+#goaction {
+	position:absolute;top: 155px; left:650px;
+	width:300px;
+	clear:both;
+
 }
