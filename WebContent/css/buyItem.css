@@ -28,10 +28,17 @@
 	top:0;
 	left:0;
 	float:left;
-	border:1px solid black;
 	width:25%;
 	height:25%;
 	overflow:hidden;
+
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+
 	}
 	table.itemBoxFirst{
 	white-space: nowrap;
@@ -39,12 +46,21 @@
 	top:0;
 	left:0;
 	float:left;
-	border:1px solid black;
 	width:25%;
 	height:25%;
 	clear:both;
 	overflow:hidden;
+
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 	}
+
+
+
 	@font-face {
 	font-family: 'DoverHeights';
 	src: local('DoverHeights') ,url('DoverHeights.otf');
@@ -53,3 +69,5 @@
 		font-size:144px;
 		font-family:'DoverHeights';
 	}
+
+

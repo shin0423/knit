@@ -1,33 +1,8 @@
-@CHARSET "UTF-8";
-/*
-<div class="box19">
-    <p>ここに文章</p>
-</div>
-*/
-.box19 {
-    position: relative;
-    padding:0.25em 1em;
-}
-.box19:before,.box19:after{
-    content:'';
-    width: 20px;
-    height: 30px;
-    position: absolute;
-    display: inline-block;
-}
-.box19:before{
-    border-left: solid 1px #5767bf;
-    border-top: solid 1px #5767bf;
-    top:0;
-    left: 0;
-}
-.box19:after{
-    border-right: solid 1px #5767bf;
-    border-bottom: solid 1px #5767bf;
-    bottom:0;
-    right: 0;
-}
-.box19 p {
-    margin: 0;
-    padding: 0;
-}
+自分の使用するテーブル名{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+
