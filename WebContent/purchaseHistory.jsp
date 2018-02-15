@@ -52,9 +52,10 @@
 
 <!----------------------履歴詳細   ここから------------------------------->
 
-				<s:iterator value = "historyList">
+				<s:iterator value = "historyList" status="sts">
+				<s:if test = "#sts.count % 3 == 1">
 
-				<table>
+				<table class = "table01">
 
 
 
@@ -166,6 +167,120 @@
 					<td><br></td>
 				</tr>
 			</table>
+			</s:if>
+
+
+			<s:else>
+			<table class = "table02">
+				<!--  画像ファイル -->
+				 <tr>
+
+					<td>
+					<img src="<s:property value='imageFilePath' />" alt="画像なし">
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+					商品名:
+					</td>
+
+					<td>
+					<s:property value="itemName"/>
+					</td>
+				</tr>
+
+				<tr>
+            		<td>
+            		単価:
+            		</td>
+
+            		<td>
+            		<s:property value="price"/>円
+            		</td>
+            	</tr>
+
+            	<tr>
+            		<td>
+            		購入数:
+            		</td>
+
+            		<td>
+            		<s:property value="itemCount"/>
+            		</td>
+
+				</tr>
+
+				<tr>
+					<td>
+					合計購入金額:
+					</td>
+					<td>
+					<s:property value='totalPrice'/>円
+					</td>
+				</tr>
+
+
+				<tr>
+					<td>
+					発売会社:
+					</td>
+
+					<td>
+					<s:property value="releaseCompany"/>
+           			</td>
+           		</tr>
+
+           		<tr>
+           			<td>
+           			発売日:
+           			</td>
+
+           			<td>
+           			<s:property value="releaseDate"/>
+           			</td>
+           		</tr>
+
+				<tr>
+					<td>
+					注文日:
+					</td>
+
+            		<td>
+            		<s:property value="registDate" />
+            		</td>
+            	</tr>
+
+        		<tr>
+        			<td>
+        			<s:form action = "BuyItemInfoAction">
+					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
+					<s:submit value="商品詳細ページへ"/>
+					</s:form>
+        			</td>
+
+					<td>
+					<!--  履歴個別削除ボタン-->
+							<s:form action = "PurchaseHistoryAction">
+								<input type="hidden" name="deleteFlg" value="2">
+								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
+								<s:submit  value="×履歴削除"/>
+							</s:form>
+					<!--  履歴個別削除ボタンここまで-->
+					</td>
+				</tr>
+
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+			</table>
+			</s:else>
     		</s:iterator>
 
 
