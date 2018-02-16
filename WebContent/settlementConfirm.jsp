@@ -5,8 +5,9 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlementConfirm.css">
-	
+
 	<title>決済確認画面</title>
 
 	<style type="text/css">
@@ -20,84 +21,67 @@
 		<br>
 		<br>
 
-		<div class="message">購入情報は以下になります</div>
+		<div class="message1">注文内容は以下になります</div>
 
 		<br>
 		<br>
 		<br>
 		<br>
-
-
 
 
 <!-- 決済情報 -->
 
 
+
+
+
 <s:iterator value="cartInfoList">
 
+<div class="box17">
 
-<table border="1" class="settlementtable">
-<tr>
-<td rowspan="6">
-<div class="img">
-<img src='<s:property value="imageFilePath"/>' alt="画像なし" />
-</div>
-</td>
 
-<td>
-商品名
-</td>
-<td>
-<s:property value="itemName" />
-</tr>
+<table class="settlementTable">
 <tr>
-<td>
-ふりがな
-</td>
-<td>
-<s:property value="itemNameKana" />
-</td>
-</tr>
-<tr>
-<td>
-価格
-</td>
-<td>
-<s:property value="price" />円
-</td>
-</tr>
-<tr>
-<td>
-個数
-</td>
-<td>
-<s:property value="itemCount" />個
-</td>
-</tr>
-<tr>
-<td>
-合計価格
-</td>
-<td>
-<s:property value="total" />円
-</td>
-</tr>
-<tr>
-<td>
-発売会社
-</td>
-<td>
-<s:property value="releaseCompany" />
-</td>
-</tr>
+<td colspan="2">
 
+<img class="img" src='<s:property value="imageFilePath"/>' alt="画像なし" />
+</td>
+</tr>
+<tr class="space"><br></tr>
+<tr>
+<th>商品名</th>
+<td><s:property value="itemName" /></td>
+</tr>
+<tr>
+<th>価格</th>
+<td><s:property value="price" />円</td>
+</tr>
+<tr>
+<th>個数</th>
+<td><s:property value="itemCount" />個</td>
+</tr>
+<tr>
+<th>発売会社</th>
+<td><s:property value="releaseCompany" /></td>
+</tr>
+<tr class="space"></tr>
+<tr>
+<th class="total">小計</th>
+<td><s:property value="total" />円</td>
+</tr>
 
 </table>
 
 <br>
 <br>
 
+</div>
+
+
+
 </s:iterator>
+
+
 
 <br>
 <br>
@@ -106,22 +90,28 @@
 <div class="totalPrice">
 合計金額:<s:property value="#session.cartTotalPrice" />円
 </div>
+
 <br>
-<!-- 宛先情報一覧 -->
+<br>
+<br>
+<br>
 <br>
 
+<p><a href='<s:url action="CartAction" />'>カートに戻る</a></p>
+
+<!-- 宛先情報一覧 -->
+
+<br>
 
 <s:if test="destinationList.isEmpty()">
-宛先情報がありませんので宛先を登録してください。
+<div class="errorMessage">宛先情報に不備がありますので宛先を登録してください。</div>
 </s:if>
 
-
-
-
-
 <s:else>
+
 <br>
-<p class="message">お届け先住所を選択してください。</p>
+
+<p class="message2">お届け先住所を選択してください。</p>
 
 <s:iterator value="destinationList" status="st">
 
@@ -156,24 +146,27 @@
 <td  class="midasi">メールアドレス</td>
 <td class="jouhou"><s:property value="email"/></td>
 </tr>
+
 </table>
+
 <br>
 
 </s:iterator>
+
+<button type="submit" class="purchase">購入</button>
+
 </s:else>
 
 
 
-<button type="submit" class="purchase">購入</button>
 </s:form>
 
 
 <br>
 
-
 <s:form action="CreateAddressAction">
 
-<s:iterator value="destinationList" >
+<s:iterator value="oneDestinationList" >
 
 <input type="hidden" name="familyName" value="<s:property value="familyName"/>"  >
 <input type="hidden" name="firstName" value="<s:property value="firstName"/>" >
@@ -184,7 +177,6 @@
 <input type="hidden" name="userAddress" value="<s:property value="userAddress"/>"  >
 
 
-
 </s:iterator>
 
 
@@ -192,7 +184,7 @@
 
 </s:form>
 
-<p><a href='<s:url action="CartAction" />'>カートに戻る</a></p>
+
 
 
 <br>
