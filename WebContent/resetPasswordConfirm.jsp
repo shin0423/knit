@@ -38,7 +38,7 @@
 		<s:hidden name="userId" value="%{userId}"/>
 		<s:hidden name="newPassword" value="%{newPassword}"/>
 		<div id="button">
-			<button type ="button" onclick ="location.href='/knit/resetPassword.jsp'">戻る</button>
+			<button type ="button" onclick ="location.href='/knit/ResetPasswordAction'">戻る</button>
 			<button type="submit"><span>変更する</span></button>
 			</div>
 		</s:form>

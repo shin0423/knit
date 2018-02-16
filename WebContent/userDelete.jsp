@@ -41,13 +41,18 @@
 	});
 
 	</script>
-	<div id="button">
+	<div id="button" class="btnContainer">
 	<s:form action="UserDeteleCompleteAction" >
 	<div>退会される方はチェックを入れて削除を押してください</div>
+	<!--  <div>退会すると会員登録内容は確認できなくなります。あらためてご利用いただく場合は、はじめからご設定となりますのでご注意ください。</div> -->
 	<br>
-
+	<div class="btn1">
+		<button type="button" onclick="location.href='/knit/MyPageAction'" >退会しない</button>
+	</div>
+	<div class="btn1">
 		<input id="checkBtn" type="checkbox">
 		<input id="submitBtn" class="button" disabled="disabled" type="submit" value="削除">
+	</div>
 
 	</s:form>
 	</div>

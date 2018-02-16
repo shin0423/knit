@@ -28,7 +28,7 @@
 	<div id="button">
 	<!--  <div>5秒後にホーム画面に遷移します</div>
 	すぐに遷移する場合はこちら -->
-	<button type="button" onclick="location.href='/knit/home.jsp'">ホーム</button>
+	<button type="button" onclick="location.href='/knit/TopAction'">ホーム</button>
 	</div>
 	<!-- <a href="<s:url action='TopAction' />">ホーム</a> -->
 

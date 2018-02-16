@@ -29,3 +29,18 @@
 	border-bottom:1px solid lightgray;
 	border-top:1px solid lightgray;
 }
+.btn1{
+	float:left;
+	margin:5px 60px;
+
+}
+.btnContainer{
+	overflow:hidden;
+}
+.btnContainer:before,.btnContainer:after{
+	content:"";
+	display: table;
+}
+.btnContainer{
+	zoom:1;
+}
