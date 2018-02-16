@@ -31,19 +31,28 @@
 
 
 			<!-- 全件削除ボタン -->
-				<div class="alldelete">
-					<s:form action="PurchaseHistoryAction" >
-						<input type ="hidden" name="deleteFlg" value="1">
-						<s:submit id="all_delete" value="履歴をすべて削除"/>
-					</s:form>
+				<div class="buttonBox">
+					<div class ="btn">
+					<a href=' <s:url action = "PurchaseHistoryAction" >
+						<s:param name="deleteFlg" value="1" />
+					</s:url>' class="button">
+					履歴全件削除
+					</a>
+				</div>
 				</div>
 			<!-- 全件削除ボタンここまで -->
 
+
 			<!-- ボタン押下でキャンセル画面に遷移 -->
+			<div class="buttonBox">
+					<div class ="btn">
     		<div class="cancel">
-					<s:form action="PurchaseCancelAction">
-						<s:submit value="購入キャンセルはこちら"/>
-					</s:form>
+    				<a href=' <s:url action = "PurchaseCancelAction" >
+					</s:url>' class="button">
+					購入キャンセル
+					</a>
+			</div>
+			</div>
 			</div>
 
 		<!-- リストに応じたトップメッセージここまで -->
@@ -60,98 +69,104 @@
 				<!--  画像ファイル -->
 				 <tr>
 
-					<td>
+					<td class ="guideto">
 					<img src="<s:property value='imageFilePath' />" alt="画像なし">
 					</td>
 
 				</tr>
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					商品名:
-					</td>
+					</th>
 
-					<td>
+					<td class ="guideto">
 					<s:property value="itemName"/>
 					</td>
 				</tr>
 
 				<tr>
-            		<td class ="guide">
+            		<th class ="guide">
             		単価:
-            		</td>
+            		</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="price"/>円
             		</td>
             	</tr>
 
             	<tr>
-            		<td class ="guide">
+            		<th class ="guide">
             		購入数:
-            		</td>
+            		</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="itemCount"/>
             		</td>
 
 				</tr>
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					合計購入金額:
-					</td>
-					<td>
+					</th>
+					<td class ="guideto">
 					<s:property value='totalPrice'/>円
 					</td>
 				</tr>
 
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					発売会社:
-					</td>
+					</th>
 
-					<td>
+					<td class ="guideto">
 					<s:property value="releaseCompany"/>
            			</td>
            		</tr>
 
            		<tr>
-           			<td class ="guide">
+           			<th class ="guide">
            			発売日:
-           			</td>
+           			</th>
 
-           			<td>
+           			<td class ="guideto">
            			<s:property value="releaseDate"/>
            			</td>
            		</tr>
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					注文日:
-					</td>
+					</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="registDate" />
             		</td>
             	</tr>
 
         		<tr>
-        			<td>
-        			<s:form action = "BuyItemInfoAction">
-					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-					<s:submit value="商品詳細ページへ"/>
-					</s:form>
+        			<td class ="guide">
+        			<div class="buttonBox">
+						<div class="btn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
         			</td>
 
-					<td>
+					<td class ="guide">
 					<!--  履歴個別削除ボタン-->
-							<s:form action = "PurchaseHistoryAction">
-								<input type="hidden" name="deleteFlg" value="2">
-								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-								<s:submit  value="×履歴削除"/>
-							</s:form>
+					<div class="buttonBox">
+						<div class="btn">
+							<a href=' <s:url action = "PurchaseHistoryAction">
+											<s:param name="itemId" value="%{itemId}" />
+											<s:param name="deleteFlg" value="2" />
+									  </s:url>' class="button">
+									  履歴削除
+							</a>
+						</div>
+					</div>
 					<!--  履歴個別削除ボタンここまで-->
 					</td>
 				</tr>
@@ -173,100 +188,106 @@
 				<!--  画像ファイル -->
 				 <tr>
 
-					<td>
+					<td class ="guideto">
 					<img src="<s:property value='imageFilePath' />" alt="画像なし">
 					</td>
 
 				</tr>
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					商品名:
-					</td>
+					</th>
 
-					<td>
+					<td class="guideto">
 					<s:property value="itemName"/>
 					</td>
 				</tr>
 
 				<tr>
-            		<td class ="guide">
+            		<th class ="guide">
             		単価:
-            		</td>
+            		</th>
 
-            		<td>
-            		<s:property value="price"/>円
+            		<td class="guideto">
+            		<s:property value="price" />円
             		</td>
             	</tr>
 
             	<tr>
-            		<td class ="guide">
+            		<th class ="guide">
             		購入数:
-            		</td>
+            		</th>
 
-            		<td>
+            		<td class="guideto">
             		<s:property value="itemCount"/>
             		</td>
 
 				</tr>
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					合計購入金額:
-					</td>
-					<td>
+					</th>
+					<td class="guideto">
 					<s:property value='totalPrice'/>円
 					</td>
 				</tr>
 
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					発売会社:
-					</td>
+					</th>
 
-					<td>
+					<td class="guideto">
 					<s:property value="releaseCompany"/>
            			</td>
            		</tr>
 
            		<tr>
-           			<td class ="guide">
+           			<th class ="guide">
            			発売日:
-           			</td>
+           			</th>
 
-           			<td>
+           			<td class="guideto">
            			<s:property value="releaseDate"/>
            			</td>
            		</tr>
 
 				<tr>
-					<td class ="guide">
+					<th class ="guide">
 					注文日:
-					</td>
+					</th>
 
-            		<td>
+            		<td class="guideto">
             		<s:property value="registDate" />
             		</td>
             	</tr>
 
         		<tr>
-        			<td>
-        			<s:form action = "BuyItemInfoAction">
-					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-					<s:submit value="商品詳細ページへ" />
-					</s:form>
-        			</td>
+        			<th class ="guide">
+ 					<div class="buttonBox">
+						<div class="btn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
+        			</th>
 
-					<td>
+					<th class ="guide">
 					<!--  履歴個別削除ボタン-->
-							<s:form action = "PurchaseHistoryAction">
-								<input type="hidden" name="deleteFlg" value="2">
-								<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-								<s:submit  value="×履歴削除"/>
-							</s:form>
+					<div class="buttonBox">
+						<div class="btn">
+							<a href=' <s:url action = "PurchaseHistoryAction">
+											<s:param name="itemId" value="%{itemId}" />
+											<s:param name="deleteFlg" value="2" />
+									  </s:url>' class="button">
+									  履歴削除
+							</a>
+						</div>
+					</div>
 					<!--  履歴個別削除ボタンここまで-->
-					</td>
+					</th>
 				</tr>
 
 				<tr>
@@ -277,7 +298,7 @@
 					<td><br></td>
 					<td><br></td>
 				</tr>
-			</table>
+				</table>
 			</s:else>
     		</s:iterator>
 

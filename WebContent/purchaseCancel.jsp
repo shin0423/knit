@@ -35,112 +35,245 @@
 				<s:if test= "cancelList.size() != 0">
 					<h2>キャンセル可能な商品は以下になります</h2>
 
+				<s:iterator value = "cancelList" status="sts">
+				<s:if test = "#sts.count % 3 == 1">
 
-			<s:iterator value = "cancelList">
+				<table class = "table01">
 
 
-			<table>
 
 				<!--  画像ファイル -->
 				 <tr>
 
-					<td>
+					<td class ="guideto">
 					<img src="<s:property value='imageFilePath' />" alt="画像なし">
 					</td>
 
 				</tr>
 
 				<tr>
-					<td>
+					<th class ="guide">
 					商品名:
-					</td>
+					</th>
 
-					<td>
+					<td class ="guideto">
 					<s:property value="itemName"/>
 					</td>
 				</tr>
 
 				<tr>
-            		<td>
+            		<th class ="guide">
             		単価:
-            		</td>
+            		</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="price"/>円
             		</td>
             	</tr>
 
             	<tr>
-            		<td>
+            		<th class ="guide">
             		購入数:
-            		</td>
+            		</th>
 
-            		<td>
-            		<s:property value="itemCount"/>
+            		<td class ="guideto">
+            		<s:property value="itemCount"/>ヶ
             		</td>
 
 				</tr>
 
 				<tr>
-					<td>
+					<th class ="guide">
 					合計購入金額:
-					</td>
-					<td>
+					</th>
+					<td class ="guideto">
 					<s:property value='totalPrice'/>円
 					</td>
 				</tr>
 
 
 				<tr>
-					<td>
+					<th class ="guide">
 					発売会社:
-					</td>
+					</th>
 
-					<td>
+					<td class ="guideto">
 					<s:property value="releaseCompany"/>
            			</td>
            		</tr>
 
            		<tr>
-           			<td>
+           			<th class ="guide">
            			発売日:
-           			</td>
+           			</th>
 
-           			<td>
+           			<td class ="guideto">
            			<s:property value="releaseDate"/>
            			</td>
            		</tr>
 
 				<tr>
-					<td>
+					<th class ="guide">
 					注文日:
-					</td>
+					</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="registDate" />
             		</td>
             	</tr>
 
         		<tr>
-        			<td>
-        			<s:form action = "BuyItemInfoAction">
-					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-					<s:submit value="商品詳細ページへ"/>
-					</s:form>
+        	        <td class ="guide">
+        			<div class="buttonBox">
+						<div class="btn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
         			</td>
 
-        			<td class="cancel">
+
+					<td class="guide">
+					<div class="buttonBox">
+						<div class="btn">
 						<!-- キャンセルボタン -->
-							<s:form action ="PurchaseCancelConfirmAction">
-								<input type="hidden" name= "itemId" value="<s:property value= 'itemId'/>">
-								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
-								<s:submit value="注文キャンセル" />
-								 注文番号<s:property value= 'orderNum'/>
-								アイテムId<s:property value= 'itemId'/>
-							</s:form>
+							<a href=' <s:url action ="PurchaseCancelConfirmAction">
+								<s:param name= "itemId" value="%{itemId}"/>
+								<s:param name ="orderNum" value= "%{orderNum}"/>
+								 </s:url>' class="button">
+								 注文キャンセル
+							</a>
+						</div>
+					</div>
 					</td>
-			</tr>
+				</tr>
+
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
 			</table>
+			</s:if>
+
+
+			<s:else>
+			<table class = "table02">
+				<!--  画像ファイル -->
+				 <tr>
+
+					<td class ="guideto">
+					<img src="<s:property value='imageFilePath' />" alt="画像なし">
+					</td>
+
+				</tr>
+
+				<tr>
+					<th class ="guide">
+					商品名:
+					</th>
+
+					<td class="guideto">
+					<s:property value="itemName"/>
+					</td>
+				</tr>
+
+				<tr>
+            		<th class ="guide">
+            		単価:
+            		</th>
+
+            		<td class="guideto">
+            		<s:property value="price" />円
+            		</td>
+            	</tr>
+
+            	<tr>
+            		<th class ="guide">
+            		購入数:
+            		</th>
+
+            		<td class="guideto">
+            		<s:property value="itemCount"/>
+            		</td>
+
+				</tr>
+
+				<tr>
+					<th class ="guide">
+					合計購入金額:
+					</th>
+					<td class="guideto">
+					<s:property value='totalPrice'/>円
+					</td>
+				</tr>
+
+
+				<tr>
+					<th class ="guide">
+					発売会社:
+					</th>
+
+					<td class="guideto">
+					<s:property value="releaseCompany"/>
+           			</td>
+           		</tr>
+
+           		<tr>
+           			<th class ="guide">
+           			発売日:
+           			</th>
+
+           			<td class="guideto">
+           			<s:property value="releaseDate"/>
+           			</td>
+           		</tr>
+
+				<tr>
+					<th class ="guide">
+					注文日:
+					</th>
+
+            		<td class="guideto">
+            		<s:property value="registDate" />
+            		</td>
+            	</tr>
+
+        		<tr>
+        			<td class ="guide">
+        			<div class="buttonBox">
+						<div class="btn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
+        			</td>
+
+					<td class="guide">
+					<div class="buttonBox">
+						<div class="btn">
+						<!-- キャンセルボタン -->
+							<a href=' <s:url action ="PurchaseCancelConfirmAction">
+								<s:param name= "itemId" value="%{itemId}"/>
+								<s:param name ="orderNum" value= "%{orderNum}"/>
+								 </s:url>' class="button">
+								 注文キャンセル
+							</a>
+						</div>
+					</div>
+				</tr>
+
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+				</table>
+			</s:else>
     		</s:iterator>
 		</s:if>
 		<s:else>
