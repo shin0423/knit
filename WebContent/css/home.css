@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 body{
 	margin:0;
+	min-height:550px;
+	min-width:550px;
 }
 .header{
 	position: fixed;
@@ -8,7 +10,9 @@ body{
 	left: 0;
 	height: 70px;
 	width: 100%;
+	min-width:550px;
 	margin:0;
+	z-index:9999;
 	background: linear-gradient(rgba(192, 192, 192, 1) 40%, rgba(192, 192, 192, 0.7) 60%, rgba(192, 192, 192, 0));
 }
 .menu{
@@ -24,7 +28,7 @@ body{
 	width: 50px;
 	height: 50px;
 	margin-right:5px;
-	background-image: url("/knit/images/CartLogo.jpg");
+	background-image: url("/knit/images/cart_empty.jpg");
 	background-position:0px 1px;
 	background-size: contain;
 	vertical-align: middle;
@@ -54,7 +58,7 @@ body{
 	width: 50px;
 	height: 50px;
 	margin-right:5px;
-	background-image: url("/knit/images/HomeLogo.jpg");
+	background-image: url("/knit/images/home.jpg");
 	background-position:0px 1px;
 	background-size: contain;
 	vertical-align: middle;
@@ -69,7 +73,7 @@ body{
 	width: 50px;
 	height: 50px;
 	margin-right:5px;
-	background-image: url("/knit/images/LoginLogo.jpg");
+	background-image: url("/knit/images/login.jpg");
 	background-position:0px 1px;
 	background-size: contain;
 	vertical-align: middle;
@@ -84,7 +88,7 @@ body{
 	width: 50px;
 	height: 50px;
 	margin-right:5px;
-	background: #FF0066;
+	background-image: url("/knit/images/mypage.jpg");
 	background-position:0px 1px;
 	background-size: contain;
 	vertical-align: middle;
@@ -99,7 +103,7 @@ body{
 	width: 50px;
 	height: 50px;
 	margin-right:5px;
-	background: #00FFFF;
+	background-image: url("/knit/images/logout.jpg");
 	background-position:0px 1px;
 	background-size: contain;
 	vertical-align: middle;
@@ -114,7 +118,7 @@ body{
 	width: 50px;
 	height: 50px;
 	margin-right:5px;
-	background: blue;
+	background-image: url("/knit/images/item1.jpg");
 	background-position:0px 1px;
 	background-size: contain;
 	vertical-align: middle;
@@ -126,15 +130,30 @@ body{
     -moz-border-radius: 50%;
 }
 .inside{
-	width:380px;
-	height:100px;
+	width:450px;
+	height:230px;
 	padding: 10px;
 	background-color:#C0C0C0;
 	display: none;
+	border-radius: 10px;
+	margin:auto;
+	text-align:center;
+}
+#SearchB{
+	position: relative;
+	margin-top:1px;
+	padding: .65em 4em;
+	border: 2px solid #C0C0C0;	/*枠の色*/
+	color: #333;
+	text-decoration: none;
+	text-align: center;
+
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
 .main{
 }
-#logo{
+.centerbox{
 	position:absolute;
 	top:0;
 	left:0;
@@ -142,12 +161,22 @@ body{
 	bottom:0;
 	margin:auto;
 	width:350px;
+	height:290px;
+	opacity:0.8;
+}
+#logo{
+	width:350px;
 	height:250px;
-	opacity:0.3;
 	font-size:300px;
-	font-color:black;
 	text-align:center;
 	text-height:20px;
+}
+#massage{
+	width:350px;
+	height:40px;
+	margin-top:250;
+	font-size:25px;
+	text-align:center;
 }
 .fooder{
 	position:absolute;
@@ -158,18 +187,13 @@ body{
 	line-height:140px;
 	background: linear-gradient(rgba(192, 192, 192, 0) 40%, rgba(192, 192, 192, 0.8) 70%, rgba(192, 192, 192, 1));
 	text-align:center;
+	z-index:9999;
 }
-
-
-	@font-face {
-
+@font-face {
 	font-family: 'DoverHeights';
 	src: local('DoverHeights') ,url('DoverHeights.otf');
 }
-	#logo{
-
-
-		font-family:'DoverHeights';
-
-	}
+#logo{
+	font-family:'DoverHeights';
+}
 

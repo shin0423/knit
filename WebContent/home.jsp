@@ -24,7 +24,9 @@
 <button class="search" style="cursor:pointer"></button>
  <div class="inside">
   <s:form action="BuyItemAction" class="BOX">
-   <s:textfield name="searchWord" class="h_search" />
+    <div id="Insidetittle"><h4>商品検索</h4></div>
+    <br>商品名<br>
+   <s:textfield name="searchWord" class="h_search" size="30" />　
    <select name="categoryId">
     <option value=0 selected="selected">全てのカテゴリ</option>
     <option value=1 >飲食</option>
@@ -32,10 +34,10 @@
     <option value=3 >おもちゃ・ゲーム</option>
     <option value=4 >おもちゃ・ゲーム</option>
    </select>
+    <br>金額<br>
+   <s:textfield name="moreUp" class="h_search" />円～<s:textfield name="moreDown" class="h_search" />円
    <br>
-   <s:textfield name="moreUp" class="h_search" />～
-   <s:textfield name="moreDown" class="h_search" />
-   <button type="submit">検索</button>
+   <button type="submit" class="SearchB">検索</button>
   </s:form>
  </div>
 <script>
@@ -54,8 +56,8 @@
  </s:if>
 
   <s:elseif test="#session.loginFlg == true">
-   <a href='<s:url action="MyPageAction"/>' ><button class="mypage" style="cursor:pointer">マイページへ</button></a>
-   <a href='<s:url action="UserLogoutAction"/>'><button class="logout" style="cursor:pointer">ログアウト</button></a>
+   <a href='<s:url action="MyPageAction"/>' ><button class="mypage" style="cursor:pointer"></button></a>
+   <a href='<s:url action="UserLogoutAction"/>'><button class="logout" style="cursor:pointer"></button></a>
   </s:elseif>
 
 
@@ -64,18 +66,19 @@
     <s:param name="searchWord" value="''"/>
     <s:param name="moreUp" value="''"/>
     <s:param name="moreDown" value="''"/>
-  </s:url>'><button  class="item" style="cursor:pointer">+</button></a>
+  </s:url>'><button  class="item" style="cursor:pointer"></button></a>
 </div>
 </div>
 
 
 <div class="main">
-
- <div id="logo">knit</div>
-
+ <div class="centerbox">
+  <div id="logo">knit</div>
+  <div id="massage">より新しい自分へ。</div>
+ </div>
 </div>
 
-<div class="fooder"> Kint is the best site ever </div>
+<div class="fooder"> Knit is the best site ever </div>
 
 <script>
 
@@ -83,14 +86,14 @@ $(function(){
 	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
 			function(){
 				$(this).animate({
-					width:"65px",
-					height:"65px",
+					width:"70px",
+					height:"70px",
 					}, 50 );
 			},
 			function(){
 				$(this).animate({
-					width:"48px",
-					height:"48px",
+					width:"50px",
+					height:"50px",
 					}, 50 );
 			});
 });
