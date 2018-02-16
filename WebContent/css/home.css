@@ -9,7 +9,9 @@ body{
 	height: 70px;
 	width: 100%;
 	margin:0;
-	background:white;
+	background: -moz-linear-gradient(top, #C0C0C0, #FFF);
+	background: -webkit-linear-gradient(top, #C0C0C0, #FFF);
+	background: linear-gradient(to bottom, #C0C0C0, #FFF);
 }
 .menu{
 	top: 7px;
@@ -23,7 +25,10 @@ body{
 .cart{
 	width: 50px;
 	height: 50px;
-	background:#00CC99;
+	margin-right:5px;
+	background-image: url("/knit/images/CartLogo.jpg");
+	background-position:0px 1px;
+	background-size: contain;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
@@ -35,6 +40,7 @@ body{
 .search{
 	width: 50px;
 	height: 50px;
+	margin-right:5px;
 	background-image: url("/knit/images/search.jpg");
 	background-position:0px 1px;
 	background-size: contain;
@@ -49,7 +55,10 @@ body{
 .home{
 	width: 50px;
 	height: 50px;
-	background: #CC33FF;
+	margin-right:5px;
+	background-image: url("/knit/images/HomeLogo.jpg");
+	background-position:0px 1px;
+	background-size: contain;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
@@ -61,7 +70,10 @@ body{
 .login{
 	width: 50px;
 	height: 50px;
-	background: #3300CC;
+	margin-right:5px;
+	background-image: url("/knit/images/LoginLogo.jpg");
+	background-position:0px 1px;
+	background-size: contain;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
@@ -73,7 +85,10 @@ body{
 .mypage{
 	width: 50px;
 	height: 50px;
+	margin-right:5px;
 	background: #FF0066;
+	background-position:0px 1px;
+	background-size: contain;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
@@ -85,7 +100,10 @@ body{
 .logout{
 	width: 50px;
 	height: 50px;
+	margin-right:5px;
 	background: #00FFFF;
+	background-position:0px 1px;
+	background-size: contain;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;
@@ -97,7 +115,10 @@ body{
 .item{
 	width: 50px;
 	height: 50px;
+	margin-right:5px;
 	background: blue;
+	background-position:0px 1px;
+	background-size: contain;
 	vertical-align: middle;
 	text-decoration: none;
 	border-style:none;

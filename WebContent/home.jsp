@@ -17,11 +17,11 @@
 <div class="header">
 
  <div class="menu">
-  <a href='<s:url action="TopAction" />'><button class="home">Home</button></a>
+  <a href='<s:url action="TopAction" />'><button class="home" style="cursor:pointer"></button></a>
 
-  <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
+  <a href='<s:url action="CartAction"/>'><button class="cart" style="cursor:pointer"></button></a>
 
-<button class="search"></button>
+<button class="search" style="cursor:pointer"></button>
  <div class="inside">
   <s:form action="BuyItemAction" class="BOX">
    <s:textfield name="searchWord" class="h_search" />
@@ -50,16 +50,21 @@
 
 
  <s:if test="#session.loginFlg == false">
-  <a href='<s:url action="GoLoginPageAction"/>' ><button class="login">ログインへ</button></a>
+  <a href='<s:url action="GoLoginPageAction"/>' ><button class="login" style="cursor:pointer"></button></a>
  </s:if>
 
   <s:elseif test="#session.loginFlg == true">
-   <a href='<s:url action="MyPageAction"/>' ><button class="mypage">マイページへ</button></a>
-   <a href='<s:url action="UserLogoutAction"/>'><button class="logout">ログアウト</button></a>
+   <a href='<s:url action="MyPageAction"/>' ><button class="mypage" style="cursor:pointer">マイページへ</button></a>
+   <a href='<s:url action="UserLogoutAction"/>'><button class="logout" style="cursor:pointer">ログアウト</button></a>
   </s:elseif>
 
 
-  <a href='<s:url action="BuyItemAction"><s:param name="categoryId" value="0"/><s:param name="searchWord" value="''"/><s:param name="moreUp" value="''"/><s:param name="moreDown" value="''"/></s:url>'><button  class="item">+</button></a>
+  <a href='<s:url action="BuyItemAction">
+    <s:param name="categoryId" value="0"/>
+    <s:param name="searchWord" value="''"/>
+    <s:param name="moreUp" value="''"/>
+    <s:param name="moreDown" value="''"/>
+  </s:url>'><button  class="item" style="cursor:pointer">+</button></a>
 </div>
 </div>
 
@@ -79,8 +84,8 @@ $(function(){
 			},
 			function(){
 				$(this).animate({
-					width:"50px",
-					height:"50px",
+					width:"48px",
+					height:"48px",
 					}, 50 );
 			});
 });
