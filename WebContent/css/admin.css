@@ -8,6 +8,14 @@
 		height:50px;
 		background-color:black;
 		}
+		
+	body{
+	/*背景変化↓*/
+	background-color: #e74c3c;
+  animation: bg-color 10s infinite;
+  -webkit-animation: bg-color 10s infinite;
+	
+	}
 
 	#error{
 		width:100%;
@@ -15,13 +23,15 @@
 
 	#right{
 		position:fixed;
-		right:10px;
-		top:51px;
+        right:10px;
+		top:80px;
 		float:right;
 		width:50%;
 		}
 
 	#left{
+	    margin-top:40px;
+	    margin-left:20px;
 		float:left;
 		width:50%;
 		margin-bottom:80px;
@@ -33,13 +43,80 @@
 		width:20px;
 		color:red;
 		}
+		
+  /*ボタンその２↓------------------------------*/
 
-	#logout{
-		margin-right:10%;
-		float:right;
-		width:20px;
-		}
+.button {
 
+  float:right;
+  margin-top:5px;
+  margin-right:5px;
+  display: inline-block;
+  width: 114px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 54px;
+  outline: none;
+  
+}
+
+.button::before,
+.button::after {
+	
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+
+.button,
+.button::before,
+.button::after {
+	
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  
+}
+
+
+
+
+/*------------------------------*/
+
+.button {
+	
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+  border: 2px solid #333;
+  color: #333;
+  line-height: 36px;
+}
+
+.button::after {
+  top: 4px;
+  left: 4px;
+  width: 100px;
+  height: 28px;
+  border: 2px solid #333;
+  opacity: 0;
+}
+
+.button:hover::after {
+  opacity: 1;
+}
+
+/*---------ボタンその２↑------------------------*/
+
+
+/*----------------------*/
+
+
+/*------------------------------*/
 	#footer{
 		position:fixed;
 		bottom:0px;
@@ -48,3 +125,22 @@
 		height:50px;
 		background-color:black;
 		}
+
+		/*背景変化↓*/
+		
+		@-webkit-keyframes bg-color {
+  0% { background-color: #e74c3c; }
+  20% { background-color: #f1c40f; }
+  40% { background-color: #1abc9c; }
+  60% { background-color: #3498db; }
+  80% { background-color: #9b59b6; }
+  100% { background-color: #e74c3c; }
+}
+@keyframes bg-color {
+  0% { background-color: #e74c3c; }
+  20% { background-color: #f1c40f; }
+  40% { background-color: #1abc9c; }
+  60% { background-color: #3498db; }
+  80% { background-color: #9b59b6; }
+  100% { background-color: #e74c3c; }
+}

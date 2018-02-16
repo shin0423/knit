@@ -15,20 +15,15 @@
 <title>管理者画面</title>
 </head>
 <body>
-	<div id="header">
-		<div id="pageName">管理者画面</div>
-
-		<div id="logout">
-			<s:form action="AdminLogoutAction">
-				<s:submit value="ログアウト" />
-			</s:form>
-		</div>
-	</div>
-
+	     <div id="header">
+		     
+				<a href="/knit/AdminLogoutAction" class="button">logout</a>
+    
+          </div>
 	<div id="error">
 	<s:if test="errorList!= null">
 		<s:iterator value="errorList">
-			<s:property/><br>
+			<s:property/>
 		</s:iterator>
 	</s:if>
 
@@ -100,32 +95,32 @@
 		<div id="right">
 			<div id="insert">
 		<s:form action="AdminInsertItemAction" theme="simple">
-			商品ID:<s:textfield name="itemId" value="" /><br>
-			商品名:<s:textfield name="itemName" value="" /><br>
-			商品名ふりがな:<s:textfield name="itemNameKana" value="" /><br>
-			在庫数:<s:textfield name="itemStock" value="" /><br>
-			商品詳細:<s:textarea  name="itemDescription" rows="4" cols="40" value=""/><br>
-			商品カテゴリー:<select name="categoryId">
+			商品ID: <s:textfield name="itemId" value="" /><br>
+			商品名: <s:textfield name="itemName" value="" /><br>
+			商品名ふりがな: <s:textfield name="itemNameKana" value="" /><br>
+			在庫数: <s:textfield name="itemStock" value="" /><br>
+			商品詳細: <s:textarea  name="itemDescription" rows="4" cols="40" value=""/><br>
+			商品カテゴリー: <select name="categoryId">
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
 			</select><br>
 			価格:<s:textfield name="price" value="" /><br>
-			商品販売会社名:<s:textfield name="releaseCompany" value="" /><br>
+			商品販売会社名: <s:textfield name="releaseCompany" value="" /><br>
 			<s:submit value="登録" />
 		</s:form>
 		</div>
 
 		<div id="category">
 		<s:form action="AdminInsertCategoryAction">
-			カテゴリーID:<s:textfield name="categoryId" value=""/>
-			カテゴリー名:<s:textfield name="categoryName" value=""/>
-			カテゴリー詳細<s:textfield name="categoryDescription" value=""/>
+			カテゴリーID: <s:textfield name="categoryId" value=""/>
+			カテゴリー名: <s:textfield name="categoryName" value=""/>
+			カテゴリー詳細 <s:textfield name="categoryDescription" value=""/>
 			<s:submit value="新規登録" />
 		</s:form>
 
 		<s:form action="AdminDeleteCategoryAction">
-			商品カテゴリー:<select name="categoryId">
+			商品カテゴリー: <select name="categoryId">
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
@@ -135,8 +130,7 @@
 		</div>
 
 		</div>
-	<div id="footer">
-	</div>
+
 
 </body>
 </html>
