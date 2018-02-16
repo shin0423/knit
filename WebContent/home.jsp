@@ -17,7 +17,7 @@
 <div class="header">
 
  <div class="menu">
-  <a href="/knit/home.jsp"><button class="home">Home</button></a>
+  <a href='<s:url action="TopAction" />'><button class="home">Home</button></a>
 
   <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
 
@@ -59,7 +59,7 @@
   </s:elseif>
 
 
-  <a href='<s:url action="BuyItemAction"/>'><button  class="item">+</button></a>
+  <a href='<s:url action="BuyItemAction"><s:param name="categoryId" value="0"/><s:param name="searchWord" value="''"/><s:param name="moreUp" value="''"/><s:param name="moreDown" value="''"/></s:url>'><button  class="item">+</button></a>
 </div>
 </div>
 
@@ -73,8 +73,8 @@ $(function(){
 	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
 			function(){
 				$(this).animate({
-					width:"55px",
-					height:"55px",
+					width:"65px",
+					height:"65px",
 					}, 50 );
 			},
 			function(){

@@ -1,35 +1,59 @@
 @CHARSET "UTF-8";
 body{
+	margin:0 auto;
 min-width:600px;
+max-width:1000px;
+}
+.main{
+
 }
 .itemInfoBox{
-float:right;
-border:1px solid black;
+float:left;
+border-top: solid 2px #C0C0C0;
+border-bottom: solid 2px #C0C0C0;
 position:relative;
 top:30px;
-left:30;
+left:650px;
 }
 
 
 itemImage{
-
-clear:right;
 float:left;
 }
+p.border{
+margin:0 auto;
+margin-top:30px;
+width:800px;
+border-top:solid 2px #C0C0C0;
+}
+p.reviewBorder{
+	margin-top:225px;
+	margin-left:80px;
+	width:400px;
+	border-top:solid 2px #C0C0C0;
 
+}
 div.reviewForm{
+	width:30%;
+	margin:0 auto;
 	float:left;
+	position:relative;
+	top:-50px;
+	left:200px;
 	margin-top:30px;
+	padding-top:30px;
+
 }
 div.deleteReview{
 	width:200px;
 	height:100px;
 	float:left;
 	margin-top:30px;
-	border:1px solid black;
+	border-top: solid 2px #C0C0C0;
 }
 div.review{
-	clear:both;
-	width:40%;
-	border:1px solid black;
+position:relative;
+top:-285px;
+left:500px
+
 }

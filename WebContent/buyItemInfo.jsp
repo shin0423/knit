@@ -9,6 +9,9 @@
 <title>商品詳細ページ</title>
 </head>
 <body>
+<div class="header">
+</div>
+<div class="main">
 <s:iterator value="buyItemDTO">
 <img src="<s:property value='itemImagePath' />" alt="画像なし">
 </s:iterator>
@@ -67,11 +70,11 @@
 		</s:form>
 	</s:iterator>
 </table>
-
+<p class="border">&nbsp;</p>
 	<s:form action="ReviewAction">
 		<s:iterator value="buyItemDTO">
 			<div class="reviewForm" >
-			<table border="1">
+			<table>
 			<tr>
 				<td>レビュー入力欄</td>
 			</tr>
@@ -98,6 +101,7 @@
 			</div>
 		</s:iterator>
 	</s:form>
+	<p class="reviewBorder">&nbsp;</p>
 
 			<s:if test="reviewErrorMessage != null">
 			<s:iterator value="reviewErrorMessage">
@@ -130,5 +134,6 @@
 	<br>
 
 	ホームに戻る方は<a href="<s:url action='TopAction' />" >こちら</a>
+</div>
 </body>
 </html>
