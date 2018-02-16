@@ -32,6 +32,26 @@ $(function(){
 <body>
 <div class="header">
 
+	<s:if test="#session.miniCartList.isEmpty()">
+	カートに商品がありません
+	</s:if>
+      <div class="sideBar">
+<s:else>
+
+
+        <s:iterator value="#session.miniCartList">
+<table>
+		<tr>
+        <td><s:property value="itemName" /></td>
+        <td><s:property value="price" /><td>
+        <td><s:property value="itemStock" /><td>
+        </tr>
+</table>
+        </s:iterator>
+ </s:else>
+
+    </div>
+
  <div class="menu">
   <a href='<s:url action="TopAction" />'><button class="home">Home</button></a>
 

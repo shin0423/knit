@@ -16,6 +16,9 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	private Map<String,Object>session;
 	private ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 
+	//miniカートのlist
+		private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
+
 	private boolean duplicationFlg;
 
 
@@ -74,11 +77,19 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 			if(!dupFlg) {
 				count=dao.putItemIntoCart(session.get("userId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
+
+				//ログインユーザーから検索し6件カートの値をとってくる
+				miniCartList = dao.UserMiniCart(session.get("userId").toString());
+				session.put("miniCartList", miniCartList);
+				System.out.println("minilistのサイズ"+miniCartList);
 				cartList = dao.showUserCartList(session.get("userId").toString());
 				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			} else {
 				count = dao.updateItemCount(session.get("userId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
+				miniCartList = dao.UserMiniCart(session.get("userId").toString());
+				session.put("miniCartList", miniCartList);
+
 				cartList = dao.showUserCartList(session.get("userId").toString());
 				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			}
@@ -92,11 +103,21 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 			if (!dupFlg) {
 				count = dao.putItemIntoCart(session.get("tempUserId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
+
+				miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
+				System.out.println("ミニカート中身"+miniCartList.size());
+				session.put("miniCartList", miniCartList);
+
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
 				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			} else {
 				count = dao.updateItemCount(session.get("tempUserId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
+
+				miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
+				System.out.println("ミニカート中身"+miniCartList.size());
+				session.put("miniCartList", miniCartList);
+
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
 				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			}
@@ -111,6 +132,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		ShowItemDAO showItemDAO = new ShowItemDAO();
 		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
+		session.put("allTotalPrice", totalPrice);
 		return SUCCESS;
 	}
 
@@ -236,6 +258,14 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public ArrayList<CartDTO> getMiniCartList() {
+		return miniCartList;
+	}
+
+	public void setMiniCartList(ArrayList<CartDTO> miniCartList) {
+		this.miniCartList = miniCartList;
 	}
 
 
