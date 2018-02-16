@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet"
 		  type="text/css"
-		  href="knit/css/purchaseCancelConfirm_style.css">
+		  href="${pageContext.request.contextPath}/css/purchaseCancelConfirm_style.css">
 
 	<title>購入キャンセル確認画面</title>
 
@@ -39,106 +39,122 @@
 			<s:iterator value = "cancelConfirmList">
 
 
-<table>
+				<table class = "table01">
+
 				<!--  画像ファイル -->
 				 <tr>
 
-					<td>
+					<td class ="guideto">
 					<img src="<s:property value='imageFilePath' />" alt="画像なし">
 					</td>
 
 				</tr>
 
 				<tr>
-					<td>
+					<th class ="guide">
 					商品名:
-					</td>
+					</th>
 
-					<td>
+					<td class ="guideto">
 					<s:property value="itemName"/>
 					</td>
 				</tr>
 
 				<tr>
-            		<td>
+            		<th class ="guide">
             		単価:
-            		</td>
+            		</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="price"/>円
             		</td>
             	</tr>
 
             	<tr>
-            		<td>
+            		<th class ="guide">
             		購入数:
-            		</td>
+            		</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="itemCount"/>
             		</td>
 
 				</tr>
 
 				<tr>
-					<td>
+					<th class ="guide">
 					合計購入金額:
-					</td>
-					<td>
+					</th>
+					<td class ="guideto">
 					<s:property value='totalPrice'/>円
 					</td>
 				</tr>
 
 
 				<tr>
-					<td>
+					<th class ="guide">
 					発売会社:
-					</td>
+					</th>
 
-					<td>
+					<td class ="guideto">
 					<s:property value="releaseCompany"/>
            			</td>
            		</tr>
 
            		<tr>
-           			<td>
+           			<th class ="guide">
            			発売日:
-           			</td>
+           			</th>
 
-           			<td>
+           			<td class ="guideto">
            			<s:property value="releaseDate"/>
            			</td>
            		</tr>
 
 				<tr>
-					<td>
+					<th class ="guide">
 					注文日:
-					</td>
+					</th>
 
-            		<td>
+            		<td class ="guideto">
             		<s:property value="registDate" />
             		</td>
             	</tr>
 
         		<tr>
-        			<td>
-        			<s:form action = "BuyItemInfoAction">
-					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-					<s:submit value="商品詳細ページへ"/>
-					</s:form>
+        			<td class ="guide">
+        			<div class="buttonBox">
+						<div class="btn">
+							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
+						</div>
+					</div>
         			</td>
 
-        			<td class="cancel">
+					<td class="guide">
 						<!-- キャンセルボタン -->
-							<s:form action ="PurchaseCancelCompleteAction">
-								<input type="hidden" name= "itemId" value="<s:property value= 'itemId'/>">
-								<input type="hidden" name= "orderNum" value="<s:property value= 'orderNum'/>">
-								<s:submit value="注文キャンセル" />
-								注文番号<s:property value= 'orderNum'/>
-								アイテムId<s:property value= 'itemId'/>
-							</s:form>
+						<div class="buttonBox">
+						<div class="btn">
+
+							<a href=' <s:url action ="PurchaseCancelCompleteAction">
+								<s:param name= "itemId" value="%{itemId}"/>
+								<s:param name ="orderNum" value= "%{orderNum}"/>
+								 </s:url>' class="button">
+								 注文キャンセル
+							</a>
+
+						</div>
+					</div>
 					</td>
-			</tr>
+				</tr>
+
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><br></td>
+				</tr>
 			</table>
 
     		</s:iterator>

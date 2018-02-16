@@ -1,10 +1,144 @@
 @CHARSET "UTF-8";
 
-html{overflow:scroll;}
+html{min-width:1000px;
+	font-family: “游ゴシック Medium”, “Yu Gothic Medium”,sans-serif;}
 
-table{width: 60%;
-      margin-left: 20%;}
+table{white-space: nowrap;
+	border-spacing : 5px 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width:400px;
+	margin-top:5px;
+	background-color:white;
+	border-bottom:1px solid lightgray;
+	border-top:1px solid lightgray;}
+
+.table01{float:left;}
+
+.table02{float:left;}
+
+.guide{background-color:#808080;
+	   color:#fff;}
+
+ .guideto{border-bottom: solid 4px #808080;}
+
+.title{text-align: center;}
+
+
 img{width: 200px;
     height:auto;}
+	/*------ここからボタン↓---------*/
 
-.cancel{}
+.buttonBox {
+	width: 100%;
+}
+
+.btn {
+
+	width: 245px;
+	margin: 0 auto;
+	margin-top: 2em;
+	z-index: 2;
+	-webkit-perspective: 300px;
+	perspective: 300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+}
+
+.btnn {
+
+	width: 245px;
+	margin: 0 auto;
+	margin-top: 3em;
+	z-index: 2;
+	-webkit-perspective: 300px;
+	perspective: 300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+}
+
+
+
+.btnn a,.btn a,.btn0 a{
+
+	color: white; /*押す前のfontの色*/
+
+	font-family: 'Covered By Your Grace', cursive;
+	font-size: 15px;
+	line-height: 11px;
+}
+
+
+
+/*------*/
+
+
+.button {
+
+	position: relative;
+	display: inline-block;
+
+	padding: .65em 1em; /**/
+
+	border: 2px solid #C0C0C0; 	/*枠の色*/
+
+	text-decoration: none;
+	text-align: center;
+
+
+
+}
+
+.button::after {
+
+    position: absolute;
+	top: 4px;
+	left: 4px;
+	z-index: -1;
+	content: '';
+	width: 102%;
+	height: 102%;
+
+	background-color: gold;	/*ボタン背景色*/
+
+	-webkit-transform: rotate(1deg);
+	transform: rotate(1deg);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+/*押した後のfontの色*/
+
+.button:hover {
+
+	color: red;
+
+}
+
+.button:hover::after {
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+
+}
+
+
+
+	@font-face {
+
+	font-family: 'DoverHeights';
+	src: local('DoverHeights') ,url('DoverHeights.otf');
+}
+	.fontTest{
+
+		font-size:144px;
+		font-family:'DoverHeights';
+
+	}
