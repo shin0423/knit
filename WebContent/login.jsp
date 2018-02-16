@@ -32,71 +32,63 @@
 
 	<div class="main">
 
-		<div id="secRegist" class="section">
-
-			<div class="sectionInner">
-
-				<div class="sectionHeader">
+				<div class="title">
 
 					<h3>ログインページ</h3>
-					<!-- sectionHeader -->
+
 				</div>
 
-				<div class="contBody">
+				<div id="mainContainer">
+				<div id="leftContents">
 					<s:form action="LoginAction" name="loginAction" method="post">
 					<table>
 						<tbody>
-								<tr>
-									<th>ユーザーID : </th>
-									<td>
-									<s:textfield name="userId" value="%{#session.saveId}" />
-									</td>
+						<tr>
+							<th>ユーザーID :</th>
+							<td><s:textfield name="userId" value="%{#session.saveId}" />
+							</td>
+						</tr>
 
-								</tr>
+						<tr>
+							<th>パスワード :</th>
+							<td><s:password name="password" /></td>
+						</tr>
 
-								<tr>
-									<th>パスワード : </th>
-									<td>
-										<s:password name="password" />
-										<s:checkbox name="saveId" value="true" />ID保存
-									</td>
+						<tr>
+							<td id="checkbox" colspan="2"><s:checkbox name="saveId" value="true" />ID保存</td>
+						</tr>
 
-								</tr>
-
-								<tr>
-									<td colspan="2">
-
-									<div class="buttonBox">
-										<div class="submitButtonBox">
-											<s:a href="javascrrpt:void(0)" onclick="document.loginAction.submit();return false;" class="sbbutton">確定</s:a>
-										</div>
-
-										<div class="backButtonBox">
-											<s:a href="/knit/TopAction" class="sbbutton">戻る</s:a>
-										</div>
+						<tr>
+							<td colspan="2">
+								<div class="buttonBox">
+									<div class="submitButtonBox">
+										<s:a href="javascrrpt:void(0)"
+											onclick="document.loginAction.submit();return false;"
+											class="sbutton">確定</s:a>
 									</div>
 
-									</td>
-								</tr>
+									<div class="backButtonBox">
+										<s:a href="/knit/TopAction" class="bbutton">戻る</s:a>
+									</div>
+								</div>
+							</td>
+						</tr>
 
-								<tr>
-									<td colspan="2">
-										<s:if test="errorMessage != null " >
-											<div id="error">
-												<s:iterator value="errorMessage">
-													<s:property /><br>
-												</s:iterator>
-											</div>
-										</s:if>
-									</td>
-								</tr>
-						</tbody>
+						<tr>
+							<td colspan="2"><s:if test="errorMessage != null ">
+									<div id="error">
+										<s:iterator value="errorMessage">
+											<s:property />
+											<br>
+										</s:iterator>
+									</div>
+								</s:if></td>
+						</tr>
+					</tbody>
 					</table>
 					</s:form>
-
-
-
-					<div id="goaction">
+				</div>
+					<div id="rightContents">
 						<div class="btn0">
 							<a href="/knit/UserCreateAction" class="button">新規ユーザー登録</a>
 						</div>
@@ -105,17 +97,7 @@
 						</div>
 					</div>
 
-
-					<br>
-
-
-					<br><br>
-
-
 				</div>
-
-			</div>
-		</div>
 	</div>
 
 
