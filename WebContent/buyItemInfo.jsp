@@ -132,7 +132,7 @@ $(function(){
 					</s:if>
 					<s:else>
 
-					<s:submit value="カートに入れる" />
+					<s:submit value="カートに入れる" class="button" />
 					</s:else>
 				</td>
 			</tr>
@@ -163,7 +163,7 @@ $(function(){
 			</tr>
 			<tr>
 				<s:hidden name="itemId" value="%{itemId}" />
-				<td><s:submit value="送信" /></td>
+				<td><s:submit value="送信" class="button"/></td>
 			</tr>
 
 			</table>
@@ -187,7 +187,7 @@ $(function(){
 		<br>自分のレビューを消す<br>
 			<s:form action="ReviewDeleteAction">
 				<s:hidden name="itemId" value="%{itemId}" />
-				<s:submit value="確認" />
+				<s:submit value="確認" class="button"/>
 			</s:form>
 		</div>
 	</s:if>
@@ -200,9 +200,6 @@ $(function(){
 		レビュー内容:<s:property value="reviewBody" /><br><br>
 	</s:iterator>
 	</div>
-	<br>
-
-	ホームに戻る方は<a href="<s:url action='TopAction' />" >こちら</a>
 </div>
 </body>
 </html>
