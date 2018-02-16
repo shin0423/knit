@@ -94,21 +94,21 @@ $(function(){
 			<td id="itemDescription"><s:property value="itemDescription" /></td>
 		</tr>
 		<tr>
-			<td><s:property value="price" /></td>
+			<td><s:property value="price" />円</td>
 		</tr>
 		<tr>
 		<s:if test="itemStock <= 0">
 					在庫切れ
 		</s:if>
 		<s:else>
-			<td><s:property value="itemStock" /></td>
+			<td>在庫&nbsp;&nbsp;<s:property value="itemStock" />個</td>
 		</s:else>
 		</tr>
 		<tr>
 			<td><s:property value="releaseCompany" /></td>
 		</tr>
 		<tr>
-			<td><s:property value="releaseDate" /></td>
+			<td>販売日&nbsp;&nbsp;<s:property value="releaseDate" /></td>
 		</tr>
 
 		<s:form action="PutItemIntoCartAction" >
@@ -132,7 +132,9 @@ $(function(){
 					</s:if>
 					<s:else>
 
-					<s:submit value="カートに入れる" class="button" />
+					<s:a href="javascrrpt:void(0)"
+											onclick="document.PutItemIntoCartAction.submit();return false;"
+											class="button">カートに入れる</s:a>
 					</s:else>
 				</td>
 			</tr>
@@ -163,7 +165,9 @@ $(function(){
 			</tr>
 			<tr>
 				<s:hidden name="itemId" value="%{itemId}" />
-				<td><s:submit value="送信" class="button"/></td>
+				<td><s:a href="javascrrpt:void(0)"
+											onclick="document.ReviewAction.submit();return false;"
+											class="button"><strong>レビューする</strong></s:a></td>
 			</tr>
 
 			</table>
@@ -185,9 +189,12 @@ $(function(){
 	<s:if test=" #session.userId != null ">
 		<div class="deleteReview">
 		<br>自分のレビューを消す<br>
+
 			<s:form action="ReviewDeleteAction">
 				<s:hidden name="itemId" value="%{itemId}" />
-				<s:submit value="確認" class="button"/>
+				<s:a href="javascrrpt:void(0)"
+											onclick="document.ReviewDeleteAction.submit();return false;"
+											class="button">削除</s:a>
 			</s:form>
 		</div>
 	</s:if>
