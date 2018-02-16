@@ -44,7 +44,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 */
 		if (userId.equals("")) {
 			errorMessage.add("ユーザーIDが未入力です");
-		} else if ( !( 1 <= userId.length() && userId.length() < 9 ) ) {
+		} else if ( !( 1 <= userId.length() && userId.length() <= 8 ) ) {
 			errorMessage.add("ユーザーIDは1文字以上8文字以下です");
 		} else if ( !( userId.matches("^[0-9a-zA-Z]+$") ) ) {
 			errorMessage.add("ユーザーIDは半角英数字です");
@@ -55,18 +55,18 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 */
 		if (password.equals("")) {
 			errorMessage.add("パスワードが未入力です");
-		} else if ( !( 1 <= password.length() && password.length() < 17 ) ) {
+		} else if ( !( 1 <= password.length() && password.length() <= 16 ) ) {
 			errorMessage.add("パスワードは1文字以上16文字以下です");
 		}
 
 		/**
 		 * IDを保存するか
 		 */
+
 		if (saveId) {
-			session.put("saveUserId", userId);
-			System.out.println("チェック");
+			session.put("saveId", loginDTO.getUserId());
 		} else {
-			session.remove("saveUserId");
+			session.remove("saveId");
 		}
 
 
@@ -240,7 +240,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.errorMessage = errorMessage;
 	}
 
-	public boolean isSaveId() {
+	public boolean getSaveId() {
 		return saveId;
 	}
 

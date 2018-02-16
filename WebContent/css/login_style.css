@@ -68,9 +68,31 @@ footer, section {
 
 <!--ボタン関連-->
 
+
 .buttonBox {
 	width: 100%;
 	text-align: center;
+}
+
+.submitButtonBox {
+	/* position: absolute;top: 100px;left: 700px; */
+ 	float: left;
+	width: 130px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	z-index: 2;
+	color: #fff;
+}
+
+.backButtonBox {
+	position: relative;
+ 	float: right;
+
+	width: 130px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	z-index: 2;
+	color: #fff;
 }
 
 .btnn {
@@ -79,6 +101,7 @@ footer, section {
 
 	width: 193px;
 	margin: 0 auto;
+	margin-left:20px;
 	z-index: 2;
 	color: #fff;
 
@@ -132,10 +155,23 @@ footer, section {
 	line-height: 11px;
 }
 
+.submitButtonBox a,.backButtonBox a {
 
+	color: #fff;
+	font-family: 'Covered By Your Grace', cursive;
+	font-size: 15px;
+	line-height: 5px;
+}
 
 /*------*/
 
+.sbbutton {
+	position: relative;
+	display: inlineblock;
+	padding: .80em 2em;
+	background-color: #808080;
+	text-decoration: none;
+}
 
 .button {
 	position: relative;

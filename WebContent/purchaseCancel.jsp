@@ -31,10 +31,8 @@
 
 
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "cancelList.size() == 0">
-					<h2>キャンセル可能な商品はありません</h2>
-				</s:if>
-				<s:elseif test= "cancelList.size() != 0">
+
+				<s:if test= "cancelList.size() != 0">
 					<h2>キャンセル可能な商品は以下になります</h2>
 
 
@@ -144,7 +142,10 @@
 			</tr>
 			</table>
     		</s:iterator>
-		</s:elseif>
+		</s:if>
+		<s:else>
+					<h2>キャンセル可能な商品はありません</h2>
+		</s:else>
 
 
 				<div>

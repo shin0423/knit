@@ -84,25 +84,33 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		else if(deleteFlg.equals("1")){
 
 			String user_id = session.get("userId").toString();
+			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 			int res = purchaseHistoryDAO.deleteAll(user_id);
 			System.out.println("削除候補件数：" + res);
 			if(res > 0){
 				System.out.println("削除した");
 				setMessage("注文履歴をすべて削除しました");
+				historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
 				if(!(iterator.hasNext())){
 				historyList = null;}
+
+				String result = SUCCESS;
+				return result;
 
 			}
 			else if(res == 0){
 				System.out.println("削除失敗");
 				//setMessage("商品の削除に失敗しました。");
 				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+				historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 				if(!(iterator.hasNext())){
 				historyList = null;}
+				String result = SUCCESS;
+				return result;
 			}
 
 		}
@@ -133,6 +141,12 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		}
 		String result = SUCCESS;
 		System.out.println("きたよー");
+
+		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
+		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+
+		if(!(iterator.hasNext())){
+		historyList = null;}
 
 		return result;
 

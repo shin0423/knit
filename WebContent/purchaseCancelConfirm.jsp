@@ -32,14 +32,8 @@
 
 
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "cancelConfirmList.size() == 0 ">
-					<h2>
-					申し訳ございませんが、商品はすでに発送されています。
-					<br>
-					商品発送後のキャンセルはこのフォームからは受け付けておりません。
-					</h2>
-				</s:if>
-				<s:elseif test= "cancelConfirmList.size() != 0">
+
+				<s:if test= "cancelConfirmList.size() != 0">
 					<h2>キャンセル情報は以下になります</h2>
 
 			<s:iterator value = "cancelConfirmList">
@@ -148,7 +142,15 @@
 			</table>
 
     		</s:iterator>
-			</s:elseif>
+			</s:if>
+
+			<s:else>
+					<h2>
+					申し訳ございませんが、商品はすでに発送されています。
+					<br>
+					商品発送後のキャンセルはこのフォームからは受け付けておりません。
+					</h2>
+			</s:else>
 				<div>
 					<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセル画面へもどる</a>
 				</div>

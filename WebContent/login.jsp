@@ -48,8 +48,8 @@
 						<tbody>
 								<tr>
 									<th>ユーザーID : </th>
-									<td><s:textfield name="userId" value="%{#session.saveUserId}" />
-
+									<td>
+									<s:textfield name="userId" value="%{#session.saveId}" />
 									</td>
 
 								</tr>
@@ -58,8 +58,7 @@
 									<th>パスワード : </th>
 									<td>
 										<s:password name="password" />
-
-										<input type="checkbox" id="checkbox" value="true" name="saveId">ID保存
+										<s:checkbox name="saveId" value="true" />ID保存
 									</td>
 
 								</tr>
@@ -68,12 +67,12 @@
 									<td colspan="2">
 
 									<div class="buttonBox">
-										<div class="btnn">
-											<s:a href="javascrrpt:void(0)" onclick="document.loginAction.submit();return false;" class="button">確定</s:a>
+										<div class="submitButtonBox">
+											<s:a href="javascrrpt:void(0)" onclick="document.loginAction.submit();return false;" class="sbbutton">確定</s:a>
 										</div>
 
-										<div class="btn">
-											<s:a href="/knit/TopAction" class="button">戻る</s:a>
+										<div class="backButtonBox">
+											<s:a href="/knit/TopAction" class="sbbutton">戻る</s:a>
 										</div>
 									</div>
 

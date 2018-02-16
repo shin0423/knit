@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css">
-	
+
 
 <title>マイページ画面</title>
 
@@ -17,7 +17,7 @@
 <body>
 
 	<!-- ヘッダー -->
-	
+
 	<div class="header"></div>
 
 
@@ -29,7 +29,7 @@
 			<div class="sectionInner">
 
 				<div class="sectionHeader">
-				
+
 					<h3>会員登録情報</h3>
 					<!-- sectionHeader -->
 				</div>
@@ -46,7 +46,7 @@
 											<s:property value="firstNameKana" />
 										</p>
 									</td>
-									
+
 								</tr>
 
 								<tr>
@@ -55,7 +55,7 @@
 											<s:property value="familyName" />
 											<s:property value="firstName" />
 										</p></td>
-									
+
 								</tr>
 
 								<tr>
@@ -64,13 +64,13 @@
 											<s:if test="sex==0">男性</s:if>
 											<s:else>女性</s:else>
 										</p></td>
-									
+
 								</tr>
 
 								<tr>
 									<th>メールアドレス</th>
 									<td><s:property value="email" /></td>
-									
+
 								</tr>
 
 								<tr>
@@ -78,7 +78,7 @@
 									<td><p>
 											<s:property value="userId" />
 										</p></td>
-									
+
 								</tr>
 
 								<tr>
@@ -86,7 +86,7 @@
 									<td><p>
 											<s:property value="password" />
 										</p></td>
-									
+
 							</s:iterator>
 						</tbody>
 					</table>
@@ -96,20 +96,20 @@
 							<a href="/knit/PurchaseHistoryAction" class="button">購入履歴</a>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="buttonBox">
 						<div class="btn">
-							<a href="/knit/ResetPasswordAction" class="button">変更</a>
+							<a href="/knit/UserUpdateAction" class="button">変更</a>
 						</div>
 					</div>
-					
+
 					<div class="buttonBox">
 						<div class="btn0">
 							<a href="/knit/UserDeleteAction" class="button">退会</a>
 						</div>
-					</div>							
-				
+					</div>
+
 				</div>
 
 			</div>
@@ -118,9 +118,9 @@
 
 
 	<!-- フッター -->
-	
+
 	<div class="footer"></div>
-	
+
 
 
 </body>
