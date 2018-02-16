@@ -3,15 +3,13 @@ body{
 	margin:0;
 }
 .header{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	height: 70px;
 	width: 100%;
 	margin:0;
-	background: -moz-linear-gradient(top, #C0C0C0, #FFF);
-	background: -webkit-linear-gradient(top, #C0C0C0, #FFF);
-	background: linear-gradient(to bottom, #C0C0C0, #FFF);
+	background: linear-gradient(rgba(192, 192, 192, 1) 40%, rgba(192, 192, 192, 0.7) 60%, rgba(192, 192, 192, 0));
 }
 .menu{
 	top: 7px;
@@ -128,9 +126,50 @@ body{
     -moz-border-radius: 50%;
 }
 .inside{
-	width:400px;
-	height:50px;
+	width:380px;
+	height:100px;
 	padding: 10px;
-	background-color: yellow;
+	background-color:#C0C0C0;
 	display: none;
 }
+.main{
+}
+#logo{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	width:350px;
+	height:250px;
+	opacity:0.3;
+	font-size:300px;
+	font-color:black;
+	text-align:center;
+	text-height:20px;
+}
+.fooder{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:90px;
+	line-height:140px;
+	background: linear-gradient(rgba(192, 192, 192, 0) 40%, rgba(192, 192, 192, 0.8) 70%, rgba(192, 192, 192, 1));
+	text-align:center;
+}
+
+
+	@font-face {
+
+	font-family: 'DoverHeights';
+	src: local('DoverHeights') ,url('DoverHeights.otf');
+}
+	#logo{
+
+
+		font-family:'DoverHeights';
+
+	}
+

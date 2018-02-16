@@ -71,8 +71,13 @@
 
 <div class="main">
 
-<script>
+ <div id="logo">knit</div>
 
+</div>
+
+<div class="fooder"> Kint is the best site ever </div>
+
+<script>
 
 $(function(){
 	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
@@ -90,7 +95,5 @@ $(function(){
 			});
 });
 </script>
-
-</div>
 </body>
 </html>
