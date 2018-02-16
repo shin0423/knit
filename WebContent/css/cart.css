@@ -1,59 +1,45 @@
 @CHARSET "UTF-8";
 
 	.main{
-		margin-top:60px;
-		margin-bottom:50px;
+		margin-top:70px;
+		margin-bottom:70px;
 		}
 
 	.title{
 		font-style:italic;
-		margin-left:50px
+		margin-left:50px;
+		letter-spacing:5px;
 		}
 
-	p{
-		margin-left:50px
+	.message{
+		margin-left:50px;
 		font-style:italic;
 		}
 
-	.delete{
-		position:fixed;
-		top:51px;
-		right:10px;
-		float:right;
-		width:40%;
-		margin-top:90px;
-		}
+	#box{
+		width:700px;
+		display:flex;
+		flex-wrap:wrap;
 
-	.totalPrice{
-		position:fixed;
-		top:51px;
-		right:10px;
-		float:right;
-		width:40%;
-		margin-top:170px;
-		font-size:20px;
-		font-style:italic;
-		}
-
-	.settlement_btn{
-		position:fixed;
-		top:51px;
-		right:10px;
-		float:right;
-		width:40%;
-		margin-top:230px;
 		}
 
 	#item{
 		width:250px;
+		height:270px;
 		margin-bottom:10px;
-		 padding: 0.5em 1em;
-   		 margin: 2em 0;
-   		 color: #5d627b;
-   		 background: white;
+		padding: 0.5em 1em;
+    	margin: 2em 15px;
+    	color: #5d627b;
+    	background: white;
     	border-top: solid 5px #5d627b;
-   		 box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-   		 margin-left:50px;
+    	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+		}
+
+	#item:hover{
+		border-top: solid 5px #999999;
+		box-shadow: 0 3px 5px rgba(0, 0, 0, 0.10);
+
+
 		}
 
 	#color{
@@ -66,6 +52,34 @@
 		}
 
 
+	.delete{
+		position:fixed;
+		top:51px;
+		right:5px;
+		float:right;
+		width:40%;
+		margin-top:90px;
+		}
+
+	.settlement_btn{
+		position:fixed;
+		top:51px;
+		right:5px;
+		float:right;
+		width:40%;
+		margin-top:300px;
+		}
+
+	.totalPrice{
+		position:fixed;
+		top:51px;
+		right:5px;
+		float:right;
+		width:40%;
+		margin-top:250px;
+		font-size:20px;
+
+		}
 
 	#left{
 		float:left;
@@ -80,28 +94,19 @@
 		background-color:blue;
 		}
 
-	.delete{
-		width: 193px;
-	margin: 0 auto;
-	margin-top: 4em;
-	z-index: 2;
-	color: #fff;
+
+	<!--ボタン関連-->
 
 
-	-webkit-perspective: 300px;
-	perspective: 300px;
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-		}
 
-.delete a{
+.delete a ,.settlement_btn a{
 
 	color: #fff;
 	font-family: 'Covered By Your Grace', cursive;
 	font-size: 15px;
 	line-height: 11px;
 }
-#delete_b {
+#delete_b,#set_b{
 	position: relative;
 	display: inline-block;
 	padding: .65em 4em;
@@ -114,9 +119,10 @@
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 
+
 }
 
-#delete_b::after {
+#delete_b::after,#set_b::after {
     position: absolute;
 	top: 4px;
 	left: 4px;
@@ -132,13 +138,13 @@
 	transition: .3s ease-in-out;
 }
 
-#delete_b:hover {
+#delete_b:hover,#set_b:hover {
 
 	color: #C0C0C0;
 
 }
 
-#delete_b:hover::after {
+#delete_b:hover::after,#set_b:hover::after {
 
 	top: 0;
 	left: 0;
@@ -149,4 +155,3 @@
 	transform: rotate(0);
 
 }
-

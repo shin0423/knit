@@ -27,7 +27,7 @@
 
 <div class="main">
 
-	<h2 class="title">CART</h2><br>
+	<h1 class="title">CART</h1><br>
 
 		<s:property value="errMsg"/>
 		<!-- カートの中身が何も入って居ないとき -->
@@ -43,11 +43,11 @@
 
 <!------------------------ カート内容 ------------------------>
 			<s:form action="CartAction" id="form" name="form">
+			<div id="box">
 				<s:iterator value="cartList">
 				<div id="item">
-
 			<s:hidden name="itemId" value="%{itemId}"/>
-			<s:checkbox name="checkList" value="checked" fieldValue="%{itemId}" />
+			<s:checkbox id="item_r" name="checkList" value="checked" fieldValue="%{itemId}" />
 			<div class="border">
 			</div>
 			<div class="pro_img">
@@ -102,12 +102,14 @@
 
 
 			</table>
+
 			</div>
 			</s:iterator>
+			</div>
+
 
 <!----------------------- 商品削除 ------------------------->
 			<div class="delete">
-
 
 			<s:submit  id="delete_b" value="削除" onclick="goCartDeleteAction();"/>
 			</div>
@@ -120,31 +122,13 @@
 
 
 <!------------------------ 決済画面に移動---------------------->
+			<form action="SettlementConfirmAction">
 			<s:if test="! cartList.isEmpty()">
 				<div class="settlement_btn">
-					<a href='<s:url action="SettlementConfirmAction"/>'>決済画面へ</a>
+					<s:submit id="set_b" value="決算画面へ" />
 				</div>
 			</s:if>
-
-	<script>
-		$(function(){
-			$("#item")
-				.on("mouseover",function(){
-					$("#item").stop(true).animete()({
-						backgroundColor:'blue'
-					},
-					500
-				);
-			})
-				.on("mouseout",function(){
-					("#item").stop(true).anamate()({
-						backgroundColor:'white'
-					},
-					500
-				);
-			});
-		};
-	</script>
+			</form>
 
 </div>
 </body>
