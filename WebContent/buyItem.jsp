@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="fontTest">
-	knitaaaaa
+	knit
 	</div>
 	<div class="main">
 
@@ -25,7 +25,7 @@
 		<tr>
 			<td> <div class="mais"><s:property value="itemName"/></div> </td>
 		</tr>
-	
+
 		<tr>
 			<td><s:property value="itemDescription" /></td>
 		</tr>
@@ -33,8 +33,8 @@
 			<td><s:property value="price" />円</td>
 		</tr>
 		<tr>
-		<s:if test="itemStock == '0'">
-			<td>在庫切れ</td>
+		<s:if test="itemStock <= 0">
+			<td><div>在庫切れ<br>&nbsp;&#010;</div></td>
 		</s:if>
 		<s:else>
 			<td><div class="mais"><s:property value="itemStock" />個</div></td>
@@ -87,8 +87,8 @@
 		</tr>
 		<tr>
 		<td>
-		
-　　　　<div class="buttonBox">
+
+		<div class="buttonBox">
 						<div class="btn">
 							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
 						</div>
@@ -99,7 +99,7 @@
 	</s:else>
 	</s:iterator>
 	</div>
-						
+
 
 </body>
 </html>

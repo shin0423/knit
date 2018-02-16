@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.CartDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -26,12 +27,20 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	private String imageFileName;
 	private String releaseCompany;
 	private int count;
+	private String token;
 
 	private int itemCount;
 
 	private int totalPrice=0;
 
+
 	public String execute()throws SQLException{
+
+
+
+
+
+
 		System.out.println("countは"+count);
 		CartDTO dto=new CartDTO();
 		CartDAO dao=new CartDAO();
@@ -66,10 +75,12 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 				count=dao.putItemIntoCart(session.get("userId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
 				cartList = dao.showUserCartList(session.get("userId").toString());
+				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			} else {
 				count = dao.updateItemCount(session.get("userId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
 				cartList = dao.showUserCartList(session.get("userId").toString());
+				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			}
 		}
 
@@ -82,10 +93,12 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 				count = dao.putItemIntoCart(session.get("tempUserId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
+				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			} else {
 				count = dao.updateItemCount(session.get("tempUserId").toString(), Integer.parseInt(itemId),
 						itemCount, iPrice);
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
+				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			}
 		}
 
@@ -95,6 +108,8 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if(itemCount<0) {
 			return "CountError";
 		}
+		ShowItemDAO showItemDAO = new ShowItemDAO();
+		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
 		return SUCCESS;
 	}
@@ -214,5 +229,16 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	public void setCount(int count) {
 		this.count = count;
 	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+
+
 
 }

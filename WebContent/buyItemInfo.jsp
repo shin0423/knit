@@ -25,7 +25,12 @@
 			<td><s:property value="price" /></td>
 		</tr>
 		<tr>
+		<s:if test="itemStock <= 0">
+					在庫切れ
+		</s:if>
+		<s:else>
 			<td><s:property value="itemStock" /></td>
+		</s:else>
 		</tr>
 		<tr>
 			<td><s:property value="releaseCompany" /></td>
@@ -49,7 +54,15 @@
 			</td>
 			</tr>
 			<tr>
-				<td><s:submit value="カートに入れる" /></td>
+				<td>
+					<s:if test="itemStock <= 0">
+					在庫切れ
+					</s:if>
+					<s:else>
+
+					<s:submit value="カートに入れる" />
+					</s:else>
+				</td>
 			</tr>
 		</s:form>
 	</s:iterator>

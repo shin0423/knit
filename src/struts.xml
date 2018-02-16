@@ -65,6 +65,7 @@
 
     <action name="UserCreateCompleteAction" class="com.internousdev.knit.action.UserCreateCompleteAction" method="execute">
   	  <result name="success">userCreateComplete.jsp</result>
+  	  <result name="errorPage">errorPage.jsp</result>
     </action>
 
     <!-- ユーザー情報変更 -->
@@ -125,6 +126,7 @@
 	</action>
 	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
 		<result name="success">cart.jsp</result>
+		<result name="errorPage">errorPage.jsp</result>
 	</action>
 
 	<!-- 決済確認・完了機能(桑本)-->

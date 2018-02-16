@@ -16,7 +16,7 @@ public class CartDAO extends ActionSupport{
 
 	DBConnector db=new DBConnector();
 	Connection con=null;
-	
+
 
 
 	/**
@@ -351,7 +351,7 @@ public class CartDAO extends ActionSupport{
 	public void changeItemStock(int itemStock,int itemId)throws SQLException{
 		System.out.println("Stockを変更");
 
-		String sql="UPDATE item_info SET stock=stock-? WHERE item_id=?";
+		String sql="UPDATE item_info SET item_stock=item_stock-? WHERE item_id=?";
 
 		try {
 			con=db.getConnection();
@@ -430,16 +430,16 @@ public class CartDAO extends ActionSupport{
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			
+
 			ResultSet rs=ps.executeQuery();
-			
+
 			while (rs.next()) {
 				CartDTO CartDTO=new CartDTO();
 				CartDTO.setItemCount(rs.getInt("item_count"));
 				CartDTO.setItemName(rs.getString("item_name"));
 				CartDTO.setPrice(rs.getInt("price"));
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
