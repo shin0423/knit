@@ -109,7 +109,10 @@
 							<a href="/knit/UserDeleteAction" class="button">退会</a>
 						</div>
 					</div>
-
+					
+					<!-- ボタンその２
+					<a class="other" href="#">その2</a>
+                    -->
 				</div>
 
 			</div>
