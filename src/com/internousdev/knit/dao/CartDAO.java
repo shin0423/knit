@@ -444,4 +444,72 @@ public class CartDAO extends ActionSupport{
 			// TODO: handle exception
 		}
 	}
+	public  ArrayList<CartDTO> UserMiniCart(String userId){
+
+		System.out.println("miniカート");
+
+		String sql="select item_info.item_name, item_info.price, item_info.item_stock from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.user_id = ?  LIMIT 6";
+		con=db.getConnection();
+		ArrayList<CartDTO> MiniCartId=new ArrayList<>();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+
+			ResultSet rs=ps.executeQuery();
+
+			while (rs.next()) {
+				CartDTO CartDTO=new CartDTO();
+				CartDTO.setItemName(rs.getString("item_name"));
+				CartDTO.setPrice(rs.getInt("price"));
+				CartDTO.setItemCount(rs.getInt("item_stock"));
+
+				System.out.println("miniカート値"+CartDTO.getItemName());
+
+				MiniCartId.add(CartDTO);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+		return MiniCartId;
+	}
+
+	public ArrayList<CartDTO> TempUserMiniCart(String tempUserId){
+		String sql="select item_info.item_name, item_info.price, item_info.item_stock from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.temp_user_id = ?  LIMIT 6";
+		con=db.getConnection();
+
+		ArrayList<CartDTO> MiniCartId=new ArrayList<>();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, tempUserId);
+
+			ResultSet rs=ps.executeQuery();
+
+			while (rs.next()) {
+				CartDTO CartDTO=new CartDTO();
+				CartDTO.setItemName(rs.getString("item_name"));
+				CartDTO.setPrice(rs.getInt("price"));
+				CartDTO.setItemCount(rs.getInt("item_stock"));
+
+				MiniCartId.add(CartDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+		return MiniCartId;
+	}
 }
