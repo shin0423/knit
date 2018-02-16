@@ -13,6 +13,8 @@
 </head>
 <body>
 
+
+
 <!-- メイン -->
 	<div class = "main">
 
@@ -147,15 +149,15 @@
             	</tr>
 
         		<tr>
-        			<td class ="guide">
+        			<th class ="guide">
         			<div class="buttonBox">
 						<div class="btn">
 							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
 						</div>
 					</div>
-        			</td>
+        			</th>
 
-					<td class ="guide">
+					<th class ="guide">
 					<!--  履歴個別削除ボタン-->
 					<div class="buttonBox">
 						<div class="btn">
@@ -168,7 +170,7 @@
 						</div>
 					</div>
 					<!--  履歴個別削除ボタンここまで-->
-					</td>
+					</th>
 				</tr>
 
 				<tr>

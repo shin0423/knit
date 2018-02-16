@@ -9,9 +9,10 @@ table{white-space: nowrap;
 	margin-right: auto;
 	width:400px;
 	margin-top:5px;
+	margin-left:5px;
+	margin-right:5px;
 	background-color:white;
-	border-bottom:1px solid lightgray;
-	border-top:1px solid lightgray;}
+	border:15px ridge black;}
 
 .table01{float:left;}
 
@@ -25,7 +26,7 @@ table{white-space: nowrap;
 .title{text-align: center;}
 
 
-img{width: 200px;
+img{width: 100%;
     height:auto;}
 
 .cancel{position: fixed;
@@ -68,7 +69,7 @@ img{width: 200px;
 
 .btnn a,.btn a,.btn0 a{
 
-	color: white; /*押す前のfontの色*/
+	color: black; /*押す前のfontの色*/
 
 	font-family: 'Covered By Your Grace', cursive;
 	font-size: 15px;
@@ -106,7 +107,7 @@ img{width: 200px;
 	width: 102%;
 	height: 102%;
 
-	background-color: gold;	/*ボタン背景色*/
+	background-color: white;	/*ボタン背景色*/
 
 	-webkit-transform: rotate(1deg);
 	transform: rotate(1deg);
