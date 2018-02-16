@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
-html{overflow:scroll;}
+html{min-width:1000px;
+	font-family: “游ゴシック Medium”, “Yu Gothic Medium”,sans-serif;}
 
 table{white-space: nowrap;
 	border-spacing : 5px 10px;
@@ -11,6 +12,17 @@ table{white-space: nowrap;
 	background-color:white;
 	border-bottom:1px solid lightgray;
 	border-top:1px solid lightgray;}
+
+.table01{float:left;}
+
+.table02{float:left;}
+
+.guide{background-color:#808080;
+	   color:#fff;}
+
+.title{text-align: center;}
+
+
 img{width: 200px;
     height:auto;}
 

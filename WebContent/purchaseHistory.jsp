@@ -24,10 +24,8 @@
 
 		<div>
 		<!-- リストに応じたトップメッセージ -->
-				<s:if test = "historyList == null">
-					<h2>購入情報はありません</h2>
-				</s:if>
-				<s:elseif test= "historyList != null">
+
+				<s:if test= "historyList.size() != 0">
 					<h2>購入情報は以下になります</h2>
 
 
@@ -69,7 +67,7 @@
 				</tr>
 
 				<tr>
-					<td>
+					<td class ="guide">
 					商品名:
 					</td>
 
@@ -79,7 +77,7 @@
 				</tr>
 
 				<tr>
-            		<td>
+            		<td class ="guide">
             		単価:
             		</td>
 
@@ -89,7 +87,7 @@
             	</tr>
 
             	<tr>
-            		<td>
+            		<td class ="guide">
             		購入数:
             		</td>
 
@@ -100,7 +98,7 @@
 				</tr>
 
 				<tr>
-					<td>
+					<td class ="guide">
 					合計購入金額:
 					</td>
 					<td>
@@ -110,7 +108,7 @@
 
 
 				<tr>
-					<td>
+					<td class ="guide">
 					発売会社:
 					</td>
 
@@ -120,7 +118,7 @@
            		</tr>
 
            		<tr>
-           			<td>
+           			<td class ="guide">
            			発売日:
            			</td>
 
@@ -130,7 +128,7 @@
            		</tr>
 
 				<tr>
-					<td>
+					<td class ="guide">
 					注文日:
 					</td>
 
@@ -182,7 +180,7 @@
 				</tr>
 
 				<tr>
-					<td>
+					<td class ="guide">
 					商品名:
 					</td>
 
@@ -192,7 +190,7 @@
 				</tr>
 
 				<tr>
-            		<td>
+            		<td class ="guide">
             		単価:
             		</td>
 
@@ -202,7 +200,7 @@
             	</tr>
 
             	<tr>
-            		<td>
+            		<td class ="guide">
             		購入数:
             		</td>
 
@@ -213,7 +211,7 @@
 				</tr>
 
 				<tr>
-					<td>
+					<td class ="guide">
 					合計購入金額:
 					</td>
 					<td>
@@ -223,7 +221,7 @@
 
 
 				<tr>
-					<td>
+					<td class ="guide">
 					発売会社:
 					</td>
 
@@ -233,7 +231,7 @@
            		</tr>
 
            		<tr>
-           			<td>
+           			<td class ="guide">
            			発売日:
            			</td>
 
@@ -243,7 +241,7 @@
            		</tr>
 
 				<tr>
-					<td>
+					<td class ="guide">
 					注文日:
 					</td>
 
@@ -256,7 +254,7 @@
         			<td>
         			<s:form action = "BuyItemInfoAction">
 					<input type="hidden" name="itemId" value="<s:property value= 'itemId'/>">
-					<s:submit value="商品詳細ページへ"/>
+					<s:submit value="商品詳細ページへ" />
 					</s:form>
         			</td>
 
@@ -286,7 +284,10 @@
 
 
 <!----------------------履歴詳細   ここまで------------------------------->
-		</s:elseif>
+		</s:if>
+		<s:else>
+					<h2>購入情報はありません</h2>
+		</s:else>
 
 
 <!-- ページリンク -->
