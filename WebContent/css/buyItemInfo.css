@@ -1,29 +1,139 @@
 @CHARSET "UTF-8";
 body{
 	margin:0 auto;
-min-width:600px;
-max-width:1000px;
-}
-.main{
+min-width:700px;
 
 }
+.header{
+	min-width:700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 90px;
+	width: 100%;
+	margin:0;
+	background:white;
+	border-bottom:1px solid #C0C0C0;
+}
+.menu{
+	top: 7px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+	text-align:center;
+}
+.cart{
+	width: 50px;
+	height: 50px;
+	background:#00CC99;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.search{
+	width: 50px;
+	height: 50px;
+	background-image: url("/knit/images/search.jpg");
+	background-position:0px 1px;
+	background-size: contain;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.home{
+	width: 50px;
+	height: 50px;
+	background: #CC33FF;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.login{
+	width: 50px;
+	height: 50px;
+	background: #3300CC;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.mypage{
+	width: 50px;
+	height: 50px;
+	background: #FF0066;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.logout{
+	width: 50px;
+	height: 50px;
+	background: #00FFFF;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.item{
+	width: 50px;
+	height: 50px;
+	background: blue;
+	vertical-align: middle;
+	text-decoration: none;
+	border-style:none;
+	box-shadow:2px 2px 2px #555;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.inside{
+	width:400px;
+	height:50px;
+	padding: 10px;
+	background-color: yellow;
+	display: none;
+}
+
+
 .itemInfoBox{
 float:left;
-border-top: solid 2px #C0C0C0;
-border-bottom: solid 2px #C0C0C0;
 position:relative;
-top:30px;
+top:130px;
 left:650px;
 }
 
-
-itemImage{
-float:left;
+#imageItem{
+margin-top:100px;
 }
+
 p.border{
 margin:0 auto;
 margin-top:30px;
-width:800px;
+width:80%;
 border-top:solid 2px #C0C0C0;
 }
 p.reviewBorder{
@@ -39,7 +149,7 @@ div.reviewForm{
 	float:left;
 	position:relative;
 	top:-50px;
-	left:200px;
+	left:150px;
 	margin-top:30px;
 	padding-top:30px;
 
@@ -48,10 +158,13 @@ div.deleteReview{
 	width:200px;
 	height:100px;
 	float:left;
-	margin-top:30px;
-	border-top: solid 2px #C0C0C0;
+	margin-top:-50px;
+	margin-left:150px;
+
+
 }
 div.review{
+width:400px;
 position:relative;
 top:-285px;
 left:500px

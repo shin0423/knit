@@ -6,14 +6,83 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/knit/css/buyItemInfo.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/jquery.plainmodal.js"></script>
 <title>商品詳細ページ</title>
+<script type="text/javascript">
+
+
+$(function(){
+	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
+			function(){
+				$(this).animate({
+					width:"65px",
+					height:"65px",
+					}, 50 );
+			},
+			function(){
+				$(this).animate({
+					width:"50px",
+					height:"50px",
+					}, 50 );
+			});
+});
+</script>
 </head>
 <body>
 <div class="header">
+
+ <div class="menu">
+  <a href='<s:url action="TopAction" />'><button class="home">Home</button></a>
+
+  <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
+
+<button class="search"></button>
+ <div class="inside">
+  <s:form action="BuyItemAction" class="BOX">
+   <s:textfield name="searchWord" class="h_search" value="" />
+   <select name="categoryId">
+    <option value=0 selected="selected">全てのカテゴリ</option>
+    <option value=1 >飲食</option>
+    <option value=2 >家電・パソコン</option>
+    <option value=3 >おもちゃ・ゲーム</option>
+    <option value=4 >おもちゃ・ゲーム</option>
+   </select>
+   <br>
+   <s:textfield name="moreUp" class="h_search" value=""/>～
+   <s:textfield name="moreDown" class="h_search" value=""/>
+   <button type="submit">検索</button>
+  </s:form>
+ </div>
+<script>
+
+ $('.search').click(function() {
+	  $('.inside').plainModal('open', {overlay: {color: '#fff', opacity: 0.5}});
+	});
+
+ </script>
+
+
+
+
+ <s:if test="#session.loginFlg == false">
+  <a href='<s:url action="GoLoginPageAction"/>' ><button class="login">ログインへ</button></a>
+ </s:if>
+
+  <s:elseif test="#session.loginFlg == true">
+   <a href='<s:url action="MyPageAction"/>' ><button class="mypage">マイページへ</button></a>
+   <a href='<s:url action="UserLogoutAction"/>'><button class="logout">ログアウト</button></a>
+  </s:elseif>
+
+
+  <a href='<s:url action="BuyItemAction"><s:param name="categoryId" value="0"/><s:param name="searchWord" value="''"/><s:param name="moreUp" value="''"/><s:param name="moreDown" value="''"/></s:url>'><button  class="item">+</button></a>
 </div>
+</div>
+
 <div class="main">
 <s:iterator value="buyItemDTO">
-<img src="<s:property value='itemImagePath' />" alt="画像なし">
+
+<img id="imageItem" src="<s:property value='itemImagePath' />" alt="画像なし">
 </s:iterator>
 <table class="itemInfoBox">
 	<s:iterator value="buyItemDTO">
