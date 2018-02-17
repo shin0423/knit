@@ -119,7 +119,7 @@
 	<!-- カート機能 (川畑) -->
 	<action name="CartAction" class="com.internousdev.knit.action.CartAction" method="execute">
 		<result name="success">cart.jsp</result>
-		<result name="error">cart.jsp</result>
+
 	</action>
 	<action name="CartDeleteAction" class="com.internousdev.knit.action.CartDeleteAction" method="execute">
 		<result name="success">cart.jsp</result>
@@ -127,6 +127,9 @@
 	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
 		<result name="success">cart.jsp</result>
 		<result name="errorPage">errorPage.jsp</result>
+	</action>
+	<action name="GoLoginAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
+		<result name="success">login.jsp</result>
 	</action>
 
 	<!-- 決済確認・完了機能(桑本)-->

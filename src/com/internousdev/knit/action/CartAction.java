@@ -2,6 +2,7 @@ package com.internousdev.knit.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -18,17 +19,47 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 
 	public String execute()throws SQLException{
-
+		List<String> deleteCartList = new ArrayList<>();
 		CartDAO dao=new CartDAO();
+		int j = 0;
 
 		//loginFlgがあるか
 
 		if(!(boolean) session.get("loginFlg")) {
 			session.put("loginFlg", false);
 			System.out.println("TESSSST");
-		}if((boolean) session.get("loginFlg")) {
-			if((boolean) session.get("loginFlg")) {
+		}
+		if((boolean) session.get("loginFlg")) {
+				cartList=dao.showUserCartList(session.get("userId").toString());
+				for(int i = 0 ;cartList.size() > i ; i++){
+				try{
+					if(cartList.get(i).getItemName().equals(null)){
+						String name=cartList.get(i).getItemName();
+						System.out.println(name);
+					}
+
+					}catch(NullPointerException e){
+					cartList.get(i).setItemName("noName");
+					System.out.println("やったよ！");
+					e.printStackTrace();
+					}
+				}
+				for (int i = 0;cartList.size() >i ;i++){
+					if((cartList.get(i).getItemName()).equals("noName") ){
+
+						deleteCartList.add(j,String.valueOf(cartList.get(i).getItemId()));
+						j++;
+					}
+				}
+				if(! deleteCartList.isEmpty()){
+					for(int i = 0;deleteCartList.size() > i ;i++){
+					dao.deleteSeparete(session.get("userId").toString(),Integer.parseInt(deleteCartList.get(i)));
+					}
+				}
+
+
 				dao.changeUserId(session.get("tempUserId").toString(),session.get("userId").toString());
+				cartList.clear();
 				cartList=dao.showUserCartList(session.get("userId").toString());
 
 				for(int i=0; i < cartList.size();i++) {
@@ -45,15 +76,39 @@ public class CartAction extends ActionSupport implements SessionAware{
 				}
 
 
-			}else {
+		}else {
+				System.out.println("やったよ");
+
+				for(int i = 0 ;cartList.size() > i ; i++){
+					try{
+						cartList.get(i).getItemName();
+						}catch(NullPointerException e){
+						cartList.get(i).setItemName("noName");
+						}
+					}
+
+				for (int i = 0;cartList.size() >i ;i++){
+					if(cartList.get(i).getItemName().equals("noName") ){
+
+						deleteCartList.add(j,String.valueOf(cartList.get(i).getItemId()));
+						j++;
+					}
+				}
+				if(! deleteCartList.isEmpty()){
+					for(int i = 0;deleteCartList.size() > i ;i++){
+					dao.deleteSeparete(session.get("tempUserId").toString(),Integer.parseInt(deleteCartList.get(i)));
+					}
+				}
+
 				cartList=dao.showTempUserCartList(session.get("tempUserId").toString());
+
 			}
 
 			//合計金額の計算
 			totalPrice=calcTotalPrice(cartList);
 			return SUCCESS;
-		}
-		return ERROR;
+
+
 	}
 		public Map<String,Object> getSession(){
 			return session;

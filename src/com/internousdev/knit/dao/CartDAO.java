@@ -392,7 +392,7 @@ public class CartDAO extends ActionSupport{
 
 	public void deleteSeparete(String userId,Integer integer) {
 		String sql="DELETE FROM cart_info WHERE user_id=? AND item_id=?";
-
+		con=db.getConnection();
 		try {
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, userId);
@@ -423,6 +423,8 @@ public class CartDAO extends ActionSupport{
 			con.close();
 		}
 	}
+
+
 	//ミニカート用 小池 ユーザーIDから6件以下検索し取得する
 	public  void miniCart(String userId){
 		String sql="SELECT * FROM cart_info WHERE user_id = 'internous' LIMIT 6";

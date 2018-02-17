@@ -45,6 +45,7 @@
 			<s:form action="CartAction" id="form" name="form">
 			<div id="box">
 				<s:iterator value="cartList">
+				<%-- <s:if test="price != 0"> --%>
 				<div id="item">
 			<s:hidden name="itemId" value="%{itemId}"/>
 			<s:checkbox id="item_r" name="checkList" value="checked" fieldValue="%{itemId}" />
@@ -104,6 +105,7 @@
 			</table>
 
 			</div>
+			<%-- </s:if> --%>
 			</s:iterator>
 			</div>
 
@@ -122,13 +124,23 @@
 
 
 <!------------------------ 決済画面に移動---------------------->
-			<form action="SettlementConfirmAction">
-			<s:if test="! cartList.isEmpty()">
-				<div class="settlement_btn">
-					<s:submit id="set_b" value="決算画面へ" />
-				</div>
+			<s:if test="session.loginFlg == false">
+				<s:form action ="GoLoginAction">
+					<div class="settlement_btn">
+						<s:submit value="ログイン" id="set_c"/>
+					</div>
+				</s:form>
 			</s:if>
-			</form>
+			<s:else>
+				<s:if test="! cartList.isEmpty()">
+					<s:form action="SettlementConfirmAction">
+						<div class="settlement_btn">
+							<s:submit id="set_b" value="決算画面へ" />
+						</div>
+					</s:form>
+				</s:if>
+			</s:else>
+
 
 </div>
 </body>

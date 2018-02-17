@@ -8,8 +8,10 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AdmiDAO;
+import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
+import com.internousdev.knit.dto.CategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminDeleteAction extends ActionSupport implements SessionAware {
@@ -17,7 +19,9 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private String result;
 	private AdmiDAO admiDAO = new AdmiDAO();
 	private ShowItemDAO showItemDAO = new ShowItemDAO();
+	private CategoryDAO categoryDAO = new CategoryDAO();
 	private List<BuyItemDTO> buyItemList = new ArrayList<>();
+	private List<CategoryDTO> categoryList = new ArrayList<>();
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException {
@@ -25,6 +29,7 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 
 		if (res > 0) {
 			result = SUCCESS;
+			setCategoryList(categoryDAO.getCategoryList());
 			buyItemList = showItemDAO.ShowItem();
 			session.put("buyItemList", buyItemList);
 		} else{
@@ -44,6 +49,14 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public List<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(List<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 
 }

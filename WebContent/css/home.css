@@ -197,3 +197,27 @@ body{
 	font-family:'DoverHeights';
 }
 
+
+
+.slider {
+    height:1000px;
+    width:100%;
+    background-color: #FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-bottom: 45px;
+}
+.slider {
+    background-position: center top\9;
+    background-repeat: repeat-x\9;
+}
+
+*+html .slider {
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+

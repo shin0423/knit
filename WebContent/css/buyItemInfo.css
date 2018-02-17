@@ -2,6 +2,8 @@
 body{
 	margin:0 auto;
 min-width:700px;
+max-height:2000px;
+
 
 }
 .header{
@@ -9,11 +11,11 @@ min-width:700px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 90px;
+	height: 70px;
 	width: 100%;
 	margin:0;
-	background:white;
-	border-bottom:1px solid #C0C0C0;
+	/* background:white; */
+	/* border-bottom:1px solid #C0C0C0; */
 }
 .menu{
 	top: 7px;
@@ -131,15 +133,15 @@ margin-top:100px;
 }
 
 p.border{
-margin:0 auto;
 margin-top:30px;
-width:80%;
+margin-left:190px;
+width:70%;
 border-top:solid 2px #C0C0C0;
 }
 p.reviewBorder{
-	margin-top:225px;
-	margin-left:80px;
-	width:400px;
+	margin-top:228px;
+	margin-left:190px;
+	width:350px;
 	border-top:solid 2px #C0C0C0;
 
 }
@@ -149,7 +151,7 @@ div.reviewForm{
 	float:left;
 	position:relative;
 	top:-50px;
-	left:150px;
+	left:250px;
 	margin-top:30px;
 	padding-top:30px;
 
@@ -159,7 +161,7 @@ div.deleteReview{
 	height:100px;
 	float:left;
 	margin-top:-50px;
-	margin-left:150px;
+	margin-left:250px;
 
 
 }
@@ -167,7 +169,7 @@ div.review{
 width:400px;
 position:relative;
 top:-285px;
-left:500px
+left:600px
 
 }
 
@@ -214,4 +216,19 @@ left:500px
 }
 .button:hover::after {
   opacity: 1;
+}
+.sideBar{
+	height:100%;
+	width:150px;
+	position:absolute;
+	top:70px;
+	left:10px;
+	border-right:1px solid #C0C0C0;
+
+}
+#errorMessage{
+	color:red;
+	position:relative;
+	top:100px;
+	left:-100px;
 }

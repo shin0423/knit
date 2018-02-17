@@ -4,102 +4,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/knit/css/buyItemInfo.css" />
+<link rel="stylesheet" href="./css/buyItemInfo.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/jquery.plainmodal.js"></script>
 <title>商品詳細ページ</title>
-<script type="text/javascript">
-
-
-$(function(){
-	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
-			function(){
-				$(this).animate({
-					width:"65px",
-					height:"65px",
-					}, 50 );
-			},
-			function(){
-				$(this).animate({
-					width:"50px",
-					height:"50px",
-					}, 50 );
-			});
-});
-</script>
 </head>
 <body>
-<div class="header">
-
-	<s:if test="#session.miniCartList.isEmpty()">
-	カートに商品がありません
-	</s:if>
-      <div class="sideBar">
-<s:else>
-
-
-        <s:iterator value="#session.miniCartList">
-<table>
-		<tr>
-        <td><s:property value="itemName" /></td>
-        <td><s:property value="price" /><td>
-        <td><s:property value="itemStock" /><td>
-        </tr>
-</table>
-        </s:iterator>
- </s:else>
-
-    </div>
-
- <div class="menu">
-  <a href='<s:url action="TopAction" />'><button class="home">Home</button></a>
-
-  <a href='<s:url action="CartAction"/>'><button class="cart">カートへ</button></a>
-
-<button class="search"></button>
- <div class="inside">
-  <s:form action="BuyItemAction" class="BOX">
-   <s:textfield name="searchWord" class="h_search" value="" />
-   <select name="categoryId">
-    <option value=0 selected="selected">全てのカテゴリ</option>
-    <option value=1 >飲食</option>
-    <option value=2 >家電・パソコン</option>
-    <option value=3 >おもちゃ・ゲーム</option>
-    <option value=4 >おもちゃ・ゲーム</option>
-   </select>
-   <br>
-   <s:textfield name="moreUp" class="h_search" value=""/>～
-   <s:textfield name="moreDown" class="h_search" value=""/>
-   <button type="submit">検索</button>
-  </s:form>
- </div>
-<script>
-
- $('.search').click(function() {
-	  $('.inside').plainModal('open', {overlay: {color: '#fff', opacity: 0.5}});
-	});
-
- </script>
-
-
-
-
- <s:if test="#session.loginFlg == false">
-  <a href='<s:url action="GoLoginPageAction"/>' ><button class="login">ログインへ</button></a>
- </s:if>
-
-  <s:elseif test="#session.loginFlg == true">
-   <a href='<s:url action="MyPageAction"/>' ><button class="mypage">マイページへ</button></a>
-   <a href='<s:url action="UserLogoutAction"/>'><button class="logout">ログアウト</button></a>
-  </s:elseif>
-
-
-  <a href='<s:url action="BuyItemAction"><s:param name="categoryId" value="0"/><s:param name="searchWord" value="''"/><s:param name="moreUp" value="''"/><s:param name="moreDown" value="''"/></s:url>'><button  class="item">+</button></a>
-</div>
-</div>
-
+<jsp:include page="headerInclude.jsp" />
 <div class="main">
+
+
+<div class="sideBar">
+<s:if test="! #session.miniCartList.isEmpty()">
+	<s:iterator value="#session.miniCartList">
+	<div class="sideBox">
+		<table>
+			<tr>
+		       	<td><s:property value="itemName" /></td>
+		        <td><s:property value="price" /><td>
+		        <td><s:property value="itemStock" /><td>
+			</tr>
+		</table>
+		</div>
+	</s:iterator>
+</s:if>
+<s:else>
+<div class="sideBox">
+カートに商品がありません
+</div>
+</s:else>
+
+</div>
+
+ <%-- </s:else> --%>
+
+
 <s:iterator value="buyItemDTO">
 
 <img id="imageItem" src="<s:property value='itemImagePath' />" alt="画像なし">
@@ -197,10 +135,12 @@ $(function(){
 	<p class="reviewBorder">&nbsp;</p>
 
 			<s:if test="reviewErrorMessage != null">
+			<div id="errorMessage">
 			<s:iterator value="reviewErrorMessage">
-				<s:property />
+				※<s:property />
 
 		</s:iterator>
+		</div>
 		</s:if>
 
 

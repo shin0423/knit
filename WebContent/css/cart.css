@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
 	.main{
+		min-width:1000px;
 		margin-top:70px;
 		margin-bottom:70px;
 		}
@@ -106,7 +107,7 @@
 	font-size: 15px;
 	line-height: 11px;
 }
-#delete_b,#set_b{
+#delete_b,#set_b,#set_c{
 	position: relative;
 	display: inline-block;
 	padding: .65em 4em;
@@ -122,7 +123,7 @@
 
 }
 
-#delete_b::after,#set_b::after {
+#delete_b::after,#set_b::after,#set_c::after {
     position: absolute;
 	top: 4px;
 	left: 4px;
@@ -138,13 +139,13 @@
 	transition: .3s ease-in-out;
 }
 
-#delete_b:hover,#set_b:hover {
+#delete_b:hover,#set_b:hover,#set_c:hover{
 
 	color: #C0C0C0;
 
 }
 
-#delete_b:hover::after,#set_b:hover::after {
+#delete_b:hover::after,#set_b:hover::after,#set_c:hover::after{
 
 	top: 0;
 	left: 0;
