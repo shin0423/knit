@@ -22,6 +22,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
 
 	private ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
+	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
 	int totalPrice;
 
 
@@ -72,6 +73,15 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			}
 		}
 		System.out.println("削除された件数：" + count);
+
+		if (!(session.containsKey("userId"))) {
+			 miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
+
+			 session.put("miniCartList", miniCartList);
+		} else {
+			miniCartList = dao.UserMiniCart(session.get("userId").toString());
+			session.put("miniCartList", miniCartList);
+		}
 
 		totalPrice = calcTotalPrice(cartList);
 
