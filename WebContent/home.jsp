@@ -19,7 +19,7 @@
 <script type="text/javascript">
 jQuery(function($) {
     $('.slider').bgSwitcher({
-        images: ['images/homeBack1.jpg', 'images/homeBack2.jpg','images/homeBack3'],
+        images: ['images/homeBack1.jpg', 'images/homeBack2.jpg','images/homeBack3.jpg'],
         interval: 5000,
         effect: "clip"
     });

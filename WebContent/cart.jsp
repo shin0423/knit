@@ -144,7 +144,6 @@
 
 
 </div>
-<div id="footer">
-</div>
+<jsp:include page="footerInclude.jsp"/>
 </body>
 </html>

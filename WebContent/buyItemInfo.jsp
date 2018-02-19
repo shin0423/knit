@@ -19,9 +19,10 @@
 	<div class="sideBox">
 		<table>
 			<tr>
-		       	<td><s:property value="itemName" /></td>
-		        <td><s:property value="price" /><td>
-		        <td><s:property value="itemStock" /><td>
+		       	<td><s:property value="itemName" /><br></td>
+		        <td><s:property value="price" />円<br><td>
+		        <td><s:property value="itemStock" />個<br><td>
+		        <td><br></td>
 			</tr>
 		</table>
 		</div>

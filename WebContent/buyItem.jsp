@@ -11,9 +11,7 @@
 
 </head>
 <body>
-	<div class="fontTest">
-	knit
-	</div>
+<jsp:include page="headerInclude.jsp"/>
 	<div class="main">
 
 	<s:iterator value="buyItemAfterSearchList" status="st">
@@ -99,6 +97,7 @@
 	</s:else>
 	</s:iterator>
 	</div>
+<jsp:include page="footerInclude.jsp"/>
 
 
 </body>
