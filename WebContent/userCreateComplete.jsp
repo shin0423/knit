@@ -43,5 +43,5 @@ document.loginAction.submit();
 <s:hidden name="password" VALUE="{$password}" />
 すぐに遷移する場合はこちら<input type="submit" VALUE="ホーム">
 </s:form>
-
+<jsp:include page="footerInclude.jsp"/>
 </div>

@@ -23,5 +23,6 @@
 <button type ="button" onclick ="location.href='/knit/MyPageAction'">マイページ</button>
 </div>
 </div>
+<jsp:include page="footerInclude.jsp"/>
 </body>
 </html>

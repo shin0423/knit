@@ -79,6 +79,6 @@
    </div>
    </s:form>
   </div>
-
+<jsp:include page="footerInclude.jsp"/>
  </body>
 </html>

@@ -34,6 +34,6 @@
 	<!-- <a href="<s:url action='TopAction' />">ホーム</a> -->
 
 	</div>
-
+<jsp:include page="footerInclude.jsp"/>
 </body>
 </html>
