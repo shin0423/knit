@@ -44,6 +44,12 @@ input,select,textfield{
 	height:30px;
 }
 
+input[type = radio]{
+   width:25px;
+   height:18px;
+   margin-left:10px;
+}
+
 /*.deg_btn {
     position: relative;
     display: inline-block;
@@ -144,7 +150,7 @@ input,select,textfield{
 
 #button button#deg_btn2:hover{
     background: #2c3148;
-}*/
+}
 .complete{
 	white-space: nowrap;
 	border-spacing : 5px 50px;
@@ -159,4 +165,4 @@ input,select,textfield{
 
 #error{
 	color:red;
-}
+}*/
