@@ -69,8 +69,9 @@
      <button type ="button" onclick ="location.href='/knit/login.jsp'">戻る</button>
      <button type="submit">登録</button>
    </div>
+   <br>
  <s:if test="errorMessage !=''">
-    <s:property value="errorMessage" escape="false" />
+    <h5><s:property value="errorMessage" escape="false" /></h5>
  </s:if>
  <s:iterator value="errMsgList">
 	<h5>

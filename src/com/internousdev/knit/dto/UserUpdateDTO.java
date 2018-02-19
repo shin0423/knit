@@ -3,6 +3,8 @@ package com.internousdev.knit.dto;
 public class UserUpdateDTO {
 	private String userId;
 
+	private String password;
+
 	private String newPassword;
 
 	private String conPassword;
@@ -16,6 +18,13 @@ public class UserUpdateDTO {
 	}
 	public void setLoginId(String userId){
 		this.userId=userId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getNewPassword() {
 		return newPassword;
