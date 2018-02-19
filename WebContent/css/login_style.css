@@ -244,18 +244,7 @@ table td .checkbox {
 
 }
 
-#footer{
-	clear:both;
-	width:100%;
-	height:60px;
-	position:fixed;
-	bottom:0px;
-	left:0px;
-	color:white;
-	background-color:black;
-	text-align:center;
-	line-height:60px;
-}
+
 
 #error {
 	margin-top:1em;

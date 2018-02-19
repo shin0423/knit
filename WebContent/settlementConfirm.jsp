@@ -16,7 +16,7 @@
 
 </head>
 <body>
-
+<jsp:include page="headerInclude.jsp"/>
 <s:form action="SettlementCompleteAction">
 		<br>
 		<br>
@@ -190,6 +190,7 @@
 <br>
 
 <footer>
+<jsp:include page="footerInclude.jsp"/>
 </footer>
 
 </body>

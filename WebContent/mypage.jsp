@@ -18,7 +18,7 @@
 
 	<!-- ヘッダー -->
 
-	<div class="header"></div>
+	<jsp:include page="headerInclude.jsp"/>
 
 
 
@@ -109,7 +109,7 @@
 							<a href="/knit/UserDeleteAction" class="button">退会</a>
 						</div>
 					</div>
-					
+
 					<!-- ボタンその２
 					<a class="other" href="#">その2</a>
                     -->
@@ -122,7 +122,7 @@
 
 	<!-- フッター -->
 
-	<div class="footer"></div>
+<jsp:include page="footerInclude.jsp"/>
 
 
 

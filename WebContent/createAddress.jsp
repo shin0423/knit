@@ -10,6 +10,7 @@
  <title>宛先情報登録</title>
  </head>
  <body>
+ <jsp:include page="headerInclude.jsp"/>
   <s:form action="CreateAddressConfirmAction">
 
 
@@ -79,5 +80,7 @@
    <s:submit class="returnButton" value="戻る"/>
    </s:form>
   </s:form>
+
+<jsp:include page="footerInclude.jsp"/>
  </body>
 </html>

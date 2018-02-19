@@ -103,7 +103,7 @@
 
 	<!-- フッター -->
 
-	<div class="footer"></div>
+	<jsp:include page="footerInclude.jsp"/>
 
 
 

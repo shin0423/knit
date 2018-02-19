@@ -169,5 +169,6 @@
 	</s:iterator>
 	</div>
 </div>
+<jsp:include page="footerInclude.jsp"/>
 </body>
 </html>
