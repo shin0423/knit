@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<%-- <jsp:include page="headerInclude.jsp"/> --%>
+<jsp:include page="headerInclude.jsp"/>
 <div class="sideBar">
 <s:if test="! #session.miniCartList.isEmpty()">
 	<s:iterator value="#session.miniCartList">
@@ -36,7 +36,7 @@
 </div>
 
 	<div class="main">
-
+	<br><br>
 
 	<s:iterator value="buyItemAfterSearchList" status="st">
 	<s:if test="#st.count % 3 == 1" >
