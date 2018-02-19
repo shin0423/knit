@@ -7,7 +7,10 @@
 	background-color:black;
 }
 
-html{min-width:1000px;}
+html{
+	min-width:1000px;
+	min-height:calc(100vh - 70px);
+	}
 
 .logo{float:left;
 	padding-left:10px;
@@ -30,12 +33,13 @@ li{float:left;
 
 .main{
 	clear:both;
+
 	}
 
 .title{
 	text-align:center;
 	padding:8px 19px;
-	margin:2em 0;
+	margin:6em 0;
 	color:#2c2c2f;
 	background:#eeeeee;
 	border-top:solid 5px #808080;

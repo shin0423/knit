@@ -26,7 +26,7 @@
 
 	<!-- ヘッダー -->
 
-	<div class="header"></div>
+	<jsp:include page="headerInclude.jsp"/>
 
 
 
