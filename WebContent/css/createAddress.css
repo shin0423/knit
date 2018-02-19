@@ -21,14 +21,14 @@
      }
 
      .button{
-     position:relative; top: 15px; left: 700px;
+     position:relative; top: 15px;
      white-space: nowrap;
      overflow:hidden;
 
      }
 
      .returnButton{
-     position:relative; top: 15px; left: 705px;
+     position:relative; top: 15px; ;
      white-space: nowrap;
      overflow:hidden;
      }
@@ -78,17 +78,15 @@
   opacity: 1;
 }
 
-#button{
-text-align:left;
-padding-right: 500px;
-}
+
 
 .form_conf {
-    text-align: center;
+margin-left : auto ; margin-right : auto ;
+
 }
 .form_conf form {
-    display: inline-block;
-    margin: 0 10px;
+display: inline-block;
+
 }
 
 

@@ -7,9 +7,11 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
+import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.dto.CategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -26,6 +28,9 @@ public class TopAction extends ActionSupport implements SessionAware {
 	//DAOから受け取るカテゴリーリストを用意
 	List<CategoryDTO> categoryList = new ArrayList<>();
 
+	//ミニカート
+	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
+
 	public String execute(){
 
 		CategoryDAO categoryDAO = new CategoryDAO();
@@ -33,8 +38,12 @@ public class TopAction extends ActionSupport implements SessionAware {
 		//商品一覧のDAOをインスタンス化
 		ShowItemDAO showItemDAO = new ShowItemDAO();
 
+		CartDAO cartDAO = new CartDAO();
+
 		//ランダム文字列を作るためにインスタンス化
 		RandomStringUtils rndStr = new RandomStringUtils();
+
+
 
 		//↓
 
@@ -45,6 +54,8 @@ public class TopAction extends ActionSupport implements SessionAware {
 			categoryList = categoryDAO.getCategoryList();
 
 			session.put("categoryList", categoryList);
+
+
 
 
 			//↓商品を表示させるためのDAOのメソッドを使ってリストに入れる↓
@@ -72,6 +83,26 @@ public class TopAction extends ActionSupport implements SessionAware {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+if ((boolean)session.get("loginFlg")) {
+			miniCartList = cartDAO.UserMiniCart(session.get("userId").toString());
+
+			if (miniCartList.isEmpty()) {
+
+				String miniCartFlg ="noItem";
+				session.put("miniCartList", miniCartFlg);
+			}
+
+			session.put("miniCartList", miniCartList);
+		}else {
+			miniCartList = cartDAO.TempUserMiniCart(session.get("tempUserId").toString());
+
+			if (miniCartList.isEmpty()) {
+				String miniCartFlg ="noItem";
+				session.put("miniCartList", miniCartFlg);
+			}
+			session.put("miniCartList", miniCartList);
 		}
 
 

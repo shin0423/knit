@@ -26,6 +26,9 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
 	int totalPrice;
 
+	//↓ミニカート用 小池
+	int allTotalPrice;
+
 
 //	private int itemCount;
 	private String itemName;
@@ -103,6 +106,10 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		}
 
 		totalPrice = calcTotalPrice(cartList);
+
+		allTotalPrice = calcTotalPrice(miniCartList);
+
+		session.put("allTotalPrice", allTotalPrice);
 
 		result = SUCCESS;
 

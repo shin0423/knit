@@ -12,8 +12,23 @@
 
 
  <p class="message">宛先確認</p>
- 
+
  <div class="form_conf">
+
+  <s:form action="CreateAddressAction">
+
+  <s:hidden name="familyName" value="%{familyName}" />
+<s:hidden name="firstName" value="%{firstName}" />
+<s:hidden name="familyNameKana" value="%{familyNameKana}" />
+<s:hidden name="firstNameKana" value="%{firstNameKana}"/>
+<s:hidden name="email" value="%{email}"/>
+<s:hidden name="telNumber" value="%{telNumber}" />
+<s:hidden name="userAddress" value="%{userAddress}"/>
+   <button class="button" type="submit">戻る</button>
+
+
+  </s:form>
+
   <s:form action="CreateAddressCompleteAction"><br>
 
   <table>
@@ -64,19 +79,7 @@
 
   </s:form>
 
-  <s:form action="CreateAddressAction">
 
-  <s:hidden name="familyName" value="%{familyName}" />
-<s:hidden name="firstName" value="%{firstName}" />
-<s:hidden name="familyNameKana" value="%{familyNameKana}" />
-<s:hidden name="firstNameKana" value="%{firstNameKana}"/>
-<s:hidden name="email" value="%{email}"/>
-<s:hidden name="telNumber" value="%{telNumber}" />
-<s:hidden name="userAddress" value="%{userAddress}"/>
-   <button class="button" type="submit">戻る</button>
-
-
-  </s:form>
   </div>
  </body>
 </html>
