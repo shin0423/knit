@@ -8,8 +8,10 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AdmiDAO;
+import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
+import com.internousdev.knit.dto.CategoryDTO;
 import com.internousdev.knit.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,6 +26,8 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 	private ShowItemDAO showItemDAO = new ShowItemDAO();
 	private List<BuyItemDTO> buyItemList = new ArrayList<>();
 	public Map<String,Object> session;
+	private CategoryDAO categoryDAO = new CategoryDAO();
+	private List<CategoryDTO> categoryList = new ArrayList<>();
 
 	public String execute() throws SQLException {
 
@@ -47,6 +51,8 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 				session.put("buyItemList", buyItemList);
 			}
 		}
+		categoryList.clear();
+		categoryList = categoryDAO.getCategoryList();
 		return result;
 	}
 
@@ -100,6 +106,14 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public List<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(List<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 
 }

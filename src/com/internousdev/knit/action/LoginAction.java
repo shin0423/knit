@@ -31,6 +31,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private ArrayList<Integer> tempUserCartItemIdList = new ArrayList<Integer>();
 	private int totalPrice;
 	private Map<String, Object> session;
+	private List<String> errorList = new ArrayList<>();
 
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 
@@ -92,6 +93,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				loginDAO.login(loginDTO);
 				session.put("adminLoginFlg", true);
 				System.out.println("管理者ログイン成功");
+				errorMessage=null;
 				result = "admin";
 
 				/**
@@ -278,5 +280,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setCategoryList(List<CategoryDTO> categoryList) {
 		this.categoryList = categoryList;
+	}
+
+	public List<String> getErrorList() {
+		return errorList;
+	}
+
+	public void setErrorList(List<String> errorList) {
+		this.errorList = errorList;
 	}
 }

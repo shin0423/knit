@@ -43,7 +43,7 @@
 
 
 <!------------------------ カート内容 ------------------------>
-			<s:form action="CartAction" id="form" name="form">
+			<s:form action="CartAction" id="form" name="form" theme="simple">
 			<div id="box">
 				<s:iterator value="cartList">
 				<%-- <s:if test="price != 0"> --%>
@@ -126,7 +126,7 @@
 
 <!------------------------ 決済画面に移動---------------------->
 			<s:if test="session.loginFlg == false">
-				<s:form action ="GoLoginAction">
+				<s:form action ="GoLoginAction" theme ="simple">
 					<div class="settlement_btn">
 						<s:submit value="ログイン" id="set_c"/>
 					</div>
@@ -134,7 +134,7 @@
 			</s:if>
 			<s:else>
 				<s:if test="! cartList.isEmpty()">
-					<s:form action="SettlementConfirmAction">
+					<s:form action="SettlementConfirmAction" theme="simple">
 						<div class="settlement_btn">
 							<s:submit id="set_b" value="決算画面へ" />
 						</div>

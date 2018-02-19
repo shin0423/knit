@@ -8,9 +8,11 @@
 		}
 
 	.title{
+		width:100px;
 		font-style:italic;
 		margin-left:50px;
 		letter-spacing:5px;
+		border-bottom: double 5px #FFC778;
 		}
 
 	.message{
@@ -57,8 +59,7 @@
 	.delete{
 		position:fixed;
 		top:51px;
-		right:5px;
-		float:right;
+		left:800px;
 		width:40%;
 		margin-top:90px;
 		}
@@ -66,20 +67,20 @@
 	.settlement_btn{
 		position:fixed;
 		top:51px;
-		right:5px;
-		float:right;
+		left:800px;
 		width:40%;
-		margin-top:280px;
+		margin-top:300px;
 		}
 
 	.totalPrice{
 		position:fixed;
 		top:51px;
-		right:5px;
-		float:right;
-		width:40%;
+		left:800px;
+		width:200px;
 		margin-top:250px;
 		font-size:20px;
+		color: #6594e0;
+		border-bottom: dashed 2px #6594e0;
 
 		}
 

@@ -43,6 +43,7 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 		}
 		categoryList.clear();
 		categoryList = categoryDAO.getCategoryList();
+		session.put("categoryList", categoryList);
 		return result;
 	}
 

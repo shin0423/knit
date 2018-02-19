@@ -16,10 +16,12 @@
 </head>
 <body>
 	     <div id="header">
-		     
+				<div id="logo"><h2>管理者画面</h2></div>
+
 				<a href="/knit/AdminLogoutAction" class="button">logout</a>
-    
+
           </div>
+    <div id="main">
 	<div id="error">
 	<s:if test="errorList!= null">
 		<s:iterator value="errorList">
@@ -32,7 +34,9 @@
 	</s:if>
 	</div>
 	<div id="left">
+	<h2>商品の在庫追加、情報の削除</h2>
 	<s:iterator value="session.buyItemList">
+		<div id="item">
 		<table>
 			<tr>
 				<th>商品ID:</th>
@@ -87,50 +91,94 @@
 				</s:form></td>
 			</tr>
 		</table>
-		<br>
-		---------------------------------------------------------
+	</div>
 	</s:iterator>
 	</div>
 
 		<div id="right">
 			<div id="insert">
+			<h2>商品の登録</h2>
 		<s:form action="AdminInsertItemAction" theme="simple">
-			商品ID: <s:textfield name="itemId" value="" /><br>
-			商品名: <s:textfield name="itemName" value="" /><br>
-			商品名ふりがな: <s:textfield name="itemNameKana" value="" /><br>
-			在庫数: <s:textfield name="itemStock" value="" /><br>
-			商品詳細: <s:textarea  name="itemDescription" rows="4" cols="40" value=""/><br>
-			商品カテゴリー: <select name="categoryId">
+			<table>
+			<tr>
+			<th>商品ID:</th>
+			<td><s:textfield name="itemId" value="" /></td>
+			</tr>
+			<tr>
+			<th>商品名:</th>
+			<td><s:textfield name="itemName" value="" /></td>
+			</tr>
+			<tr>
+			<th>商品名ふりがな:</th>
+			<td><s:textfield name="itemNameKana" value="" /></td>
+			</tr>
+			<tr>
+			<th>在庫数:</th>
+			<td><s:textfield name="itemStock" value="" /></td>
+			</tr>
+			<tr>
+			<th>商品詳細:</th>
+			<td><s:textarea  name="itemDescription" rows="2" cols="40" value=""/></td>
+			</tr>
+			<tr>
+			<th>商品カテゴリー:</th>
+			<td><select name="categoryId">
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
-			</select><br>
-			価格:<s:textfield name="price" value="" /><br>
-			商品販売会社名: <s:textfield name="releaseCompany" value="" /><br>
-			<s:submit value="登録" />
+			</select></td>
+			</tr>
+			<tr>
+			<th>価格:</th>
+			<td><s:textfield name="price" value="" /></td>
+			</tr>
+			<tr>
+			<th>商品販売会社名:</th>
+			<td><s:textfield name="releaseCompany" value="" /></td>
+			</tr>
+			<tr>
+			<td><s:submit value="登録" /></td>
+			</tr>
+			</table>
 		</s:form>
 		</div>
 
-		<div id="category">
-		<s:form action="AdminInsertCategoryAction">
-			カテゴリーID: <s:textfield name="categoryId" value=""/>
-			カテゴリー名: <s:textfield name="categoryName" value=""/>
-			カテゴリー詳細 <s:textfield name="categoryDescription" value=""/>
-			<s:submit value="新規登録" />
+		<s:form action="AdminInsertCategoryAction" theme="simple">
+		<h2>カテゴリーの追加、削除</h2>
+		<div id="category_i">
+			<table>
+			<tr>
+			<th>カテゴリーID:</th>
+			<td><s:textfield name="categoryId" value=""/></td>
+			</tr>
+			<tr>
+			<th>カテゴリー名:</th>
+			<td><s:textfield name="categoryName" value=""/></td>
+			</tr>
+			<tr>
+			<th>カテゴリー詳細:</th>
+			<td><s:textfield name="categoryDescription" value=""/></td>
+			</tr>
+			<tr>
+			<td><s:submit value="新規登録" /></td>
+			</tr>
+			</table>
+		</div>
 		</s:form>
-
-		<s:form action="AdminDeleteCategoryAction">
-			商品カテゴリー: <select name="categoryId">
+		<s:form action="AdminDeleteCategoryAction" theme="simple">
+		<div id="category_d">
+			<h4>カテゴリー削除</h4><select name="categoryId">
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
 			<s:submit value="削除"/>
 			</select>
+		</div>
 		</s:form>
 		</div>
 
 		</div>
-
+		<jsp:include page="footerInclude.jsp"/>
 
 </body>
 </html>

@@ -36,6 +36,8 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 			result = ERROR;
 
 		}
+		categoryList.clear();
+		categoryList = categoryDAO.getCategoryList();
 		return result;
 	}
 

@@ -5,37 +5,79 @@
 		top:0px;
 		left:0px;
 		width:100%;
-		height:50px;
-		background-color:black;
+		height:70px;
+		z-index:9999;
+		background: linear-gradient(rgba(192, 192, 192, 1) 40%, rgba(192, 192, 192, 0.7) 60%, rgba(192, 192, 192, 0));
 		}
-		
+
 	body{
 	/*背景変化↓*/
 	background-color: #e74c3c;
   animation: bg-color 10s infinite;
   -webkit-animation: bg-color 10s infinite;
-	
+
 	}
+
+	#logo{
+		position:relative;
+		bottom:20px;
+		float:left;
+		width:130px;
+		height:50px;
+
+		}
+
+	#main{
+		min-height:calc(100vh-70px);
+		}
 
 	#error{
 		width:100%;
-		}
-
-	#right{
-		position:fixed;
-        right:10px;
-		top:80px;
-		float:right;
-		width:50%;
+		margin-top:50px;
+		color:red;
 		}
 
 	#left{
-	    margin-top:40px;
+	    top:80px;
 	    margin-left:20px;
 		float:left;
 		width:50%;
 		margin-bottom:80px;
 		}
+
+	#item{
+		width:450px;
+		height:420px;
+		margin-bottom:10px;
+		padding: 0.5em 1em;
+    	margin: 2em 15px;
+    	color: #5d627b;
+    	background: white;
+    	border-top: solid 5px #5d627b;
+    	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+		}
+
+	#item:hover{
+		border-top: solid 5px #999999;
+		box-shadow: 0 3px 5px rgba(0, 0, 0, 0.10);
+		}
+
+	#category_i{
+		float:left;
+	}
+
+	#category_d{
+		position:relative;
+		margin-left:300px;
+		}
+
+	#right{
+		position:fixed;
+        left:700px;
+		top:60px;
+		width:50%;
+		}
+
 
 	#pageName{
 		float:left;
@@ -43,7 +85,11 @@
 		width:20px;
 		color:red;
 		}
-		
+
+	h2{
+		font-style:italic;
+		}
+
   /*ボタンその２↓------------------------------*/
 
 .button {
@@ -58,12 +104,12 @@
   text-decoration: none;
   line-height: 54px;
   outline: none;
-  
+
 }
 
 .button::before,
 .button::after {
-	
+
   position: absolute;
   z-index: -1;
   display: block;
@@ -73,13 +119,13 @@
 .button,
 .button::before,
 .button::after {
-	
+
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all .3s;
   transition: all .3s;
-  
+
 }
 
 
@@ -88,7 +134,7 @@
 /*------------------------------*/
 
 .button {
-	
+
   position: relative;
   z-index: 2;
   background-color: #fff;
@@ -127,7 +173,7 @@
 		}
 
 		/*背景変化↓*/
-		
+
 		@-webkit-keyframes bg-color {
   0% { background-color: #e74c3c; }
   20% { background-color: #f1c40f; }

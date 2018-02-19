@@ -64,7 +64,8 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 			}
 			categoryList.clear();
 			categoryList = categoryDAO.getCategoryList();
-			errorList=null;
+			session.put("categoryList", categoryList);
+
 			}else{
 			result=ERROR;
 		}
