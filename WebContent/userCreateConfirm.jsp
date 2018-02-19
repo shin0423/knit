@@ -53,7 +53,8 @@
    </tr>
    <tr>
    <th>性別:</th>
-   <td><s:property value="sex"/>
+   <td><s:if test="sex==0">男性</s:if>
+		<s:else>女性</s:else>
    <s:hidden name="sex" value="%{sex}"/></td>
    </tr>
    <tr>
