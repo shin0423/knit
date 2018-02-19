@@ -19,7 +19,7 @@
 
  <div id="main">
 
-   <s:form action="UserCreateConfirmAction">
+<s:form action="UserCreateConfirmAction">
      <div id="title"><p>ユーザー登録をする<p></div>
      		<div>ユーザー情報を登録してください</div>
    <table>
@@ -63,23 +63,23 @@
       <th>住所(任意)</th>
        <td><s:textfield name="userAddress" value="" /></td>
        </tr>
-        </table>
+   </table>
 
-          <div id="button">
-       <button type ="button" onclick ="location.href='/knit/login.jsp'">戻る</button>
+   <div id="button">
+     <button type ="button" onclick ="location.href='/knit/login.jsp'">戻る</button>
      <button type="submit">登録</button>
-     </div>
+   </div>
  <s:if test="errorMessage !=''">
     <s:property value="errorMessage" escape="false" />
-   </s:if>
-   <s:iterator value="errMsgList">
-		<h5>
-			<s:div align="center">
-				<s:property />
-			</s:div>
-		</h5>
-	</s:iterator>
-      </s:form>
+ </s:if>
+ <s:iterator value="errMsgList">
+	<h5>
+		<s:div align="center">
+			<s:property />
+		</s:div>
+	</h5>
+</s:iterator>
+</s:form>
 
 </div>
 
