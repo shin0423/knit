@@ -427,7 +427,7 @@ public class CartDAO extends ActionSupport{
 
 	//ミニカート用 小池 ユーザーIDから6件以下検索し取得する
 	public  void miniCart(String userId){
-		String sql="SELECT * FROM cart_info WHERE user_id = 'internous' LIMIT 6";
+		String sql="SELECT * FROM cart_info WHERE user_id = ? LIMIT 6";
 		con=db.getConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -450,7 +450,7 @@ public class CartDAO extends ActionSupport{
 
 		System.out.println("miniカート");
 
-		String sql="select item_info.item_name, item_info.price, item_info.item_stock from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.user_id = ?  LIMIT 6";
+		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.user_id = ?  LIMIT 6";
 		con=db.getConnection();
 		ArrayList<CartDTO> MiniCartId=new ArrayList<>();
 		try {
@@ -463,7 +463,7 @@ public class CartDAO extends ActionSupport{
 				CartDTO CartDTO=new CartDTO();
 				CartDTO.setItemName(rs.getString("item_name"));
 				CartDTO.setPrice(rs.getInt("price"));
-				CartDTO.setItemCount(rs.getInt("item_stock"));
+				CartDTO.setItemCount(rs.getInt("item_count"));
 
 				System.out.println("miniカート値"+CartDTO.getItemName());
 
@@ -484,7 +484,7 @@ public class CartDAO extends ActionSupport{
 	}
 
 	public ArrayList<CartDTO> TempUserMiniCart(String tempUserId){
-		String sql="select item_info.item_name, item_info.price, item_info.item_stock from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.temp_user_id = ?  LIMIT 6";
+		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.temp_user_id = ?  LIMIT 6";
 		con=db.getConnection();
 
 		ArrayList<CartDTO> MiniCartId=new ArrayList<>();
@@ -498,7 +498,7 @@ public class CartDAO extends ActionSupport{
 				CartDTO CartDTO=new CartDTO();
 				CartDTO.setItemName(rs.getString("item_name"));
 				CartDTO.setPrice(rs.getInt("price"));
-				CartDTO.setItemCount(rs.getInt("item_stock"));
+				CartDTO.setItemCount(rs.getInt("item_count"));
 
 				MiniCartId.add(CartDTO);
 			}

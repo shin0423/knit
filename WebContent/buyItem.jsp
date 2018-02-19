@@ -6,13 +6,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="/knit/css/buyItem.css" />
+<link rel="stylesheet" type="text/css" href="css/buyItem.css" />
 <title>商品一覧</title>
 
 </head>
 <body>
-<jsp:include page="headerInclude.jsp"/>
+<%-- <jsp:include page="headerInclude.jsp"/> --%>
+<div class="sideBar">
+<s:if test="! #session.miniCartList.isEmpty()">
+	<s:iterator value="#session.miniCartList">
+		<div class="sideBox">
+			<table>
+				<tr>
+			       	<td><s:property value="itemName" /><br></td>
+			        <td><s:property value="price" />円<br><td>
+			        <td><s:property value="itemCount" />個<br><td>
+			        <td><br></td>
+				</tr>
+			</table>
+		</div>
+	</s:iterator>
+</s:if>
+<s:else>
+	<div class="sideBox">
+		カートに商品がありません
+	</div>
+</s:else>
+
+</div>
+
 	<div class="main">
+
 
 	<s:iterator value="buyItemAfterSearchList" status="st">
 	<s:if test="#st.count % 3 == 1" >
@@ -24,9 +48,7 @@
 			<td> <div class="mais"><s:property value="itemName"/></div> </td>
 		</tr>
 
-		<tr>
-			<td><s:property value="itemDescription" /></td>
-		</tr>
+
 		<tr>
 			<td><s:property value="price" />円</td>
 		</tr>
@@ -63,9 +85,7 @@
 		<tr>
 			<td> <div class="mais"><s:property value="itemName"/></div> </td>
 		</tr>
-		<tr>
-			<td><s:property value="itemDescription" /></td>
-		</tr>
+
 		<tr>
 			<td><s:property value="price" />円</td>
 		</tr>
