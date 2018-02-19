@@ -22,6 +22,7 @@
 </head>
 <body>
 <header>
+<jsp:include page="headerInclude.jsp"/>
 </header>
 
 
@@ -142,6 +143,8 @@
 			</s:else>
 
 
+</div>
+<div id="footer">
 </div>
 </body>
 </html>
