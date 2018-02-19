@@ -7,8 +7,10 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
+import com.internousdev.knit.dto.CategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class TopAction extends ActionSupport implements SessionAware {
@@ -18,10 +20,15 @@ public class TopAction extends ActionSupport implements SessionAware {
 	//仮ユーザーIDとloginflgを入れるためにsessionを作成
 	private Map<String,Object> session;
 
-	//DAOから受け取るリストを用意
+	//DAOから受け取る商品リストを用意
 	List<BuyItemDTO> buyItemList = new ArrayList<>();
 
+	//DAOから受け取るカテゴリーリストを用意
+	List<CategoryDTO> categoryList = new ArrayList<>();
+
 	public String execute(){
+
+		CategoryDAO categoryDAO = new CategoryDAO();
 
 		//商品一覧のDAOをインスタンス化
 		ShowItemDAO showItemDAO = new ShowItemDAO();
@@ -33,6 +40,13 @@ public class TopAction extends ActionSupport implements SessionAware {
 
 
 		try {
+
+
+			categoryList = categoryDAO.getCategoryList();
+
+			session.put("categoryList", categoryList);
+
+
 			//↓商品を表示させるためのDAOのメソッドを使ってリストに入れる↓
 			buyItemList = showItemDAO.ShowItem();
 

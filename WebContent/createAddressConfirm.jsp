@@ -9,9 +9,11 @@
  <title>宛先情報確認</title>
  </head>
  <body>
- 
+
 
  <p class="message">宛先確認</p>
+ 
+ <div class="form_conf">
   <s:form action="CreateAddressCompleteAction"><br>
 
   <table>
@@ -60,7 +62,6 @@
    <button class="button" type="submit">登録情報を確定</button>
 
 
-
   </s:form>
 
   <s:form action="CreateAddressAction">
@@ -76,5 +77,6 @@
 
 
   </s:form>
+  </div>
  </body>
 </html>

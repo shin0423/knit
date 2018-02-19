@@ -13,6 +13,10 @@
  <jsp:include page="headerInclude.jsp"/>
   <s:form action="CreateAddressConfirmAction">
 
+<br>
+<br>
+<br>
+<br>
 
 <table>
 
@@ -71,16 +75,25 @@
 </table>
 
    <s:form action="CreateAddressConfirmAction">
-   <s:submit class="button" value="登録"/>
+<div id="button">
+
+  <s:a href="javascrrpt:void(0)"
+onclick="document.SettlementConfirmAction.submit();return false;" class="button">戻る</s:a>
+
+   <s:a href="javascrrpt:void(0)"
+onclick="document.CreateAddressConfirmAction.submit();return false;" class="button">登録</s:a>
+
+</div>
    </s:form>
 
    <br>
 
    <s:form action="SettlementConfirmAction">
-   <s:submit class="returnButton" value="戻る"/>
+
    </s:form>
   </s:form>
 
 <jsp:include page="footerInclude.jsp"/>
  </body>
 </html>
+

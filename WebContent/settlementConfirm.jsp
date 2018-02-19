@@ -97,7 +97,7 @@
 <br>
 <br>
 
-<p><a href='<s:url action="CartAction" />'>カートに戻る</a></p>
+
 
 <!-- 宛先情報一覧 -->
 
@@ -111,15 +111,15 @@
 
 <br>
 
-<p class="message2">お届け先住所を選択してください。</p>
-
+<h3 class="message2">お届け先住所を選択してください。</h3>
+<div id="box">
 <s:iterator value="destinationList" status="st">
-
+<div id="item">
 <table class="destinationTable" >
 
 <tr>
 
-<td rowspan="6">
+<td rowspan="7" >
 <input type="radio" name="id" value="<s:property value='#st.index'/>" checked="checked"/>
 
 </td>
@@ -150,13 +150,21 @@
 </table>
 
 <br>
-
+</div>
 </s:iterator>
+</div>
 
-<button type="submit" class="purchase">購入</button>
+
+<div id="button">
+<s:a href="javascrrpt:void(0)"
+onclick="document.SettlementCompleteAction.submit();return false;" class="button">購入</s:a>
+
+
+<s:a href="CartAction" class="button">カートに戻る</s:a>
+
+			</div>
 
 </s:else>
-
 
 
 </s:form>
@@ -179,9 +187,11 @@
 
 </s:iterator>
 
+<div id="button">
+<s:a href="javascrrpt:void(0)"
+onclick="document.CreateAddressAction.submit();return false;" class="button">宛先登録</s:a>
 
-<button type="submit" class="destination">宛先登録</button>
-
+</div>
 </s:form>
 
 
