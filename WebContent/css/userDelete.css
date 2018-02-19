@@ -28,6 +28,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	width:400px;
+
 	margin-top:5px;
 	background-color:white;
 	border-bottom:1px solid lightgray;
@@ -50,6 +51,11 @@
 .btnContainer{
 	zoom:1;
 }
+.caution{
+	color:red;
+}
 .explanation{
+	white-space: pre-wrap;
+	text-align: left;
 
 }
