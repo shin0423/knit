@@ -18,6 +18,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	private String userId;
 	private String itemId;
 	private Collection<String> checkList;
+	private String errorMsg;
 
 	private Map<String,Object> session;
 
@@ -41,6 +42,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	 */
 
 	public String execute() throws SQLException {
+		CartDAO dao = new CartDAO();
 		String result = ERROR;
 		System.out.println("ITEMID : " + itemId);
 		System.out.println("CHECKLIST : " + checkList);
@@ -51,9 +53,26 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 //		System.out.println(price);
 //		System.out.println(releaseCompany);
 
+		try{
+			if(checkList.equals(null)){
+				String name=checkList.toString();
+				System.out.println(name);
+			}
+
+			}catch(NullPointerException e){
+			errorMsg= "アイテムが選択されていません";
+			System.out.println("やったよ！");
+			e.printStackTrace();
+			if (!(session.containsKey("userId"))) {
+			cartList = dao.showUserCartList(session.get("tempUserId").toString());
+			}else {
+			cartList = dao.showUserCartList(session.get("userId").toString());
+			return ERROR;
+			}
+			}
 
 
-		CartDAO dao = new CartDAO();
+
 		CartDeleteDAO deletedao = new CartDeleteDAO();
 
 		int count=0;
@@ -152,6 +171,14 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
 	}
 
 
