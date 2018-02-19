@@ -12,6 +12,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
 	private String userId;
 
+	private String password;
+
 	private String newPassword;
 
 	private String conPassword;
@@ -30,8 +32,8 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	public String execute(){
 		//入力情報の確認と登録
-		if(!userUpdateConfirmDAO.getUserId(userId)){
-			setErrorMessage("入力されたIDが異なります。");
+		if(!(userUpdateConfirmDAO.getUserId(userId))||!(userUpdateConfirmDAO.getPassword(password))){
+			setErrorMessage("入力されたID,パスワードが異なります。");
 			return ERROR;
 		}else{
 			session.put("userId", userId);
@@ -91,6 +93,13 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		this.userId = userId;
 	}
 
+
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getNewPassword() {
 		return newPassword;
 	}

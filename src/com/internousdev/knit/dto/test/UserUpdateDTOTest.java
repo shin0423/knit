@@ -224,6 +224,223 @@ public class UserUpdateDTOTest {
 		String actual = dto.getLoginId();
 		assertEquals(expected, actual);
 	}
+//現在のパスワードに関するテスト
+ //getter
+		@Test
+		public void testGetPassword1() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "0";
+
+			dto.setPassword(expected);
+			assertEquals(expected, dto.getPassword());
+		}
+		@Test
+		public void testGetPassword2() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "2147483647";
+
+			dto.setPassword(expected);
+			assertEquals(expected, dto.getPassword());
+		}
+		@Test
+		public void testGetPassword3() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "-2147483647";
+
+			dto.setPassword(expected);
+			assertEquals(expected, dto.getPassword());
+		}
+		@Test
+		public void testGetPassword4() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "null";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword5() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword6() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = " ";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+
+		@Test
+		public void testGetPassword7() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "　";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword8() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "abc123";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword9() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "あいう１２３";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword10() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "abc123あいう１２３";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword11() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "abc123あいう１２３漢字";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testGetPassword12() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "ａｂｃあいう１２３漢字";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+
+	 //setter
+
+		@Test
+		public void testSetPassword1() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "0";
+
+			dto.setPassword(expected);
+			assertEquals(expected, dto.getPassword());
+		}
+		@Test
+		public void testSetPassword2() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "2147483647";
+
+			dto.setPassword(expected);
+			assertEquals(expected, dto.getPassword());
+		}
+		@Test
+		public void testSetPassword3() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "-2147483647";
+
+			dto.setPassword(expected);
+			assertEquals(expected, dto.getPassword());
+		}
+		@Test
+		public void testSetPassword4() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "null";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword5() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword6() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = " ";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+
+		@Test
+		public void testSetPassword7() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "　";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword8() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "abc123";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword9() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "あいう１２３";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword10() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "abc123あいう１２３";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword11() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "abc123あいう１２３漢字";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
+		@Test
+		public void testSetPassword12() {
+			UserUpdateDTO dto = new UserUpdateDTO();
+			String expected = "ａｂｃあいう１２３漢字";
+
+			dto.setPassword(expected);
+			String actual = dto.getPassword();
+			assertEquals(expected, actual);
+		}
 
 //新規パスワードに関するテスト
  //getter

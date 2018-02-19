@@ -35,6 +35,25 @@ public class UserUpdateConfirmDAO extends ActionSupport implements SessionAware{
 		return false;
 	}
 
+	public boolean getPassword(String password){
+		//パスワードの取得
+		String sql = "SELECT * FROM user_info where password=?";
+//パスワードの確認
+		try{
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, password);
+
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				userUpdateDTO.setPassword(rs.getString("password"));
+				return true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	public Map<String,Object> getSession(){
 		return session;
 	}

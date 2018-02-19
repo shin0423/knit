@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<th>新規パスワード</th>
-					<td><s:password name="newPassword" placeholder="4～16文字の半角英数字"/></td>
+					<td><s:password name="newPassword" placeholder="1～16文字の半角英数字"/></td>
 				</tr>
 				<tr>
 					<th>新規パスワード(確認用)</th>

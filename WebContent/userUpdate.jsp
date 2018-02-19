@@ -28,6 +28,10 @@
    <td><s:textfield name="userId" value="" placeholder="IDを入力"/></td>
    </tr>
    <tr>
+   <th>現在のパスワード(必須)</th>
+   <td><s:password name="password" value="" placeholder="1～16文字の半角英数字"/></td>
+   </tr>
+   <tr>
    <th>新規パスワード(必須)</th>
    <td><s:password name="newPassword" value="" placeholder="1～16文字の半角英数字"/></td>
    </tr>
@@ -48,9 +52,10 @@
    <button type ="button" onclick ="location.href='/knit/MyPageAction'">戻る</button>
    <button type="submit">登録</button>
    </div>
+   <br>
    <s:if test="errorMessage !=''">
-<s:property value="errorMessage" escape="false" />
-</s:if>
+    <h5><s:property value="errorMessage" escape="false" /></h5>
+   </s:if>
 <s:iterator value="errMsgList">
 		<h5>
 			<s:div align="center">

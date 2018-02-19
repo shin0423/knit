@@ -27,7 +27,7 @@ public class ShowItemDAO {
 		Connection connection = dbConnector.getConnection();
 
 		//SQL文
-		String sql ="SELECT * FROM `item_info";
+		String sql ="SELECT * FROM item_info";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

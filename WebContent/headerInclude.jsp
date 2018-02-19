@@ -24,16 +24,16 @@
   <s:form action="BuyItemAction" class="BOX">
     <div id="Insidetittle"><h4>商品検索</h4></div>
     <br>商品名<br>
-   <s:textfield name="searchWord" class="h_search" size="30" />　
-   <select name="categoryId">
-    <option value=0 selected="selected">全てのカテゴリ</option>
-    <option value=1 >飲食</option>
-    <option value=2 >家電・パソコン</option>
-    <option value=3 >おもちゃ・ゲーム</option>
-    <option value=4 >おもちゃ・ゲーム</option>
-   </select>
+   <s:textfield name="searchWord" class="h_search" size="30" placeholder="検索ワードを入力してください。" />　
+ <div id="selectCategory">商品カテゴリー: <select name="categoryId">
+ 			<option value="0" >全てのカテゴリ</option>
+			<s:iterator value="#session.categoryList" status="st">
+				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
+			</s:iterator>
+			</select>
+			</div>
     <br>金額<br>
-   <s:textfield name="moreUp" class="h_search" />円～<s:textfield name="moreDown" class="h_search" />円
+   <s:textfield name="moreUp" class="h_search" placeholder="最低金額"/>円～<s:textfield name="moreDown" class="h_search" placeholder="最高金額" />円
    <br>
    <button type="submit" class="SearchB">検索</button>
   </s:form>
