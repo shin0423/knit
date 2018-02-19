@@ -75,6 +75,15 @@
 			<s:hidden name="price" value="%{price}"/>
 			<tr>
 			<td>
+				<s:if test="itemStock <= 5 && itemStock >= 1">
+				<select name="itemCount" >
+				<s:iterator value="optionNumber">
+					<option value="<s:property /> "><s:property /></option>
+				</s:iterator>
+				</select>
+				</s:if>
+
+				<s:if test="itemStock >= 6">
 				<select name="itemCount" >
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -82,6 +91,7 @@
 					<option value="4">4</option>
 					<option value="5">5</option>
 				</select>
+				</s:if>
 			</td>
 			</tr>
 			<tr>

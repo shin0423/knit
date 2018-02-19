@@ -12,7 +12,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemInfoAction extends ActionSupport {
 	private String itemId;
+	private int optionCount;
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
+	private List<Integer> optionNumber = new ArrayList<Integer>();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 
 
@@ -29,6 +31,12 @@ public class BuyItemInfoAction extends ActionSupport {
 				stars+="★";
 			}
 			reviewList.get(i).setReviewStar(stars);
+		}
+
+		if (buyItemDTO.getItemStock() <= 5) {
+			for (optionCount = 1; optionCount <= buyItemDTO.getItemStock(); optionCount++) {
+				optionNumber.add(optionCount);
+			}
 		}
 
 
@@ -65,6 +73,16 @@ public class BuyItemInfoAction extends ActionSupport {
 
 	public void setReviewList(List<ReviewDTO> reviewList) {
 		this.reviewList = reviewList;
+	}
+
+
+	public List<Integer> getOptionNumber() {
+		return optionNumber;
+	}
+
+
+	public void setOptionNumber(List<Integer> optionNumber) {
+		this.optionNumber = optionNumber;
 	}
 
 }
