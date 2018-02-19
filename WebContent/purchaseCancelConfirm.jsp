@@ -18,6 +18,7 @@
 <body>
 
 	<div id="header">
+	<jsp:include page="headerInclude.jsp"/>
 		<div id="pr">
 		</div>
 	</div>
@@ -174,6 +175,7 @@
 	</div>
 
 	<div id="footer">
+	<jsp:include page="footerInclude.jsp"/>
 	<div id="pr">
 	</div>
 	</div>

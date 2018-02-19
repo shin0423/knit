@@ -14,7 +14,7 @@
 <body>
 
 
-
+<jsp:include page="headerInclude.jsp"/>
 <!-- メイン -->
 	<div class = "main">
 
@@ -336,9 +336,11 @@
  トップに戻れるここまで -->
 
 		</div>
+
 	</div>
+
 <!-- メインここまで -->
 
-
+<jsp:include page="footerInclude.jsp"/>
 </body>
 </html>

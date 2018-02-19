@@ -16,6 +16,7 @@
 <body>
 
 	<div id="header">
+	<jsp:include page="headerInclude.jsp"/>
 		<div id="pr">
 		</div>
 	</div>
@@ -293,10 +294,9 @@
 
 	</div>
 
-	<div id="footer">
-	<div id="pr">
-	</div>
-	</div>
+
+	<jsp:include page="footerInclude.jsp"/>
+
 
 </body>
 </html>
