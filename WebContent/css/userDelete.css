@@ -1,4 +1,8 @@
 @CHARSET "UTF-8";
+#main{
+	margin-top:50px;
+	min-height:calc(100vh - 70px);
+}
 #title{
 	text-align:center;
 	padding:8px 19px;
