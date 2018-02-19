@@ -110,7 +110,7 @@
 <s:else>
 
 <br>
-
+<div class="destination">
 <h3 class="message2">お届け先住所を選択してください。</h3>
 <div id="box">
 <s:iterator value="destinationList" status="st">
@@ -163,7 +163,7 @@ onclick="document.SettlementCompleteAction.submit();return false;" class="button
 
 
 			</div>
-
+</div>
 </s:else>
 
 
@@ -187,10 +187,11 @@ onclick="document.SettlementCompleteAction.submit();return false;" class="button
 
 </s:iterator>
 
+<div class="destination">
 <div id="button">
 <s:a href="javascrrpt:void(0)"
 onclick="document.CreateAddressAction.submit();return false;" class="button">宛先登録</s:a>
-
+</div>
 </div>
 </s:form>
 

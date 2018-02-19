@@ -34,7 +34,7 @@
 </table>
 
 <p class="message">宛先登録画面</p>
-
+ <div class="Address">
 <table>
 <tr>
 
@@ -75,17 +75,18 @@
 </table>
 
    <s:form action="CreateAddressConfirmAction">
-<div class ="button2">
+<div class ="bottan">
 
   <s:a href="javascrrpt:void(0)"
 onclick="document.SettlementConfirmAction.submit();return false;" class="button">戻る</s:a>
 
-<div class="button3"></div>
+
    <s:a href="javascrrpt:void(0)"
 onclick="document.CreateAddressConfirmAction.submit();return false;" class="button">登録</s:a>
 
 </div>
    </s:form>
+    </div>
 
    <br>
 

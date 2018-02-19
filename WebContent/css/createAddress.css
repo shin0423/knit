@@ -2,20 +2,18 @@
 
   table{
      border-spacing : 5px 10px;
-	margin-left: auto;
-	margin-right: auto;
+margin:0 auto;
 	width:400px;
 	margin-top:5px;
 	background-color:white;
 	border-bottom:1px solid lightgray;
 	border-top:1px solid lightgray;
-	white-space: nowrap;
-	overflow:hidden;
+white-space: nowrap;
+overflow:hidden;
 	text-align: center;
+
   }
-  .table{
-  	margin:0 auto;
-  }
+
 
    .message{
      text-align: center;
@@ -24,26 +22,18 @@
      overflow:hidden;
      }
 
-     .button{
-
-     white-space: nowrap;
-     overflow:hidden;
-
-     }
-
-     .returnButton{
-     position:relative; top: 15px; ;
-     white-space: nowrap;
-     overflow:hidden;
-     }
 
 
-     .butoon2{
-      		text-align:  center;
 
+
+
+	.bottan{
+text-align : center ;
 }
 
-     .button {
+.button {
+	margin-left: auto;
+ margin-right: auto;
   display: inline-block;
   width: 200px;
   height: 54px;
@@ -90,14 +80,6 @@
 
 
 
-.form_conf {
-margin-left : auto ; margin-right : auto ;
-
-}
-.form_conf form {
-display: inline-block;
-
-}
 
 
 

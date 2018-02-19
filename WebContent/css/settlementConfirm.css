@@ -80,7 +80,7 @@ td{
 		display:flex;
 		flex-wrap:wrap;
 
-		margin-left: auto;
+margin-left: auto;
  margin-right: auto;
 
 		}
@@ -157,4 +157,11 @@ margin: 0px 20px;
 }
 .button:hover::after {
   opacity: 1;
+}
+
+.destination{
+	margin-left: auto;
+ margin-right: auto;
+ width:1200px;
+
 }
