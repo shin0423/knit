@@ -11,7 +11,7 @@
  <body>
 
 
- <p class="message">宛先確認</p>
+<p class="message">宛先確認</p>
 
  <div class="form_conf">
 
@@ -31,7 +31,9 @@
 
   <s:form action="CreateAddressCompleteAction"><br>
 
-  <table>
+  <div class="table">
+  <table >
+
 <tr>
 <th>姓</th>
 <td><s:property value="familyName"/></td>
@@ -65,7 +67,12 @@
 <th>住所</th>
 <td><s:property value="userAddress"/></td>
 </tr>
+
+
 </table>
+</div>
+
+
 
 <s:hidden name="familyName" value="%{familyName}" />
 <s:hidden name="firstName" value="%{firstName}" />

@@ -102,6 +102,17 @@ update_date datetime
 insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values( 'internous','南里','健太','なんり','けんた','nyandy1794@gmail.com','12345678','東京都練馬区','2018-02-06');
 insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('internous','桑本','直樹','くわもと','なおき','kuwamoto0721@gmail.com','12345678','東京都墨田区錦糸町','2018-02-06');
 
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('kenta','安藤','健太','あんどう','けんた','kenta123@gmail.com','12345678900','東京都安藤区健太宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('zirou','松田','次郎','まつだ','じろう','zirou123@gmail.com','12345678900','東京都松田区次郎宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('tarou','安永','太郎','やすなが','たろう','tarou123@gmail.com','12345678900','東京都安永区太郎宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('saburou','松本','三郎','まつもと','さぶろう','saburou123@gmail.com','12345678900','東京都松本区三郎宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('sirou','拳','四郎','けん','しろう','sirou123@gmail.com','12345678900','東京都拳区四郎宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('gorou','茂野','五郎','しげの','ごろう','gorou123@gmail.com','12345678900','東京都茂野区五郎宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('rokurou','轆轤','六郎','ろくろ','ろくろう','rokurou123@gmail.com','12345678900','東京都轆轤区六郎宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('hanako','安藤','花子','あんどう','はなこ','hanako123@gmail.com','12345678900','東京都安藤区花子宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('matuko','梅','松子','うめ','まつこ','matuko123@gmail.com','12345678900','東京都梅区松子宅','2018-02-06');
+insert into destination_info(user_id,family_name,first_name, family_name_kana,first_name_kana,email,tel_number,user_address,regist_date) values('takeko','梅','竹子','うめ','たけこ','takeko123@gmail.com','12345678900','東京都梅区竹子宅','2018-02-06');
+
 
 drop table if exists m_category;
 

@@ -65,7 +65,7 @@
        </tr>
    </table>
 
-   <div id="button">
+   <div align="center">
      <button type ="button" onclick ="location.href='/knit/login.jsp'">戻る</button>
      <button type="submit">登録</button>
    </div>

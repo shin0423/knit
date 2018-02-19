@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+.main{
+	margin:0 auto
+
+}
 	.message1{
 		text-align:center;
 		padding:8px 19px;
