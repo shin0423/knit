@@ -75,11 +75,12 @@
 </table>
 
    <s:form action="CreateAddressConfirmAction">
-<div id="button">
+<div class ="button2">
 
   <s:a href="javascrrpt:void(0)"
 onclick="document.SettlementConfirmAction.submit();return false;" class="button">戻る</s:a>
 
+<div class="button3"></div>
    <s:a href="javascrrpt:void(0)"
 onclick="document.CreateAddressConfirmAction.submit();return false;" class="button">登録</s:a>
 

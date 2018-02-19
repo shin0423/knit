@@ -123,27 +123,27 @@
 <input type="radio" name="id" value="<s:property value='#st.index'/>" checked="checked"/>
 
 </td>
-<td class="midasi">ふりがな</td>
+<th class="midasi">ふりがな</th>
 <td class="jouhou"><s:property value="familyNameKana"/><s:property value="firstNameKana"/></td>
 <tr/>
 
 <tr>
-<td  class="midasi" >名前</td>
+<th  class="midasi" >名前</th>
 <td class="jouhou"><s:property value="familyName"/><s:property value="firstName"/></td>
 </tr>
 
 <tr>
-<td  class="midasi">住所</td>
+<th  class="midasi">住所</th>
 <td class="jouhou" ><s:property value="userAddress"/></td>
 </tr>
 
 <tr>
-<td  class="midasi">電話番号</td>
+<th  class="midasi">電話番号</th>
 <td class="jouhou"><s:property value="telNumber"/></td>
 </tr>
 
 <tr>
-<td  class="midasi">メールアドレス</td>
+<th  class="midasi">メールアドレス</th>
 <td class="jouhou"><s:property value="email"/></td>
 </tr>
 
@@ -155,12 +155,12 @@
 </div>
 
 
+
 <div id="button">
 <s:a href="javascrrpt:void(0)"
 onclick="document.SettlementCompleteAction.submit();return false;" class="button">購入</s:a>
 
 
-<s:a href="CartAction" class="button">カートに戻る</s:a>
 
 			</div>
 

@@ -11,6 +11,7 @@
 	border-top:1px solid lightgray;
 	white-space: nowrap;
 	overflow:hidden;
+	text-align: center;
   }
 
    .message{
@@ -32,6 +33,13 @@
      white-space: nowrap;
      overflow:hidden;
      }
+
+
+     .butoon2{
+      		margin-left: auto;
+            margin-right: auto;
+
+}
 
      .button {
   display: inline-block;

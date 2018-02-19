@@ -127,6 +127,16 @@ insert_date datetime not null
 
 insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("internous","internous01","南里","健太","なんり","けんた",0,"nyandy1794@gmail.com",1,1,cast("2018-02-05" as date),0);
 
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("kenta","kenta123","安藤","健太","あんどう","けんた",0,"kenta123@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("zirou","zirou123","松田","次郎","まつだ","じろう",0,"zirou23@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("tarou","tarou123","安永","太郎","やすなが","たろう",0,"zirou23@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("saburou","saburou123","松本","三郎","まつもと","さぶろう",0,"saburou23@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("sirou","sirou123","拳","四郎","けん","しろう",0,"sirou23@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("gorou","gorou123","茂野","五郎","しげの","ごろう",0,"gorou123@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("rokurou","rokurou123","轆轤","六郎","ろくろ","ろくろう",0,"rokuro123@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("hanako","hanako123","安藤","花子","あんどう","はなこ",1,"rokuro123@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("matuko","matuko123","梅","松子","うめ","まつこ",1,"matuko123@gmail.com",1,1,cast("2018-02-19" as date),0);
+insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("takeko","takeko123","梅","竹子","うめ","たけこ",1,"takeko123@gmail.com",1,1,cast("2018-02-19" as date),0);
 insert into user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,status,logined,regist_date,admin_flg) values("admin","admin01","管理","者","かんり","しゃ",0,"nyan1794@gmail.com",1,1,cast("2018-02-05" as date),1);
 
 
