@@ -41,8 +41,8 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		if(newPassword.equals("")){
 			passwordErrorMessage="パスワードを入力してください。";
 			return ERROR;
-		}else if(newPassword.length() < 4 || newPassword.length() > 16){
-			passwordErrorMessage="パスワードは4文字以上16文字以下で入力してください。";
+		}else if(newPassword.length() < 1 || newPassword.length() > 16){
+			passwordErrorMessage="パスワードは1文字以上16文字以下で入力してください。";
 			return ERROR;
 		}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
 			passwordErrorMessage="パスワードは半角英数字で入力してください。";
@@ -56,11 +56,12 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			/*
 			 * sessionに一部隠したIDとloginPasswordを保存
 			 * resetPasswordDAO.hideString(加工する文字列、抽出文字の開始位置、抽出文字の終了位置)
-			 * 先頭二文字を残し、*に差し替える
+			 * IDの先頭二文字を残し、*に差し替える
+			 * Passwordの先頭一文字を残し、*に差し替える
 			 */
 
 			hideUserId = resetPasswordDAO.hideString(userId,0,2);
-			hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,2);
+			hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,1);
 
 			return SUCCESS;
 		}else {
