@@ -16,14 +16,18 @@
 
  <div class="menu">
   <a href='<s:url action="TopAction" />'><button class="home" style="cursor:pointer"></button></a>
-
+<s:if test="#session.miniCartList.isEmpty()">
   <a href='<s:url action="CartAction"/>'><button class="cart" style="cursor:pointer"></button></a>
+</s:if>
+<s:else>
+  <a href='<s:url action="CartAction"/>'><button class="cartFill" style="cursor:pointer"></button></a>
+</s:else>
 
 <button class="search" style="cursor:pointer"></button>
  <div class="inside">
   <s:form action="BuyItemAction" class="BOX">
     <div id="Insidetittle"><h4>商品検索</h4></div>
-    <br>商品名<br>
+    商品名<br>
    <s:textfield name="searchWord" class="h_search" size="30" placeholder="検索ワードを入力してください。" />　
  <div id="selectCategory">商品カテゴリー: <select name="categoryId">
  			<option value="0" >全てのカテゴリ</option>
@@ -48,7 +52,7 @@
 <script>
 
 $(function(){
-	$(".home ,.cart ,.search ,.login ,.mypage ,.logout ,.item").hover(
+	$(".home ,.cart ,.cartFill ,.search ,.login ,.mypage ,.logout ,.item").hover(
 			function(){
 				$(this).animate({
 					width:"70px",

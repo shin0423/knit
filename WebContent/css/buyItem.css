@@ -2,14 +2,21 @@
 
 
 .sideBar{
+	clear:both;
 	height:100%;
 	width:150px;
-	position:absolute;
+	position:fixed;
 	top:70px;
 	left:0px;
 	border-right:1px solid #C0C0C0;
 	z-index:99999;
 
+}
+.sideBox{
+	position:relative;
+	top:5%;
+	left:5px;
+	border-bottom:1px solid #F2F2F2;
 }
 	.main{
 		min-height:calc(100vh - 70px);
@@ -201,4 +208,7 @@
 	-webkit-transform: rotate(0);
 	transform: rotate(0);
 
+}
+#mini{
+	font-size:9px;
 }

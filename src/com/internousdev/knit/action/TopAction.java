@@ -89,9 +89,8 @@ if ((boolean)session.get("loginFlg")) {
 			miniCartList = cartDAO.UserMiniCart(session.get("userId").toString());
 
 			if (miniCartList.isEmpty()) {
+				System.out.println("やったぜ！");
 
-				String miniCartFlg ="noItem";
-				session.put("miniCartList", miniCartFlg);
 			}
 
 			session.put("miniCartList", miniCartList);
@@ -99,8 +98,8 @@ if ((boolean)session.get("loginFlg")) {
 			miniCartList = cartDAO.TempUserMiniCart(session.get("tempUserId").toString());
 
 			if (miniCartList.isEmpty()) {
-				String miniCartFlg ="noItem";
-				session.put("miniCartList", miniCartFlg);
+				System.out.println("やったぜ！仮");
+
 			}
 			session.put("miniCartList", miniCartList);
 		}

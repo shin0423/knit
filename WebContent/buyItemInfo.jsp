@@ -10,31 +10,37 @@
 </head>
 <body>
 <jsp:include page="headerInclude.jsp" />
-<div class="main">
-
-
 <div class="sideBar">
+カート内商品<br>
+<div id="mini">*6件まで表示</div>
 <s:if test="! #session.miniCartList.isEmpty()">
 	<s:iterator value="#session.miniCartList">
-	<div class="sideBox">
-		<table>
-			<tr>
-		       	<td><s:property value="itemName" /><br></td>
-		        <td><s:property value="price" />円<br><td>
-		        <td><s:property value="itemStock" />個<br><td>
-		        <td><br></td>
-			</tr>
-		</table>
+		<div class="sideBox">
+			<table>
+				<tr>
+			       	<td><s:property value="itemName" /><br></td>
+			        <td><s:property value="price" />円<br><td>
+			        <td><s:property value="itemCount" />個<br><td>
+			        <td><br></td>
+				</tr>
+			</table>
 		</div>
 	</s:iterator>
+	<br><br><br>
+	合計金額<br>
+	<s:property value="#session.allTotalPrice"/>円
 </s:if>
 <s:else>
-<div class="sideBox">
-カートに商品がありません
-</div>
+	<div class="sideBox">
+		カートに商品がありません
+	</div>
 </s:else>
 
 </div>
+<div class="main">
+
+
+
 
  <%-- </s:else> --%>
 
