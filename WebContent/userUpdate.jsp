@@ -11,10 +11,10 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報変更</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
-
+<jsp:include page="headerInclude.jsp"/>
 
 <div id="main">
 <div id="title"><p>ユーザー情報変更<p></div>
@@ -24,7 +24,7 @@
 
 
    <tr>
-   <th>ユーザーID()</th>
+   <th>ユーザーID(必須)</th>
    <td><s:textfield name="userId" value="%{userId}" placeholder="IDを入力"/></td>
    </tr>
    <tr>

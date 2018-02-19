@@ -11,9 +11,10 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報変更確認</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
+ <jsp:include page="headerInclude.jsp"/>
 <div id="main">
 <div id="title"><p>入力情報確認</p></div>
 <div>入力内容をご確認ください</div>

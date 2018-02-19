@@ -11,9 +11,10 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー登録</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
+<jsp:include page="headerInclude.jsp"/>
 
 
  <div id="main">

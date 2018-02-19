@@ -11,16 +11,16 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title>ユーザー情報変更完了</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
 </head>
 <body>
-
+<jsp:include page="headerInclude.jsp"/>
 <div id="main">
 <div id="title"><p>ユーザー情報変更完了<p></div>
 <div>
 <h3>ユーザー情報の変更が完了しました。</h3>
 <br>
-<button type ="button" onclick ="location.href='/knit/mypage.jsp'">マイページ</button>
+<button type ="button" onclick ="location.href='/knit/MyPageAction'">マイページ</button>
 </div>
 </div>
 </body>

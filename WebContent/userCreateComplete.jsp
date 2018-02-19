@@ -11,7 +11,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title>ユーザー登録完了</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/resetPassword.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
 <script language="JavaScript">
 <!--
 function autoLoginAction(){
@@ -25,6 +25,7 @@ document.loginAction.submit();
 </head>
 <body onload="setTimeout( 'autoLoginAction()', 5000 )">
 
+<jsp:include page="headerInclude.jsp"/>
 
 
 <div id="main">
