@@ -5,13 +5,14 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createAddress.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createAddressConfirm.css">
  <title>宛先情報確認</title>
  </head>
  <body>
 
-
-<p class="message">宛先確認</p>
+<br>
+<br>
+<div class="message">宛先確認</div>
 
  <div class="form_conf">
 
@@ -24,15 +25,16 @@
 <s:hidden name="email" value="%{email}"/>
 <s:hidden name="telNumber" value="%{telNumber}" />
 <s:hidden name="userAddress" value="%{userAddress}"/>
-   <button class="button" type="submit">戻る</button>
+
+
+<button class="button" type="submit">戻る</button>
 
 
   </s:form>
 
   <s:form action="CreateAddressCompleteAction"><br>
 
-  <div class="table">
-  <table >
+  <table class="des">
 
 <tr>
 <th>姓</th>
@@ -53,6 +55,7 @@
 <th>めい</th>
 <td><s:property value="firstNameKana"/><td>
 </tr>
+
 <tr>
 <th>E-mail</th>
 <td><s:property value="email"/></td>
@@ -68,9 +71,10 @@
 <td><s:property value="userAddress"/></td>
 </tr>
 
-
 </table>
 </div>
+
+
 
 
 
