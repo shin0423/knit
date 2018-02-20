@@ -23,12 +23,14 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 			userUpdateCompleteDAO.userUpdate1( newPassword, session.get("userId").toString() );
 			System.out.println("newPasswordTest:"+session.get("newPassword").toString());
 			System.out.println("newPasswordTest:"+newPassword);
+			session.remove("newPassword");
 			result = SUCCESS;
 		} else if ( newPassword == null) {
 			userUpdateCompleteDAO.userUpdate2( newEmail, session.get("userId").toString() );
 			System.out.println(session.get("userId").toString());
 			System.out.println("newEmailTest:"+session.get("newEmail").toString());
 			System.out.println("newEmailTest:"+newEmail);
+			session.remove("newEmail");
 			result = SUCCESS;
 		} else {
 			userUpdateCompleteDAO.userUpdate3( newEmail,  newPassword, session.get("userId").toString());
@@ -36,6 +38,8 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 			System.out.println("newPasswordTest:"+newEmail);
 			System.out.println("newPasswordTest:"+session.get("newPassword").toString());
 			System.out.println("newPasswordTest:"+newPassword);
+			session.remove("newEmail");
+			session.remove("newPassword");
 			result = SUCCESS;
 		}
 

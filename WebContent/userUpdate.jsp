@@ -19,6 +19,7 @@
 <div id="main">
 <div id="title"><p>ユーザー情報変更<p></div>
 <div>ユーザー情報を変更してください</div>
+<div>以前の情報を保持したい箇所は空欄のまま先へ進んでください</div>
 <s:form action="UserUpdateConfirmAction">
 <table>
 
@@ -28,19 +29,19 @@
    <td><s:property value="%{session.userId}" /></td>
    </tr>
    <tr>
-   <th>現在のパスワード(必須)</th>
+   <th>現在のパスワード</th>
    <td><s:password name="password" placeholder="1～16文字の半角英数字"/></td>
    </tr>
    <tr>
-   <th>新規パスワード(必須)</th>
+   <th>新規パスワード</th>
    <td><s:password name="newPassword" placeholder="1～16文字の半角英数字"/></td>
    </tr>
    <tr>
-   <th>確認用パスワード(必須)</th>
+   <th>確認用パスワード</th>
    <td><s:password name="conPassword" placeholder="確認のため再入力"/></td>
    </tr>
    <tr>
-   <th>メールアドレス(必須)</th>
+   <th>メールアドレス</th>
    <td><s:textfield name="newEmail" placeholder="8文字以上13文字以下"/></td>
    </tr>
    </table>

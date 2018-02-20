@@ -5,8 +5,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.MyPageDAO;
 import com.internousdev.knit.dao.UserUpdateConfirmDAO;
-import com.internousdev.knit.util.InputChecker;
+import com.internousdev.knit.dto.MyPageDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
@@ -23,6 +24,10 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	private UserUpdateConfirmDAO userUpdateConfirmDAO = new UserUpdateConfirmDAO();
 
+	private MyPageDAO myPageDAO = new MyPageDAO();
+
+	private MyPageDTO myPageDTO = new MyPageDTO();
+
 	public Map<String,Object> session;
 
 	private ArrayList<String> errMsgList = new ArrayList<>();
@@ -32,8 +37,9 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 	public String execute(){
 		//入力情報の確認と登録
 		String result = SUCCESS;
+		ArrayList<MyPageDTO> myPageDTOList = new ArrayList<MyPageDTO>();
+		myPageDTOList = myPageDAO.getUserInfo(session.get("userId").toString());
 
-		InputChecker i = new InputChecker();
 		if(!(newPassword.equals("")) && !(conPassword.equals(""))) {
 			if(!(userUpdateConfirmDAO.getPassword(password))){
 				setErrorMessage("入力されたパスワードが異なります。");
@@ -44,7 +50,10 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
 				setErrorMessage("パスワードは半角英数字で入力してください。");
 				result = ERROR;
-			}else{
+			} else if (myPageDTOList.get(0).getPassword().equals(newPassword)) {
+				setErrorMessage("以前と同じパスワードです");
+				result = ERROR;
+			} else {
 				session.put("newPassword", newPassword);
 				System.out.println(session.get("newPassword").toString());
 			}
@@ -53,11 +62,21 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 				return ERROR;
 			}
 		}
-		if (newEmail != null) {
-			if(!i.emailChk(newEmail).equals("OK")){
-				errMsgList.add(i.emailChk(newEmail));
+
+
+		if (!(newEmail.equals(""))) {
+			if (newEmail.length() < 10 || newEmail.length() > 32) {
+				setErrorMessage("メールアドレスは10文字以上32文字以下で入力してください。");
+				System.out.println("newEmailテスト"+newEmail);
 				result = ERROR;
-			}else{
+			} else if (!newEmail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
+				setErrorMessage("正しいメールアドレスの形式で入力してください。");
+				result = ERROR;
+			} else if (myPageDTOList.get(0).getEmail().equals(newEmail)) {
+				setErrorMessage("以前と同じメールアドレスです");
+				result = ERROR;
+
+			} else {
 				session.put("newEmail", newEmail);
 				System.out.println(session.get("newEmail").toString());
 			}

@@ -38,12 +38,14 @@ public class UserUpdateCompleteDAO {
 	    Connection con = db.getConnection();
 
 	    int count=0;
-		String sql = "UPDATE destination_info SET email = ?, update_date = ? WHERE user_id = ?";
+		String sql = "UPDATE destination_info as di, user_info as ui SET di.email = ?, ui.email = ?, di.update_date = ?, ui.update_date = ? WHERE di.user_id = ui.user_id AND di.user_id = ?";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1,newEmail);
-			ps.setString(2,dateUtil.getDate());
-			ps.setString(3,userId);
+			ps.setString(2,newEmail);
+			ps.setString(3,dateUtil.getDate());
+			ps.setString(4,dateUtil.getDate());
+			ps.setString(5,userId);
 
 			count = ps.executeUpdate();
 			if(count > 0) {
@@ -63,13 +65,15 @@ public class UserUpdateCompleteDAO {
 	    Connection con = db.getConnection();
 
 	    int count=0;
-		String sql = "UPDATE destination_info SET email = ?,password = ?, update_date = ? WHERE user_id = ?";
+		String sql = "UPDATE destination_info as di, user_info as ui SET di.email = ?, ui.email = ?, ui.password = ?, di.update_date = ?, ui.update_date = ? WHERE di.user_id = ui.user_id AND di.user_id = ?";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1,newEmail);
-			ps.setString(2,newPassword);
-			ps.setString(3,dateUtil.getDate());
-			ps.setString(4,userId);
+			ps.setString(2,newEmail);
+			ps.setString(3,newPassword);
+			ps.setString(4,dateUtil.getDate());
+			ps.setString(5,dateUtil.getDate());
+			ps.setString(6,userId);
 
 			count = ps.executeUpdate();
 		} catch(Exception e){
