@@ -2,6 +2,8 @@ package com.internousdev.knit.dto.test;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.Test;
@@ -2334,6 +2336,18 @@ public class CartDTOTest {
 			assertEquals(expected,actual);
 		}
 
+		@Test
+		public void testGetRegistDate2() throws ParseException {
+			CartDTO dto = new CartDTO();
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+			Date expected =  sdf.parse("20180220 12:00:00");
+			dto.setRegistDate(expected);
+			assertEquals(expected, dto.getRegistDate());
+		}
+
+
+
 	//更新日に関するテスト
 		@Test
 		public void testGetUpdateDate1() {
@@ -2344,6 +2358,16 @@ public class CartDTOTest {
 			Date actual = dto.getUpdateDate();
 
 			assertEquals(expected,actual);
+		}
+
+		@Test
+		public void testGetUpdateDate2() throws ParseException {
+			CartDTO dto = new CartDTO();
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+			Date expected =  sdf.parse("20180220 12:00:00");
+			dto.setUpdateDate(expected);
+			assertEquals(expected, dto.getUpdateDate());
 		}
 
 //合計に関するテスト get
