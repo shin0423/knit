@@ -22,24 +22,23 @@
   <table>
   <tr>
    <th>ユーザーID<th>
-   <td><s:property value="userId"/>
-   <s:hidden name="userId" value="%{userId}" /><td>
+   <td><s:property value="%{session.userId}"/>
+   <input type="hidden" name="userId" value="%{session.userId}" /><td>
    </tr>
+   <s:if test="session.newPassword != null" >
    <tr>
    <th>新規パスワード</th>
-   <td><s:property value="newPassword"/>
-   <s:hidden name="newPassword" value="%{newPassword}" /></td>
+   <td><s:property value="%{session.newPassword}"/>
+   <input type="hidden" name="newPassword" value="%{session.newPassword}" /></td>
    </tr>
+   </s:if>
+   <s:if test="session.newEmail != null" >
    <tr>
-   <th>電話番号</th>
-   <td><s:property value="telNumber"/>
-   <s:hidden name="telNumber" value="%{telNumber}" /></td>
+   <th>メールアドレス</th>
+   <td><s:property value="%{session.newEmail}"/>
+   <input type="hidden" name="newEmail" value="%{session.newEmail}" /></td>
    </tr>
-   <tr>
-   <th>住所</th>
-   <td><s:property value="userAddress"/>
-   <s:hidden name="userAddress" value="%{userAddress}"/></td>
-   </tr>
+   </s:if>
   </table>
    <br>
    <div id="button">

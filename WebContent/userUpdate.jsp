@@ -24,28 +24,24 @@
 
 
    <tr>
-   <th>ユーザーID(必須)</th>
-   <td><s:textfield name="userId" value="" placeholder="IDを入力"/></td>
+   <th>ユーザーID</th>
+   <td><s:property value="%{session.userId}" /></td>
    </tr>
    <tr>
    <th>現在のパスワード(必須)</th>
-   <td><s:password name="password" value="" placeholder="1～16文字の半角英数字"/></td>
+   <td><s:password name="password" placeholder="1～16文字の半角英数字"/></td>
    </tr>
    <tr>
    <th>新規パスワード(必須)</th>
-   <td><s:password name="newPassword" value="" placeholder="1～16文字の半角英数字"/></td>
+   <td><s:password name="newPassword" placeholder="1～16文字の半角英数字"/></td>
    </tr>
    <tr>
    <th>確認用パスワード(必須)</th>
-   <td><s:password name="conPassword" value="" placeholder="確認のため再入力"/></td>
+   <td><s:password name="conPassword" placeholder="確認のため再入力"/></td>
    </tr>
    <tr>
-   <th>電話番号(必須)</th>
-   <td><s:textfield name="telNumber" value="" placeholder="8文字以上13文字以下"/></td>
-   </tr>
-   <tr>
-   <th>住所(必須)</th>
-   <td><s:textfield name="userAddress" value="" placeholder="7文字以上50文字以下" /></td>
+   <th>メールアドレス(必須)</th>
+   <td><s:textfield name="newEmail" placeholder="8文字以上13文字以下"/></td>
    </tr>
    </table>
    <div id="button">

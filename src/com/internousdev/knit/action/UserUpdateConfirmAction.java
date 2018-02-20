@@ -10,7 +10,10 @@ import com.internousdev.knit.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
-	private String userId;
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
 
 	private String password;
 
@@ -18,9 +21,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	private String conPassword;
 
-	private String telNumber;
-
-	private String userAddress;
+	private String newEmail;
 
 	private UserUpdateConfirmDAO userUpdateConfirmDAO = new UserUpdateConfirmDAO();
 
@@ -32,46 +33,36 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	public String execute(){
 		//入力情報の確認と登録
-		if(!(userUpdateConfirmDAO.getUserId(userId))||!(userUpdateConfirmDAO.getPassword(password))){
-			setErrorMessage("入力されたID,パスワードが異なります。");
-			return ERROR;
-		}else{
-			session.put("userId", userId);
-		}
-
 		String result = SUCCESS;
 
 		InputChecker i = new InputChecker();
-
-		if(newPassword.equals("")){
-			setErrorMessage("パスワードを入力してください。");
-			result = ERROR;
-		}else if(newPassword.length()<1 || newPassword.length()>16){
-			setErrorMessage("パスワードは1文字以上16文字以下で入力してください。");
-			result = ERROR;
-		}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
-			setErrorMessage("パスワードは半角英数字で入力してください。");
-			result = ERROR;
-		}else{
-			session.put("newPassword", newPassword);
+		if(!(newPassword.equals("")) && !(conPassword.equals(""))) {
+			if(!(userUpdateConfirmDAO.getPassword(password))){
+				setErrorMessage("入力されたパスワードが異なります。");
+				result = ERROR;
+			} else if(newPassword.length()<1 || newPassword.length()>16){
+				setErrorMessage("パスワードは1文字以上16文字以下で入力してください。");
+				result = ERROR;
+			}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
+				setErrorMessage("パスワードは半角英数字で入力してください。");
+				result = ERROR;
+			}else{
+				session.put("newPassword", newPassword);
+				System.out.println(session.get("newPassword").toString());
+			}
+			if(!(newPassword.equals(conPassword))){
+				setErrorMessage("入力された確認パスワードが異なります。");
+				return ERROR;
+			}
 		}
-
-		if(!(newPassword.equals(conPassword))){
-			setErrorMessage("入力された確認パスワードが異なります。");
-			return ERROR;
-		}
-
-		if(!i.telNumberChk(telNumber).equals("OK")){
-			errMsgList.add(i.telNumberChk(telNumber));
-			result = ERROR;
-		}else{
-			session.put("telNumber", telNumber);
-		}
-		if(!i.userAddressChk(userAddress).equals("OK")){
-			errMsgList.add(i.userAddressChk(userAddress));
-			result = ERROR;
-		}else{
-			session.put("userAddress",userAddress);
+		if (newEmail != null) {
+			if(!i.emailChk(newEmail).equals("OK")){
+				errMsgList.add(i.emailChk(newEmail));
+				result = ERROR;
+			}else{
+				session.put("newEmail", newEmail);
+				System.out.println(session.get("newEmail").toString());
+			}
 		}
 
 		return result;
@@ -84,15 +75,6 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 	public void setErrMsgList(ArrayList<String> errMsgList) {
 		this.errMsgList = errMsgList;
 	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 
 	public String getPassword() {
 		return password;
@@ -116,20 +98,11 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		this.conPassword = conPassword;
 	}
 
-	public String getTelNumber() {
-		return telNumber;
+	public String getNewEmail() {
+		return newEmail;
 	}
-
-	public void setTelNumber(String telNumber) {
-		this.telNumber = telNumber;
-	}
-
-	public String getUserAddress() {
-		return userAddress;
-	}
-
-	public void setUserAddress(String userAddress) {
-		this.userAddress = userAddress;
+	public void setNewEmail(String newEmail) {
+		this.newEmail = newEmail;
 	}
 
 	public String getErrorMessage() {

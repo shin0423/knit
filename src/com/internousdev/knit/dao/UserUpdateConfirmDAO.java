@@ -16,24 +16,6 @@ public class UserUpdateConfirmDAO extends ActionSupport implements SessionAware{
 	private Connection connection = dbConnector.getConnection();
 	public Map<String,Object> session;
 	UserUpdateDTO userUpdateDTO = new UserUpdateDTO();
-	public boolean getUserId(String userId){
-		//ユーザーIDの取得
-		String sql = "SELECT * FROM user_info where user_id=?";
-//ユーザーIDの確認
-		try{
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(1, userId);
-
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()){
-				userUpdateDTO.setLoginId(rs.getString("user_id"));
-				return true;
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return false;
-	}
 
 	public boolean getPassword(String password){
 		//パスワードの取得
