@@ -16,6 +16,7 @@ public class BuyItemInfoAction extends ActionSupport {
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private List<Integer> optionNumber = new ArrayList<Integer>();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+	private List<BuyItemDTO> categoryItemList = new ArrayList<>();
 
 
 	public String execute() throws SQLException{

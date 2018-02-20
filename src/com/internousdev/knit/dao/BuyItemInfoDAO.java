@@ -9,11 +9,12 @@ import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.util.DBConnector;
 
 public class BuyItemInfoDAO {
-	private DBConnector dbConnector=new DBConnector();
-	private BuyItemDTO buyItemDTO = new BuyItemDTO();
+
 
 	public BuyItemDTO selectBuyItemInfo(String item_id) throws SQLException{
 		String sql="SELECT * FROM item_info WHERE item_id=?";
+		DBConnector dbConnector=new DBConnector();
+		BuyItemDTO buyItemDTO = new BuyItemDTO();
 		Connection connection = dbConnector.getConnection();
 
 
@@ -42,4 +43,12 @@ public class BuyItemInfoDAO {
 		}
 		return buyItemDTO;
 	}
+
+	public categoryItemSelect(){
+		String sql="SELECT * FROM item_info WHERE item_id=?";
+		DBConnector dbConnector=new DBConnector();
+		BuyItemDTO buyItemDTO = new BuyItemDTO();
+		Connection connection = dbConnector.getConnection();
+	}
+
 }

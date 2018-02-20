@@ -185,6 +185,9 @@
 	</s:iterator>
 	</div>
 </div>
+<div class="categoryItem">
+
+</div>
 <jsp:include page="footerInclude.jsp"/>
 </body>
 </html>
