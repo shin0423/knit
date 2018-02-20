@@ -11,9 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
 
-	public Map<String, Object> getSession() {
-		return session;
-	}
+
 
 	private String password;
 
@@ -111,6 +109,10 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 
 	@Override

@@ -23,20 +23,20 @@
   <tr>
    <th>ユーザーID<th>
    <td><s:property value="%{session.userId}"/>
-   <input type="hidden" name="userId" value="%{session.userId}" /><td>
+   <s:hidden name="userId" value="%{session.userId}" /><td>
    </tr>
    <s:if test="session.newPassword != null" >
    <tr>
    <th>新規パスワード</th>
    <td><s:property value="%{session.newPassword}"/>
-   <input type="hidden" name="newPassword" value="%{session.newPassword}" /></td>
+   <s:hidden name="newPassword" value="%{session.newPassword}" /></td>
    </tr>
    </s:if>
    <s:if test="session.newEmail != null" >
    <tr>
    <th>メールアドレス</th>
    <td><s:property value="%{session.newEmail}"/>
-   <input type="hidden" name="newEmail" value="%{session.newEmail}" /></td>
+   <s:hidden name="newEmail" value="%{session.newEmail}" /></td>
    </tr>
    </s:if>
   </table>
