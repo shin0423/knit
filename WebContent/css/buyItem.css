@@ -4,20 +4,29 @@
 .sideBar{
 	clear:both;
 	height:100%;
-	width:150px;
+	width:200px;
 	position:fixed;
 	top:70px;
 	left:0px;
 	border-right:1px solid #C0C0C0;
 	z-index:99999;
+	font-size:15px;
 
 }
+
+.sideBar:hover{
+	background-color:#F2F2F2;
+}
+
+
+
 .sideBox{
 	position:relative;
 	top:5%;
 	left:5px;
 	border-bottom:1px solid #F2F2F2;
 }
+
 	.main{
 		min-height:calc(100vh - 70px);
 		margin: 0 auto;
@@ -25,6 +34,8 @@
 
 		min-width:1000px;
 		font-family:serif;
+
+		margin-top:20px;
 
 	}
 
@@ -75,10 +86,17 @@
 
     background: white;
 
-    border-top: solid 2px #C0C0C0;
+    box-shadow:0 3px 5px rgba(0,0,0,0.10);
+	border-top: solid 2px #F0F0F0;
+	margin-right:10px;
 
 
+	}
 
+	table.itemBox:hover{
+
+	border-top: solid 2px #C0C0C0;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 	}
 
 
@@ -102,8 +120,15 @@
 
     background: white;
 
-    border-top: solid 2px #C0C0C0;
+    box-shadow:0 3px 5px rgba(0,0,0,0.10);
+	border-top: solid 2px #F0F0F0;
+    margin-right:10px;
+}
 
+	table.itemBoxFirst:hover{
+
+	border-top: solid 2px #C0C0C0;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 
 
 	}
@@ -111,6 +136,7 @@
 	/*------ここからボタン↓---------*/
 
 .buttonBox {
+	position:relative;
 	width: 100%;
 }
 
@@ -118,7 +144,7 @@
 
 	width: 245px;
 	margin: 0 auto;
-	margin-top: 2em;
+	margin-top: 3em;
 	z-index: 2;
 	-webkit-perspective: 300px;
 	perspective: 300px;

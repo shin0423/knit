@@ -7,6 +7,10 @@ max-height:2000px;
 
 }
 
+.main{
+	margin-left:100px;
+}
+
 
 
 .itemInfoBox{
@@ -113,13 +117,20 @@ left:600px
 }
 .sideBar{
 	height:100%;
-	width:150px;
+	width:200px;
 	position:fixed;
 	top:70px;
-	left:10px;
+	left:0px;
+	font-size:15px;
 	border-right:1px solid #C0C0C0;
 
+
 }
+
+.sideBar:hover{
+	background-color:#F2F2F2;
+}
+
 .sideBox{
 	position:relative;
 	top:5%;
@@ -127,6 +138,7 @@ left:600px
 	border-bottom:1px solid #F2F2F2;
 
 }
+
 #mini{
 	font-size:9px;
 }

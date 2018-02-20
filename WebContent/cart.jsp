@@ -51,10 +51,10 @@
 			<s:hidden name="itemId" value="%{itemId}"/>
 			<s:checkbox id="item_r" name="checkList" value="checked" fieldValue="%{itemId}" />
 			<div class="border">
-			</div>
 			<div class="pro_img">
 				<img src='<s:property value="imageFilePath"/>' alt="画像なし" width="100px" height="100px" />
 				<s:hidden name="imageFilePath" value="%{imageFilePath}"/>
+			</div>
 			</div>
 		<table>
 			<tr>

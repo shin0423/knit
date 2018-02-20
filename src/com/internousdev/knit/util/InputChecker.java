@@ -164,10 +164,8 @@ public class InputChecker {
 
 		if (itemName.equals("")) {
 			result = "商品名を入力してください。";
-		} else if (itemName.length() < 1 || itemName.length() > 100) {
-			result = "商品名は1文字以上100文字以下で入力してください。";
-		} else if (!itemName.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
-			result = "商品名は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+		} else if (itemName.length() < 1 || itemName.length() > 25) {
+			result = "商品名は1文字以上25文字以下で入力してください。";
 		}
 		return result;
 	}
@@ -177,7 +175,7 @@ public class InputChecker {
 
 		if (itemNameKana.equals("")) {
 			result = "商品名ふりがなを入力してください。";
-		} else if (itemNameKana.length() < 1 || itemNameKana.length() > 100) {
+		} else if (itemNameKana.length() < 1 || itemNameKana.length() > 50) {
 			result = "商品名ふりがなは1文字以上100文字以下で入力してください。";
 		} else if (!itemNameKana.matches("^[ぁ-ん]+$")) {
 			result = "商品名ふりがなはひらがなで入力してください。";
@@ -190,10 +188,8 @@ public class InputChecker {
 
 		if (itemDescription.equals("")) {
 			result = "商品詳細を入力してください。";
-		} else if (itemDescription.length() < 1 || itemDescription.length() > 255) {
-			result = "商品詳細は1文字以上255文字以下で入力してください。";
-		} else if (!itemDescription.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
-			result = "商品詳細は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+		} else if (itemDescription.length() < 1 || itemDescription.length() > 50) {
+			result = "商品詳細は1文字以上50文字以下で入力してください。";
 		}
 		return result;
 	}
@@ -205,8 +201,6 @@ public class InputChecker {
 			result = "商品販売会社名を入力してください。";
 		} else if (releaseCompany.length() < 1 || releaseCompany.length() > 50) {
 			result = "商品販売会社名は1文字以上50文字以下で入力してください。";
-		} else if (!releaseCompany.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
-			result = "商品名販売会社名は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
 		}
 		return result;
 	}
@@ -253,8 +247,6 @@ public class InputChecker {
 		result = "カテゴリー名を入力してください。";
 	} else if (categoryName.length() < 1 || categoryName.length() > 10) {
 		result = "カテゴリー名は1文字以上10文字以下で入力してください。";
-	} else if (!categoryName.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
-		result = "カテゴリー名は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
 	}
 	return result;
 	}
@@ -277,10 +269,8 @@ public class InputChecker {
 
 		if (categoryDescription.equals("")) {
 			result = "カテゴリー詳細を入力してください。";
-		} else if (categoryDescription.length() < 1 || categoryDescription.length() > 255) {
-			result = "カテゴリー詳細は1文字以上255文字以下で入力してください。";
-		} else if (!categoryDescription.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
-			result = "カテゴリー詳細は半角英数字、半角記号、全角記号、カタカナ、ひらがな、漢字で入力してください。";
+		} else if (categoryDescription.length() < 1 || categoryDescription.length() > 50) {
+			result = "カテゴリー詳細は1文字以上50文字以下で入力してください。";
 		}
 		return result;
 	}

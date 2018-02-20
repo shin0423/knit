@@ -47,7 +47,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 			for (int j = 0; categoryList.size() > j; j++) {
 				if (categoryName.equals(categoryList.get(j).getCategoryName()) || categoryId.equals(categoryList.get(j).getCategoryId())
 						|| categoryDescription.equals(categoryList.get(j).getCategoryDescription())) {
-					errorList.add("入力された商品はすでに登録されています。");
+					errorList.add("入力されたカテゴリーはすでに登録されています。");
 					result= ERROR;
 					break out;
 				}
