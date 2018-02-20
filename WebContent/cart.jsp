@@ -30,7 +30,7 @@
 
 	<h1 class="title">CART</h1><br>
 
-		<s:property value="errMsg"/>
+		<s:property value="errorMsg"/>
 		<!-- カートの中身が何も入って居ないとき -->
 			<s:if test="cartList.isEmpty()">
 				<p class="message">商品は入っておりません。</p>

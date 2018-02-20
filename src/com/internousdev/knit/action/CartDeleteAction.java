@@ -79,22 +79,26 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		CartDeleteDAO deletedao = new CartDeleteDAO();
 
 		int count=0;
-		for(String check : checkList) {
-			System.out.println(check + "<---- いまここ()");
+		if (checkList != null && checkList.size() != 0) {
+			for(String check : checkList) {
+				System.out.println(check + "<---- いまここ()");
 
-			if (!(session.containsKey("userId"))) {
-				System.out.println("TEMPUSERID : " + session.get("tempUserId").toString());
-				count += deletedao.deleteSeparate(session.get("tempUserId").toString(), check);
-				cartList = dao.showUserCartList(session.get("tempUserId").toString());
-			} else {
+				if (!(session.containsKey("userId"))) {
+					System.out.println("TEMPUSERID : " + session.get("tempUserId").toString());
+					count += deletedao.deleteSeparate(session.get("tempUserId").toString(), check);
+					cartList = dao.showUserCartList(session.get("tempUserId").toString());
+				} else {
 
-				userId = session.get("userId").toString();
-				System.out.println("USERID : " + session.get("userId").toString());
-				count += deletedao.deleteSeparate(userId, check);
-				cartList = dao.showUserCartList(session.get("userId").toString());
+					userId = session.get("userId").toString();
+					System.out.println("USERID : " + session.get("userId").toString());
+					count += deletedao.deleteSeparate(userId, check);
+					cartList = dao.showUserCartList(session.get("userId").toString());
+				}
 			}
+			System.out.println("削除された件数：" + count);
+		} else {
+			errorMsg= "削除するアイテムがありません";
 		}
-		System.out.println("削除された件数：" + count);
 
 		if (!(session.containsKey("userId"))) {
 			 miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
