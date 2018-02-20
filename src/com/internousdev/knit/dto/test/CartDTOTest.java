@@ -12,7 +12,7 @@ import com.internousdev.knit.dto.CartDTO;
 
 public class CartDTOTest {
 
-	//カートIDに関するテスト get
+	//Idに関するテスト get
 	@Test
 	public void testGetId1() {
 		CartDTO dto = new CartDTO();
@@ -64,7 +64,7 @@ public class CartDTOTest {
 	    }
 	}
 
-	//setId
+	//set Id
 	@Test
 	public void testSetId1() {
 		CartDTO dto = new CartDTO();
@@ -117,7 +117,7 @@ public class CartDTOTest {
 	}
 
 
-	//ユーザーIDに関するテスト get
+	//UserIDに関するテスト get
 	@Test
 	public void testGetUserId1() {
 		CartDTO dto = new CartDTO();
@@ -235,7 +235,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//setユーザーID
+	//set UserID
 	@Test
 	public void testSetUserId1() {
 		CartDTO dto = new CartDTO();
@@ -354,7 +354,7 @@ public class CartDTOTest {
 	}
 
 
-	//ゲストユーザーIDに関するテスト get
+	//TempUserIDに関するテスト get
 	@Test
 	public void testGetTempUserId1() {
 		CartDTO dto = new CartDTO();
@@ -474,7 +474,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//setゲストユーザーID
+	//set TempUserID
 		@Test
 		public void testSetTempUserId1() {
 			CartDTO dto = new CartDTO();
@@ -595,7 +595,7 @@ public class CartDTOTest {
 		}
 
 
-//商品IDに関するテスト get
+//ItemIDに関するテスト get
 	@Test
 	public void testGetItemId1() {
 		CartDTO dto = new CartDTO();
@@ -647,7 +647,7 @@ public class CartDTOTest {
 		}
 	}
 
-	//set商品ID
+	//set ItemID
 		@Test
 		public void testSetItemId1() {
 			CartDTO dto = new CartDTO();
@@ -699,7 +699,7 @@ public class CartDTOTest {
 			}
 		}
 
-	//商品在庫に関するテスト get
+	//ItemCountに関するテスト get
 	@Test
 	public void testGetItemCount1() {
 		CartDTO dto = new CartDTO();
@@ -751,7 +751,7 @@ public class CartDTOTest {
 	    }
 	}
 
-	//set商品在庫
+	//set ItemCount
 		@Test
 		public void testSetItemCount1() {
 			CartDTO dto = new CartDTO();
@@ -803,7 +803,7 @@ public class CartDTOTest {
 		    }
 		}
 
-//商品名に関するテスト get
+//ItemNameに関するテスト get
 	@Test
 	public void testGetItemName1() {
 		CartDTO dto = new CartDTO();
@@ -921,7 +921,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//set商品名
+	//set ItemName
 		@Test
 		public void testSetItemName1() {
 			CartDTO dto = new CartDTO();
@@ -1040,7 +1040,7 @@ public class CartDTOTest {
 		}
 
 
-//商品名かなに関してのテスト get
+//ItemNameKanaに関してのテスト get
 	@Test
 	public void testGetItemNameKana1() {
 		CartDTO dto = new CartDTO();
@@ -1158,7 +1158,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//get商品名かな
+	//set ItemNameKana
 		@Test
 		public void testSetItemNameKana1() {
 			CartDTO dto = new CartDTO();
@@ -1276,7 +1276,7 @@ public class CartDTOTest {
 			assertEquals(expected, actual);
 		}
 
-//イメージファイルパスに関するテスト get
+//ImageFilePathに関するテスト get
 
 	@Test
 	public void testGetImageFilePath1() {
@@ -1395,7 +1395,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//setイメージファイルパス
+	//set ImageFilePath
 	@Test
 	public void testSetImageFilePath1() {
 		CartDTO dto = new CartDTO();
@@ -1512,7 +1512,7 @@ public class CartDTOTest {
 		String actual = dto.getImageFilePath();
 		assertEquals(expected, actual);
 	}
-//イメージファイル名に関するテスト get
+//ImageFileNameに関するテスト get
 
 	@Test
 	public void testGetImageFileName1() {
@@ -1631,7 +1631,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//setイメージファイル名
+	//set ImageFilePath
 
 		@Test
 		public void testSetImageFileName1() {
@@ -1750,7 +1750,7 @@ public class CartDTOTest {
 			assertEquals(expected, actual);
 		}
 
-//商品価格に関するテスト get
+//Priceに関するテスト get
 	@Test
 	public void testGetPrice1() {
 		CartDTO dto = new CartDTO();
@@ -1801,7 +1801,7 @@ public class CartDTOTest {
 	    }
 	}
 
-	//set商品価格
+	//set Price
 	@Test
 	public void testSetPrice1() {
 		CartDTO dto = new CartDTO();
@@ -1852,7 +1852,7 @@ public class CartDTOTest {
 	    }
 	}
 
-//発売会社に関するテスト get
+//ReleaseCompanyに関するテスト get
 	@Test
 	public void testGetReleaseCompany1() {
 		CartDTO dto = new CartDTO();
@@ -1970,7 +1970,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//set発売会社
+	//set PeleaseCompany
 	@Test
 	public void testSetReleaseCompany1() {
 		CartDTO dto = new CartDTO();
@@ -2088,7 +2088,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-//発売年月に関するテスト get
+//ReleaseDateに関するテスト get
 	@Test
 	public void testGetReleaseDate1() {
 		CartDTO dto = new CartDTO();
@@ -2206,7 +2206,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//set発売年月
+	//set ReleaseDate
 	@Test
 	public void testSetReleaseDate1() {
 		CartDTO dto = new CartDTO();
@@ -2324,7 +2324,7 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//登録日に関するテスト get
+	//RegistDateに関するテスト get
 	@Test
 	public void testGetRegistDate1() {
 		CartDTO dto = new CartDTO();
@@ -2346,7 +2346,7 @@ public class CartDTOTest {
 		assertEquals(expected, dto.getRegistDate());
 	}
 
-//set 登録日
+//set RegistDate
 	@Test
 	public void testSetRegistDate1() {
 		CartDTO dto = new CartDTO();
@@ -2369,7 +2369,7 @@ public class CartDTOTest {
 	}
 
 
-	//更新日に関するテスト
+	//UpdateDateに関するテスト
 	@Test
 	public void testGetUpdateDate1() {
 		CartDTO dto = new CartDTO();
@@ -2391,7 +2391,7 @@ public class CartDTOTest {
 		assertEquals(expected, dto.getUpdateDate());
 	}
 
-//set 更新日
+//set UpdateDate
 	@Test
 	public void testSetUpdateDate1() {
 		CartDTO dto = new CartDTO();
@@ -2413,7 +2413,7 @@ public class CartDTOTest {
 		assertEquals(expected, dto.getUpdateDate());
 	}
 
-//合計に関するテスト get
+//Totalに関するテスト get
 	@Test
 	public void testGetTotal1() {
 		CartDTO dto = new CartDTO();
@@ -2462,7 +2462,7 @@ public class CartDTOTest {
 	    }
 	}
 
-	//setトータル
+	//set Total
 	@Test
 	public void testSetTotal1() {
 		CartDTO dto = new CartDTO();
