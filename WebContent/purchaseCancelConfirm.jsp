@@ -29,17 +29,18 @@
 		</div>
 
 		<div>
-			<p>購入キャンセルの確認をお願いいたします</p>
+			<h2 class="guide">購入キャンセルの確認をお願いいたします</h2>
 
 
 		<!-- リストに応じたトップメッセージ -->
 
 				<s:if test= "cancelConfirmList.size() != 0">
-					<h2>キャンセル情報は以下になります</h2>
+					<h2 class="guide">キャンセル情報は以下になります</h2>
 
 			<s:iterator value = "cancelConfirmList">
 
 
+			<div class="box">
 				<table class = "table01">
 
 				<!--  画像ファイル -->
@@ -123,15 +124,15 @@
             	</tr>
 
         		<tr>
-        			<td class ="guide">
+        			<th class ="guide">
         			<div class="buttonBox">
 						<div class="btn">
 							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
 						</div>
 					</div>
-        			</td>
+        			</th>
 
-					<td class="guide">
+					<th class="guide">
 						<!-- キャンセルボタン -->
 						<div class="buttonBox">
 						<div class="btn">
@@ -145,31 +146,31 @@
 
 						</div>
 					</div>
-					</td>
-				</tr>
-
-				<tr>
-					<td><br></td>
-					<td><br></td>
-				</tr>
-				<tr>
-					<td><br></td>
-					<td><br></td>
+					</th>
 				</tr>
 			</table>
+		</div>
 
     		</s:iterator>
 			</s:if>
 
 			<s:else>
-					<h2>
-					申し訳ございませんが、商品はすでに発送されています。
+			<div class="clear"></div>
+					<h2  id="textcm01">
+					申し訳ございませんが、商品は既にキャンセル可能な状態ではありません。
 					<br>
-					商品発送後のキャンセルはこのフォームからは受け付けておりません。
+					<br>
+					また、商品発送後のキャンセルはこのフォームからは受け付けておりません。
 					</h2>
 			</s:else>
-				<div>
-					<a href='<s:url action="PurchaseCancelAction" />'>購入キャンセル画面へもどる</a>
+			<div class="clear"></div>
+			<div class = "guide" id="textcm02">
+			<div class="buttonBox">
+						<div class="btn">
+					<a href='<s:url action="GoPurchaseHistoryAction" />'
+					   class="button">購入履歴へもどる</a>
+				</div>
+				</div>
 				</div>
 		</div>
 	</div>

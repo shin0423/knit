@@ -33,14 +33,25 @@
 			<p>CancelComplete</p>
 		</div>
 
+<div class="clear"></div>
+
 		<div>
-			<p>購入キャンセル手続きが完了致しました。</p>
-				<div>
-					<a href='<s:url action="GoPurchaseHistoryAction" />'>購入履歴へ</a>
+
+
+
+			<div  id="textcm01">
+			<h1>購入キャンセル手続きが完了致しました。</h1>
+			</div>
+			<div class = "guide" id="textcm02">
+			<div class="buttonBox">
+						<div class="btn">
+					<a href='<s:url action="GoPurchaseHistoryAction" />'
+					   class="button">購入履歴へもどる</a>
+				</div>
+				</div>
 				</div>
 		</div>
 	</div>
-
 	<div id="footer">
 	<jsp:include page="footerInclude.jsp"/>
 	<div id="pr">

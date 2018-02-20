@@ -23,18 +23,19 @@
 
 	<div id="main">
 		<div id="top">
-			<p>purchaseCancel</p>
+			<p class="guide">purchaseCancel</p>
 		</div>
 
-		<div>
-			<p>購入キャンセルしたい商品をお選びください</p>
+
+		<div  class="textcm01">
+			<h2>購入キャンセルしたい商品をお選びください</h2>
 		</div>
 
 
 		<!-- リストに応じたトップメッセージ -->
 
 				<s:if test= "cancelList.size() != 0">
-					<h2>キャンセル可能な商品は以下になります</h2>
+					<h2 class="guide">キャンセル可能な商品は以下になります</h2>
 
 				<s:iterator value = "cancelList" status="sts">
 				<s:if test = "#sts.count % 3 == 1">
@@ -124,28 +125,21 @@
             	</tr>
 
         		<tr>
-        	        <td class ="guide">
+        			<th class ="guide">
         			<div class="buttonBox">
 						<div class="btn">
 							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
 						</div>
 					</div>
-        			</td>
+        			</th>
 
-
-					<td class="guide">
+					<th class="guide">
 					<div class="buttonBox">
 						<div class="btn">
-						<!-- キャンセルボタン -->
-							<a href=' <s:url action ="PurchaseCancelConfirmAction">
-								<s:param name= "itemId" value="%{itemId}"/>
-								<s:param name ="orderNum" value= "%{orderNum}"/>
-								 </s:url>' class="button">
-								 注文キャンセル
-							</a>
+							<a href=' <s:url action ="PurchaseCancelConfirmAction"><s:param name= "itemId" value="%{itemId}"/><s:param name ="orderNum" value= "%{orderNum}"/></s:url>' class="button">注文キャンセル</a>
 						</div>
 					</div>
-					</td>
+					</th>
 				</tr>
 
 				<tr>
@@ -243,26 +237,21 @@
             	</tr>
 
         		<tr>
-        			<td class ="guide">
+        			<th class ="guide">
         			<div class="buttonBox">
 						<div class="btn">
 							<a href='<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}" /></s:url>' class="button">商品詳細</a>
 						</div>
 					</div>
-        			</td>
+        			</th>
 
-					<td class="guide">
+					<th class="guide">
 					<div class="buttonBox">
 						<div class="btn">
-						<!-- キャンセルボタン -->
-							<a href=' <s:url action ="PurchaseCancelConfirmAction">
-								<s:param name= "itemId" value="%{itemId}"/>
-								<s:param name ="orderNum" value= "%{orderNum}"/>
-								 </s:url>' class="button">
-								 注文キャンセル
-							</a>
+							<a href=' <s:url action ="PurchaseCancelConfirmAction"><s:param name= "itemId" value="%{itemId}"/><s:param name ="orderNum" value= "%{orderNum}"/></s:url>' class="button">注文キャンセル</a>
 						</div>
 					</div>
+					</th>
 				</tr>
 
 				<tr>
@@ -278,18 +267,21 @@
     		</s:iterator>
 		</s:if>
 		<s:else>
+			<div class="textcm02">
 					<h2>キャンセル可能な商品はありません</h2>
+			</div>
 		</s:else>
 
-
-				<div>
-					<a href='<s:url action="GoPurchaseHistoryAction" />'>購入履歴へもどる</a>
+		<div class="clear"></div>
+		<div class= "cancel">
+			<div class = "guide">
+			<div class="buttonBox">
+						<div class="btn">
+					<a href='<s:url action="GoPurchaseHistoryAction" />'
+					   class="button">購入履歴へもどる</a>
 				</div>
-				<div>
-					<a href='<s:url action="MyPageAction" />'>マイページへもどる</a>
 				</div>
-				<div>
-					<a href='<s:url action="TopAction" />'>トップページへもどる</a>
+				</div>
 				</div>
 
 	</div>

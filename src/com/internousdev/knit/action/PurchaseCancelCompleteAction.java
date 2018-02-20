@@ -21,12 +21,14 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 	private String orderNum;
 
 	public String execute()throws SQLException{
+		//ログインしていないユーザーをログイン画面へ飛ばす
 
-	String loginFlg = session.get("loginFlg").toString();
+		boolean loginFlg = session.containsKey("loginFlg");
 
-	if (!loginFlg.equals("true")) {
-		return ERROR;
-	}
+
+		if (!loginFlg) {
+			return ERROR;
+		}
 
 	//購入キャンセル機能メソッド
 

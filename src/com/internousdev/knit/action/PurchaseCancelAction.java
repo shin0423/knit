@@ -31,27 +31,33 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	public String execute()throws SQLException{
 
-	//ログインしていないユーザーをログイン画面へ飛ばす
 
-	String loginFlg = session.get("loginFlg").toString();
 
-	String userId =session.get("userId").toString();
+
+
 
     String result = SUCCESS;
 
-    cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
 
-	if (!loginFlg.equals("true")) {
+
+
+
+	//ログインしていないユーザーをログイン画面へ飛ばす
+
+	boolean loginFlg = session.containsKey("loginFlg");
+
+
+	if (!loginFlg) {
 		return ERROR;
-	}
-
-	//キャンセル可能な商品が０でないときに以下の処理を実行します
-	else if(!cancelList.equals(null)){
+	}//キャンセル可能な商品が０でないときに以下の処理を実行します
+    else if(!cancelList.equals(null)){
 
 	/**
 	 * 2つの日付の差分時間数を算出するプログラムです。
 	 * @param args
 	 */
+    	String userId =session.get("userId").toString();
+        cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
 
 
 	//userIdに紐づいたsend_flgが0の商品を検索します

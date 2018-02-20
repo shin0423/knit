@@ -41,10 +41,10 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		//ログインしてなければログインに飛ばす
 
-		String loginFlg = session.get("loginFlg").toString();
+		boolean loginFlg = session.containsKey("loginFlg");
 
 
-		if (!loginFlg.equals("true")) {
+		if (!loginFlg) {
 			return ERROR;
 		}
 

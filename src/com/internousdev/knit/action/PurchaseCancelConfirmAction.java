@@ -34,13 +34,14 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 	public String execute()throws SQLException{
 
-	String loginFlg = session.get("loginFlg").toString();
+		//ログインしていないユーザーをログイン画面へ飛ばす
 
-	if (!loginFlg.equals("true")) {
-		return ERROR;
+		boolean loginFlg = session.containsKey("loginFlg");
 
 
-	}
+		if (!loginFlg) {
+			return ERROR;
+		}
 
 
 	//セッションからuserIdを取得

@@ -28,11 +28,12 @@
 		<!-- リストに応じたトップメッセージ -->
 
 				<s:if test= "historyList.size() != 0">
-					<h2>購入情報は以下になります</h2>
+					<h2 class="guide">購入情報は以下になります</h2>
 
 
 
 			<!-- 全件削除ボタン -->
+			<div class=guide>
 				<div class="buttonBox">
 					<div class ="btn">
 					<a href=' <s:url action = "PurchaseHistoryAction" >
@@ -56,7 +57,7 @@
 			</div>
 			</div>
 			</div>
-
+		</div>
 		<!-- リストに応じたトップメッセージここまで -->
 
 <!----------------------履歴詳細   ここから------------------------------->
@@ -309,31 +310,13 @@
 <!----------------------履歴詳細   ここまで------------------------------->
 		</s:if>
 		<s:else>
+		<div class="clear"></div>
+				<div class="textcm02">
 					<h2>購入情報はありません</h2>
+				</div>
 		</s:else>
 
 
-<!-- ページリンク -->
-		<div class= "back">
-			<!-- MyPageに戻る-->
-			<div class="link">
-				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
-			</div>
-		</div>
-
-
-
-<!-- ページリンクここまで -->
-
-
-
-
-
-<!-- トップに戻れる！
-				<div>
-					<a href='<s:url action="TopAction" />'> ＞ページトップへ＜ </a>
-				</div>
- トップに戻れるここまで -->
 
 		</div>
 
