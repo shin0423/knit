@@ -25,6 +25,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException{
+		//System.out.println("tokenの値"+token);
 		if(!(token.equals(session.get("token").toString()))){
 			return "errorPage";
 		}
@@ -75,7 +76,13 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		}
 		return result ;
 	}
-//セッターゲッターの設定
+public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	//セッターゲッターの設定
 	public String getUserId(){
 		return userId;
 	}
@@ -159,5 +166,8 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	@Override
 	public void setSession(Map<String,Object> session){
 		this.session = session;
+	}
+	public Map<String, Object> getSession() {
+		return session;
 	}
 }

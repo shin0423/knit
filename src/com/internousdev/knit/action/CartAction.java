@@ -17,11 +17,20 @@ public class CartAction extends ActionSupport implements SessionAware{
 	ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 	int totalPrice;
 
+	private String token;
+
 
 	public String execute()throws SQLException{
+
+		if(!(token.equals(session.get("token").toString()))){
+			return "errorPage";
+		}
+
 		List<String> deleteCartList = new ArrayList<>();
 		CartDAO dao=new CartDAO();
 		int j = 0;
+
+
 
 		//loginFlgがあるか
 
@@ -144,6 +153,12 @@ public class CartAction extends ActionSupport implements SessionAware{
 				System.out.println("合計" + totalPrice + "円");
 			}
 			return totalPrice;
+		}
+		public String getToken() {
+			return token;
+		}
+		public void setToken(String token) {
+			this.token = token;
 		}
 
 

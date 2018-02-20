@@ -71,8 +71,13 @@
    <th>住所:</th>
    <td><s:property value="userAddress"/>
    <s:hidden name="userAddress" value="%{userAddress}"/></td>
+
+   <s:hidden name="token" value="%{token}" />
    </tr>
 </table>
+
+
+
    <div id="button">
    <button type ="button" onclick ="location.href='/knit/userCreate.jsp'">戻る</button>
    <button type="submit">登録情報を確定</button>

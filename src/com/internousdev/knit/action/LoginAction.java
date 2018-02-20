@@ -33,6 +33,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	private List<String> errorList = new ArrayList<>();
 
+	//ミニカート
+	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
+
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 
 	public String execute() throws SQLException {
@@ -106,6 +109,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				makeCartList();
 				calcTotalPrice(userCartList);
 				System.out.println("一般ログイン成功");
+
+				//小池
+				CartDAO cartDAO = new CartDAO();
+				miniCartList = cartDAO.UserMiniCart(session.get("userId").toString());
+				session.put("miniCartList", miniCartList);
+
 				result = SUCCESS;
 			}
 
