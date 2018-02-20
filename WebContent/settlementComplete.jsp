@@ -11,7 +11,7 @@
 	<meta http-equiv="imagetoolbar" content="no" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-	<%-- <meta http-equiv="refresh" content="5;URL='TopAction'" />--%>
+	<meta http-equiv="refresh" content="5;URL='TopAction'" />
 
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlementComplete.css">
 
