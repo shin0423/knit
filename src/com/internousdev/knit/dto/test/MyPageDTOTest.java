@@ -661,6 +661,27 @@ public class MyPageDTOTest {
 		assertEquals(expected, dto.getFirstNameKana());
 	}
 
+//sexに関するテスト get
+	@Test
+	public void testIsSex1() {
+		MyPageDTO dto = new MyPageDTO();
+		boolean expected = true;
+
+		dto.setSex(expected);
+		boolean actual=dto.isSex();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testIsSex2() {
+		MyPageDTO dto = new MyPageDTO();
+		boolean expected = false;
+
+		dto.setSex(expected);
+		boolean actual=dto.isSex();
+		assertEquals(expected, actual);
+	}
+
 //Emailに関するテスト get
 	@Test
 	public void testGetEmail1() {

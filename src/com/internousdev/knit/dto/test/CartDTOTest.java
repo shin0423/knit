@@ -2324,147 +2324,190 @@ public class CartDTOTest {
 		assertEquals(expected, actual);
 	}
 
-	//登録日に関するテスト
-		@Test
-		public void testGetRegistDate1() {
-			CartDTO dto = new CartDTO();
-			Date expected = null;
+	//登録日に関するテスト get
+	@Test
+	public void testGetRegistDate1() {
+		CartDTO dto = new CartDTO();
+		Date expected = null;
 
-			dto.setRegistDate(expected);
-			Date actual = dto.getRegistDate();
+		dto.setRegistDate(expected);
+		Date actual = dto.getRegistDate();
 
-			assertEquals(expected,actual);
-		}
+		assertEquals(expected,actual);
+	}
 
-		@Test
-		public void testGetRegistDate2() throws ParseException {
-			CartDTO dto = new CartDTO();
+	@Test
+	public void testGetRegistDate2() throws ParseException {
+		CartDTO dto = new CartDTO();
 
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-			Date expected =  sdf.parse("20180220 12:00:00");
-			dto.setRegistDate(expected);
-			assertEquals(expected, dto.getRegistDate());
-		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected =  sdf.parse("20180220 12:00:00");
+		dto.setRegistDate(expected);
+		assertEquals(expected, dto.getRegistDate());
+	}
 
+//set 登録日
+	@Test
+	public void testSetRegistDate1() {
+		CartDTO dto = new CartDTO();
+		Date expected = null;
+
+		dto.setRegistDate(expected);
+		Date actual = dto.getRegistDate();
+
+		assertEquals(expected,actual);
+	}
+
+	@Test
+	public void testSetRegistDate2() throws ParseException {
+		CartDTO dto = new CartDTO();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected =  sdf.parse("20180220 12:00:00");
+		dto.setRegistDate(expected);
+		assertEquals(expected, dto.getRegistDate());
+	}
 
 
 	//更新日に関するテスト
-		@Test
-		public void testGetUpdateDate1() {
-			CartDTO dto = new CartDTO();
-			Date expected = null;
+	@Test
+	public void testGetUpdateDate1() {
+		CartDTO dto = new CartDTO();
+		Date expected = null;
 
-			dto.setUpdateDate(expected);
-			Date actual = dto.getUpdateDate();
+		dto.setUpdateDate(expected);
+		Date actual = dto.getUpdateDate();
 
-			assertEquals(expected,actual);
-		}
+		assertEquals(expected,actual);
+	}
 
-		@Test
-		public void testGetUpdateDate2() throws ParseException {
-			CartDTO dto = new CartDTO();
+	@Test
+	public void testGetUpdateDate2() throws ParseException {
+		CartDTO dto = new CartDTO();
 
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-			Date expected =  sdf.parse("20180220 12:00:00");
-			dto.setUpdateDate(expected);
-			assertEquals(expected, dto.getUpdateDate());
-		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected =  sdf.parse("20180220 12:00:00");
+		dto.setUpdateDate(expected);
+		assertEquals(expected, dto.getUpdateDate());
+	}
+
+//set 更新日
+	@Test
+	public void testSetUpdateDate1() {
+		CartDTO dto = new CartDTO();
+		Date expected = null;
+
+		dto.setUpdateDate(expected);
+		Date actual = dto.getUpdateDate();
+
+		assertEquals(expected,actual);
+	}
+
+	@Test
+	public void testSetUpdateDate2() throws ParseException {
+		CartDTO dto = new CartDTO();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected =  sdf.parse("20180220 12:00:00");
+		dto.setUpdateDate(expected);
+		assertEquals(expected, dto.getUpdateDate());
+	}
 
 //合計に関するテスト get
-		@Test
-		public void testGetTotal1() {
-			CartDTO dto = new CartDTO();
-			int expected = 0;
+	@Test
+	public void testGetTotal1() {
+		CartDTO dto = new CartDTO();
+		int expected = 0;
 
-			dto.setTotal(expected);
-			assertEquals(expected, dto.getTotal());
+		dto.setTotal(expected);
+		assertEquals(expected, dto.getTotal());
+	}
+
+	@Test
+	public void testGetTotal2() {
+		CartDTO dto = new CartDTO();
+		int expected = 9999999;
+
+		dto.setTotal(expected);
+		assertEquals(expected, dto.getTotal());
+	}
+	@Test
+	public void testGetTotal3() {
+		CartDTO dto = new CartDTO();
+		int expected = -9999999;
+
+		dto.setTotal(expected);
+		assertEquals(expected, dto.getTotal());
+	}
+	@Test
+	public void testGetTotal4() throws Exception {
+		CartDTO dto = new CartDTO();
+		try {
+		     int postalMax = 10000000;
+		     dto.setTotal(postalMax);
+
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "For input string: \"10000000.00\"");
 		}
+	}
+	@Test
+	public void testGetTotal5() throws Exception {
+		CartDTO dto = new CartDTO();
+	    try{
+	    	int postalMin = -10000000;
+	    	dto.setTotal(postalMin);
 
-		@Test
-		public void testGetTotal2() {
-			CartDTO dto = new CartDTO();
-			int expected = 9999999;
+	    }catch (RuntimeException e) {
+	    	assertEquals(e.getMessage(), "For input string: \"-10000000.00\"");
+	    }
+	}
 
-			dto.setTotal(expected);
-			assertEquals(expected, dto.getTotal());
+	//setトータル
+	@Test
+	public void testSetTotal1() {
+		CartDTO dto = new CartDTO();
+		int expected = 0;
+
+		dto.setTotal(expected);
+		assertEquals(expected, dto.getTotal());
+	}
+
+	@Test
+	public void testSetTotal2() {
+		CartDTO dto = new CartDTO();
+		int expected = 9999999;
+
+		dto.setTotal(expected);
+		assertEquals(expected, dto.getTotal());
+	}
+	@Test
+	public void testSetTotal3() {
+		CartDTO dto = new CartDTO();
+		int expected = -9999999;
+
+		dto.setTotal(expected);
+		assertEquals(expected, dto.getTotal());
+	}
+	@Test
+	public void testSetTotal4() throws Exception {
+		CartDTO dto = new CartDTO();
+		try {
+		     int postalMax = 10000000;
+		     dto.setTotal(postalMax);
+
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "For input string: \"10000000.00\"");
 		}
-		@Test
-		public void testGetTotal3() {
-			CartDTO dto = new CartDTO();
-			int expected = -9999999;
+	}
+	@Test
+	public void testSetTotal5() throws Exception {
+		CartDTO dto = new CartDTO();
+	    try{
+	    	int postalMin = -10000000;
+	    	dto.setTotal(postalMin);
 
-			dto.setTotal(expected);
-			assertEquals(expected, dto.getTotal());
-		}
-		@Test
-		public void testGetTotal4() throws Exception {
-			CartDTO dto = new CartDTO();
-			try {
-			     int postalMax = 10000000;
-			     dto.setTotal(postalMax);
-
-			} catch (RuntimeException e) {
-				assertEquals(e.getMessage(), "For input string: \"10000000.00\"");
-			}
-		}
-		@Test
-		public void testGetTotal5() throws Exception {
-			CartDTO dto = new CartDTO();
-		    try{
-		    	int postalMin = -10000000;
-		    	dto.setTotal(postalMin);
-
-		    }catch (RuntimeException e) {
-		    	assertEquals(e.getMessage(), "For input string: \"-10000000.00\"");
-		    }
-		}
-
-		//setトータル
-		@Test
-		public void testSetTotal1() {
-			CartDTO dto = new CartDTO();
-			int expected = 0;
-
-			dto.setTotal(expected);
-			assertEquals(expected, dto.getTotal());
-		}
-
-		@Test
-		public void testSetTotal2() {
-			CartDTO dto = new CartDTO();
-			int expected = 9999999;
-
-			dto.setTotal(expected);
-			assertEquals(expected, dto.getTotal());
-		}
-		@Test
-		public void testSetTotal3() {
-			CartDTO dto = new CartDTO();
-			int expected = -9999999;
-
-			dto.setTotal(expected);
-			assertEquals(expected, dto.getTotal());
-		}
-		@Test
-		public void testSetTotal4() throws Exception {
-			CartDTO dto = new CartDTO();
-			try {
-			     int postalMax = 10000000;
-			     dto.setTotal(postalMax);
-
-			} catch (RuntimeException e) {
-				assertEquals(e.getMessage(), "For input string: \"10000000.00\"");
-			}
-		}
-		@Test
-		public void testSetTotal5() throws Exception {
-			CartDTO dto = new CartDTO();
-		    try{
-		    	int postalMin = -10000000;
-		    	dto.setTotal(postalMin);
-
-		    }catch (RuntimeException e) {
-		    	assertEquals(e.getMessage(), "For input string: \"-10000000.00\"");
-		    }
-		}
+	    }catch (RuntimeException e) {
+	    	assertEquals(e.getMessage(), "For input string: \"-10000000.00\"");
+	    }
+	}
 }
