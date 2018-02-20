@@ -20,10 +20,14 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	private String email;
 	private String telNumber;
 	private String userAddress;
+	private String token;
 
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException{
+		if(!(token.equals(session.get("token").toString()))){
+			return "errorPage";
+		}
 		String result = ERROR;
 		//入力された値の確認
 		System.out.println(userId);

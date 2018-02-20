@@ -3,6 +3,7 @@ package com.internousdev.knit.action;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.UserCreateConfirmDAO;
@@ -33,6 +34,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	private String errorMessage;
 
+	private String token;
 
 	private ArrayList<String> errMsgList = new ArrayList<>();
 
@@ -41,11 +43,17 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public Map<String,Object> session;
 
 //ユーザー情報が条件に合うかの確認と登録
+	@SuppressWarnings("static-access")
 	public String execute(){
 		if(userCreateConfirmDAO.getUserId(userId)){
 			setErrorMessage("入力されたIDがすでに使われています。");
 			return ERROR;
 		}
+		//ランダム文字列を作るためにインスタンス化
+				RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		setToken(token);
+		session.put("token", token);
 		String result = SUCCESS;
 
 		InputChecker i = new InputChecker();
@@ -218,6 +226,12 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	public void setErrMsgList(ArrayList<String> errMsgList) {
 		this.errMsgList = errMsgList;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 
