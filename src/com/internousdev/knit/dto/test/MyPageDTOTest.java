@@ -12,7 +12,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName1() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
+		String expected = "null";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -21,7 +21,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName2() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
+		String expected = "";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -30,7 +30,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName3() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
+		String expected = " ";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -39,7 +39,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName4() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "null";
+		String expected = "　";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -48,7 +48,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName5() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "";
+		String expected = "abc123";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -57,7 +57,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName6() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = " ";
+		String expected = "あいう１２３";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -66,7 +66,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName7() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "　";
+		String expected = "abc123あいう１２３";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -75,33 +75,6 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFirstName8() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123";
-
-		dto.setFirstName(expected);
-		assertEquals(expected, dto.getFirstName());
-	}
-
-	@Test
-	public void testGetFirstName9() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "あいう１２３";
-
-		dto.setFirstName(expected);
-		assertEquals(expected, dto.getFirstName());
-	}
-
-	@Test
-	public void testGetFirstName10() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３";
-
-		dto.setFirstName(expected);
-		assertEquals(expected, dto.getFirstName());
-	}
-
-	@Test
-	public void testGetFirstName11() {
-		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３漢字";
 
 		dto.setFirstName(expected);
@@ -109,7 +82,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstName12() {
+	public void testGetFirstName9() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
@@ -121,7 +94,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName1() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
+		String expected = "null";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -130,7 +103,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName2() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
+		String expected = "";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -139,7 +112,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName3() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
+		String expected = " ";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -148,7 +121,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName4() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "null";
+		String expected = "　";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -157,7 +130,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName5() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "";
+		String expected = "abc123";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -166,7 +139,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName6() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = " ";
+		String expected = "あいう１２３";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -175,7 +148,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName7() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "　";
+		String expected = "abc123あいう１２３";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -184,7 +157,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName8() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123";
+		String expected = "abc123あいう１２３漢字";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
@@ -193,68 +166,14 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstName9() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "あいう１２３";
-
-		dto.setFirstName(expected);
-		assertEquals(expected, dto.getFirstName());
-	}
-
-	@Test
-	public void testSetFirstName10() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３";
-
-		dto.setFirstName(expected);
-		assertEquals(expected, dto.getFirstName());
-	}
-
-	@Test
-	public void testSetFirstName11() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３漢字";
-
-		dto.setFirstName(expected);
-		assertEquals(expected, dto.getFirstName());
-	}
-
-	@Test
-	public void testSetFirstName12() {
-		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
 		dto.setFirstName(expected);
 		assertEquals(expected, dto.getFirstName());
 	}
-//FamilyNameKanaに関するテスト
+//FamilyNameKanaに関するテスト get
 	@Test
 	public void testGetFamilyNameKana1() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
-
-		dto.setFamilyNameKana(expected);
-		assertEquals(expected, dto.getFamilyNameKana());
-	}
-
-	@Test
-	public void testGetFamilyNameKana2() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
-
-		dto.setFamilyNameKana(expected);
-		assertEquals(expected, dto.getFamilyNameKana());
-	}
-
-	@Test
-	public void testGetFamilyNameKanae3() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
-
-		dto.setFamilyNameKana(expected);
-		assertEquals(expected, dto.getFamilyNameKana());
-	}
-
-	@Test
-	public void testGetFamilyNameKana4() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "null";
 
@@ -263,7 +182,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana5() {
+	public void testGetFamilyNameKana2() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "";
 
@@ -272,7 +191,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana6() {
+	public void testGetFamilyNameKana3() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = " ";
 
@@ -281,7 +200,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKanae7() {
+	public void testGetFamilyNameKanae4() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "　";
 
@@ -290,7 +209,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana8() {
+	public void testGetFamilyNameKana5() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123";
 
@@ -299,7 +218,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana9() {
+	public void testGetFamilyNameKana6() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "あいう１２３";
 
@@ -308,7 +227,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana10() {
+	public void testGetFamilyNameKana7() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３";
 
@@ -317,7 +236,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana11() {
+	public void testGetFamilyNameKana8() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３漢字";
 
@@ -326,7 +245,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyNameKana12() {
+	public void testGetFamilyNameKana9() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
@@ -338,7 +257,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyNameKana1() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
+		String expected = "null";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
@@ -347,25 +266,25 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyNameKana2() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
+		String expected = "";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
 	}
 
 	@Test
-	public void testSetFamilyNameKanae3() {
+	public void testSetFamilyNameKana3() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
+		String expected = " ";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
 	}
 
 	@Test
-	public void testSetFamilyNameKana4() {
+	public void testSetFamilyNameKanae4() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "null";
+		String expected = "　";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
@@ -374,7 +293,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyNameKana5() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "";
+		String expected = "abc123";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
@@ -383,16 +302,16 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyNameKana6() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = " ";
+		String expected = "あいう１２３";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
 	}
 
 	@Test
-	public void testSetFamilyNameKanae7() {
+	public void testSetFamilyNameKana7() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "　";
+		String expected = "abc123あいう１２３";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
@@ -401,7 +320,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyNameKana8() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123";
+		String expected = "abc123あいう１２３漢字";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
@@ -410,69 +329,15 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyNameKana9() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "あいう１２３";
-
-		dto.setFamilyNameKana(expected);
-		assertEquals(expected, dto.getFamilyNameKana());
-	}
-
-	@Test
-	public void testSetFamilyNameKana10() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３";
-
-		dto.setFamilyNameKana(expected);
-		assertEquals(expected, dto.getFamilyNameKana());
-	}
-
-	@Test
-	public void testSetFamilyNameKana11() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３漢字";
-
-		dto.setFamilyNameKana(expected);
-		assertEquals(expected, dto.getFamilyNameKana());
-	}
-
-	@Test
-	public void testSetFamilyNameKana12() {
-		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
 		dto.setFamilyNameKana(expected);
 		assertEquals(expected, dto.getFamilyNameKana());
 	}
 
-//FirstNameKanaに関するテスト
+//FirstNameKanaに関するテスト get
 	@Test
 	public void testGetFirstNameKana1() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
-
-		dto.setFirstNameKana(expected);
-		assertEquals(expected, dto.getFirstNameKana());
-	}
-
-	@Test
-	public void testGetFirstNameKana2() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
-
-		dto.setFirstNameKana(expected);
-		assertEquals(expected, dto.getFirstNameKana());
-	}
-
-	@Test
-	public void testGetFirstNameKanae3() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
-
-		dto.setFirstNameKana(expected);
-		assertEquals(expected, dto.getFirstNameKana());
-	}
-
-	@Test
-	public void testGetFirstNameKana4() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "null";
 
@@ -481,7 +346,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana5() {
+	public void testGetFirstNameKana2() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "";
 
@@ -490,7 +355,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana6() {
+	public void testGetFirstNameKana3() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = " ";
 
@@ -499,7 +364,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana7() {
+	public void testGetFirstNameKana4() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "　";
 
@@ -508,7 +373,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana8() {
+	public void testGetFirstNameKana5() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123";
 
@@ -517,7 +382,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana9() {
+	public void testGetFirstNameKana6() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "あいう１２３";
 
@@ -526,7 +391,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstyNameKana10() {
+	public void testGetFirstyNameKana7() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３";
 
@@ -535,7 +400,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana11() {
+	public void testGetFirstNameKana8() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３漢字";
 
@@ -544,7 +409,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFirstNameKana12() {
+	public void testGetFirstNameKana9() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
@@ -556,7 +421,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstNameKana1() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
+		String expected = "null";
 
 		dto.setFirstNameKana(expected);
 		assertEquals(expected, dto.getFirstNameKana());
@@ -565,33 +430,6 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFirstNameKana2() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
-
-		dto.setFirstNameKana(expected);
-		assertEquals(expected, dto.getFirstNameKana());
-	}
-
-	@Test
-	public void testSetFirstNameKanae3() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
-
-		dto.setFirstNameKana(expected);
-		assertEquals(expected, dto.getFirstNameKana());
-	}
-
-	@Test
-	public void testSetFirstNameKana4() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "null";
-
-		dto.setFirstNameKana(expected);
-		assertEquals(expected, dto.getFirstNameKana());
-	}
-
-	@Test
-	public void testSetFirstNameKana5() {
-		MyPageDTO dto = new MyPageDTO();
 		String expected = "";
 
 		dto.setFirstNameKana(expected);
@@ -599,7 +437,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstNameKana6() {
+	public void testSetFirstNameKana3() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = " ";
 
@@ -608,7 +446,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstNameKana7() {
+	public void testSetFirstNameKana4() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "　";
 
@@ -617,7 +455,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstNameKana8() {
+	public void testSetFirstNameKana5() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123";
 
@@ -626,7 +464,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstNameKana9() {
+	public void testSetFirstNameKana6() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "あいう１２３";
 
@@ -635,7 +473,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstyNameKana10() {
+	public void testSetFirstyNameKana7() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３";
 
@@ -644,7 +482,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstNameKana11() {
+	public void testSetFirstNameKana8() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３漢字";
 
@@ -653,7 +491,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFirstNameKana12() {
+	public void testSetFirstNameKana9() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
@@ -1558,7 +1396,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName1() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
+		String expected = "null";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1567,7 +1405,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName2() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
+		String expected = "";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1576,7 +1414,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName3() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
+		String expected = " ";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1585,7 +1423,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName4() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "null";
+		String expected = "　";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1594,7 +1432,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName5() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "";
+		String expected = "abc123";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1603,7 +1441,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName6() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = " ";
+		String expected = "あいう１２３";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1612,7 +1450,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName7() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "　";
+		String expected = "abc123あいう１２３";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1621,33 +1459,6 @@ public class MyPageDTOTest {
 	@Test
 	public void testGetFamilyName8() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123";
-
-		dto.setFamilyName(expected);
-		assertEquals(expected, dto.getFamilyName());
-	}
-
-	@Test
-	public void testGetFamilyName9() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "あいう１２３";
-
-		dto.setFamilyName(expected);
-		assertEquals(expected, dto.getFamilyName());
-	}
-
-	@Test
-	public void testGetFamilyName10() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３";
-
-		dto.setFamilyName(expected);
-		assertEquals(expected, dto.getFamilyName());
-	}
-
-	@Test
-	public void testGetFamilyName11() {
-		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３漢字";
 
 		dto.setFamilyName(expected);
@@ -1655,7 +1466,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testGetFamilyName12() {
+	public void testGetFamilyName9() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
@@ -1667,7 +1478,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName1() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "0";
+		String expected = "null";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1676,7 +1487,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName2() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "2147483647";
+		String expected = "";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1685,7 +1496,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName3() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "-2147483647";
+		String expected = " ";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1694,7 +1505,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName4() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "null";
+		String expected = "　";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1703,7 +1514,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName5() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "";
+		String expected = "abc123";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1712,7 +1523,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName6() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = " ";
+		String expected = "あいう１２３";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1721,7 +1532,7 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName7() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "　";
+		String expected = "abc123あいう１２３";
 
 		dto.setFamilyName(expected);
 		assertEquals(expected, dto.getFamilyName());
@@ -1730,33 +1541,6 @@ public class MyPageDTOTest {
 	@Test
 	public void testSetFamilyName8() {
 		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123";
-
-		dto.setFamilyName(expected);
-		assertEquals(expected, dto.getFamilyName());
-	}
-
-	@Test
-	public void testSetFamilyName9() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "あいう１２３";
-
-		dto.setFamilyName(expected);
-		assertEquals(expected, dto.getFamilyName());
-	}
-
-	@Test
-	public void testSetFamilyName10() {
-		MyPageDTO dto = new MyPageDTO();
-		String expected = "abc123あいう１２３";
-
-		dto.setFamilyName(expected);
-		assertEquals(expected, dto.getFamilyName());
-	}
-
-	@Test
-	public void testSetFamilyName11() {
-		MyPageDTO dto = new MyPageDTO();
 		String expected = "abc123あいう１２３漢字";
 
 		dto.setFamilyName(expected);
@@ -1764,7 +1548,7 @@ public class MyPageDTOTest {
 	}
 
 	@Test
-	public void testSetFamilyName12() {
+	public void testSetFamilyName9() {
 		MyPageDTO dto = new MyPageDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
