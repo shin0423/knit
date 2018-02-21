@@ -14,7 +14,7 @@
 <br>
 <div class="message">宛先確認</div>
 
- <div class="form_conf">
+
 
   <s:form action="CreateAddressAction">
 
@@ -72,7 +72,7 @@
 </tr>
 
 </table>
-</div>
+
 
 
 
@@ -87,10 +87,12 @@
 <s:hidden name="userAddress" value="%{userAddress}"/>
    <button class="button" type="submit">登録情報を確定</button>
 
+    <s:hidden name="token" value="%{token}" />
+
 
   </s:form>
 
 
-  </div>
+
  </body>
 </html>

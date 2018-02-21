@@ -79,6 +79,9 @@
 		<s:form action="PutItemIntoCartAction" >
 			<s:hidden name="itemId" value="%{itemId}" />
 			<s:hidden name="price" value="%{price}"/>
+
+			   <s:hidden name="token" value="%{token}" />
+
 			<tr>
 			<td>
 				<s:if test="itemStock <= 5 && itemStock >= 1">

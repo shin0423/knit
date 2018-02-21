@@ -50,6 +50,7 @@
 	<action name="CreateAddressCompleteAction" class="com.internousdev.knit.action.CreateAddressCompleteAction" method="execute">
 		<result name="success">createAddressComplete.jsp</result>
 		<result name="error">createAddress.jsp</result>
+		<result name="errorPage">errorpage.jsp</result>
 	</action>
 
 	<!-- ユーザー登録 -->
@@ -65,7 +66,7 @@
 
     <action name="UserCreateCompleteAction" class="com.internousdev.knit.action.UserCreateCompleteAction" method="execute">
   	  <result name="success">userCreateComplete.jsp</result>
-  	  <result name="errorPage">errorPage.jsp</result>
+  	  <result name="errorPage">errorpage.jsp</result>
     </action>
 
     <!-- ユーザー情報変更 -->
@@ -123,10 +124,11 @@
 	</action>
 	<action name="CartDeleteAction" class="com.internousdev.knit.action.CartDeleteAction" method="execute">
 		<result name="success">cart.jsp</result>
+		<result name="error">cart.jsp</result>
 	</action>
 	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
 		<result name="success">cart.jsp</result>
-		<result name="errorPage">errorPage.jsp</result>
+		<result name="errorPage">errorpage.jsp</result>
 	</action>
 	<action name="GoLoginAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
 		<result name="success">login.jsp</result>

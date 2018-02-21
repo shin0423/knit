@@ -22,9 +22,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 	public String execute()throws SQLException{
 
-		if(!(token.equals(session.get("token").toString()))){
-			return "errorPage";
-		}
+
 
 		List<String> deleteCartList = new ArrayList<>();
 		CartDAO dao=new CartDAO();

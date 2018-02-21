@@ -49,6 +49,8 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 	private boolean cartFlg;
 
+	private String token;
+
 
 
 
@@ -57,6 +59,14 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 	public String execute() throws SQLException{
 		String result = ERROR;
+
+		//System.out.println("tokenの値"+token);
+//		if(!(token.equals(session.get("token").toString()))){
+//			System.out.println("putitemトークン"+token);
+//			System.out.println("こっちきてくれええええええ");
+//			return "errorPage";
+//		}
+
 
 		if(session.containsKey("userId")){
 
@@ -196,6 +206,14 @@ System.out.println("destinationリスト"+destinationList.size());
 
 	public void setOneDestinationList(ArrayList<DestinationInfoDTO> oneDestinationList) {
 		this.oneDestinationList = oneDestinationList;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 

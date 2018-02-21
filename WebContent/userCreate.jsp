@@ -25,43 +25,43 @@
    <table>
       <tr>
       <th>ユーザーID(必須)</th>
-       <td><s:textfield name="userId" value="" placeholder="IDを入力"/></td>
+       <td><s:textfield name="userId" value="%{userId}" placeholder="IDを入力"/></td>
       </tr>
       <tr>
       <th>パスワード(必須)</th>
-       <td><s:password name="password" value="" placeholder="1～16文字の半角英数字"/></td>
+       <td><s:password name="password" value="%{password}" placeholder="1～16文字の半角英数字"/></td>
       </tr>
       <tr>
       <th>姓(必須)</th>
-       <td><s:textfield name="familyName" value="" placeholder=""/></td>
+       <td><s:textfield name="familyName" value="%{familyName}" placeholder=""/></td>
       </tr>
       <tr>
       <th>名(必須)</th>
-       <td><s:textfield name="firstName" value="" placeholder=""/></td>
+       <td><s:textfield name="firstName" value="%{firstName}" placeholder=""/></td>
       </tr>
       <tr>
       <th>せい(必須)</th>
-       <td><s:textfield name="familyNameKana" value="" placeholder="ひらがなのみ"/></td>
+       <td><s:textfield name="familyNameKana" value="%{familyNameKana}" placeholder="ひらがなのみ"/></td>
       </tr>
       <tr>
       <th>めい(必須)</th>
-       <td><s:textfield name="firstNameKana" value="" placeholder="ひらがなのみ" /></td>
+       <td><s:textfield name="firstNameKana" value="%{firstNameKana}" placeholder="ひらがなのみ" /></td>
       </tr>
       <tr>
       <th>性別(必須)</th>
-      <td><s:radio name="sex" list="#{'0': '男性', '1': '女性'}" value="0" /></td>
+      <td><s:radio name="sex" list="#{'0': '男性', '1': '女性'}" value="%{sex)" checked="checked" /></td>
       </tr>
       <tr>
       <th>E-mail(必須)</th>
-      <td><s:textfield name="email" value="" placeholder="***@***"/></td>
+      <td><s:textfield name="email" value="%{email}" placeholder="***@***"/></td>
       </tr>
       <tr>
       <th>電話番号(任意)</th>
-       <td><s:textfield name="telNumber" value="" /></td>
+       <td><s:textfield name="telNumber" value="%{telNumber}" /></td>
       </tr>
       <tr>
       <th>住所(任意)</th>
-       <td><s:textfield name="userAddress" value="" /></td>
+       <td><s:textfield name="userAddress" value="%{userAddress}" /></td>
        </tr>
    </table>
 

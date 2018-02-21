@@ -3,6 +3,7 @@ package com.internousdev.knit.action;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.util.InputChecker;
@@ -18,12 +19,22 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 	private String telNumber;
 	private String userAddress;
 	private ArrayList<String> errMsgList = new ArrayList<>();
-	
+
+	private String token;
+
 
 	private Map<String,Object> session;
 
 	public String execute(){
 		String result = SUCCESS;
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+	token = rndStr.randomAlphabetic(10);
+	System.out.println("トークン値"+token);
+	setToken(token);
+	session.put("token", token);
+
+
 
 		//  確認用プログラム
 
@@ -141,6 +152,14 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 

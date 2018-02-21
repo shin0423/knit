@@ -3,6 +3,7 @@ package com.internousdev.knit.action;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AddressDataDAO;
@@ -21,10 +22,26 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 	private String telNumber;
 	private String userAddress;
 
+	private String token;
+
 	DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 
 
 	public String execute() throws SQLException{
+
+		if(!(token.equals(session.get("token").toString()))){
+			System.out.println("こっちきてくれ");
+			return "errorPage";
+		}else {
+			System.out.println("こっちこないでええええええええ");
+		}
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
+
 		String result = ERROR;
 //		System.out.println("エラーです");
 
@@ -39,7 +56,7 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
-		
+
 
 		System.out.println("登録する値一覧（CreateAddressCompleteAction）--------------");
 		System.out.println(dto.getUserId());
@@ -145,5 +162,13 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 }

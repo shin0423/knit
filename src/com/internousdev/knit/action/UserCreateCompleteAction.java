@@ -3,6 +3,7 @@ package com.internousdev.knit.action;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.UserCreateCompleteDAO;
@@ -29,6 +30,14 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		if(!(token.equals(session.get("token").toString()))){
 			return "errorPage";
 		}
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
+
+
+
 		String result = ERROR;
 		//入力された値の確認
 		System.out.println(userId);

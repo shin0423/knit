@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
@@ -37,9 +38,21 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	private int totalPrice=0;
 
 
+
 	public String execute()throws SQLException{
 
 
+		if(!(token.equals(session.get("token").toString()))){
+			System.out.println("putitemトークン"+token);
+			System.out.println("こっちきてくれええええええ");
+			return "errorPage";
+		}
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 
 
 
