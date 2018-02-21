@@ -80,6 +80,11 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			}
 		}
 
+		if(newPassword.equals("")&&newEmail.equals("")){
+			setErrorMessage("パスワードかメールアドレスどちらかは変更してください");
+			result = ERROR;
+		}
+
 		return result;
 	}
 //ゲッターセッターの設定
