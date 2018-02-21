@@ -7,8 +7,10 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.BuyItemInfoDAO;
 import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
+import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.CartDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -16,6 +18,8 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 	private Map<String,Object>session;
 	private ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
+
+	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 
 	//miniカートのlist
 		private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
@@ -64,6 +68,14 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 			System.out.println("不正操作我絶対許");
 			return "errorPage";
 		}
+
+		BuyItemInfoDAO buyItemInfoDAO = new BuyItemInfoDAO();
+		buyItemDTO=buyItemInfoDAO.selectBuyItemInfo(itemId);
+
+		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
+			return "errorPage";
+	}
+
 		CartDTO dto=new CartDTO();
 		CartDAO dao=new CartDAO();
 		dto.setItemId(Integer.parseInt(itemId.toString()));
@@ -102,6 +114,9 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 				session.put("miniCartList", miniCartList);
 				System.out.println("minilistのサイズ"+miniCartList);
 				cartList = dao.showUserCartList(session.get("userId").toString());
+
+
+
 				dao.changeItemStock(itemCount, Integer.parseInt(itemId));
 			} else {
 				count = dao.updateItemCount(session.get("userId").toString(), Integer.parseInt(itemId),
