@@ -29,15 +29,11 @@
 
 
 
-
-
-	.bottan{
-text-align : center ;
-}
+/*---------------------------------*/
 
 .button {
-	margin-left: auto;
- 	margin-right: auto;
+
+ 	margin:0 auto;
   	display: inline-block;
   	width: 200px;
   	height: 54px;
@@ -82,10 +78,14 @@ text-align : center ;
 .button:hover::after {
   opacity: 1;
 }
+#box_button{
+	text-align:center;
+	white-space:nowrap;
+	clear:both;
+	width:100%;
 
+}
 
-
-
-
+/*---------------------------------*/
 
 

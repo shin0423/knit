@@ -146,7 +146,7 @@
 				<s:hidden name="itemId" value="%{itemId}" />
 				<td><s:a href="javascrrpt:void(0)"
 											onclick="document.ReviewAction.submit();return false;"
-											class="button"><strong>レビューする</strong></s:a></td>
+											class="butto"><strong>レビューする</strong></s:a></td>
 			</tr>
 
 			</table>
@@ -175,7 +175,7 @@
 				<s:hidden name="itemId" value="%{itemId}" />
 				<s:a href="javascrrpt:void(0)"
 											onclick="document.ReviewDeleteAction.submit();return false;"
-											class="button">削除</s:a>
+											class="butto">削除</s:a>
 			</s:form>
 		</div>
 	</s:if>

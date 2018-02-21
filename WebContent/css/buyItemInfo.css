@@ -28,6 +28,7 @@ margin-top:100px;
 position:relative;
 top:0px;
 left:0px;
+z-index:-999999;
 }
 
 p.border{
@@ -115,6 +116,55 @@ left:600px
 .button:hover::after {
   opacity: 1;
 }
+
+/*-------------------------*/
+
+.butto {
+  display: inline-block;
+  width: 140px;
+  height: 43px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 40px;
+  outline: none;
+}
+.butto::before,
+.butto::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+.butto,
+.butto::before,
+.butto::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.butto {
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+  border: 2px solid #333;
+  color: #333;
+  line-height: 40px;
+}
+.butto::after {
+  top: 4px;
+  left: 4px;
+  width: 128px;
+  height: 31px;
+  border: 2px solid #333;
+  opacity: 0;
+}
+.butto:hover::after {
+  opacity: 1;
+}
+
+/*-----------------------------------------*/
 .sideBar{
 	height:100%;
 	width:200px;
@@ -124,6 +174,7 @@ left:600px
 	font-size:15px;
 	border-right:1px solid #C0C0C0;
 	background-color:#FFF;
+	z-index:9999999999;
 
 }
 
@@ -152,10 +203,10 @@ left:600px
 	position:relative;
 	left:100px;
 	display:flex;
-	
+
 }
 .itemImageUrl{
-	 width:70%; 
+	 width:70%;
 	 height:100%;
 }
 a.itemImageUrl{

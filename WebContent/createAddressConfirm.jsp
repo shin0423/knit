@@ -27,7 +27,6 @@
 <s:hidden name="userAddress" value="%{userAddress}"/>
 
 
-<button class="button" type="submit">戻る</button>
 
 
   </s:form>
@@ -85,11 +84,15 @@
 <s:hidden name="email" value="%{email}"/>
 <s:hidden name="telNumber" value="%{telNumber}" />
 <s:hidden name="userAddress" value="%{userAddress}"/>
+<div id="box_button">
    <button class="button" type="submit">登録情報を確定</button>
 
     <s:hidden name="token" value="%{token}" />
 
+       <s:a href="javascrrpt:void(0)"
+onclick="document.CreateAddressAction.submit();return false;" class="button">戻る</s:a>
 
+</div>
   </s:form>
 
 
