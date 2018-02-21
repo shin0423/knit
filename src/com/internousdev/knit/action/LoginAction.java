@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
@@ -32,12 +33,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private int totalPrice;
 	private Map<String, Object> session;
 	private List<String> errorList = new ArrayList<>();
+	private String token;
 
 	//ミニカート
 	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
 
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
 		String result = ERROR;
 
@@ -97,6 +100,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				session.put("adminLoginFlg", true);
 				System.out.println("管理者ログイン成功");
 				errorMessage=null;
+				RandomStringUtils rndStr = new RandomStringUtils();
+				token = rndStr.randomAlphabetic(10);
+				System.out.println("トークン値"+token);
+				setToken(token);
+				session.put("token", token);
 				result = "admin";
 
 				/**
@@ -297,5 +305,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setErrorList(List<String> errorList) {
 		this.errorList = errorList;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AdmiDAO;
@@ -23,8 +24,19 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private List<BuyItemDTO> buyItemList = new ArrayList<>();
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 	public Map<String,Object> session;
+	private String token;
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		//ランダムトークンチェック
+		if(!(token.equals(session.get("token").toString()))){
+			return ERROR;
+		}
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 		int res = admiDAO.deleteAdminItemInfo(itemId);
 
 		if (res > 0) {
@@ -59,6 +71,14 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 
 	public void setCategoryList(List<CategoryDTO> categoryList) {
 		this.categoryList = categoryList;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }
