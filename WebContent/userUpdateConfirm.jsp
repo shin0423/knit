@@ -42,7 +42,7 @@
   </table>
    <br>
    <div id="button">
-   <button type ="button" onclick ="location.href='/knit/userUpdate.jsp'">戻る</button>
+   <button type ="button" onclick ="location.href='/knit/UserUpdateAction'">戻る</button>
    <button type="submit">登録情報を確定</button>
    </div>
   </s:form>

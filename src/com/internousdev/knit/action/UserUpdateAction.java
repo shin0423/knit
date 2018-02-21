@@ -12,6 +12,8 @@ public class UserUpdateAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String result = "login";
 		if(session.containsKey("userId")){
+			session.remove("newPassword");
+			session.remove("newEmail");
 			result = SUCCESS;
 		}else{
 			result = "back";
