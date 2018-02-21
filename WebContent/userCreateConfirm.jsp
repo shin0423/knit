@@ -94,7 +94,7 @@
 	   <s:param name="firstName" value="%{firstName}"/>
 	   <s:param name="familyNameKana" value="%{familyNameKana}"/>
 	   <s:param name="firstNameKana" value="%{firstNameKana}"/>
-	   <s:param name="sex" value="%{sex}" valuetype="post"/>
+	   <s:param name="sex" value="%{sex}"/>
 	   <s:param name="email" value="%{email}"/>
 	   <s:param name="telNumber" value="%{telNumber}"/>
        <s:param name="userAddress" value="%{userAddress}"/>
