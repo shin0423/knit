@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.util.DBConnector;
@@ -44,11 +46,28 @@ public class BuyItemInfoDAO {
 		return buyItemDTO;
 	}
 
-	public categoryItemSelect(){
-		String sql="SELECT * FROM item_info WHERE item_id=?";
+	public List<BuyItemDTO> categoryItemSelect(int category_id) throws SQLException{
+		String sql="SELECT * FROM item_info WHERE category_id=? ORDER BY RAND() LIMIT 3";
 		DBConnector dbConnector=new DBConnector();
-		BuyItemDTO buyItemDTO = new BuyItemDTO();
+		List<BuyItemDTO> categoryItemList = new ArrayList<>();
 		Connection connection = dbConnector.getConnection();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1,category_id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				BuyItemDTO buyItemDTO = new BuyItemDTO();
+				buyItemDTO.setItemImagePath(resultSet.getString("image_file_path"));
+				buyItemDTO.setItemName(resultSet.getString("item_name"));
+				buyItemDTO.setItemId(resultSet.getInt("item_id"));
+				categoryItemList.add(buyItemDTO);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return categoryItemList;
 	}
 
 }

@@ -21,9 +21,9 @@
   <s:form action="UserUpdateCompleteAction">
   <table>
   <tr>
-   <th>ユーザーID<th>
+   <th>ユーザーID</th>
    <td><s:property value="%{session.userId}"/>
-   <s:hidden name="userId" value="%{session.userId}" /><td>
+   <s:hidden name="userId" value="%{session.userId}" /></td>
    </tr>
    <s:if test="session.newPassword != null" >
    <tr>

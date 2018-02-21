@@ -110,7 +110,7 @@
 			</s:iterator>
 			</div>
 
-
+   <s:hidden name="token" value="%{token}" />
 <!----------------------- 商品削除 ------------------------->
 			<div class="delete">
 
@@ -135,6 +135,7 @@
 			<s:else>
 				<s:if test="! cartList.isEmpty()">
 					<s:form action="SettlementConfirmAction" theme="simple">
+					   <s:hidden name="token" value="%{token}" />
 						<div class="settlement_btn">
 							<s:submit id="set_b" value="決算画面へ" />
 						</div>

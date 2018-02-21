@@ -52,7 +52,7 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 				optionNumber.add(optionCount);
 			}
 		}
-
+		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId()));
 
 		return SUCCESS;
 
@@ -100,6 +100,7 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 	}
 
 
+<<<<<<< HEAD
 	public String getToken() {
 		return token;
 	}
@@ -117,6 +118,15 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+=======
+	public List<BuyItemDTO> getCategoryItemList() {
+		return categoryItemList;
+	}
+
+
+	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
+		this.categoryItemList = categoryItemList;
+>>>>>>> branch 'master' of https://github.com/internousdevwork/knit
 	}
 
 }

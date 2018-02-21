@@ -6,6 +6,7 @@
 <head>
 <link rel="stylesheet" href="./css/buyItemInfo.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <title>商品詳細ページ</title>
 </head>
 <body>
@@ -187,9 +188,31 @@
 		レビュー内容:<s:property value="reviewBody" /><br><br>
 	</s:iterator>
 	</div>
-</div>
-<div class="categoryItem">
 
+<div class="categoryItem">
+	<s:iterator value="categoryItemList">
+
+	<table>
+	<tr>
+		<td>
+		<div >
+				<a href="<s:url action="BuyItemInfoAction"><s:param name="itemId" value="%{itemId}"/></s:url>">
+					<img src='<s:property value="itemImagePath"/>' class="itemImageUrl" >
+				</a>
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<s:property value="itemName"/>
+
+
+		</td>
+	</tr>
+	</table>
+
+	</s:iterator>
+</div>
 </div>
 <jsp:include page="footerInclude.jsp"/>
 </body>

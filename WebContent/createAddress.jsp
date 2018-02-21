@@ -65,7 +65,7 @@
 
 <tr>
    <th>電話番号必須</th>
-   <td><s:textfield name="telNumber" value="%{telNumber}" /></td>
+   <td><s:textfield name="telNumber" value="" /></td>
 </tr>
 
 <tr>

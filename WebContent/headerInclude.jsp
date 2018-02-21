@@ -37,7 +37,7 @@
 			</select>
 			</div>
     <br>金額<br>
-   <s:textfield name="moreUp" class="h_search" placeholder="最低金額"/>円～<s:textfield name="moreDown" class="h_search" placeholder="最高金額" />円
+   <s:textfield name="moreUp" class="h_search" placeholder="最低金額" value=""/>円～<s:textfield name="moreDown" class="h_search" placeholder="最高金額" value=""/>円
    <br>
    <button type="submit" class="SearchB">検索</button>
   </s:form>

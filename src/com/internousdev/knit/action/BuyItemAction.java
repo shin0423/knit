@@ -19,7 +19,16 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	private String moreUp;
 	private String moreDown;
 
+	private String token;
+
 	public String execute() throws SQLException{
+
+
+
+
+		System.out.println("moreUpの値"+moreUp);
+
+		System.out.println("moreDownの値"+moreDown);
 
 		BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
 
@@ -37,6 +46,17 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 			searchList.add("");
 			}
 		System.out.println(searchList.size());
+
+		if (moreUp.equals("")) {
+			System.out.println("moreUp空白"+moreUp);
+
+			moreUp ="0";
+		}
+
+		if (moreDown.equals("")) {
+			System.out.println("moreDown空白"+moreDown);
+			moreDown ="1000000000";
+		}
 
 
 		buyItemAfterSearchList = buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);
@@ -106,5 +126,15 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 
 	public void setMoreDown(String moreDown) {
 		this.moreDown = moreDown;
+	}
+
+
+	public String getToken() {
+		return token;
+	}
+
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 }
