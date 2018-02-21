@@ -49,8 +49,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		/**
 		 * ユーザーIDチェック
 		 */
-		if (userId.equals("")) {
-			errorMessage.add("ユーザーIDが未入力です");
+		if (userId == null || userId.equals("")) {
+			result = ERROR;
 		} else if ( !( 1 <= userId.length() && userId.length() <= 8 ) ) {
 			errorMessage.add("ユーザーIDは1文字以上8文字以下です");
 		} else if ( !( userId.matches("^[0-9a-zA-Z]+$") ) ) {
@@ -60,7 +60,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		/**
 		 * パスワード入力チェック
 		 */
-		if (password.equals("")) {
+		if (password == null || password.equals("")) {
 			errorMessage.add("パスワードが未入力です");
 		} else if ( !( 1 <= password.length() && password.length() <= 16 ) ) {
 			errorMessage.add("パスワードは1文字以上16文字以下です");
@@ -82,7 +82,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
             System.out.println("errorMessage");
 		}
 
-		if ( userId.equals(loginDTO.getUserId()) && password.equals(loginDTO.getPassword()) )  {
+		if (userId == null || password == null) {
+			result = ERROR;
+		} else if ( userId.equals(loginDTO.getUserId()) && password.equals(loginDTO.getPassword()) )  {
 			/**
 			 * 既にログイン状態ならエラー
 			 */
