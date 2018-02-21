@@ -26,8 +26,6 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 
 	private MyPageDAO myPageDAO = new MyPageDAO();
 
-	private MyPageDTO myPageDTO = new MyPageDTO();
-
 	public Map<String,Object> session;
 
 	private ArrayList<String> errMsgList = new ArrayList<>();
@@ -40,7 +38,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		ArrayList<MyPageDTO> myPageDTOList = new ArrayList<MyPageDTO>();
 		myPageDTOList = myPageDAO.getUserInfo(session.get("userId").toString());
 
-		if(!(newPassword.equals("")) && !(conPassword.equals(""))) {
+		if(!(newPassword.equals("")) || !(conPassword.equals(""))) {
 			if(!(userUpdateConfirmDAO.getPassword(password))){
 				setErrorMessage("入力されたパスワードが異なります。");
 				result = ERROR;
@@ -53,13 +51,14 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			} else if (myPageDTOList.get(0).getPassword().equals(newPassword)) {
 				setErrorMessage("以前と同じパスワードです");
 				result = ERROR;
+			} else if(!(newPassword.equals(conPassword))){
+				setErrorMessage("入力された確認パスワードが異なります。");
+				System.out.println("newPassword確認テスト:"+newPassword);
+				System.out.println("conPassword確認テスト:"+conPassword);
+				result = ERROR;
 			} else {
 				session.put("newPassword", newPassword);
 				System.out.println(session.get("newPassword").toString());
-			}
-			if(!(newPassword.equals(conPassword))){
-				setErrorMessage("入力された確認パスワードが異なります。");
-				return ERROR;
 			}
 		}
 
@@ -75,7 +74,6 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			} else if (myPageDTOList.get(0).getEmail().equals(newEmail)) {
 				setErrorMessage("以前と同じメールアドレスです");
 				result = ERROR;
-
 			} else {
 				session.put("newEmail", newEmail);
 				System.out.println(session.get("newEmail").toString());
