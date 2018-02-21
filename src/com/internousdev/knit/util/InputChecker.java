@@ -145,13 +145,40 @@ public class InputChecker {
 
 		return result;
 	}
+
+	public String telNumber1Chk(String telNumber) {
+		String result = "OK";
+		if(!(telNumber.equals("未入力"))){
+			if (telNumber.length() > 0 &&telNumber.length() < 11 || telNumber.length() > 13) {
+				result = "電話番号は11文字以上13文字以下で入力してください。";
+				} else if ((!telNumber.equals(""))&&!telNumber.matches("^[0-9]+$")) {
+					result = "電話番号は半角数字で入力してください。";
+					}
+			}
+		return result;
+	}
+
+
+	public String userAddress1Chk(String userAddress) {
+		String result = "OK";
+		if(!(userAddress.equals("未入力"))){
+			if (userAddress.length()>0&&userAddress.length() < 7 || userAddress.length() > 50) {
+				result = "住所は7文字以上50文字以下で入力してください。";
+				} else if ((!userAddress.equals(""))&&!userAddress.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
+					result = "住所は半角英数字、漢字、カタカナ及び半角記号で入力してください。";
+					}
+			}
+		return result;
+	}
+
 	public String sexChk(String sex) {
 		String result = "OK";
 
-		if (!(sex.equals("0") || sex.equals("1"))) {
+		 if(sex==null){
+				result = "性別を入力してください";
+		}else if (!(sex.equals("0") || sex.equals("1"))) {
 			result = "性別の値が不正です";
 		}
-
 		return result;
 	}
 

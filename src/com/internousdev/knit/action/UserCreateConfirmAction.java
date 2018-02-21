@@ -80,24 +80,28 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		}else{
 			session.put("createFamilyName", familyName);
 		}
+
 		if(!i.firstNameChk(firstName).equals("OK")){
 			errMsgList.add(i.firstNameChk(firstName));
 			result = ERROR;
 		}else{
 			session.put("createFirstName", firstName);
 		}
+
 		if(!i.familyNameKanaChk(familyNameKana).equals("OK")){
 			errMsgList.add(i.familyNameKanaChk(familyNameKana));
 			result = ERROR;
 		}else{
 			session.put("createFamilyNameKana", familyNameKana);
 		}
+
 		if(!i.firstNameKanaChk(firstNameKana).equals("OK")){
 			errMsgList.add(i.firstNameKanaChk(firstNameKana));
 			result = ERROR;
 		}else{
 			session.put("createFirstNameKana", firstNameKana);
 		}
+
 		if(!i.emailChk(email).equals("OK")){
 			errMsgList.add(i.emailChk(email));
 			result = ERROR;
@@ -112,14 +116,20 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("createSex", sex);
 		}
 
-		if(!(telNumber.equals(""))){
+		if(!i.telNumber1Chk(telNumber).equals("OK")){
+			errMsgList.add(i.telNumber1Chk(telNumber));
+			result = ERROR;
+		}else if(!(telNumber.equals(""))){
 			session.put("createTelNumber", telNumber);
 		}else{
 			telNumber="未入力";
 			session.put("createTelNumber", telNumber);
 		}
 
-		if(!(userAddress.equals(""))){
+		if(!i.userAddress1Chk(userAddress).equals("OK")){
+			errMsgList.add(i.userAddress1Chk(userAddress));
+			result = ERROR;
+		}else if(!(userAddress.equals(""))){
 			session.put("createUserAddress",userAddress);
 		}else{
 			userAddress="未入力";

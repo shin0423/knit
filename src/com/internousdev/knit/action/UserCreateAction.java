@@ -10,7 +10,7 @@ public class UserCreateAction extends ActionSupport{
 	private String firstNameKana;
 	private String email;
 	private String telNumber;
-
+	private String sex;
 
 	public String execute(){
 		return SUCCESS;
@@ -75,4 +75,16 @@ public class UserCreateAction extends ActionSupport{
 	public void setTelNumber(String telNumber) {
 		this.telNumber = telNumber;
 	}
+
+
+	public String getSex() {
+		return sex;
+	}
+
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+
 }

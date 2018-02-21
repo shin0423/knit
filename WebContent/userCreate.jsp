@@ -49,7 +49,7 @@
       </tr>
       <tr>
       <th>性別(必須)</th>
-      <td><s:radio name="sex" list="#{'0': '男性', '1': '女性'}" value="%{sex}" checked="checked" /></td>
+      <td><s:radio name="sex" list="#{'0': '男性', '1': '女性'}" value="%{sex}"  /></td>
       </tr>
       <tr>
       <th>E-mail(必須)</th>
