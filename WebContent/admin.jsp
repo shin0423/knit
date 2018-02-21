@@ -81,6 +81,8 @@
 					<s:hidden name="itemId" value="%{itemId}"/>
 					<s:hidden name="itemStock" value="%{itemStock}"/>
 					<s:submit value="追加" />
+
+					<s:hidden name="token" value="%{token}"/>
 				</s:form></td>
 			</tr>
 			<tr>
@@ -88,6 +90,8 @@
 				<td><s:form action="AdminDeleteAction" >
 					<s:hidden name="itemId" value="%{itemId}"/>
  					<s:submit value="削除" />
+
+ 					<s:hidden name="token" value="%{token}"/>
 				</s:form></td>
 			</tr>
 		</table>
@@ -134,7 +138,10 @@
 			</tr>
 			<tr>
 			<th>商品販売会社名:</th>
-			<td><s:textfield name="releaseCompany" value="" /></td>
+			<td>
+				<s:textfield name="releaseCompany" value="" />
+				<s:hidden name="token" value="%{token}"/>
+			</td>
 			</tr>
 			<tr>
 			<td><s:submit value="登録" /></td>
@@ -160,7 +167,10 @@
 			<td><s:textfield name="categoryDescription" value=""/></td>
 			</tr>
 			<tr>
-			<td><s:submit value="新規登録" /></td>
+			<td>
+				<s:hidden name="token" value="%{token}"/>
+				<s:submit value="新規登録" />
+			</td>
 			</tr>
 			</table>
 		</div>
@@ -171,6 +181,7 @@
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
+			<s:hidden name="token" value="%{token}"/>
 			<s:submit value="削除"/>
 			</select>
 		</div>
