@@ -39,7 +39,7 @@ public class BuyItemInfoAction extends ActionSupport {
 				optionNumber.add(optionCount);
 			}
 		}
-
+		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId()));
 
 		return SUCCESS;
 
@@ -84,6 +84,16 @@ public class BuyItemInfoAction extends ActionSupport {
 
 	public void setOptionNumber(List<Integer> optionNumber) {
 		this.optionNumber = optionNumber;
+	}
+
+
+	public List<BuyItemDTO> getCategoryItemList() {
+		return categoryItemList;
+	}
+
+
+	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
+		this.categoryItemList = categoryItemList;
 	}
 
 }

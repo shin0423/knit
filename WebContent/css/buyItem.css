@@ -8,6 +8,7 @@
 	position:fixed;
 	top:70px;
 	left:0px;
+	background-color:#FFF;
 	border-right:1px solid #C0C0C0;
 	z-index:99999;
 	font-size:15px;
