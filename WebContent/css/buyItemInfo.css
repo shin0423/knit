@@ -151,8 +151,14 @@ left:600px
 .categoryItem{
 	position:relative;
 	left:100px;
-
+	display:flex;
+	
+}
+.itemImageUrl{
+	 width:70%; 
+	 height:100%;
 }
 a.itemImageUrl{
 
 }
+
