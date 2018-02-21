@@ -30,10 +30,11 @@ table{
 	border-bottom:1px solid lightgray;
 	border-top:1px solid lightgray;
 }
+table th{
+	width:50%;
+}
 
-
-td{
-
+table td{
 }
 
 input:focus,select:focus,textfield:focus{
