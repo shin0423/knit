@@ -11,6 +11,7 @@
  </head>
  <body>
  <jsp:include page="headerInclude.jsp"/>
+ <div class="main">
   <s:form action="CreateAddressConfirmAction">
 
 <br>
@@ -94,7 +95,7 @@ onclick="document.CreateAddressConfirmAction.submit();return false;" class="butt
 
    </s:form>
   </s:form>
-
+</div>
 <jsp:include page="footerInclude.jsp"/>
  </body>
 </html>

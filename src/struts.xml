@@ -3,7 +3,10 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+	<!-- ここは後々消す -->
 	<constant name="struts.devMode" value="true" />
+	<!--  -->
+
 	<constant name="struts.ui.theme" value="simple" />
 
 	<package name="com.internousdevwork.knit.action" extends="struts-default">
