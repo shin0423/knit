@@ -145,6 +145,15 @@ public class InputChecker {
 
 		return result;
 	}
+	public String sexChk(String sex) {
+		String result = "OK";
+
+		if (!(sex.equals("0") || sex.equals("1"))) {
+			result = "性別の値が不正です";
+		}
+
+		return result;
+	}
 
 	public String itemIdChk(String itemId) {
 		String result = "OK";

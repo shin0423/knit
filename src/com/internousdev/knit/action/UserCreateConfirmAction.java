@@ -105,8 +105,10 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("createEmail", email);
 		}
 
-
-		if(!(sex.equals("null"))){
+		if(!i.sexChk(sex).equals("OK")){
+			errMsgList.add(i.sexChk(sex));
+			result = ERROR;
+		}else{
 			session.put("createSex", sex);
 		}
 
