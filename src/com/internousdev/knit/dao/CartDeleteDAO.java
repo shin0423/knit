@@ -2,8 +2,11 @@ package com.internousdev.knit.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.util.DBConnector;
 
 public class CartDeleteDAO {
@@ -62,4 +65,60 @@ public class CartDeleteDAO {
 		}
 		return count;
 	}
+
+	public int returnItem(int itemStock, String itemId) {
+		DBConnector db=new DBConnector();
+		Connection con=db.getConnection();
+		String sql = "UPDATE item_info SET item_stock = item_stock + ? WHERE item_id = ?";
+		int count = 0;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, itemStock);
+			ps.setString(2, itemId);
+
+			count = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+		try {
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+		return count;
+	}
+
+	public ArrayList<CartDTO> getItemInfo(String userId, String itemId) throws SQLException {
+		DBConnector db=new DBConnector();
+		Connection con=db.getConnection();
+		CartDTO cartDTO = new CartDTO();
+		ArrayList<CartDTO> cartDTOList = new ArrayList<CartDTO>();
+
+		String sql = "SELECT * FROM cart_info WHERE user_id = ? AND item_id=?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setString(2, itemId);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				cartDTO.setItemCount(rs.getInt("item_count"));
+				cartDTOList.add(cartDTO);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			con.close();
+		}
+		return cartDTOList;
+
+	}
+
 }

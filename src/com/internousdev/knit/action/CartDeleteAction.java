@@ -84,15 +84,28 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 				System.out.println(check + "<---- いまここ()");
 
 				if (!(session.containsKey("userId"))) {
+					ArrayList<CartDTO> cartDTOList = new ArrayList<CartDTO>();
+					cartDTOList = deletedao.getItemInfo(session.get("tempUserId").toString(), check);
+					int itemStock = 0;
+					itemStock = cartDTOList.get(0).getItemCount();
+					deletedao.returnItem(itemStock, check);
+
 					System.out.println("TEMPUSERID : " + session.get("tempUserId").toString());
 					count += deletedao.deleteSeparate(session.get("tempUserId").toString(), check);
 					cartList = dao.showUserCartList(session.get("tempUserId").toString());
+
 				} else {
+					ArrayList<CartDTO> cartDTOList = new ArrayList<CartDTO>();
+					cartDTOList = deletedao.getItemInfo(session.get("userId").toString(), check);
+					int itemStock = 0;
+					itemStock = cartDTOList.get(0).getItemCount();
+					deletedao.returnItem(itemStock, check);
 
 					userId = session.get("userId").toString();
 					System.out.println("USERID : " + session.get("userId").toString());
 					count += deletedao.deleteSeparate(userId, check);
 					cartList = dao.showUserCartList(session.get("userId").toString());
+
 				}
 			}
 			System.out.println("削除された件数：" + count);
