@@ -4,12 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserCreateAction extends ActionSupport{
 
+	private String userId;
 	private String familyName;
 	private String firstName;
 	private String familyNameKana;
 	private String firstNameKana;
 	private String email;
 	private String telNumber;
+	private String userAddress;
 	private String sex;
 
 	public String execute(){
@@ -84,6 +86,26 @@ public class UserCreateAction extends ActionSupport{
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 
 

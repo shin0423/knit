@@ -11,6 +11,15 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報確認</title>
+ <script type="text/javascript">
+
+<!--
+	function goUserCreateCompleteAction() {
+	document.UserCreateCompleteAction.submit();
+}
+//-->
+
+</script>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
@@ -78,9 +87,23 @@
 
 
 
-   <div id="button">
-   <button type ="button" onclick ="location.href='/knit/userCreate.jsp'">戻る</button>
-   <button type="submit">登録情報を確定</button>
+   <div>
+   <a href="<s:url action='UserCreateAction'>
+       <s:param name="userId" value="%{userId}"/>
+	   <s:param name="familyName" value="%{familyName}"/>
+	   <s:param name="firstName" value="%{firstName}"/>
+	   <s:param name="familyNameKana" value="%{familyNameKana}"/>
+	   <s:param name="firstNameKana" value="%{firstNameKana}"/>
+	   <s:param name="sex" value="%{sex}"/>
+	   <s:param name="email" value="%{email}"/>
+	   <s:param name="telNumber" value="%{telNumber}"/>
+       <s:param name="userAddress" value="%{userAddress}"/>
+	   </s:url>"  class="button">戻る
+   </a>
+
+   <s:a href="javascrrpt:void(0)"
+	onclick="document.UserCreateCompleteAction.submit();return false;"
+	 class="button">登録情報を確定</s:a>
    </div>
    </s:form>
   </div>

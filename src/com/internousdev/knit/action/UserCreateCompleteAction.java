@@ -35,8 +35,37 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
-
-
+//不正な書き換えがあった場合のチェック
+		if(!(userId.equals(session.get("createUserId").toString()))){
+			return "errorPage";
+		}
+		if(!(password.equals(session.get("createPassword").toString()))){
+			return "errorPage";
+		}
+		if(!(familyName.equals(session.get("createFamilyName").toString()))){
+			return "errorPage";
+		}
+		if(!(firstName.equals(session.get("createFirstName").toString()))){
+			return "errorPage";
+		}
+		if(!(familyNameKana.equals(session.get("createFamilyNameKana").toString()))){
+			return "errorPage";
+		}
+		if(!(firstNameKana.equals(session.get("createFirstNameKana").toString()))){
+			return "errorPage";
+		}
+		if(!(sex==Integer.parseInt(session.get("createSex").toString()))){
+			return "errorPage";
+		}
+		if(!(email.equals(session.get("createEmail").toString()))){
+			return "errorPage";
+		}
+		if(!(telNumber.equals(session.get("createTelNumber").toString()))){
+			return "errorPage";
+		}
+		if(!(userAddress.equals(session.get("createUserAddress").toString()))){
+			return "errorPage";
+		}
 
 		String result = ERROR;
 		//入力された値の確認

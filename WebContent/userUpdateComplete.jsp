@@ -20,7 +20,8 @@
 <div>
 <h3>ユーザー情報の変更が完了しました。</h3>
 <br>
-<button type ="button" onclick ="location.href='/knit/MyPageAction'">マイページ</button>
+  <a href="<s:url action='MyPageAction'></s:url>"  class="button">マイページ</a>
+
 </div>
 </div>
 <jsp:include page="footerInclude.jsp"/>

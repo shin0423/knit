@@ -51,119 +51,49 @@ input[type = radio]{
    margin-left:10px;
 }
 
-/*.deg_btn {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    padding: 0 30px;
-    font-size: 19px;
-    height: 40px;
-    line-height: 40px!;
-    vertical-align: middle;
-    background: #51587b;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    transition: .4s;
+.button {
+  display: inline-block;
+  width: 180px;
+  height: 54px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 54px;
+  outline: none;
+
+}
+.button::before,
+.button::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+.button,
+.button::before,
+.button::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.button {
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+  border: 2px solid #333;
+  color: #333;
+  line-height: 48px;
+}
+.button::after {
+  top: 4px;
+  left: 4px;
+  width: 168px;
+  height: 42px;
+  border: 2px solid #333;
+  opacity: 0;
+}
+.button:hover::after {
+  opacity: 1;
 }
 
-.deg_btn:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 21px white;
-    border-bottom: solid 41px transparent;
-    z-index: 1;
-    transition: .4s;
-}
-
-.deg_btn:after {
-    position: absolute;
-    content: '';
-    right: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 21px transparent;
-    border-bottom: solid 41px white;
-    z-index: 1;
-    transition: .4s;
-}
-
-.deg_btn:hover:before, .deg_btn:hover:after{
-    border-left-width: 25px;
-}
-
-.deg_btn:hover{
-    background: #2c3148;
-}
-
-#button button#deg_btn2{
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    padding: 0 30px;
-    font-size: 19px;
-    height: 40px;
-    line-height: 40px!;
-    vertical-align: middle;
-    background: #51587b;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    transition: .4s;
-}
-
-#button button#deg_btn2 {
-    position: absolute;
-    content: '';
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 21px white;
-    border-bottom: solid 41px transparent;
-    z-index: 1;
-    transition: .4s;
-}
-
-#button button#deg_btn2:after {
-    position: absolute;
-    content: '';
-    right: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 21px transparent;
-    border-bottom: solid 41px white;
-    z-index: 1;
-    transition: .4s;
-}
-
-#button button#deg_btn2:hover:before, #button button#deg_btn2:hover:after{
-    border-left-width: 25px;
-}
-
-#button button#deg_btn2:hover{
-    background: #2c3148;
-}
-.complete{
-	white-space: nowrap;
-	border-spacing : 5px 50px;
-	margin-left: auto;
-	margin-right: auto;
-	width:400px;
-	margin-top:5px;
-	background-color:white;
-	border-bottom:1px solid lightgray;
-	border-top:1px solid lightgray;
-}
-
-#error{
-	color:red;
-}*/

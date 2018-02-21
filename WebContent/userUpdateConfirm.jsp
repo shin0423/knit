@@ -11,6 +11,15 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報変更確認</title>
+    <script type="text/javascript">
+
+<!--
+	function goUserUpdateCompleteAction() {
+	document.UserUpdateCompleteAction.submit();
+}
+//-->
+
+</script>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
@@ -41,9 +50,12 @@
    </s:if>
   </table>
    <br>
-   <div id="button">
-   <button type ="button" onclick ="location.href='/knit/UserUpdateAction'">戻る</button>
-   <button type="submit">登録情報を確定</button>
+   <div>
+      <a href="<s:url action='UserUpdateAction'></s:url>"  class="button">戻る</a>
+   <s:a href="javascrrpt:void(0)"
+	onclick="document.UserUpdateCompleteAction.submit();return false;"
+	 class="button">登録情報を確定</s:a>
+
    </div>
   </s:form>
 

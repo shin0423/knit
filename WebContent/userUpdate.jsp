@@ -11,6 +11,15 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー情報変更</title>
+   <script type="text/javascript">
+
+<!--
+	function goUserUpdateConfirmAction() {
+	document.UserUpdateConfirmAction.submit();
+}
+//-->
+
+</script>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
@@ -45,9 +54,11 @@
    <td><s:textfield name="newEmail" placeholder="10文字以上32文字以下"/></td>
    </tr>
    </table>
-   <div id="button">
-   <button type ="button" onclick ="location.href='/knit/MyPageAction'">戻る</button>
-   <button type="submit">登録</button>
+   <div>
+   <a href="<s:url action='MyPageAction'></s:url>"  class="button">戻る</a>
+   <s:a href="javascrrpt:void(0)"
+	onclick="document.UserUpdateConfirmAction.submit();return false;"
+	 class="button">登録</s:a>
    </div>
    <br>
    <s:if test="errorMessage !=''">

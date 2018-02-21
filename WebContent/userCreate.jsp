@@ -11,6 +11,15 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
  <title>ユーザー登録</title>
+  <script type="text/javascript">
+
+<!--
+	function goUserCreateConfirmAction() {
+	document.UserCreateConfirmAction.submit();
+}
+//-->
+
+</script>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userCreate.css">
  </head>
  <body>
@@ -66,8 +75,10 @@
    </table>
 
    <div align="center">
-     <button type ="button" onclick ="location.href='/knit/login.jsp'">戻る</button>
-     <button type="submit">登録</button>
+   <a href="<s:url action='LoginAction'></s:url>"  class="button">戻る</a>
+   <s:a href="javascrrpt:void(0)"
+	onclick="document.UserCreateConfirmAction.submit();return false;"
+	 class="button">登録</s:a>
    </div>
    <br>
  <s:if test="errorMessage !=''">
