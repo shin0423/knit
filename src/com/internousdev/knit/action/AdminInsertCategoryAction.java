@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CategoryDAO;
@@ -22,8 +23,29 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 	private String categoryDescription;
 	private ArrayList<String> errorList = new ArrayList<>();
 
+	//小池 不正操作監視トークン
+	private String token;
+
 
 	public String execute() throws SQLException{
+
+		if(!(session.containsKey("adminLoginFlg"))){
+			return "errorPage";
+		}
+
+		if(!(token.equals(session.get("token").toString()))){
+			System.out.println("こっちきてくれ");
+			return "errorPage";
+		}else {
+			System.out.println("こっちこないでええええええええ");
+		}
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
+
 		String result=SUCCESS;
 		categoryList = categoryDAO.getCategoryList();
 
@@ -114,6 +136,18 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 
 	public void setErrorList(ArrayList<String> errorList) {
 		this.errorList = errorList;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 
 }

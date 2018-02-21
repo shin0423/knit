@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.AdmiDAO;
@@ -29,7 +30,26 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 	private CategoryDAO categoryDAO = new CategoryDAO();
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 
+	private String token;
+
 	public String execute() throws SQLException {
+
+		if(!(session.containsKey("adminLoginFlg"))){
+			return "errorPage";
+		}
+
+		if(!(token.equals(session.get("token").toString()))){
+			System.out.println("こっちきてくれ");
+			return "errorPage";
+		}else {
+			System.out.println("こっちこないでええええええええ");
+		}
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 
 		String result = SUCCESS;
 		errorMessage = null;
@@ -114,6 +134,14 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 
 	public void setCategoryList(List<CategoryDTO> categoryList) {
 		this.categoryList = categoryList;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }

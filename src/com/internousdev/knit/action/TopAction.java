@@ -47,6 +47,8 @@ public class TopAction extends ActionSupport implements SessionAware {
 
 		//↓
 
+		session.remove("adminLoginFlg");
+
 
 		try {
 
