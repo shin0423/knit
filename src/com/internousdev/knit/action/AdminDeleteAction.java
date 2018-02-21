@@ -28,9 +28,13 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		//管理者フラグチェック
+		if(!(session.containsKey("adminLoginFlg"))){
+			return "errorPage";
+		}
 		//ランダムトークンチェック
 		if(!(token.equals(session.get("token").toString()))){
-			return ERROR;
+			return "errorPage";
 		}
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);

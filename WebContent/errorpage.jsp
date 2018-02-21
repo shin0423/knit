@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="5;URL='TopAction'" />
+<meta http-equiv="refresh" content="2;URL='TopAction'" />
 <link rel="stylesheet" href="./css/errorpage.css">
 <title>errorpage</title>
 </head>
@@ -18,7 +18,7 @@
 			<br>
 			<br>
 			<br>
-			5秒後にトップへ戻ります。
+			2秒後にトップへ戻ります。
 			</h1>
 		</div>
 	</div>

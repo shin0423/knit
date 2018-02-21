@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CategoryDAO;
@@ -17,8 +18,23 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 	private CategoryDAO categoryDAO = new CategoryDAO();
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 	public Map<String,Object> session;
-
+	private String token;
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		//管理者フラグチェック
+		if(!(session.containsKey("adminLoginFlg"))){
+			return "errorPage";
+		}
+		//ランダムトークんチェック
+		if(!(token.equals(session.get("token").toString()))){
+			return "errorPage";
+		}
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
+
 		result=SUCCESS;
 		System.out.println(categoryId);
 		categoryList = categoryDAO.getCategoryList();
@@ -65,6 +81,14 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 
 	public void setSession(Map<String,Object> session){
 		this.session=session;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }
