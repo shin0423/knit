@@ -4,8 +4,8 @@ min-height:calc(100vh - 70px);
 }
 
 #footer{	clear:both;
-			position:relative;
-			bottom:-20px;
+			position:fixed;
+			bottom:0%;
 			left:-20px;
 			right:-20px;
 			width:101%;

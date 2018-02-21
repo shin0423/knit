@@ -21,14 +21,13 @@
 	<jsp:include page="headerInclude.jsp"/>
 
 
-
 	<div class="main">
 
 		<div id="secRegist" class="section">
 
 			<div class="sectionInner">
 
-				<div class="sectionHeader">
+			<div class="sectionHeader">
 
 					<h3>会員登録情報</h3>
 					<!-- sectionHeader -->
@@ -110,19 +109,16 @@
 						</div>
 					</div>
 
-					<!-- ボタンその２
-					<a class="other" href="#">その2</a>
-                    -->
 				</div>
 
 			</div>
 		</div>
+		<jsp:include page="footerInclude.jsp"/>
 	</div>
-
 
 	<!-- フッター -->
 
-<jsp:include page="footerInclude.jsp"/>
+
 
 
 

@@ -1,15 +1,17 @@
 @CHARSET "UTF-8";
 
 
-header{
-	
-	background: #F48FB1;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-	
-}
+
 
 body{
-	min-width: 800px;
+	min-width: 500px;
+	height:50px;
+}
+
+.main {
+	width: 100%;
+	height:50px;
+
 }
 
 html, body, h3, p, center,
@@ -29,10 +31,6 @@ footer, section {
 	display: block;
 }
 
-.main {
-	width: 100%;
-}
-
 .contBody {
 	width: 100%;
 	margin-top: 20px;
@@ -47,20 +45,22 @@ footer, section {
 }
 
 .sectionHeader {
+	text-align: center;
+	background-color:#777;
 	
-	background-color:#808080;
-	
-    position: relative; top: 55px; left: 170px;
+    position: fixed; top: 15%; left: 15%;
     
 	width: 155px;
 	height: 37px;
     margin: 25px 0 16px 0;　/*会員情報枠位置*/
     
-	text-align: center;
+	
 	font-weight: bold;
 	font-size:19px;
 	padding: 0.1em 0.4em;
 	color:#fff;
+	border:5px solid #555555;
+	border-collapse: collapse;
 	
 	font-family: “游ゴシック Medium”, “Yu Gothic Medium”,sans-serif;
 }
@@ -73,6 +73,60 @@ footer, section {
 	
 }
 
+<!--テーブル-->
+
+table {
+	width: 500px;
+}
+
+table {
+	
+    position:fixed;top: 25%; left:15%;
+    margin-top: 1em;
+    
+	width: 500px;
+	border-collapse: separate;
+	border-spacing: 0px 12px;
+	font-size: 12px;
+	
+	padding-bottom:2px; 
+}
+
+table th, table td {
+	
+	padding: 10px;
+	padding-left: 30px;
+	
+}
+
+table th {
+	position: relative;
+	width: 125px;
+	
+	background:#777;
+	vertical-align: middle;
+	text-align: left;
+
+	overflow: visible;
+	color: #fff;
+	font-weight: normal;
+	font-size: 17px;
+	
+	border:5px solid #555555;
+	border-collapse: collapse;
+	
+}
+
+
+td {
+	
+	font-size: 15px;
+	background:#fff;
+	border-width: 0.1px;
+	
+	border-bottom: solid 4px #555555;
+	
+}
 
 <!--ボタン関連-->
 
@@ -80,9 +134,9 @@ footer, section {
 	width: 100%;
 }
 
-.btnn { 
-	position: absolute;top: 130px;left: 850px;
-    float: right;
+.btnn/*購入履歴*/ { 
+	position:fixed ;top: 20%;left: 60%;
+	float:left;
 	
 	width: 193px;
 	margin: 0 auto;
@@ -96,8 +150,7 @@ footer, section {
 }
 
 .btn0 {
-    position: absolute;top: 230px;left: 850px;
-    float: right;
+    position:fixed ;top: 35%;left: 60%;
     
 	width: 193px;
 	margin: 0 auto;
@@ -108,11 +161,12 @@ footer, section {
 	perspective: 300px;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
+	
 }
 
 .btn {
 	
-    position: absolute;top: 310px;left: 850px;
+    position: fixed;top: 50%;left:60% ;
    float: right;
    
 	width: 193px;
@@ -131,7 +185,7 @@ footer, section {
 
 .btnn a,.btn a,.btn0 a{
 	
-	color: #fff; /*押す前のfontの色*/
+	color: #DDD; /*押す前のfontの色*/
 	
 	font-family: 'Covered By Your Grace', cursive;
 	font-size: 15px;
@@ -148,7 +202,7 @@ footer, section {
 	display: inline-block;
 	padding: .65em 4em;
 	
-	border: 2px solid #C0C0C0;	/*枠の色*/
+	border: 2px solid #555555;	/*枠の色*/
 	
 	color: #333;
 	text-decoration: none;
@@ -169,7 +223,7 @@ footer, section {
 	width: 102%;
 	height: 102%;
 
-	background-color: #808080; 	/**/
+	background-color: #777; 	/**/
     
 	-webkit-transform: rotate(1deg);
 	transform: rotate(1deg);
@@ -195,60 +249,13 @@ footer, section {
 	
 }
 
-<!--テーブル-->
 
-table {
-	width: 500px;
-}
-
-table {
-	
-    position:relative;top: 90px; left:170px;
-    margin-top: 1em;
-    
-	width: 500px;
-	border-collapse: separate;
-	border-spacing: 0px 11px;
-	font-size: 12px;
-	
-	padding-bottom:20px; 
-}
-
-table th, table td {
-	
-	padding: 6px;
-	padding-left: 30px;
-	
-}
-
-table th {
-	
-	background:#808080;
-	vertical-align: middle;
-	text-align: left;
-	width: 125px;
-	overflow: visible;
-	position: relative;
-	color: #fff;
-	font-weight: normal;
-	font-size: 17px;
-	
-}
-
-
-td {
-	
-	font-size: 15px;
-	background:#fff;
-	border-width: 0.3px;
-	
-	border-bottom: solid 4px #808080;
-	
-}
 
 /*ボタンその２↓------------------------------*/
 
 .other {
+  position:relative;top: 90px; left:170px;
+	
   display: inline-block;
   width: 200px;
   height: 54px;
@@ -275,8 +282,6 @@ td {
 }
 
 
-
-
 /*------------------------------*/
 
 .other {
@@ -301,16 +306,8 @@ td {
 
 /*---------ボタンその２↑------------------------*/
 
-<!--フッター-->
 
 
-footer{
-	background: #F48FB1;
-	clear: both;
-	text-align: center;
-	height: 100px;
-	line-height: 100px;
-	margin-top: 100px;
-	color: #fff;
-}
+
+
 
