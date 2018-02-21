@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
@@ -23,6 +24,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	private boolean buyCountErrorFlg=false;
 	private ArrayList<CartDTO> buyCountErrorList = new ArrayList<CartDTO>();
 
+	private String token;
 
 
 	CartDAO cartDAO = new CartDAO();
@@ -30,6 +32,15 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 //決済処理
 
 	public String execute() throws SQLException{
+
+		if(!(token.equals(session.get("token").toString()))){
+			return "errorPage";
+		}
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 
 		if (!(session.containsKey("userId"))){
 			return "loginError";
@@ -106,6 +117,18 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 	public void setDestinationList(ArrayList<SettlementConfirmDTO> destinationList) {
 		this.destinationList = destinationList;
+	}
+
+
+
+	public String getToken() {
+		return token;
+	}
+
+
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 

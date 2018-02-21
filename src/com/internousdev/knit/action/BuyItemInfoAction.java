@@ -14,31 +14,33 @@ import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.ReviewDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BuyItemInfoAction extends ActionSupport implements SessionAware{
+public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 	private String itemId;
 	private int optionCount;
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private List<Integer> optionNumber = new ArrayList<Integer>();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 	private List<BuyItemDTO> categoryItemList = new ArrayList<>();
+
+	Map<String,Object> session;
+
 	private String token;
-	public Map<String ,Object> session;
 
-
-	@SuppressWarnings("static-access")
-	public String execute() throws SQLException {
-		//
-		RandomStringUtils rndStr = new RandomStringUtils();
-		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
-		setToken(token);
-		session.put("token", token);
-
+	public String execute() throws SQLException{
 		buyItemDTO=null;
 		BuyItemInfoDAO buyItemInfoDAO = new BuyItemInfoDAO();
 		buyItemDTO=buyItemInfoDAO.selectBuyItemInfo(itemId);
 		ReviewDAO reviewDAO = new ReviewDAO();
 		setReviewList(reviewDAO.selectReviewAll(itemId));
+
+
+		
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 
 		for(int i=0;reviewList.size() > i ; i++){
 			String stars="";
@@ -101,15 +103,6 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware{
 	}
 
 
-	public List<BuyItemDTO> getCategoryItemList() {
-		return categoryItemList;
-	}
-
-
-	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
-		this.categoryItemList = categoryItemList;
-	}
-
 
 	public String getToken() {
 		return token;
@@ -120,8 +113,24 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware{
 		this.token = token;
 	}
 
-	public void setSession(Map<String,Object> session){
-		this.session= session;
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
+
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+	public List<BuyItemDTO> getCategoryItemList() {
+		return categoryItemList;
+	}
+
+
+	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
+		this.categoryItemList = categoryItemList;
+
+	}
+
 
 }

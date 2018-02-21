@@ -92,7 +92,7 @@
 <div class="totalPrice">
 合計金額:<span class="tpt"><s:property value="#session.cartTotalPrice" /></span> 円
 </div>
-
+<s:hidden name="token" value="%{token}" />
 <br>
 
 

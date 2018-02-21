@@ -58,6 +58,12 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 		System.out.println("countは"+count);
+
+
+		if (!(itemCount<6)) {
+			System.out.println("不正操作我絶対許");
+			return "errorPage";
+		}
 		CartDTO dto=new CartDTO();
 		CartDAO dao=new CartDAO();
 		dto.setItemId(Integer.parseInt(itemId.toString()));
