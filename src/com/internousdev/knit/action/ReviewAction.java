@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.BuyItemInfoDAO;
@@ -14,6 +15,7 @@ import com.internousdev.knit.dto.ReviewDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
+	private String token;
 	private int itemId;
 	private int review = 0;
 	private String reviewBody;
@@ -25,8 +27,15 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
 		String result = ERROR;
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 
 		setBuyItemDTO(buyItemInfoDAO.selectBuyItemInfo(String.valueOf(itemId)));
 		setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
@@ -37,18 +46,29 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			if (reviewBody.equals("")) {
 				reviewErrorMessage.add("レビューが未入力です");
 				System.out.println("レビュー内容無しエラー");
+
 			} else if (reviewBody.length() > 100) {
 				reviewErrorMessage.add("レビューは100文字までです");
 				System.out.println("レビューは100文字まで");
+
+
 			} else if (session.containsKey("userId") && exist) {
 				reviewErrorMessage.add("一度レビューに書き込んだことがある場合は書き込めません");
+
+
 			} else if ( !reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
 				reviewErrorMessage.add("この商品の購入情報が無いので書き込みできません");
 				System.out.println("この商品の購入情報が無いので書き込み不可");
+
+
 			} else {
 				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), Integer.valueOf(review), reviewBody);
 				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
 				starDisplay();
+
+				itemId = buyItemDTO.getItemId();
+
+
 				result = SUCCESS;
 			}
 		} else {
@@ -69,6 +89,14 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			}
 			reviewList.get(i).setReviewStar(stars);
 		}
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public int getItemId() {

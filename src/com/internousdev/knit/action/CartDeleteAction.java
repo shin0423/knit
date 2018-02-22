@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
@@ -19,6 +20,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	private String itemId;
 	private Collection<String> checkList;
 	private String errorMsg;
+	private String token;
 
 	private Map<String,Object> session;
 
@@ -44,6 +46,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	 * カート情報を削除する
 	 */
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
 		CartDAO dao = new CartDAO();
 		String result = ERROR;
@@ -55,6 +58,12 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 //		System.out.println(imageFilePath);
 //		System.out.println(price);
 //		System.out.println(releaseCompany);
+
+		RandomStringUtils rndStr = new RandomStringUtils();
+		token = rndStr.randomAlphabetic(10);
+		System.out.println("トークン値"+token);
+		setToken(token);
+		session.put("token", token);
 
 		totalPrice = calcTotalPrice(cartList);
 
@@ -136,6 +145,14 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		result = SUCCESS;
 
 		return result;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public void getAllTotalPrice() {
