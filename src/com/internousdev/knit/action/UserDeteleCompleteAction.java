@@ -69,6 +69,8 @@ ShowItemDAO showItemDAO = new ShowItemDAO();
 
 		session.put("miniCartList", miniCartList);
 
+		session.put("loginFlg", false);
+
 
 
 

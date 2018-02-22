@@ -1,12 +1,15 @@
 package com.internousdev.knit.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dao.UserCreateCompleteDAO;
+import com.internousdev.knit.dto.CartDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserCreateCompleteAction extends ActionSupport implements SessionAware{
@@ -22,6 +25,11 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	private String telNumber;
 	private String userAddress;
 	private String token;
+
+	private ArrayList<CartDTO> userCartList = new ArrayList<CartDTO>();
+	 private ArrayList<CartDTO> tempUserCartList = new ArrayList<CartDTO>();
+	 private ArrayList<Integer> userCartItemIdList = new ArrayList<Integer>();
+	 private ArrayList<Integer> tempUserCartItemIdList = new ArrayList<Integer>();
 
 	public Map<String,Object> session;
 
@@ -107,6 +115,11 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 				session.get("createTelNumber").toString(),
 				session.get("createUserAddress").toString()
 				);
+
+			session.put("userId", userId);
+			makeCartList();
+			session.put("tempUserId",session.get("createUserId").toString());
+			session.put("loginFlg", true);
 		}
 
 		if(count2 >0){
@@ -208,4 +221,71 @@ public String getToken() {
 	public Map<String, Object> getSession() {
 		return session;
 	}
+
+	public void makeCartList() throws SQLException {
+		CartDAO cartDAO = new CartDAO();
+		userCartList = cartDAO.showUserCartList(session.get("userId").toString());
+		tempUserCartList = cartDAO.showTempUserCartList(session.get("tempUserId").toString());
+
+		/**
+		 * ユーザーのカート内商品のIDを全取得してリストに入れる
+		 */
+		int i = 0;
+		for (i = 0; i < userCartList.size(); i++) {
+			userCartItemIdList.add(userCartList.get(i).getItemId());
+		}
+		System.out.println("ユーザーカートの商品のIDリスト生成 : " + userCartItemIdList);
+
+		/**
+		 * 仮ユーザーのカート内商品のIDを全取得してリストに入れる
+		 */
+		i = 0;
+		for (i = 0; i < tempUserCartList.size(); i++) {
+			tempUserCartItemIdList.add(tempUserCartList.get(i).getItemId());
+		}
+		System.out.println("仮ユーザーカートの商品のIDリスト生成 : " + tempUserCartItemIdList);
+
+		/**
+		 * ユーザーカートリストと仮ユーザーカートリストの重複をチェック
+		 */
+		i = 0;
+		for (i = 0; i < tempUserCartItemIdList.size(); i++) {
+
+			/**
+			 * 仮ユーザーカートリストにユーザーカートリストにある物が含まれているか
+			 */
+			boolean exist = userCartItemIdList.contains(Integer.valueOf(tempUserCartItemIdList.get(i)) );
+			System.out.println("カート重複確認 : " + exist);
+
+			/**
+			 * もし含まれていた場合の処理
+			 */
+			if (exist) {
+
+				/**
+				 * 重複商品の選択数をユーザーのカート情報の選択数に足すメソッド
+				 */
+				cartDAO.changeItemStockId(Integer.valueOf(tempUserCartList.get(i).getItemCount()),
+						Integer.valueOf(tempUserCartItemIdList.get(i)),
+						session.get("userId").toString());
+				System.out.println(session.get("userId").toString() + "のカートに" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)の重複分" + tempUserCartList.get(i).getItemCount() + "個追加");
+
+				/**
+				 * 仮ユーザーカートリストから重複してた商品を削するメソッド
+				 */
+				cartDAO.deleteSeparete(session.get("tempUserId").toString(),
+						tempUserCartItemIdList.get(i));
+				System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
+				/**
+				 * 含まれていなかった場合の処理
+				 */
+			} else {
+				cartDAO.changeUserId(session.get("tempUserId").toString(),
+						session.get("userId").toString());
+				System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
+			}
+
+		}
+	}
+
 }
