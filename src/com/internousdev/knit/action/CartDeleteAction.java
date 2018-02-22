@@ -99,6 +99,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 					System.out.println("TEMPUSERID : " + session.get("tempUserId").toString());
 					count += deletedao.deleteSeparate(session.get("tempUserId").toString(), check);
 					cartList = dao.showUserCartList(session.get("tempUserId").toString());
+					totalPrice = calcTotalPrice(cartList);
 
 				} else {
 					CartDTO cartDTO = new CartDTO();
@@ -111,6 +112,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 					System.out.println("USERID : " + session.get("userId").toString());
 					count += deletedao.deleteSeparate(userId, check);
 					cartList = dao.showUserCartList(session.get("userId").toString());
+					totalPrice = calcTotalPrice(cartList);
 
 				}
 			}
