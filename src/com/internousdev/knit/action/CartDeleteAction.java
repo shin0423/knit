@@ -74,10 +74,11 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			e.printStackTrace();
 			if (!(session.containsKey("userId"))) {
 			cartList = dao.showUserCartList(session.get("tempUserId").toString());
-			totalPrice = calcTotalPrice(cartList);
+			getAllTotalPrice();
+
 			}else {
 			cartList = dao.showUserCartList(session.get("userId").toString());
-			totalPrice = calcTotalPrice(cartList);
+			getAllTotalPrice();
 			return ERROR;
 			}
 			}
@@ -99,7 +100,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 					System.out.println("TEMPUSERID : " + session.get("tempUserId").toString());
 					count += deletedao.deleteSeparate(session.get("tempUserId").toString(), check);
 					cartList = dao.showUserCartList(session.get("tempUserId").toString());
-					totalPrice = calcTotalPrice(cartList);
+					getAllTotalPrice();
 
 				} else {
 					CartDTO cartDTO = new CartDTO();
@@ -112,7 +113,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 					System.out.println("USERID : " + session.get("userId").toString());
 					count += deletedao.deleteSeparate(userId, check);
 					cartList = dao.showUserCartList(session.get("userId").toString());
-					totalPrice = calcTotalPrice(cartList);
+					getAllTotalPrice();
 
 				}
 			}
@@ -125,14 +126,23 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			 miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
 
 			 session.put("miniCartList", miniCartList);
+			 getAllTotalPrice();
 		} else {
 			miniCartList = dao.UserMiniCart(session.get("userId").toString());
 			session.put("miniCartList", miniCartList);
+			getAllTotalPrice();
 		}
 
 		result = SUCCESS;
 
 		return result;
+	}
+
+	public void getAllTotalPrice() {
+		totalPrice = calcTotalPrice(cartList);
+		allTotalPrice = calcTotalPrice(miniCartList);
+
+		session.put("allTotalPrice", allTotalPrice);
 	}
 
 	public String getUserId() {
