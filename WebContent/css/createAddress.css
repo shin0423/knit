@@ -17,11 +17,8 @@
 
   .message{
 		text-align:center;
+
 	}
-
-
-
-
 
 	.bottan{
 text-align : center ;
@@ -74,10 +71,4 @@ text-align : center ;
 .button:hover::after {
   opacity: 1;
 }
-
-
-
-
-
-
 

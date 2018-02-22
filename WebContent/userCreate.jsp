@@ -31,7 +31,9 @@
 <s:form action="UserCreateConfirmAction">
      <div id="title"><p>ユーザー登録をする<p></div>
      		<div>ユーザー情報を登録してください</div>
+
    <table>
+
       <tr>
       <th>ユーザーID(必須)</th>
        <td><s:textfield name="userId" value="%{userId}" placeholder="IDを入力"/></td>
@@ -92,6 +94,9 @@
 	</h5>
 </s:iterator>
 </s:form>
+
+<br>
+<br>
 
 </div>
 <jsp:include page="footerInclude.jsp"/>

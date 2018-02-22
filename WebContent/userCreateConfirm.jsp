@@ -29,7 +29,9 @@
 <div id="title"><p>入力情報確認</p></div>
   <s:form action="UserCreateCompleteAction">
   <div>入力内容をご確認ください</div>
+
   <table>
+
   <tr>
    <th>ユーザーID:</th>
    <td><s:property value="userId"/>
@@ -86,7 +88,6 @@
 </table>
 
 
-
    <div>
    <a href="<s:url action='UserCreateAction'>
        <s:param name="userId" value="%{userId}"/>
@@ -107,6 +108,10 @@
    </div>
    </s:form>
   </div>
+
+<br>
+<br>
+<br>
 <jsp:include page="footerInclude.jsp"/>
  </body>
 </html>
