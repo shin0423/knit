@@ -24,10 +24,10 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 
 	private ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
-	int totalPrice;
+	private int totalPrice;
 
 	//↓ミニカート用 小池
-	int allTotalPrice;
+	private int allTotalPrice;
 
 
 //	private int itemCount;
@@ -56,6 +56,12 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 //		System.out.println(price);
 //		System.out.println(releaseCompany);
 
+		totalPrice = calcTotalPrice(cartList);
+
+		allTotalPrice = calcTotalPrice(miniCartList);
+
+		session.put("allTotalPrice", allTotalPrice);
+
 		try{
 			if(checkList.equals(null)){
 				String name=checkList.toString();
@@ -68,13 +74,13 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			e.printStackTrace();
 			if (!(session.containsKey("userId"))) {
 			cartList = dao.showUserCartList(session.get("tempUserId").toString());
+			totalPrice = calcTotalPrice(cartList);
 			}else {
 			cartList = dao.showUserCartList(session.get("userId").toString());
+			totalPrice = calcTotalPrice(cartList);
 			return ERROR;
 			}
 			}
-
-
 
 		CartDeleteDAO deletedao = new CartDeleteDAO();
 
@@ -121,12 +127,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			miniCartList = dao.UserMiniCart(session.get("userId").toString());
 			session.put("miniCartList", miniCartList);
 		}
-
-		totalPrice = calcTotalPrice(cartList);
-
-		allTotalPrice = calcTotalPrice(miniCartList);
-
-		session.put("allTotalPrice", allTotalPrice);
 
 		result = SUCCESS;
 
