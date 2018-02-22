@@ -26,9 +26,9 @@
 	<!-- ここから入力エラーメッセージ表示 -->
 		<s:iterator value="errMsgList">
 		<h5>
-			<s:div align="center">
+			<div  align="center">
 				<s:property />
-			</s:div>
+			</div>
 		</h5>
 		</s:iterator>
 
