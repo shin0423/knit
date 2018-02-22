@@ -46,8 +46,8 @@ public class BuyItemInfoDAO {
 		return buyItemDTO;
 	}
 
-	public List<BuyItemDTO> categoryItemSelect(int category_id) throws SQLException{
-		String sql="SELECT * FROM item_info WHERE category_id=? ORDER BY RAND() LIMIT 3";
+	public List<BuyItemDTO> categoryItemSelect(int category_id,int item_id) throws SQLException{
+		String sql="SELECT * FROM item_info WHERE category_id=? AND item_id NOT IN('"+item_id+"') ORDER BY RAND() LIMIT 3";
 		DBConnector dbConnector=new DBConnector();
 		List<BuyItemDTO> categoryItemList = new ArrayList<>();
 		Connection connection = dbConnector.getConnection();
