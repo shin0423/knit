@@ -8,6 +8,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dao.LoginDAO;
 import com.internousdev.knit.dao.SettlementCompleteDAO;
 import com.internousdev.knit.dao.SettlementConfirmDAO;
 import com.internousdev.knit.dto.CartDTO;
@@ -24,8 +25,11 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	private boolean buyCountErrorFlg=false;
 	private ArrayList<CartDTO> buyCountErrorList = new ArrayList<CartDTO>();
 
+	private ArrayList<CartDTO> cartList=new ArrayList<>();
+
 	private String token;
 
+	LoginDAO loginDAO = new LoginDAO();
 
 	CartDAO cartDAO = new CartDAO();
 
@@ -51,8 +55,19 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
 
 
+		//if (!loginDAO.getExistUserId(session.get("userId").toString())) {
 
-			result = SUCCESS;
+			//return "errorPage";
+
+	//	}
+
+		cartList = cartDAO.aquireUserCartInfo(session.get("userId").toString());
+
+
+		if (cartList.isEmpty()) {
+			System.out.println("不正操作は許さない");
+			return "errorPage";
+		}
 
 			//カート情報の読み込み
 			cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
