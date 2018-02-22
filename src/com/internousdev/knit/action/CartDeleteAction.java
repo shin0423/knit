@@ -84,10 +84,10 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 				System.out.println(check + "<---- いまここ()");
 
 				if (!(session.containsKey("userId"))) {
-					ArrayList<CartDTO> cartDTOList = new ArrayList<CartDTO>();
-					cartDTOList = deletedao.getItemInfo(session.get("tempUserId").toString(), check);
+					CartDTO cartDTO = new CartDTO();
+					cartDTO = deletedao.getItemInfo(session.get("tempUserId").toString(), check);
 					int itemStock = 0;
-					itemStock = cartDTOList.get(0).getItemCount();
+					itemStock = cartDTO.getItemCount();
 					deletedao.returnItem(itemStock, check);
 
 					System.out.println("TEMPUSERID : " + session.get("tempUserId").toString());
@@ -95,10 +95,10 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 					cartList = dao.showUserCartList(session.get("tempUserId").toString());
 
 				} else {
-					ArrayList<CartDTO> cartDTOList = new ArrayList<CartDTO>();
-					cartDTOList = deletedao.getItemInfo(session.get("userId").toString(), check);
+					CartDTO cartDTO = new CartDTO();
+					cartDTO = deletedao.getItemInfo(session.get("userId").toString(), check);
 					int itemStock = 0;
-					itemStock = cartDTOList.get(0).getItemCount();
+					itemStock = cartDTO.getItemCount();
 					deletedao.returnItem(itemStock, check);
 
 					userId = session.get("userId").toString();

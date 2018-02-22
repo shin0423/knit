@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.util.DBConnector;
@@ -92,11 +91,10 @@ public class CartDeleteDAO {
 		return count;
 	}
 
-	public ArrayList<CartDTO> getItemInfo(String userId, String itemId) throws SQLException {
+	public CartDTO getItemInfo(String userId, String itemId) throws SQLException {
 		DBConnector db=new DBConnector();
 		Connection con=db.getConnection();
 		CartDTO cartDTO = new CartDTO();
-		ArrayList<CartDTO> cartDTOList = new ArrayList<CartDTO>();
 
 		String sql = "SELECT * FROM cart_info WHERE user_id = ? AND item_id=?";
 
@@ -108,7 +106,6 @@ public class CartDeleteDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				cartDTO.setItemCount(rs.getInt("item_count"));
-				cartDTOList.add(cartDTO);
 			}
 
 		} catch (SQLException e) {
@@ -117,7 +114,7 @@ public class CartDeleteDAO {
 		} finally {
 			con.close();
 		}
-		return cartDTOList;
+		return cartDTO;
 
 	}
 
