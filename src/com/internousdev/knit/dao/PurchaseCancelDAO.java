@@ -38,8 +38,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			+ "FROM purchase_history_info as ubit "
 			+ "LEFT JOIN item_info as iit "
 			+ "ON ubit.item_id = iit.item_id "
-			+ "WHERE ubit.status = 1 "
-			+ "AND ubit.send_flg = 0 "
+			+ "WHERE ubit.send_flg = 0 "
 			+ "AND ubit.user_id = ? "
 			+ "ORDER BY regist_date DESC ";
 
