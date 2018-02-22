@@ -34,7 +34,7 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 		setReviewList(reviewDAO.selectReviewAll(itemId));
 
 
-		
+
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
@@ -55,7 +55,7 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 				optionNumber.add(optionCount);
 			}
 		}
-		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId()));
+		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId(),Integer.parseInt(itemId)));
 
 		return SUCCESS;
 
