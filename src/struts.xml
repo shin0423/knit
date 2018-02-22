@@ -3,9 +3,6 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<!-- ここは後々消す -->
-	<constant name="struts.devMode" value="true" />
-	<!--  -->
 
 	<constant name="struts.ui.theme" value="simple" />
 
@@ -131,7 +128,7 @@
 	</action>
 	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
 		<result name="success">cart.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">cartReflesh.jsp</result>
 	</action>
 	<action name="GoLoginAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
 		<result name="success">login.jsp</result>
@@ -146,6 +143,7 @@
 	<action name="SettlementCompleteAction" class="com.internousdev.knit.action.SettlementCompleteAction" method="execute">
 		<result name="success">settlementComplete.jsp</result>
 		<result name="error">settlementConfirm.jsp</result>
+		<result name="errorPage">errorpage.jsp</result>
 	</action>
 
 	<!-- 管理者機能(森屋) -->

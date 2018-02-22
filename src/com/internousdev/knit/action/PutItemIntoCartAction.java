@@ -65,7 +65,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 		if (!(itemCount<6)) {
-			System.out.println("不正操作我絶対許");
+			System.out.println("不正操作我絶対不許");
 			return "errorPage";
 		}
 
