@@ -24,6 +24,7 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 	private ArrayList<String> reviewErrorMessage = new ArrayList<String>();
+	private List<BuyItemDTO> categoryItemList = new ArrayList<BuyItemDTO>();
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
@@ -47,6 +48,7 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 
 		setBuyItemDTO( buyItemInfoDAO.selectBuyItemInfo(String.valueOf(itemId)) );
 		setReviewList( reviewDAO.selectReviewAll(String.valueOf(itemId)) );
+		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId(),itemId));
 
 
 		if(!session.get("userId").equals("")) {
@@ -118,6 +120,14 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public List<BuyItemDTO> getCategoryItemList() {
+		return categoryItemList;
+	}
+
+	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
+		this.categoryItemList = categoryItemList;
 	}
 
 }
