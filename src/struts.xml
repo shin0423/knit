@@ -50,7 +50,7 @@
 	<action name="CreateAddressCompleteAction" class="com.internousdev.knit.action.CreateAddressCompleteAction" method="execute">
 		<result name="success">createAddressComplete.jsp</result>
 		<result name="error">createAddress.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!-- ユーザー登録 -->
@@ -66,7 +66,7 @@
 
     <action name="UserCreateCompleteAction" class="com.internousdev.knit.action.UserCreateCompleteAction" method="execute">
   	  <result name="success">userCreateComplete.jsp</result>
-  	  <result name="errorPage">errorpage.jsp</result>
+  	  <result name="errorPage">userIdCheck.jsp</result>
     </action>
 
     <!-- ユーザー情報変更 -->
@@ -143,24 +143,24 @@
 	<action name="SettlementCompleteAction" class="com.internousdev.knit.action.SettlementCompleteAction" method="execute">
 		<result name="success">settlementComplete.jsp</result>
 		<result name="error">settlementConfirm.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!-- 管理者機能(森屋) -->
 	<action name="AdminDeleteAction" class="com.internousdev.knit.action.AdminDeleteAction" method="execute">
 		<result name="success">admin.jsp</result>
 		<result name="error">admin.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 	<action name="AdminInsertCountAction" class="com.internousdev.knit.action.AdminInsertCountAction" method="execute">
 		<result name="success">admin.jsp</result>
 		<result name="error">admin.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 	<action name="AdminInsertItemAction" class="com.internousdev.knit.action.AdminInsertItemAction" method="execute">
 		<result name="success">admin.jsp</result>
 		<result name="error">admin.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 	<action name="AdminLogoutAction" class="com.internousdev.knit.action.AdminLogoutAction" method="execute">
 		<result name="success">home.jsp</result>
@@ -168,12 +168,12 @@
 	<action name="AdminDeleteCategoryAction" class="com.internousdev.knit.action.AdminDeleteCategoryAction" method="execute">
 		<result name="success">admin.jsp</result>
 		<result name="error">admin.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 	<action name="AdminInsertCategoryAction" class="com.internousdev.knit.action.AdminInsertCategoryAction" method="execute">
 		<result name="success">admin.jsp</result>
 		<result name="error">admin.jsp</result>
-		<result name="errorPage">errorpage.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
     <!--マイページ (齊藤)-->
@@ -213,6 +213,11 @@
 	<!-- ログアウト機能 (小池) -->
 	<action name="UserLogoutAction" class="com.internousdev.knit.action.UserLogoutAction" method="execute" >
 		<result name="success" >index.jsp</result>
+	</action>
+
+	<!-- ログインちぇっく -->
+	<action name="UserIdCheckAction" class="com.internousdev.knit.action.UserIdCheckAction" method="execute">
+		<result name="success">errorpage.jsp</result>
 	</action>
 </package>
 </struts>

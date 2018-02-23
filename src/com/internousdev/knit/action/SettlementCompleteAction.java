@@ -79,7 +79,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 			//購入したユーザーのカート情報を消去
 			cartDAO.deleteCartInfo(session.get("userId").toString());
-
+			 result=SUCCESS;
 			return result;
 		}
 
