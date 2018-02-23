@@ -117,7 +117,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				session.put("userId", loginDTO.getUserId());
 				session.put("loginFlg", true);
 				makeCartList();
-				calcTotalPrice(userCartList);
+				int i = 0;
+				i = calcTotalPrice(userCartList);
+				session.put("allTotalPrice", i);
 				System.out.println("一般ログイン成功");
 
 				//小池
