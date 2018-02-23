@@ -11,6 +11,8 @@
 
 </head>
 <body>
+
+
 <jsp:include page="headerInclude.jsp"/>
 <div class="sideBar">
 カート内商品<br>
@@ -42,6 +44,10 @@
 
 	<div class="main">
 	<br><br>
+
+<s:if test="errorMessage !=''">
+    <h5><s:property value="errorMessage" escape="false" /></h5>
+</s:if>
 
 	<s:iterator value="buyItemAfterSearchList" status="st">
 	<s:if test="#st.count % 3 == 1" >
