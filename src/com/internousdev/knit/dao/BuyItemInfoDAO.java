@@ -70,4 +70,26 @@ public class BuyItemInfoDAO {
 		return categoryItemList;
 	}
 
+	public List<BuyItemDTO> itemCheck() throws SQLException{
+		String sql="SELECT * FROM item_info";
+		DBConnector dbConnector=new DBConnector();
+		List<BuyItemDTO> ItemCheckList = new ArrayList<>();
+		Connection connection = dbConnector.getConnection();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				BuyItemDTO dto = new BuyItemDTO();
+				dto.setItemId(resultSet.getInt("item_id"));
+				ItemCheckList.add(dto);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return ItemCheckList;
+
+	}
+
 }

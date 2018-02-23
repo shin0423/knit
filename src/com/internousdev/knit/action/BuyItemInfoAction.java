@@ -12,6 +12,7 @@ import com.internousdev.knit.dao.BuyItemInfoDAO;
 import com.internousdev.knit.dao.ReviewDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.ReviewDTO;
+import com.internousdev.knit.util.ItemIdChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemInfoAction extends ActionSupport implements SessionAware {
@@ -32,6 +33,11 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 		buyItemDTO=buyItemInfoDAO.selectBuyItemInfo(itemId);
 		ReviewDAO reviewDAO = new ReviewDAO();
 		setReviewList(reviewDAO.selectReviewAll(itemId));
+		ItemIdChecker checker = new ItemIdChecker();
+		if(!(checker.itemIdChecker(itemId))){
+			return "unknownItem";
+		}
+
 
 
 

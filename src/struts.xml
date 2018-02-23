@@ -119,6 +119,7 @@
 
 	<action name="BuyItemInfoAction" class="com.internousdev.knit.action.BuyItemInfoAction" method="execute">
 		<result name="success">buyItemInfo.jsp</result>
+		<result name="unknownItem">unknownItem.jsp</result>
 	</action>
 
 	<!-- カート機能 (川畑) -->
