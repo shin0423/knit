@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.PurchaseHistoryDAO;
 import com.internousdev.knit.dto.PurchaseHistoryDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 //マイページよりボタン押下で遷移
@@ -39,6 +40,12 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 
 	public String execute()throws SQLException{
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		System.out.println("きたよー");
 
 		//ログインしてなければログインに飛ばす

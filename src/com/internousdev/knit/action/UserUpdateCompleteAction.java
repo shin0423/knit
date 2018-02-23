@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.UserUpdateCompleteDAO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserUpdateCompleteAction extends ActionSupport implements SessionAware{
@@ -17,6 +18,12 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException{
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		String result=ERROR;
 
 		if ( newEmail == null) {

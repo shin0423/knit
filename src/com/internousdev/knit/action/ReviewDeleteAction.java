@@ -13,6 +13,7 @@ import com.internousdev.knit.dao.ReviewDAO;
 import com.internousdev.knit.dao.ReviewDeleteDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.ReviewDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewDeleteAction extends ActionSupport implements SessionAware {
@@ -26,6 +27,12 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);

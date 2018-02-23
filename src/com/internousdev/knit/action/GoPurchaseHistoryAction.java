@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GoPurchaseHistoryAction extends ActionSupport implements SessionAware {
@@ -18,7 +19,12 @@ public class GoPurchaseHistoryAction extends ActionSupport implements SessionAwa
 
 		//ログインしてなければログインに飛ばす
 		//それ以外は購入履歴画面へ
-
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		String loginFlg = session.get("loginFlg").toString();
 
 		String result = SUCCESS;

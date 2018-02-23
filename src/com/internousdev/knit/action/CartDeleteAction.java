@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dao.CartDeleteDAO;
 import com.internousdev.knit.dto.CartDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CartDeleteAction extends ActionSupport implements SessionAware{
@@ -48,6 +49,12 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		CartDAO dao = new CartDAO();
 		String result = ERROR;
 		System.out.println("ITEMID : " + itemId);

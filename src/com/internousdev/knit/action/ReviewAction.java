@@ -12,6 +12,7 @@ import com.internousdev.knit.dao.BuyItemInfoDAO;
 import com.internousdev.knit.dao.ReviewDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.ReviewDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
@@ -29,6 +30,12 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		String result = ERROR;
 
 		RandomStringUtils rndStr = new RandomStringUtils();

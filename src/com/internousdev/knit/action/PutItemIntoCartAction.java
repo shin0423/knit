@@ -12,6 +12,7 @@ import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.CartDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class PutItemIntoCartAction extends ActionSupport implements SessionAware{
@@ -44,6 +45,12 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 	public String execute()throws SQLException{
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage2";
+			}
+		}
 
 		if(itemCount<0) {
 			return "CountError";

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.PurchaseCancelCompleteDAO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -21,6 +22,12 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 	private String orderNum;
 
 	public String execute()throws SQLException{
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		//ログインしていないユーザーをログイン画面へ飛ばす
 
 		boolean loginFlg = session.containsKey("loginFlg");
