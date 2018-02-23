@@ -66,7 +66,7 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 
 			} else if ( !reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
-				reviewErrorMessage.add("この商品の購入情報が無いので書き込みできません");
+				reviewErrorMessage.add("この商品の購入履歴がないためレビューできません");
 				System.out.println("この商品の購入情報が無いので書き込み不可");
 
 
