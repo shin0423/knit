@@ -33,6 +33,8 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	private String message;
 
+	private String orderNum;
+
 
 
 
@@ -122,8 +124,9 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 			System.out.println("ID:"+itemId);
 
 			String user_id = session.get("userId").toString();
+			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
-			purchaseHistoryDAO.deletePart(user_id,Integer.parseInt(itemId));
+			purchaseHistoryDAO.deletePart(user_id,Integer.parseInt(itemId), orderNum);
 
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
@@ -212,6 +215,20 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+
+
+
+	public String getOrderNum() {
+		return orderNum;
+	}
+
+
+
+
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
 	}
 
 

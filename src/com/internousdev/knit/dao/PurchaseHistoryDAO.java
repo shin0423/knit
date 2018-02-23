@@ -113,14 +113,15 @@ public int deleteAll(String userId) throws SQLException{
 
 //購入履歴削除メソッド(個別削除)[status:0で非表示,1で表示]
 
-public int deletePart(String userId,int itemId) throws SQLException{
+public int deletePart(String userId,int itemId, String orderNum) throws SQLException{
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
 	String sql = "UPDATE purchase_history_info "
 				+ "SET status = 0 "
 				+ "WHERE status = 1 "
 				+ "AND user_id = ? "
-				+ "AND item_id = ? ";
+				+ "AND item_id = ? "
+				+ "AND order_num = ? ";
 
 	int resultdp = 0;
 
@@ -128,6 +129,7 @@ public int deletePart(String userId,int itemId) throws SQLException{
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1,userId);
 		ps.setInt(2,itemId);
+		ps.setString(3, orderNum);
 
 		resultdp = ps.executeUpdate();
 		System.out.println(resultdp);
