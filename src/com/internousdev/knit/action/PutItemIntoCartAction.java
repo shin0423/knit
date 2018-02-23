@@ -3,6 +3,8 @@ package com.internousdev.knit.action;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
@@ -17,6 +19,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class PutItemIntoCartAction extends ActionSupport implements SessionAware{
 
+
+
 	private Map<String,Object>session;
 	private ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 
@@ -24,6 +28,8 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 	//miniカートのlist
 		private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
+
+
 
 	private boolean duplicationFlg;
 
@@ -45,6 +51,32 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 	public String execute()throws SQLException{
+
+		Random rand=new Random();
+		int[] orderIntArray= new int[3];
+		String[] orderStringArray = new String[3];
+		String orderNumPreview="";
+		for(int i=0 ; orderStringArray.length>i;i++){
+			orderIntArray[i]=rand.nextInt(6);
+			orderStringArray[i]=String.valueOf(orderIntArray[i]);
+			orderNumPreview=orderNumPreview+orderStringArray[i];
+
+		try {
+			TimeUnit.MILLISECONDS.sleep(Long.parseLong(orderNumPreview));
+		} catch (InterruptedException e1) {
+
+			e1.printStackTrace();
+		}
+
+		try {
+			TimeUnit.MILLISECONDS.sleep(1);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+
+
+
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
 			if(idCheck.checkUser(session.get("userId").toString())){
@@ -72,6 +104,8 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 
+
+
 		System.out.println("countは"+count);
 
 
@@ -86,6 +120,10 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
 			return "errorPage";
 	}
+
+
+
+
 
 		CartDTO dto=new CartDTO();
 		CartDAO dao=new CartDAO();
@@ -177,7 +215,10 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		totalPrice=calcTotalPrice(cartList);
 		session.put("allTotalPrice", totalPrice);
 		return SUCCESS;
+		}
+		return SUCCESS;
 	}
+
 
 	public Map<String,Object> getSession(){
 		return session;
