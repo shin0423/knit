@@ -83,7 +83,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		}catch(NullPointerException e){
 			errorMsg= "アイテムが選択されていません";
 			System.out.println("やったよ！");
-			getAllTotalPrice();
 			e.printStackTrace();
 			if (!(session.containsKey("userId"))) {
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
