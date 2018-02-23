@@ -45,6 +45,10 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 	public String execute()throws SQLException{
 
+		if(itemCount<0) {
+			return "CountError";
+		}
+
 
 		if(!(token.equals(session.get("token").toString()))){
 			System.out.println("putitemトークン"+token);
@@ -160,9 +164,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		/**
 		 * 検証画面で購入個数をマイナスにした場合を返しホームに戻る
 		 */
-		if(itemCount<0) {
-			return "CountError";
-		}
+
 		ShowItemDAO showItemDAO = new ShowItemDAO();
 		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
