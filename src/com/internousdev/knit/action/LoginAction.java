@@ -50,12 +50,15 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		 * ユーザーIDチェック
 		 */
 		if (userId == null || userId.equals("")) {
+			errorMessage.add("ユーザーIDが未入力です");
 			result = ERROR;
 		} else if ( !( 1 <= userId.length() && userId.length() <= 8 ) ) {
 			errorMessage.add("ユーザーIDは1文字以上8文字以下です");
 		} else if ( !( userId.matches("^[0-9a-zA-Z]+$") ) ) {
 			errorMessage.add("ユーザーIDは半角英数字です");
         }
+
+
 
 		/**
 		 * パスワード入力チェック
@@ -75,6 +78,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		} else {
 			session.remove("saveId");
 		}
+
+
 
 
 		if (!loginDAO.getExistUserId(userId)) {
