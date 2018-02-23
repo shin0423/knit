@@ -49,6 +49,17 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			return ERROR;
 		}
 
+		if (!(conPassword.matches("^[a-zA-Z0-9]+$"))) {
+			passwordErrorMessage="確認パスワードも半角英数字で入力してください。";
+			return ERROR;
+		}
+		if ((conPassword.length() < 1 || conPassword.length() > 16)) {
+			passwordErrorMessage="確認パスワードは1文字以上16文字以下で入力してください。";
+			return ERROR;
+		}
+
+
+
 
 		//新規パスワードと確認パスワードを比較
 		if(newPassword.equals(conPassword)){
@@ -61,7 +72,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			 */
 
 			hideUserId = resetPasswordDAO.hideString(userId,0,2);
-			hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,1);
+			hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,2);
 
 			return SUCCESS;
 		}else {
