@@ -129,6 +129,8 @@
 	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
 		<result name="success">cart.jsp</result>
 		<result name="errorPage">cartReflesh.jsp</result>
+		<result name="CountError">userIdCheck.jsp</result>
+
 	</action>
 	<action name="GoLoginAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
 		<result name="success">login.jsp</result>
