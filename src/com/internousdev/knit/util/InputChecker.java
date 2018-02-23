@@ -11,7 +11,7 @@ public class InputChecker {
 		if (familyName.equals("") || familyName == null) {
 			result = "姓を入力してください。";
 		} else if (familyName.length() < 1 || familyName.length() > 16) {
-			result = "姓は1文字以上16文字以下で入力してください。";
+			result = "姓は16文字以内で入力してください。";
 		} else if (!familyName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")) {
 			result = "姓は半角英語、漢字、ひらがな、カタカナで入力してください。";
 		}
@@ -24,7 +24,7 @@ public class InputChecker {
 		if (firstName.equals("") || firstName == null) {
 			result = "名を入力してください。";
 		} else if (firstName.length() < 1 || firstName.length() > 16) {
-			result = "名は1文字以上16文字以下で入力してください。";
+			result = "名は16文字以内で入力してください。";
 		} else if (!firstName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")) {
 			result = "名は半角英語、漢字、ひらがな、カタカナで入力してください。";
 		}
@@ -38,7 +38,7 @@ public class InputChecker {
 		if (familyNameKana.equals("") || familyNameKana == null) {
 			result = "姓ふりがなを入力してください。";
 		} else if (familyNameKana.length() < 1 || familyNameKana.length() > 16) {
-			result = "姓ふりがなは1文字以上16文字以下で入力してください。";
+			result = "姓ふりがなは16文字以内で入力してください。";
 		} else if (!familyNameKana.matches("^[ぁ-ん]+$")) {
 			result = "姓ふりがなはひらがなで入力してください。";
 		}
@@ -52,7 +52,7 @@ public class InputChecker {
 		if (firstNameKana.equals("") || firstNameKana == null) {
 			result = "名ふりがなを入力してください。";
 		} else if (firstNameKana.length() < 1 || firstNameKana.length() > 16) {
-			result = "名ふりがなは1文字以上16文字以下で入力してください。";
+			result = "名ふりがなは16文字以内で入力してください。";
 		} else if (!firstNameKana.matches("^[ぁ-ん]+$")) {
 			result = "名ふりがなはひらがなで入力してください。";
 		}
