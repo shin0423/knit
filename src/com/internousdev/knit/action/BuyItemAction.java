@@ -19,7 +19,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	private String moreUp;
 	private String moreDown;
 
-	 private String errorMessage;
+
 
 	private String token;
 
@@ -64,9 +64,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 		buyItemAfterSearchList = buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);
 
 
-		if (buyItemAfterSearchList.isEmpty()) {
-			setErrorMessage("検索結果がありません。");
-		}
+
 
 //
 //		String[] splitedWord = searchWord.split(" ", 0);
@@ -147,12 +145,5 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	}
 
 
-	public String getErrorMessage() {
-		return errorMessage;
-	}
 
-
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
 }

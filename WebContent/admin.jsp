@@ -8,10 +8,16 @@
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta http-equiv="imagetoolbar" content="no">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css">
+<script>
+$(window).on('beforeunload', function(e) {
+    return 'ちょっと待ってくださいよ。まだダメですよ。';
+});
 
+</script>
 <title>管理者画面</title>
 </head>
 <body>

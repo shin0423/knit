@@ -45,9 +45,9 @@
 	<div class="main">
 	<br><br>
 
-<s:if test="errorMessage !=''">
-    <h5><s:property value="errorMessage" escape="false" /></h5>
-</s:if>
+<s:if test="buyItemAfterSearchList.isEmpty()">
+		<h1 align ="center">検索結果がありません。</h1>
+	</s:if>
 
 	<s:iterator value="buyItemAfterSearchList" status="st">
 	<s:if test="#st.count % 3 == 1" >
