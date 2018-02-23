@@ -13,7 +13,7 @@ public class CreateAddressAction extends ActionSupport implements SessionAware {
 
 	//  textfeildの中に入る情報を持ってくるプログラム
 
-	
+
 	private List<AddressDataDTO> noInpList = new ArrayList<AddressDataDTO>();
 	private String familyName;
 	private String firstName;
@@ -28,6 +28,7 @@ public class CreateAddressAction extends ActionSupport implements SessionAware {
 	//  getter&setter
 
 	public String execute() {
+
 		return SUCCESS;
 	}
 

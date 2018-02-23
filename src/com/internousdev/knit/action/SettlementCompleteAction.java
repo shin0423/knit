@@ -13,6 +13,7 @@ import com.internousdev.knit.dao.SettlementCompleteDAO;
 import com.internousdev.knit.dao.SettlementConfirmDAO;
 import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.dto.SettlementConfirmDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SettlementCompleteAction extends ActionSupport implements SessionAware{
@@ -38,6 +39,12 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 //決済処理
 
 	public String execute() throws SQLException{
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 
 		if(!(token.equals(session.get("token").toString()))){
 			return "errorPage";

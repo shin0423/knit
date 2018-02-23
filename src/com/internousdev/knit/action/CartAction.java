@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dto.CartDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CartAction extends ActionSupport implements SessionAware{
@@ -21,7 +22,12 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 
 	public String execute()throws SQLException{
-
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 
 
 		List<String> deleteCartList = new ArrayList<>();

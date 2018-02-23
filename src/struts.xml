@@ -18,11 +18,13 @@
 	<action name="ReviewAction" class="com.internousdev.knit.action.ReviewAction" method="execute">
 		<result name="success">buyItemInfo.jsp</result>
 		<result name="error">buyItemInfo.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<action name="ReviewDeleteAction" class="com.internousdev.knit.action.ReviewDeleteAction" method="execute">
 		<result name="success">buyItemInfo.jsp</result>
 		<result name="error">buyItemInfo.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 <!-- home画面へ移動 小池 -->
@@ -82,6 +84,7 @@
 
     <action name="UserUpdateCompleteAction" class="com.internousdev.knit.action.UserUpdateCompleteAction" method="execute">
   	 	 <result name="success">userUpdateComplete.jsp</result>
+  	 	 <result name="errorPage">userIdCheck.jsp</result>
     </action>
 
 <!-- パスワード再設定(永田) -->
@@ -106,6 +109,7 @@
 	</action>
 	<action name="UserDeteleCompleteAction" class="com.internousdev.knit.action.UserDeteleCompleteAction" method="execute">
 		<result name="success">userDeleteComplete.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!-- 1商品検索機能 2商品情報詳細表示機能 (南里) -->
@@ -120,16 +124,19 @@
 	<!-- カート機能 (川畑) -->
 	<action name="CartAction" class="com.internousdev.knit.action.CartAction" method="execute">
 		<result name="success">cart.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 
 	</action>
 	<action name="CartDeleteAction" class="com.internousdev.knit.action.CartDeleteAction" method="execute">
 		<result name="success">cart.jsp</result>
 		<result name="error">cart.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 	<action name="PutItemIntoCartAction" class="com.internousdev.knit.action.PutItemIntoCartAction" method="execute" >
 		<result name="success">cart.jsp</result>
 		<result name="errorPage">cartReflesh.jsp</result>
 		<result name="CountError">userIdCheck.jsp</result>
+		<result name="errorPage2">userIdCheck.jsp</result>
 
 	</action>
 	<action name="GoLoginAction" class="com.internousdev.knit.action.GoPageAction" method="execute">
@@ -182,18 +189,21 @@
 	<action name="MyPageAction" class="com.internousdev.knit.action.MyPageAction" method="execute">
 		<result name="success">mypage.jsp</result>
 		<result name="error">home.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!--マイページから購入履歴へ移動 (齊藤)-->
 	<action name="GoPurchaseHistoryAction" class="com.internousdev.knit.action.PurchaseHistoryAction" method="execute">
 		<result name="success">purchaseHistory.jsp</result>
 		<result name="error">login.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!-- 購入履歴表示・履歴削除機能(中村)  -->
 	<action name="PurchaseHistoryAction" class="com.internousdev.knit.action.PurchaseHistoryAction" method="execute">
 		<result name = "success">purchaseHistory.jsp</result>
 		<result name = "error">login.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!-- 購入キャンセル機能(中村) -->
@@ -210,6 +220,7 @@
 	<action name="PurchaseCancelCompleteAction" class="com.internousdev.knit.action.PurchaseCancelCompleteAction">
 		<result name = "success">purchaseCancelComplete.jsp</result>
 		<result name = "error">login.jsp</result>
+		<result name="errorPage">userIdCheck.jsp</result>
 	</action>
 
 	<!-- ログアウト機能 (小池) -->

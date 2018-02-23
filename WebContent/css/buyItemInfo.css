@@ -200,6 +200,7 @@ left:600px
 	left:100px;
 }
 .categoryItem{
+	padding:80px;
 	position:relative;
 	left:100px;
 	display:flex;

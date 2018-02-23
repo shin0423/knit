@@ -12,6 +12,7 @@ import com.internousdev.knit.dao.BuyItemInfoDAO;
 import com.internousdev.knit.dao.ReviewDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.ReviewDTO;
+import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReviewAction extends ActionSupport implements SessionAware {
@@ -26,9 +27,16 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 	private List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+	private List<BuyItemDTO> categoryItemList = new ArrayList<BuyItemDTO>();
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+		if(session.containsKey("userId")){
+			IdCheck idCheck = new IdCheck();
+			if(idCheck.checkUser(session.get("userId").toString())){
+				return "errorPage";
+			}
+		}
 		String result = ERROR;
 
 		RandomStringUtils rndStr = new RandomStringUtils();
@@ -39,6 +47,7 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 		setBuyItemDTO(buyItemInfoDAO.selectBuyItemInfo(String.valueOf(itemId)));
 		setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
+		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId(),itemId));
 		starDisplay();
 
 		if ((boolean) session.get("loginFlg")) {
@@ -161,6 +170,14 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 	public void setReviewList(List<ReviewDTO> reviewList) {
 		this.reviewList = reviewList;
+	}
+
+	public List<BuyItemDTO> getCategoryItemList() {
+		return categoryItemList;
+	}
+
+	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
+		this.categoryItemList = categoryItemList;
 	}
 
 }
