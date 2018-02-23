@@ -72,32 +72,29 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		setToken(token);
 		session.put("token", token);
 
-		totalPrice = calcTotalPrice(cartList);
-
-		allTotalPrice = calcTotalPrice(miniCartList);
-
-		session.put("allTotalPrice", allTotalPrice);
 
 		try{
 			if(checkList.equals(null)){
 				String name=checkList.toString();
 				System.out.println(name);
+				getAllTotalPrice();
 			}
 
-			}catch(NullPointerException e){
+		}catch(NullPointerException e){
 			errorMsg= "アイテムが選択されていません";
 			System.out.println("やったよ！");
+			getAllTotalPrice();
 			e.printStackTrace();
 			if (!(session.containsKey("userId"))) {
-			cartList = dao.showUserCartList(session.get("tempUserId").toString());
-			getAllTotalPrice();
+				cartList = dao.showUserCartList(session.get("tempUserId").toString());
+				getAllTotalPrice();
 
 			}else {
-			cartList = dao.showUserCartList(session.get("userId").toString());
-			getAllTotalPrice();
-			return ERROR;
+				cartList = dao.showUserCartList(session.get("userId").toString());
+				getAllTotalPrice();
+				return ERROR;
 			}
-			}
+		}
 
 		CartDeleteDAO deletedao = new CartDeleteDAO();
 
@@ -162,11 +159,26 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		this.token = token;
 	}
 
-	public void getAllTotalPrice() {
-		totalPrice = calcTotalPrice(cartList);
-		allTotalPrice = calcTotalPrice(miniCartList);
+	public void getAllTotalPrice() throws SQLException {
+		ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
+		CartDAO dao = new CartDAO();
+		allTotalPrice = 0;
+		totalPrice = 0;
 
-		session.put("allTotalPrice", allTotalPrice);
+		if (!(session.containsKey("userId"))) {
+			cartList = dao.showUserCartList(session.get("tempUserId").toString());
+			allTotalPrice = calcTotalPrice(cartList);
+			totalPrice = allTotalPrice;
+
+			session.put("allTotalPrice", allTotalPrice);
+
+		}else {
+			cartList = dao.showUserCartList(session.get("userId").toString());
+			allTotalPrice = calcTotalPrice(cartList);
+			totalPrice = allTotalPrice;
+
+			session.put("allTotalPrice", allTotalPrice);
+		}
 	}
 
 	public String getUserId() {

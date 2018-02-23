@@ -285,6 +285,7 @@
 							<a href=' <s:url action = "PurchaseHistoryAction">
 											<s:param name="itemId" value="%{itemId}" />
 											<s:param name="deleteFlg" value="2" />
+											<s:param name="orderNum" value="%{orderNum}" />
 									  </s:url>' class="button">
 									  履歴削除
 							</a>
