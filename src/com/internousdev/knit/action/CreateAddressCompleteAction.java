@@ -1,6 +1,7 @@
 package com.internousdev.knit.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -26,6 +27,8 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 
 	DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 
+	private ArrayList<String> errMsgList = new ArrayList<>();
+
 
 	public String execute() throws SQLException{
 
@@ -45,6 +48,33 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		String result = ERROR;
 //		System.out.println("エラーです");
 
+
+
+		if(!(familyName.equals(session.get("familyName").toString()))){
+			return "errorPage";
+		}
+		if(!(firstName.equals(session.get("firstName").toString()))){
+			return "errorPage";
+		}
+		if(!(familyNameKana.equals(session.get("familyNameKana").toString()))){
+			return "errorPage";
+		}
+		if(!(firstNameKana.equals(session.get("firstNameKana").toString()))){
+			return "errorPage";
+		}
+
+		if(!(email.equals(session.get("email").toString()))){
+			return "errorPage";
+		}
+		if(!(telNumber.equals(session.get("telNumber").toString()))){
+			return "errorPage";
+		}
+		if(!(userAddress.equals(session.get("userAddress").toString()))){
+			return "errorPage";
+		}
+		System.out.println("結果----->>>>"+result);
+
+
 	//   確認用のプログラム
 
 		AddressDataDTO dto = new AddressDataDTO();
@@ -56,6 +86,8 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
+
+
 
 
 		System.out.println("登録する値一覧（CreateAddressCompleteAction）--------------");
@@ -170,5 +202,13 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public ArrayList<String> getErrMsgList() {
+		return errMsgList;
+	}
+
+	public void setErrMsgList(ArrayList<String> errMsgList) {
+		this.errMsgList = errMsgList;
 	}
 }

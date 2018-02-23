@@ -20,6 +20,8 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 	private String userAddress;
 	private ArrayList<String> errMsgList = new ArrayList<>();
 
+
+
 	private String token;
 
 
@@ -52,31 +54,46 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 
 		if(!i.familyNameChk(familyName).equals("OK")){
 			errMsgList.add(i.familyNameChk(familyName));
+
 			result = ERROR;
+		}else {
+			session.put("familyName", familyName);
 		}
 		if(!i.firstNameChk(firstName).equals("OK")){
 			errMsgList.add(i.firstNameChk(firstName));
 			result = ERROR;
+		}else {
+			session.put("firstName", firstName);
 		}
 		if(!i.familyNameKanaChk(familyNameKana).equals("OK")){
 			errMsgList.add(i.familyNameKanaChk(familyNameKana));
 			result = ERROR;
+		}else {
+			session.put("familyNameKana", familyNameKana);
 		}
 		if(!i.firstNameKanaChk(firstNameKana).equals("OK")){
 			errMsgList.add(i.firstNameKanaChk(firstNameKana));
 			result = ERROR;
+		}else {
+			session.put("firstNameKana", firstNameKana);
 		}
 		if(!i.emailChk(email).equals("OK")){
 			errMsgList.add(i.emailChk(email));
 			result = ERROR;
+		}else {
+			session.put("email", email);
 		}
 		if(!i.telNumberChk(telNumber).equals("OK")){
 			errMsgList.add(i.telNumberChk(telNumber));
 			result = ERROR;
+		}else {
+			session.put("telNumber", telNumber);
 		}
 		if(!i.userAddressChk(userAddress).equals("OK")){
 			errMsgList.add(i.userAddressChk(userAddress));
 			result = ERROR;
+		}else {
+			session.put("userAddress", userAddress);
 		}
 		System.out.println("結果----->>>>"+result);
 		return result;

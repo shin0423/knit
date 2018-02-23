@@ -27,6 +27,8 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 	private ArrayList<CartDTO> cartList=new ArrayList<>();
 
+	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
+
 	private String token;
 
 	LoginDAO loginDAO = new LoginDAO();
@@ -79,6 +81,13 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 			//購入したユーザーのカート情報を消去
 			cartDAO.deleteCartInfo(session.get("userId").toString());
+
+			session.remove("miniCartList");
+
+			session.put("miniCartList", miniCartList);
+
+
+
 			 result=SUCCESS;
 			return result;
 		}
