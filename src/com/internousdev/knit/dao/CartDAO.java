@@ -484,7 +484,7 @@ public class CartDAO extends ActionSupport{
 	}
 
 	public ArrayList<CartDTO> TempUserMiniCart(String tempUserId){
-		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.temp_user_id = ?  LIMIT 6";
+		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.item_id = cart_info.item_id WHERE cart_info.temp_user_id = ?  LIMIT 6";
 		con=db.getConnection();
 
 		ArrayList<CartDTO> MiniCartId=new ArrayList<>();

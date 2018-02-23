@@ -46,13 +46,14 @@
 		}
 
 	#item{
-		width:450px;
-		height:420px;
+		width:470px;
+		height:400px;
 		margin-bottom:10px;
 		padding: 0.5em 1em;
     	margin: 2em 15px;
     	color: #5d627b;
     	background: white;
+    	display:inline-block;
     	border-top: solid 5px #5d627b;
     	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 		}
@@ -88,6 +89,10 @@
 
 	h2{
 		font-style:italic;
+		}
+
+	th{
+		white-space:nowrap;
 		}
 
   /*ボタンその２↓------------------------------*/
