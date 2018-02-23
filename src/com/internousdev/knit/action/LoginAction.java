@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.knit.dao.AdminCountCheckDAO;
 import com.internousdev.knit.dao.CartDAO;
 import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.LoginDAO;
@@ -101,6 +102,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			 * 管理者か一般ユーザーか判断
 			 */
 			} else if (loginDTO.getAdminFlg().equals("1") ) {
+				AdminCountCheckDAO adminCountCheckDAO = new AdminCountCheckDAO();
+				adminCountCheckDAO.updateAdminCount();
+				session.put("adminCount",adminCountCheckDAO.selectAdminCount());
 				CategoryDAO categoryDAO = new CategoryDAO();
 				setCategoryList(categoryDAO.getCategoryList());
 				loginDAO.login(loginDTO);
@@ -113,6 +117,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				setToken(token);
 				session.put("token", token);
 				result = "admin";
+
 
 				/**
 				 * 一般ユーザーとしてログイン

@@ -12,12 +12,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css">
-<script>
-$(window).on('beforeunload', function(e) {
-    return 'ちょっと待ってくださいよ。まだダメですよ。';
-});
 
-</script>
 <title>管理者画面</title>
 </head>
 <body>

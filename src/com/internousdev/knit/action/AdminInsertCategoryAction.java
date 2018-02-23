@@ -10,6 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dto.CategoryDTO;
+import com.internousdev.knit.util.AdminCountCheck;
 import com.internousdev.knit.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -33,6 +34,11 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 			return "errorPage";
 		}
 
+		AdminCountCheck countCheck = new AdminCountCheck();
+		int count = Integer.parseInt(session.get("adminCount").toString());
+		if(!countCheck.AdminCountChecker(count)){
+			return "errorPage";
+		}
 		if(!(token.equals(session.get("token").toString()))){
 			System.out.println("こっちきてくれ");
 			return "errorPage";

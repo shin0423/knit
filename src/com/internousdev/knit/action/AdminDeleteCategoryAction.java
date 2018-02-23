@@ -10,6 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dto.CategoryDTO;
+import com.internousdev.knit.util.AdminCountCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminDeleteCategoryAction extends ActionSupport implements SessionAware{
@@ -23,6 +24,11 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 	public String execute() throws SQLException {
 		//管理者フラグチェック
 		if(!(session.containsKey("adminLoginFlg"))){
+			return "errorPage";
+		}
+		AdminCountCheck countCheck = new AdminCountCheck();
+		int count = Integer.parseInt(session.get("adminCount").toString());
+		if(!countCheck.AdminCountChecker(count)){
 			return "errorPage";
 		}
 		//ランダムトークんチェック

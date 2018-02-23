@@ -20,7 +20,8 @@ status tinyint not null default 0,
 logined tinyint not null default 0,
 regist_date datetime not null,
 update_date datetime,
-admin_flg tinyint not null default 0
+admin_flg tinyint not null default 0,
+admin_count int not null default 0
 );
 
 drop table if exists item_info;

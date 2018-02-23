@@ -13,6 +13,7 @@ import com.internousdev.knit.dao.CategoryDAO;
 import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.BuyItemDTO;
 import com.internousdev.knit.dto.CategoryDTO;
+import com.internousdev.knit.util.AdminCountCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminDeleteAction extends ActionSupport implements SessionAware {
@@ -30,6 +31,11 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException {
 		//管理者フラグチェック
 		if(!(session.containsKey("adminLoginFlg"))){
+			return "errorPage";
+		}
+		AdminCountCheck countCheck = new AdminCountCheck();
+		int count = Integer.parseInt(session.get("adminCount").toString());
+		if(!countCheck.AdminCountChecker(count)){
 			return "errorPage";
 		}
 		//ランダムトークンチェック
