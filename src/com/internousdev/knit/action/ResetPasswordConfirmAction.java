@@ -76,7 +76,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 			return SUCCESS;
 		}else {
-			passwordErrorMessage = "入力された確認パスワードが異なります。";
+			passwordErrorMessage = "入力されたパスワードが異なります。";
 			return ERROR;
 		}
 
