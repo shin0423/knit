@@ -27,8 +27,7 @@
 		<div>
 		<!-- リストに応じたトップメッセージ -->
 
-				<s:if test= "historyList.size() != 0">
-					<h2 class="guide">購入情報は以下になります</h2>
+
 
 
 
@@ -59,7 +58,9 @@
 			</div>
 		</div>
 		<!-- リストに応じたトップメッセージここまで -->
-
+	<s:if test= "historyList.size() != 0">
+					<h2 class="guide">購入情報は以下になります</h2>
+					<p>*購入後六時間未満の商品はキャンセル可能です。</p>
 <!----------------------履歴詳細   ここから------------------------------->
 
 				<s:iterator value = "historyList" status="sts">
@@ -315,6 +316,8 @@
 		<div class="clear"></div>
 				<div class="textcm02">
 					<h2>購入情報はありません</h2>
+					<p>*購入後六時間未満の商品はキャンセル可能です。</p>
+					<br><br>
 				</div>
 		</s:else>
 
