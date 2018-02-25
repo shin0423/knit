@@ -69,13 +69,23 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			 * resetPasswordDAO.hideString(加工する文字列、抽出文字の開始位置、抽出文字の終了位置)
 			 * IDの先頭二文字を残し、*に差し替える
 			 * Passwordの先頭一文字を残し、*に差し替える
+			 * Passwordが一文字の場合、*に差し替える
+			 * Passwordが二文字の場合、先頭一文字を残し、残りを*に差し替える
+			 *
 			 */
-
+			if(newPassword.length() <= 1){
+				hideUserId = resetPasswordDAO.hideString(userId,0,2);
+				hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,0);
+			}else if(newPassword.length() == 2){
+				hideUserId = resetPasswordDAO.hideString(userId,0,2);
+				hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,1);
+			}else{
 			hideUserId = resetPasswordDAO.hideString(userId,0,2);
 			hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,2);
-
+			}
 			return SUCCESS;
-		}else {
+
+		}else{
 			passwordErrorMessage = "入力されたパスワードが異なります。";
 			return ERROR;
 		}
