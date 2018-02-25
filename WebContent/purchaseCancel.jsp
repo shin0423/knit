@@ -79,7 +79,7 @@
             		</th>
 
             		<td class ="guideto">
-            		<s:property value="itemCount"/>ヶ
+            		<s:property value="itemCount"/>個
             		</td>
 
 				</tr>
@@ -191,7 +191,7 @@
             		</th>
 
             		<td class="guideto">
-            		<s:property value="itemCount"/>
+            		<s:property value="itemCount"/>個
             		</td>
 
 				</tr>
