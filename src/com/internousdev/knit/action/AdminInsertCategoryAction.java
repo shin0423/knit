@@ -28,6 +28,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 	private String token;
 
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException{
 
 		if(!(session.containsKey("adminLoginFlg"))){

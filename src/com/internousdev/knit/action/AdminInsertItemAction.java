@@ -36,6 +36,7 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 
 	private String token;
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
 
 		if(!(session.containsKey("adminLoginFlg"))){

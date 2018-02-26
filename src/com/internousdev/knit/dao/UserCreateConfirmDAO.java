@@ -26,7 +26,7 @@ public class UserCreateConfirmDAO extends ActionSupport implements SessionAware{
 
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()){
-				userUpdateDTO.setLoginId(rs.getString("user_id"));
+				userUpdateDTO.setUserId(rs.getString("user_id"));
 				return true;
 			}
 		}catch(Exception e){

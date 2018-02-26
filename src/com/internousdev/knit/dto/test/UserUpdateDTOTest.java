@@ -10,218 +10,218 @@ public class UserUpdateDTOTest {
 //ユーザーIDに関するテスト
  //getter
 	@Test
-	public void testGetLoginId1() {
+	public void testGetUserId1() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "0";
 
-		dto.setLoginId(expected);
-		assertEquals(expected, dto.getLoginId());
+		dto.setUserId(expected);
+		assertEquals(expected, dto.getUserId());
 	}
 	@Test
-	public void testGetLoginId2() {
+	public void testGetUserId2() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "2147483647";
 
-		dto.setLoginId(expected);
-		assertEquals(expected, dto.getLoginId());
+		dto.setUserId(expected);
+		assertEquals(expected, dto.getUserId());
 	}
 	@Test
-	public void testGetLoginId3() {
+	public void testGetUserId3() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "-2147483647";
 
-		dto.setLoginId(expected);
-		assertEquals(expected, dto.getLoginId());
+		dto.setUserId(expected);
+		assertEquals(expected, dto.getUserId());
 	}
 	@Test
-	public void testGetLoginId4() {
+	public void testGetUserId4() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "null";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testGetLoginId5() {
+	public void testGetUserId5() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testGetLoginId6() {
+	public void testGetUserId6() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = " ";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testGetLoginId7() {
+	public void testGetUserId7() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "　";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testGetLoginId8() {
+	public void testGetUserId8() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "abc123";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testGetLoginId9() {
+	public void testGetUserId9() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "あいう１２３";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testGetLoginId10() {
+	public void testGetUserId10() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "abc123あいう１２３";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testGetLoginId11() {
+	public void testGetUserId11() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "abc123あいう１２３漢字";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testGetLoginId12() {
+	public void testGetUserId12() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 
  //setter
 	@Test
-	public void testSetLoginId1() {
+	public void testSetUserId1() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "0";
 
-		dto.setLoginId(expected);
-		assertEquals(expected, dto.getLoginId());
+		dto.setUserId(expected);
+		assertEquals(expected, dto.getUserId());
 	}
 	@Test
-	public void testSetLoginId2() {
+	public void testSetUserId2() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "2147483647";
 
-		dto.setLoginId(expected);
-		assertEquals(expected, dto.getLoginId());
+		dto.setUserId(expected);
+		assertEquals(expected, dto.getUserId());
 	}
 	@Test
-	public void testSetLoginId3() {
+	public void testSetUserId3() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "-2147483647";
 
-		dto.setLoginId(expected);
-		assertEquals(expected, dto.getLoginId());
+		dto.setUserId(expected);
+		assertEquals(expected, dto.getUserId());
 	}
 	@Test
-	public void testSetLoginId4() {
+	public void testSetUserId4() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "null";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId5() {
+	public void testSetUserId5() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId6() {
+	public void testSetUserId6() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = " ";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testSetLoginId7() {
+	public void testSetUserId7() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "　";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId8() {
+	public void testSetUserId8() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "abc123";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId9() {
+	public void testSetUserId9() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "あいう１２３";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId10() {
+	public void testSetUserId10() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "abc123あいう１２３";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId11() {
+	public void testSetUserId11() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "abc123あいう１２３漢字";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 	@Test
-	public void testSetLoginId12() {
+	public void testSetUserId12() {
 		UserUpdateDTO dto = new UserUpdateDTO();
 		String expected = "ａｂｃあいう１２３漢字";
 
-		dto.setLoginId(expected);
-		String actual = dto.getLoginId();
+		dto.setUserId(expected);
+		String actual = dto.getUserId();
 		assertEquals(expected, actual);
 	}
 //現在のパスワードに関するテスト

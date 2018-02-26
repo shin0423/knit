@@ -39,7 +39,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 		myPageDTOList = myPageDAO.getUserInfo(session.get("userId").toString());
 
 		if(!(newPassword.equals("")) || !(conPassword.equals(""))) {
-			if(!(userUpdateConfirmDAO.getPassword(password))){
+			if(!(userUpdateConfirmDAO.getPassword(password, session.get("userId").toString()))){
 				setErrorMessage("入力されたパスワードが異なります。");
 				result = ERROR;
 			} else if(newPassword.length()<1 || newPassword.length()>16){

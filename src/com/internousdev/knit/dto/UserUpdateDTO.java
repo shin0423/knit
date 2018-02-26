@@ -13,10 +13,10 @@ public class UserUpdateDTO {
 
 	private String userAddress;
 
-	public String getLoginId(){
+	public String getUserId(){
 		return userId;
 	}
-	public void setLoginId(String userId){
+	public void setUserId(String userId){
 		this.userId=userId;
 	}
 
