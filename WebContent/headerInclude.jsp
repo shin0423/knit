@@ -32,7 +32,7 @@
  <div id="selectCategory">商品カテゴリー: <select name="categoryId">
  			<option value="0" >全てのカテゴリ</option>
 			<s:iterator value="#session.categoryList" status="st">
-				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
+				<option value="<s:property value='categoryId'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
 			</select>
 			</div>
