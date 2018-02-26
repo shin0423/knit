@@ -119,6 +119,11 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 			//合計金額の計算
 			totalPrice=calcTotalPrice(cartList);
+
+			if (!(totalPrice <10000000)) {
+				return  ERROR;
+			}
+
 			return SUCCESS;
 
 
