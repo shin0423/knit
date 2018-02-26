@@ -27,7 +27,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 
 	//miniカートのlist
-		private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
+	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
 
 
 
@@ -61,16 +61,10 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 			orderIntArray[i]=rand.nextInt(6);
 			orderStringArray[i]=String.valueOf(orderIntArray[i]);
 			orderNumPreview=orderNumPreview+orderStringArray[i];
-
-		try {
-			TimeUnit.MILLISECONDS.sleep(Long.parseLong(orderNumPreview));
-		} catch (InterruptedException e1) {
-
-			e1.printStackTrace();
 		}
 
 		try {
-			TimeUnit.MILLISECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(Long.parseLong(orderNumPreview));
 		} catch (InterruptedException e) {
 
 			e.printStackTrace();
@@ -120,7 +114,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
 			return "errorPage";
-	}
+		}
 
 
 
@@ -215,8 +209,6 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
 		session.put("allTotalPrice", totalPrice);
-		return SUCCESS;
-		}
 		return SUCCESS;
 	}
 
