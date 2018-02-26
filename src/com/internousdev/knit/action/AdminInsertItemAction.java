@@ -26,6 +26,8 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 	private String releaseCompany;
 	private String itemStock;
 	private String price;
+
+
 	private ArrayList<String> errorList = new ArrayList<>();
 	private AdmiDAO admiDAO = new AdmiDAO();
 	private ShowItemDAO showItemDAO = new ShowItemDAO();
@@ -104,6 +106,16 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 					break out;
 				}
 			}
+			int a =Integer.parseInt(price);
+
+
+			if (!( a < 1000000)) {
+				System.out.println("商品価格異常を検知しました。");
+				return "errorPage";
+			}
+
+			price =String.valueOf(a);
+
 			admiDAO.insertAdminItemInfo(itemId, itemName, itemNameKana, itemDescription, categoryId, price,
 					releaseCompany, itemStock);
 			errorList = null;

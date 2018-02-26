@@ -129,7 +129,7 @@
 			<th>商品カテゴリー:</th>
 			<td><select name="categoryId">
 			<s:iterator value="categoryList" status="st">
-				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
+				<option value="<s:property value='categoryId'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
 			</select></td>
 			</tr>
