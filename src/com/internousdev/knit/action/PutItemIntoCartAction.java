@@ -50,13 +50,14 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 
+	@SuppressWarnings("static-access")
 	public String execute()throws SQLException{
 
 		Random rand=new Random();
 		int[] orderIntArray= new int[3];
 		String[] orderStringArray = new String[3];
 		String orderNumPreview="";
-		for(int i=0 ; orderStringArray.length>i;i++){
+		for(int i=0 ; i<orderStringArray.length; i++){
 			orderIntArray[i]=rand.nextInt(6);
 			orderStringArray[i]=String.valueOf(orderIntArray[i]);
 			orderNumPreview=orderNumPreview+orderStringArray[i];
