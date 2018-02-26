@@ -12,8 +12,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
 
-
-
 	private String password;
 
 	private String newPassword;
@@ -33,35 +31,35 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 	private String errorMessage;
 
 	public String execute(){
+
 		//入力情報の確認と登録
 		String result = SUCCESS;
 		ArrayList<MyPageDTO> myPageDTOList = new ArrayList<MyPageDTO>();
 		myPageDTOList = myPageDAO.getUserInfo(session.get("userId").toString());
 
 		if(!(newPassword.equals("")) || !(conPassword.equals(""))) {
-			if(!(userUpdateConfirmDAO.getPassword(password, session.get("userId").toString()))){
+			if(!(userUpdateConfirmDAO.getPassword(password, session.get("userId").toString()))) {
 				setErrorMessage("入力されたパスワードが異なります。");
 				result = ERROR;
-			} else if(newPassword.length()<1 || newPassword.length()>16){
+			}else if(newPassword.length()<1 || newPassword.length()>16) {
 				setErrorMessage("パスワードは1文字以上16文字以下で入力してください。");
 				result = ERROR;
-			}else if(!newPassword.matches("^[a-zA-Z0-9]+$")){
+			}else if(!newPassword.matches("^[a-zA-Z0-9]+$")) {
 				setErrorMessage("パスワードは半角英数字で入力してください。");
 				result = ERROR;
-			} else if (myPageDTOList.get(0).getPassword().equals(newPassword)) {
+			}else if (myPageDTOList.get(0).getPassword().equals(newPassword)) {
 				setErrorMessage("以前と同じパスワードです");
 				result = ERROR;
-			} else if(!(newPassword.equals(conPassword))){
+			}else if(!(newPassword.equals(conPassword))) {
 				setErrorMessage("入力された確認パスワードが異なります。");
 				System.out.println("newPassword確認テスト:"+newPassword);
 				System.out.println("conPassword確認テスト:"+conPassword);
 				result = ERROR;
-			} else {
+			}else {
 				session.put("newPassword", newPassword);
 				System.out.println(session.get("newPassword").toString());
 			}
 		}
-
 
 		if (!(newEmail.equals(""))) {
 			if (newEmail.length() < 10 || newEmail.length() > 32) {
@@ -80,14 +78,15 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			}
 		}
 
-		if(newPassword.equals("")&&newEmail.equals("")){
+		if(newPassword.equals("")&&newEmail.equals("")) {
 			setErrorMessage("パスワードかメールアドレスどちらかは変更してください");
 			result = ERROR;
 		}
 
 		return result;
 	}
-//ゲッターセッターの設定
+
+	//ゲッターセッターの設定
 	public ArrayList<String> getErrMsgList() {
 		return errMsgList;
 	}
@@ -138,7 +137,7 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 	}
 
 	@Override
-	public void setSession(Map<String,Object> session){
+	public void setSession(Map<String,Object> session) {
 		this.session=session;
 	}
 }

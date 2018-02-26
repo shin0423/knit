@@ -11,6 +11,7 @@ public class UserUpdateAction extends ActionSupport implements SessionAware{
 
 	public String execute(){
 		String result = "login";
+
 		if(session.containsKey("userId")){
 			session.remove("newPassword");
 			session.remove("newEmail");
@@ -18,6 +19,7 @@ public class UserUpdateAction extends ActionSupport implements SessionAware{
 		}else{
 			result = "back";
 		}
+
 		return result;
 	}
 	public void setSession(Map<String,Object>session){

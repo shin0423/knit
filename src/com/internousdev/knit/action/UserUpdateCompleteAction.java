@@ -81,6 +81,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String, Object> getSession() {
 		return session;
 	}
+
 	@Override
 	public void setSession(Map<String,Object> session){
 		this.session = session;

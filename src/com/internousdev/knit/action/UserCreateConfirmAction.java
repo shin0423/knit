@@ -49,8 +49,9 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			setErrorMessage("入力されたIDがすでに使われています。");
 			return ERROR;
 		}
+
 		//ランダム文字列を作るためにインスタンス化
-				RandomStringUtils rndStr = new RandomStringUtils();
+		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
 		System.out.println("トークン値"+token);
 		setToken(token);
@@ -72,7 +73,6 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		}else{
 			session.put("createPassword", password);
 		}
-
 
 		if(!i.familyNameChk(familyName).equals("OK")){
 			errMsgList.add(i.familyNameChk(familyName));
@@ -136,9 +136,9 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("createUserAddress",userAddress);
 		}
 
-
 		return result;
 	}
+
 //セッターゲッターの設定
 	public String getUserId(){
 		return userId;
@@ -228,7 +228,6 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		this.errorMessage = errorMessage;
 	}
 
-
 	@Override
 	public void setSession(Map<String,Object> session){
 		this.session=session;
@@ -241,12 +240,13 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public void setErrMsgList(ArrayList<String> errMsgList) {
 		this.errMsgList = errMsgList;
 	}
+
 	public String getToken() {
 		return token;
 	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}
-
 
 }

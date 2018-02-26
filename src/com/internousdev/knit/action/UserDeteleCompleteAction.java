@@ -31,9 +31,13 @@ public class UserDeteleCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 	public String execute() throws SQLException{
 		int countComplete=0;
+
 		String deleteUserId = session.get("userId").toString();
+
 		UserDeleteDAO userDeleteDAO = new UserDeleteDAO();
-ShowItemDAO showItemDAO = new ShowItemDAO();
+
+		ShowItemDAO showItemDAO = new ShowItemDAO();
+
 		CartDAO cartDAO = new CartDAO();
 
 		CategoryDAO categoryDAO = new CategoryDAO();
@@ -49,6 +53,7 @@ ShowItemDAO showItemDAO = new ShowItemDAO();
 		countComplete+=userDeleteDAO.deleteUserCartInfo(deleteUserId);
 		countComplete+=userDeleteDAO.deleteUserDestinationInfo(deleteUserId);
 		countComplete+=userDeleteDAO.deleteUserInfo(deleteUserId);
+
 		//削除した件数チェック
 		System.out.println(countComplete);
 		session.clear();
@@ -72,14 +77,9 @@ ShowItemDAO showItemDAO = new ShowItemDAO();
 		session.put("loginFlg", false);
 
 
-
-
 		return SUCCESS;
 
-
 	}
-
-
 
 	public void setSession(Map<String,Object> session){
 		this.session=session;
