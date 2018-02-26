@@ -128,8 +128,8 @@ public class InputChecker {
 			result = "電話番号は半角数字で入力してください。";
 		}
 
-		else if (telNumber.length() < 11 || telNumber.length() > 13) {
-			result = "電話番号は11文字以上13文字以下で入力してください。";
+		else if (telNumber.length() < 9 || telNumber.length() > 13) {
+			result = "電話番号は9文字以上13文字以下で入力してください。";
 		}
 
 		return result;
@@ -152,8 +152,8 @@ public class InputChecker {
 	public String telNumber1Chk(String telNumber) {
 		String result = "OK";
 		if(!(telNumber.equals("未入力"))){
-			if (telNumber.length() > 0 &&telNumber.length() < 11 || telNumber.length() > 13) {
-				result = "電話番号は11文字以上13文字以下で入力してください。";
+			if (telNumber.length() > 0 &&telNumber.length() < 9 || telNumber.length() > 13) {
+				result = "電話番号は9文字以上13文字以下で入力してください。";
 				} else if ((!telNumber.equals(""))&&!telNumber.matches("^[0-9]+$")) {
 					result = "電話番号は半角数字で入力してください。";
 					}
