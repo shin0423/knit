@@ -38,6 +38,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	private String releaseCompany;
 	private int count;
 	private String token;
+	private String errorMessage;
 
 	private int itemCount;
 
@@ -70,7 +71,6 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
 			if(idCheck.checkUser(session.get("userId").toString())){
-				System.out.println("まじかよ");
 				return "errorPage2";
 			}
 		}
@@ -106,10 +106,13 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
 			return "errorPage";
 		}
+		System.out.println((Integer.parseInt(session.get("allTotalPrice").toString())));
+		if(session.containsKey("allTotalPrice")){
+		if ((Integer.parseInt(session.get("allTotalPrice").toString()) >10000000)) {
 
-
-		if (!(totalPrice <10000000)) {
-			return  ERROR;
+			errorMessage = "１千万円以上に合計金額ががある場合カートに入りません。";
+			return  "errorPage";
+		}
 		}
 
 
@@ -206,6 +209,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		ShowItemDAO showItemDAO = new ShowItemDAO();
 		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
+
 
 
 
@@ -344,6 +348,16 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 	public void setMiniCartList(ArrayList<CartDTO> miniCartList) {
 		this.miniCartList = miniCartList;
+	}
+
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 }

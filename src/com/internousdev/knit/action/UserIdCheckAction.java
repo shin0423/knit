@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserIdCheckAction extends ActionSupport implements SessionAware{
 	public Map<String,Object> session;
 	String userId;
+	private String errorMessage;
 
 	public String execute() throws SQLException{
 		if(session.containsKey("userId")){
@@ -27,5 +28,13 @@ public class UserIdCheckAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map<String,Object> session){
 		this.session=session;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 }

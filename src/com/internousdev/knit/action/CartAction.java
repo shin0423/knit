@@ -13,7 +13,7 @@ import com.internousdev.knit.util.IdCheck;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CartAction extends ActionSupport implements SessionAware{
-
+	private String errorMessage;
 	Map<String,Object> session;
 	ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 	int totalPrice;
@@ -22,6 +22,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 
 	public String execute()throws SQLException{
+		System.out.println(errorMessage);
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
 			if(idCheck.checkUser(session.get("userId").toString())){
@@ -120,9 +121,6 @@ public class CartAction extends ActionSupport implements SessionAware{
 			//合計金額の計算
 			totalPrice=calcTotalPrice(cartList);
 
-			if (!(totalPrice <10000000)) {
-				return  ERROR;
-			}
 
 			return SUCCESS;
 
@@ -168,6 +166,12 @@ public class CartAction extends ActionSupport implements SessionAware{
 		}
 		public void setToken(String token) {
 			this.token = token;
+		}
+		public String getErrorMessage() {
+			return errorMessage;
+		}
+		public void setErrorMessage(String errorMessage) {
+			this.errorMessage = errorMessage;
 		}
 
 

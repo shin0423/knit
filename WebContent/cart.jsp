@@ -29,8 +29,10 @@
 <div class="main">
 
 	<h1 class="title">CART</h1><br>
-
 		<s:property value="errorMsg"/>
+		<s:if test="#session.allTotalPrice > 10000000">
+			<br>合計金額が１千万円を超えている場合これ以上カートに商品が入りません。
+		</s:if>
 		<!-- カートの中身が何も入って居ないとき -->
 			<s:if test="cartList.isEmpty()">
 				<p class="message">商品は入っておりません。</p>

@@ -446,7 +446,7 @@ public class CartDAO extends ActionSupport{
 
 		System.out.println("miniカート");
 
-		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.id = cart_info.item_id WHERE cart_info.user_id = ?  LIMIT 6";
+		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.item_id = cart_info.item_id WHERE cart_info.user_id = ?  LIMIT 6";
 		con=db.getConnection();
 		ArrayList<CartDTO> MiniCartId=new ArrayList<>();
 		try {
@@ -493,6 +493,7 @@ public class CartDAO extends ActionSupport{
 			while (rs.next()) {
 				CartDTO CartDTO=new CartDTO();
 				CartDTO.setItemName(rs.getString("item_name"));
+				System.out.println("ミニカーとリスト"+rs.getInt("price"));
 				CartDTO.setPrice(rs.getInt("price"));
 				CartDTO.setItemCount(rs.getInt("item_count"));
 
