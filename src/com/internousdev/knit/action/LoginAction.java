@@ -26,8 +26,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private LoginDTO loginDTO = new LoginDTO();
 	private ArrayList<CartDTO> userCartList = new ArrayList<CartDTO>();
     private CartDAO cartDAO = new CartDAO();
-    //private DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
-    //private ArrayList<DestinationInfoDTO> destinationInfoDTOList = new ArrayList<DestinationInfoDTO>();
     private ArrayList<CartDTO> tempUserCartList = new ArrayList<CartDTO>();
     private ArrayList<Integer> userCartItemIdList = new ArrayList<Integer>();
     private ArrayList<Integer> tempUserCartItemIdList = new ArrayList<Integer>();
@@ -227,27 +225,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		return totalPrice;
 	}
-
-	/**
-	 * 宛先へ直接飛ばす
-	 * @return
-
-	public String getDestinationInfo() {
-		if ( (boolean) session.get("loginFlg") ) {
-			destinationInfoDTOList = destinationInfoDAO.SearchDestination(session.get("userId").toString());
-
-			if (destinationInfoDTOList.size() > 0) {
-				result = SUCCESS;
-			} else if ( !(boolean) session.get("loginFlg") ) {
-				result = ERROR;
-			} else {
-				result = "destination";
-			}
-		return result;
-		}
-	}
-	*/
-
 
     public String getUserId() {
 		return userId;

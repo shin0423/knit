@@ -55,6 +55,9 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		String result = ERROR;
 //		System.out.println("エラーです");
 
+		System.out.println("sessionの中身"+session.get("telNumber"));
+
+		System.out.println("渡された値"+telNumber);
 
 
 		if(!(familyName.equals(session.get("familyName").toString()))){
@@ -93,6 +96,8 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
+
+
 
 
 

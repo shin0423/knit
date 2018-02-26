@@ -31,21 +31,11 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 
 	public String execute()throws SQLException{
 
-
-
-
-
-
     String result = SUCCESS;
-
-
-
-
 
 	//ログインしていないユーザーをログイン画面へ飛ばす
 
 	boolean loginFlg = session.containsKey("loginFlg");
-
 
 	if (!loginFlg) {
 		return ERROR;
@@ -77,8 +67,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     DateUtil dateUtil = new DateUtil();
 
     // 日付を作成します。
-
-
 
     for (int i = 0; i < cancelList.size(); i++){
     try {
@@ -116,15 +104,14 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 		if(!(iterator.hasNext())){
 		cancelList = null;
 
-
-		}return result;
+		}
+		return result;
 	}
 	//キャンセル可能な商品が0のときに以下の処理を実行します
 	else if(cancelList.equals(null)){
 	}return result;
 
 	}
-
 
 
 	//ゲッタセッタ
