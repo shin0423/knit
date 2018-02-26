@@ -272,8 +272,8 @@ public class InputChecker {
 		String result="OK";
 		if(price.equals("")){
 			result="値段を入力してください";
-		}else if(price.length()<1 || price.length()>9){
-			result="値段は1桁以上9桁以下で入力してください。";
+		}else if(price.length()<1 || price.length()>6){
+			result="値段は1桁以上6桁以下で入力してください。";
 		}else if(!price.matches("^[0-9]+$")){
 			result="値段は半角数字で入力してください。";
 		}

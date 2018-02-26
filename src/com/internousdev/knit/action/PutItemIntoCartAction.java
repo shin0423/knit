@@ -106,7 +106,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
 			return "errorPage";
 		}
-		System.out.println((Integer.parseInt(session.get("allTotalPrice").toString())));
+
 		if(session.containsKey("allTotalPrice")){
 		if ((Integer.parseInt(session.get("allTotalPrice").toString()) >10000000)) {
 
