@@ -52,6 +52,10 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
+			System.out.println("item_nameの値"+rs.getString("item_name"));
+			if (!(rs.getString("item_name") == null)) {
+
+
 			PurchaseHistoryDTO dto = new PurchaseHistoryDTO();
 			dto.setItemId(rs.getInt("item_id"));
 			dto.setItemName(rs.getString("item_name"));
@@ -73,7 +77,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			System.out.println("購入履歴"+ dto.getTotalPrice());
 
 			purchaseHistoryDTOList.add(dto);
-
+			}
 		}
 	}catch(Exception e){
 		e.printStackTrace();
