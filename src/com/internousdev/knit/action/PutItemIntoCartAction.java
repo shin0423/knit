@@ -106,7 +106,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
 			return "errorPage";
 		}
-<<<<<<< HEAD
+
 
 		if (!(totalPrice <10000000)) {
 			return  ERROR;
@@ -115,8 +115,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 
-=======
->>>>>>> branch 'master' of https://github.com/internousdevwork/knit
+
 
 		CartDTO dto=new CartDTO();
 		CartDAO dao=new CartDAO();
