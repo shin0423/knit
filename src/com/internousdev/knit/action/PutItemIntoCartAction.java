@@ -201,6 +201,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 			}
 		}
 
+		
 		/**
 		 * 検証画面で購入個数をマイナスにした場合を返しホームに戻る
 		 */
@@ -208,6 +209,11 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		ShowItemDAO showItemDAO = new ShowItemDAO();
 		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
+		
+		if (!(totalPrice <10000000)) {
+			return  ERROR;
+		}
+		
 		session.put("allTotalPrice", totalPrice);
 		return SUCCESS;
 	}
