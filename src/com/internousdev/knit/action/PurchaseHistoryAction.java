@@ -15,9 +15,6 @@ import com.opensymphony.xwork2.ActionSupport;
 //マイページよりボタン押下で遷移
 
 
-
-
-
 public class PurchaseHistoryAction extends ActionSupport implements  SessionAware{
 
 	public Map<String,Object> session;
@@ -26,8 +23,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public ArrayList<PurchaseHistoryDTO> historyList = new ArrayList<PurchaseHistoryDTO>();
 
-
-
 	private String itemId;
 
 	private String deleteFlg;
@@ -35,8 +30,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 	private String message;
 
 	private String orderNum;
-
-
 
 
 	public String execute()throws SQLException{
@@ -60,9 +53,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		String userId =session.get("userId").toString();
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
-
-
-
 
 		//購入履歴表示メソッド
 
@@ -163,82 +153,60 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		}
 
 
-
-
 	public Map<String, Object> getSession() {
 		return session;
 	}
-
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-
 	public PurchaseHistoryDAO getPurchaseHistoryDAO() {
 		return purchaseHistoryDAO;
 	}
-
 
 	public void setPurchaseHistoryDAO(PurchaseHistoryDAO purchaseHistoryDAO) {
 		this.purchaseHistoryDAO = purchaseHistoryDAO;
 	}
 
-
 	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
 		return historyList;
 	}
-
 
 	public void setHistoryList(ArrayList<PurchaseHistoryDTO> historyList) {
 		this.historyList = historyList;
 	}
 
-
 	public String getItemId() {
 		return itemId;
 	}
-
 
 	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 
-
 	public String getDeleteFlg() {
 		return deleteFlg;
 	}
-
 
 	public void setDeleteFlg(String deleteFlg) {
 		this.deleteFlg = deleteFlg;
 	}
 
-
 	public String getMessage() {
 		return message;
 	}
-
 
 	public void setMessage(String message) {
 		this.message = message;
 	}
 
-
-
-
 	public String getOrderNum() {
 		return orderNum;
 	}
 
-
-
-
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-
-
-
 
 }

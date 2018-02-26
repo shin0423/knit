@@ -19,8 +19,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class PutItemIntoCartAction extends ActionSupport implements SessionAware{
 
-
-
 	private Map<String,Object>session;
 	private ArrayList<CartDTO> cartList=new ArrayList<CartDTO>();
 
@@ -29,10 +27,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	//miniカートのlist
 	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
 
-
-
 	private boolean duplicationFlg;
-
 
 	private String itemId;
 	private String itemName;
@@ -97,11 +92,6 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		setToken(token);
 		session.put("token", token);
 
-
-
-
-
-
 		System.out.println("countは"+count);
 
 
@@ -116,10 +106,6 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		if (!(itemCount<= buyItemDTO.getItemStock()) ) {
 			return "errorPage";
 		}
-
-
-
-
 
 		CartDTO dto=new CartDTO();
 		CartDAO dao=new CartDAO();
@@ -351,8 +337,5 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 	public void setMiniCartList(ArrayList<CartDTO> miniCartList) {
 		this.miniCartList = miniCartList;
 	}
-
-
-
 
 }
