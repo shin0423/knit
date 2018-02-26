@@ -64,15 +64,6 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 		buyItemAfterSearchList = buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);
 
 
-
-
-//
-//		String[] splitedWord = searchWord.split(" ", 0);
-//		String wordForSearch="";
-//		String count=String.valueOf(splitedWord.length);
-//		String[] searchLikeAnd = new String[searchWord.length()-1];
-//
-
 	return SUCCESS;
 
 	}

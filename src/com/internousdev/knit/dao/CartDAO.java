@@ -85,10 +85,6 @@ public class CartDAO extends ActionSupport{
 		System.out.println("showUserCartList");
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
-//		String sql="SELECT cart_info.item_id,ii.item_name,ii.item_name_kana,ii.image_file_path,ii.price,ii.release_company,ii.release_date,cart_info.item_count "
-//				+"FROM cart_info LEFT JOIN item_info ii ON cart_info.item_id = ii.item_id "
-//				+"WHERE user_id=?";
-
 		String sql="SELECT cart_info.item_id as item_id,ii.item_name as item_name,ii.item_name_kana as item_name_kana, ii.image_file_path as image_file_path,ii.price as price,ii.release_company as release_company,ii.release_date as release_date, cart_info.item_count as item_count FROM cart_info LEFT JOIN item_info ii ON cart_info.item_id = ii.item_id where user_id = ?";
 
 		try {

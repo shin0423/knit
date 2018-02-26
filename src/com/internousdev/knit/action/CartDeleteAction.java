@@ -32,16 +32,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	//↓ミニカート用 小池
 	private int allTotalPrice;
 
-
-//	private int itemCount;
 	private String itemName;
-//	private String itemNameKana;
-//	private String imageFilePath;
-//	private int price;
-//	private String releaseCompany;
-
-
-
 
 	/**
 	 * カート情報を削除する
@@ -59,12 +50,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		String result = ERROR;
 		System.out.println("ITEMID : " + itemId);
 		System.out.println("CHECKLIST : " + checkList);
-
-//		System.out.println(itemName);
-//		System.out.println(itemNameKana);
-//		System.out.println(imageFilePath);
-//		System.out.println(price);
-//		System.out.println(releaseCompany);
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
@@ -251,16 +236,5 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	public void setErrorMsg(String errorMsg) {
 		this.errorMsg = errorMsg;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }
