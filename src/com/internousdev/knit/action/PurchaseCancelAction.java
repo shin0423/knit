@@ -47,7 +47,7 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	 * @param args
 	 */
     	String userId =session.get("userId").toString();
-        cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
+
 
 
 	//userIdに紐づいたsend_flgが0の商品を検索します

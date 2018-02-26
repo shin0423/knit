@@ -64,7 +64,7 @@
 		</tr>
 		<tr>
 		<s:if test="itemStock <= 0">
-					在庫切れ
+
 		</s:if>
 		<s:else>
 			<td>在庫&nbsp;&nbsp;<s:property value="itemStock" />個</td>
@@ -107,7 +107,7 @@
 			<tr>
 				<td>
 					<s:if test="itemStock <= 0">
-					在庫切れ
+	在庫切れ
 					</s:if>
 					<s:else>
 
