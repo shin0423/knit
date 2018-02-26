@@ -5,7 +5,7 @@
 <struts>
 
 	<constant name="struts.ui.theme" value="simple" />
-
+	<constant name="struts.devMode" value="true" />
 	<package name="com.internousdevwork.knit.action" extends="struts-default">
 
 <!-- ログイン機能・レビュー機能（藤田） -->

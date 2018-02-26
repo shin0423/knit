@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
@@ -77,7 +80,7 @@
 			</tr>
 			<tr>
 				<th>商品の在庫追加</th>
-				<td><s:form action="AdminInsertCountAction" theme="simple">
+				<td><s:form action="AdminInsertCountAction" theme="simple" >
 					<s:textfield name="insertItemStock" value=""/>
 					<s:hidden name="itemId" value="%{itemId}"/>
 					<s:hidden name="itemStock" value="%{itemStock}"/>
@@ -151,7 +154,9 @@
 		</s:form>
 		</div>
 
-		<s:form action="AdminInsertCategoryAction" theme="simple">
+
+
+		<s:form action="AdminInsertCategoryAction" theme="simple"  >
 		<h2>カテゴリーの追加、削除</h2>
 		<div id="category_i">
 			<table>
@@ -176,14 +181,34 @@
 			</table>
 		</div>
 		</s:form>
-		<s:form action="AdminDeleteCategoryAction" theme="simple">
+
+		<script type="text/javascript">
+		function check(){
+
+			if(window.confirm('選択したカテゴリの全商品が削除されます`\nよろしいですか？')){ // 確認ダイアログを表示
+
+				return true; // 「OK」時は送信を実行
+
+			}
+			else{ // 「キャンセル」時の処理
+
+				window.alert('キャンセルされました'); // 警告ダイアログを表示
+				return false; // 送信を中止
+
+			}
+
+		}
+</script>
+
+
+		<s:form action="AdminDeleteCategoryAction" theme="simple" onSubmit="return check()">
 		<div id="category_d">
 			<h4>カテゴリー削除</h4><select name="categoryId">
 			<s:iterator value="categoryList" status="st">
 				<option value="<s:property value='#st.count'/>"><s:property value="categoryName" /></option>
 			</s:iterator>
 			<s:hidden name="token" value="%{token}"/>
-			<s:submit value="削除"/>
+			<s:submit value="削除" />
 			</select>
 		</div>
 		</s:form>

@@ -81,7 +81,20 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		}
 
 		CartDeleteDAO deletedao = new CartDeleteDAO();
+		if((checkList).toString().equals("[false]")){
+			if (!(session.containsKey("userId"))) {
+				cartList = dao.showUserCartList(session.get("tempUserId").toString());
+				getAllTotalPrice();
+				errorMsg= "アイテムが選択されていません";
+				return ERROR;
 
+			}else {
+				cartList = dao.showUserCartList(session.get("userId").toString());
+				getAllTotalPrice();
+				errorMsg= "アイテムが選択されていません";
+				return ERROR;
+			}
+		}
 		int count=0;
 		if (checkList != null && checkList.size() != 0) {
 			for(String check : checkList) {

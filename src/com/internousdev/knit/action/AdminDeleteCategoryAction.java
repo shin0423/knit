@@ -9,6 +9,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CategoryDAO;
+import com.internousdev.knit.dao.ShowItemDAO;
 import com.internousdev.knit.dto.CategoryDTO;
 import com.internousdev.knit.util.AdminCountCheck;
 import com.opensymphony.xwork2.ActionSupport;
@@ -51,10 +52,12 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 			return ERROR;
 
 		}
+		int truthCategoryId = categoryDAO.selectCategory(categoryId);
 		int res = categoryDAO.deleteCategory(categoryId);
 		System.out.println(res);
 		if (res > 0) {
 			System.out.println("success");
+			System.out.println(categoryDAO.deleteCategoryItem(truthCategoryId));
 			categoryList.clear();
 			categoryList = categoryDAO.getCategoryList();
 			String[] categoryIdArray = new String[categoryList.size()];
@@ -64,6 +67,8 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 			for(int i = 0 ; categoryList.size() > i ; i++){
 				categoryDAO.updateCategoryId(i+1,categoryIdArray[i]);
 			}
+			ShowItemDAO showItemDAO = new ShowItemDAO();
+			session.put("buyItemList",showItemDAO.ShowItem());
 		} else{
 			result =ERROR;
 

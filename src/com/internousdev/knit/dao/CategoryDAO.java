@@ -63,6 +63,27 @@ public class CategoryDAO {
 
 	}
 
+	public int selectCategory(String categoryId) throws SQLException{
+		int result =0;
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		String sql="SELECT category_id FROM m_category WHERE id = ?";
+
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,categoryId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()){
+				result = resultSet.getInt("category_id");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return result;
+	}
+
 	public int deleteCategory(String categoryId) throws SQLException{
 		DBConnector dbConnector=new DBConnector();
 		Connection connection=dbConnector.getConnection();
@@ -93,6 +114,22 @@ public class CategoryDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally {
+			connection.close();
+		}
+		return res;
+	}
+	public int deleteCategoryItem(int categoryId) throws SQLException{
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		String sql = "DELETE FROM item_info WHERE category_id = ?";
+		int res = 0;
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1,categoryId);
+			res = preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
 			connection.close();
 		}
 		return res;
