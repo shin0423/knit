@@ -101,7 +101,7 @@
 			<td><s:property value="price" />円</td>
 		</tr>
 		<tr>
-		<s:if test="itemStock == '0'">
+		<s:if test="itemStock == 0">
 			<td>在庫切れ</td>
 		</s:if>
 		<s:else>

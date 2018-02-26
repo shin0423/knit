@@ -117,6 +117,10 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 			return "errorPage";
 		}
 
+		if (!(totalPrice <10000000)) {
+			return  ERROR;
+		}
+
 
 
 
@@ -211,9 +215,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		session.put("buyItemList", showItemDAO.ShowItem());
 		totalPrice=calcTotalPrice(cartList);
 
-		if (!(totalPrice <10000000)) {
-			return  ERROR;
-		}
+
 
 		session.put("allTotalPrice", totalPrice);
 		return SUCCESS;
