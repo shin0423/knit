@@ -28,7 +28,7 @@
 			<table>
 				<tr>
 					<th>ユーザーID</th>
-					<td><s:textfield name="userId" placeholder="IDを入力"/></td>
+					<td><s:textfield name="userId" placeholder="IDを入力" value=""/></td>
 				</tr>
 				<tr>
 					<th>新規パスワード</th>
