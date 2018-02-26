@@ -8,16 +8,18 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.knit.dao.CartDAO;
+import com.internousdev.knit.dao.CartDeleteDAO;
 import com.internousdev.knit.dao.LoginDAO;
 import com.internousdev.knit.dao.SettlementCompleteDAO;
 import com.internousdev.knit.dao.SettlementConfirmDAO;
 import com.internousdev.knit.dto.CartDTO;
 import com.internousdev.knit.dto.SettlementConfirmDTO;
 import com.internousdev.knit.util.IdCheck;
+import com.internousdev.knit.util.ItemIdChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SettlementCompleteAction extends ActionSupport implements SessionAware{
-
+	private int totalPrice;
 	private Map<String,Object> session;
 	private ArrayList<CartDTO> cartInfoList = new ArrayList<CartDTO>();
 	public ArrayList<SettlementConfirmDTO> destinationList = new ArrayList<SettlementConfirmDTO>();
@@ -32,12 +34,15 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 	private String token;
 
+	private String errorMsg;
+
 	LoginDAO loginDAO = new LoginDAO();
 
 	CartDAO cartDAO = new CartDAO();
 
-//決済処理
+	//決済処理
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException{
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
@@ -66,11 +71,11 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 		//if (!loginDAO.getExistUserId(session.get("userId").toString())) {
 
-			//return "errorPage";
+		//return "errorPage";
 
-	//	}
+		//	}
 
-		cartList = cartDAO.aquireUserCartInfo(session.get("userId").toString());
+		cartList = cartDAO.showUserCartList(session.get("userId").toString());
 
 
 		if (cartList.isEmpty()) {
@@ -78,9 +83,44 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			return "errorPage";
 		}
 
-			//カート情報の読み込み
-			cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
+		//カート情報の読み込み
+		cartInfoList=cartDAO.showUserCartList(session.get("userId").toString());
 
+		int idNum;
+		ArrayList<String> existList = new ArrayList<String>();
+		for (idNum = 0; idNum < cartInfoList.size(); idNum++) {
+			ItemIdChecker itemIdChecker = new ItemIdChecker();
+			boolean exist = itemIdChecker.itemIdChecker(String.valueOf(cartInfoList.get(idNum).getItemId()));
+			System.out.println("購入商品が存在するか : " + exist);
+			System.out.println("存在した商品ID : " + cartInfoList.get(idNum).getItemId());
+
+			existList.add(String.valueOf(exist));
+		}
+		System.out.println("existList check : " + existList);
+
+		if (existList.contains("false")) {
+			System.out.println("existList.contains check : " + existList.contains("false"));
+
+			for (int i = 0; i < cartList.size(); i++) {
+				if (cartList.get(i).getItemName() == null) {
+					CartDeleteDAO cartDeleteDAO = new CartDeleteDAO();
+					String itemId = String.valueOf(cartList.get(i).getItemId());
+					System.out.println("かーとりすとちぇっく"+cartList.get(i).getItemName());
+					cartDeleteDAO.deleteSeparate(session.get("userId").toString(), itemId);
+				}
+			}
+			cartList = cartDAO.showUserCartList(session.get("userId").toString());
+			for (int i =0; i < cartList.size(); i++) {
+				System.out.println("カートリストチェック"+cartList);
+			}
+			setCartList(cartList);
+			session.put("miniCartList", cartList);
+
+			CartAction cartAction = new CartAction();
+			totalPrice = cartAction.calcTotalPrice(cartList);
+			errorMsg="削除されたアイテムがあります。";
+			result = "cart";
+		} else {
 			//カートリストの数だけfor 購入履歴テーブルに登録 在庫数変動
 			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList, session.get("userId").toString());
 			System.out.println("購入履歴に入れた数"+i);
@@ -93,11 +133,24 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 			session.put("miniCartList", miniCartList);
 
-
-
-			 result=SUCCESS;
-			return result;
+			result=SUCCESS;
 		}
+
+
+		return result;
+	}
+
+
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
 
 
@@ -160,6 +213,30 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+
+
+	public ArrayList<CartDTO> getCartList() {
+		return cartList;
+	}
+
+
+
+	public void setCartList(ArrayList<CartDTO> cartList) {
+		this.cartList = cartList;
+	}
+
+
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
 	}
 
 
