@@ -20,6 +20,7 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 	private List<CategoryDTO> categoryList = new ArrayList<>();
 	public Map<String,Object> session;
 	private String token;
+	private ArrayList<String> errorList = new ArrayList<>();
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
 		//管理者フラグチェック
@@ -45,7 +46,11 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 		System.out.println(categoryId);
 		categoryList = categoryDAO.getCategoryList();
 
+		if( Integer.parseInt(categoryId) > 0 &&  Integer.parseInt(categoryId) < 5){
+			errorList.add("初期のカテゴリーは削除できません");
+			return ERROR;
 
+		}
 		int res = categoryDAO.deleteCategory(categoryId);
 		System.out.println(res);
 		if (res > 0) {
@@ -95,6 +100,14 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public ArrayList<String> getErrorList() {
+		return errorList;
+	}
+
+	public void setErrorList(ArrayList<String> errorList) {
+		this.errorList = errorList;
 	}
 
 }
