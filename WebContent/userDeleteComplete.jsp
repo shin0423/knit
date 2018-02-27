@@ -31,7 +31,7 @@
 	すぐに遷移する場合はこちら
 	<button type="button" onclick="location.href='/knit/TopAction'">ホーム</button>
 	</div>
-	<!-- <a href="<s:url action='TopAction' />">ホーム</a> -->
+
 
 	</div>
 <jsp:include page="footerInclude.jsp"/>

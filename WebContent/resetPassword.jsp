@@ -44,8 +44,6 @@
 			<div id="button">
 			<button type ="button" onclick ="location.href='/knit/GoLoginPageAction'">戻る</button>
 			<button type="submit">確認画面へ</button>
-			<!--<a href="/knit/login.jsp" class="deg_btn">戻る</a>
-			<button type = "submit" id="deg_btn2">確認画面へ</button>-->
 			</div>
 			</s:form>
 			<div id="error">

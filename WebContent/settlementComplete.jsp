@@ -26,7 +26,7 @@
 
 <div id="main">
 
-<div class ="top"><h1>Thank You!</h1></div>
+<div class ="top"><h1 class="thank">Thank You!</h1></div>
 <br>
 <br>
 <br>
