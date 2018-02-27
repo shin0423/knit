@@ -23,12 +23,7 @@ public class CartDAO extends ActionSupport{
 	 * ログインユーザーが商品をカートに入れる
 	 */
 	public int putItemIntoCart(String userId,int itemId,int itemCount,int price)throws SQLException{
-		System.out.println("putItemIntoCart");
 		int count=0;
-
-		System.out.println(userId);
-		System.out.println("itemId");
-		System.out.println("itemCount");
 
 		String sql="INSERT INTO cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date)"
 				+"VALUES(?,?,?,?,?,NOW())";
@@ -55,7 +50,6 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public int putItemIntoCartOfGuestUser(String tempUserId,int itemId,int price,int itemCount)throws SQLException{
-		System.out.println("putItemIntoCartOfGuestUser");
 		int count=0;
 
 		String sql="INSERT INTO cart_info(user_id,temp_user_id,item_id,item_count,price,regist_date)"
@@ -82,7 +76,6 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public ArrayList<CartDTO> showUserCartList(String userId) throws SQLException{
-		System.out.println("showUserCartList");
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
 		String sql="SELECT cart_info.item_id as item_id,ii.item_name as item_name,ii.item_name_kana as item_name_kana, ii.image_file_path as image_file_path,ii.price as price,ii.release_company as release_company,ii.release_date as release_date, cart_info.item_count as item_count FROM cart_info LEFT JOIN item_info ii ON cart_info.item_id = ii.item_id where user_id = ?";
@@ -90,8 +83,6 @@ public class CartDAO extends ActionSupport{
 		try {
 			con=db.getConnection();
 			PreparedStatement ps=con.prepareStatement(sql);
-			System.out.println("USERID : " + userId);
-			System.out.println("SQL : " + sql);
 			ps.setString(1, userId);
 			ResultSet rs=ps.executeQuery();
 
@@ -121,7 +112,6 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public ArrayList<CartDTO> showTempUserCartList(String tempUserId)throws SQLException{
-		System.out.println("showTempUserCartList");
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
 		String sql="SELECT cart_info.item_id as item_id,ii.item_name as item_name,ii.item_name_kana as item_name_kana, ii.image_file_path as image_file_path,ii.price as price,ii.release_company as release_company,ii.release_date as release_date, cart_info.item_count as item_count FROM cart_info LEFT JOIN item_info ii ON cart_info.item_id = ii.item_id where user_id = ?";
@@ -143,7 +133,6 @@ public class CartDAO extends ActionSupport{
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setReleaseDate(rs.getString("release_date"));
 				cartList.add(dto);
-				System.out.println("イメージファイルパス確認用"+dto.getImageFilePath());
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -158,7 +147,6 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public ArrayList<CartDTO>  aquireUserCartInfo(String userId)throws SQLException{
-		System.out.println("aquireUserCartInfo");
 		Connection con=db.getConnection();
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
@@ -191,7 +179,7 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public boolean isAlreadyIntoCart(String userId,int itemId)throws SQLException{
-		System.out.println("isAlreadyIntoCart");
+
 		boolean result=false;
 
 		String sql="SELECT*FROM cart_info WHERE user_id=? AND item_id=?";
@@ -220,7 +208,7 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public boolean isAlreadyIntoTempCart(String tempUserId,int itemId)throws SQLException{
-		System.out.println("isAlreadyIntoTempCart");
+
 		boolean result=false;
 
 		String sql="SELECT*FROM cart_info WHERE temp_user_id=? AND item_id=?";
@@ -249,7 +237,7 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public int updateUsersCount(int itemCount,String userId,String itemId)throws SQLException{
-		System.out.println("updateUsersCount");
+
 		int count=0;
 
 		String sql="UPDATE cart_info SET item_count=item_count+" +itemCount
@@ -275,7 +263,7 @@ public class CartDAO extends ActionSupport{
 	 */
 
 	public int updateTempUsersCount(int itemCount,String tempUserId)throws SQLException{
-		System.out.println("updateTempUsersCount");
+
 		int count=0;
 
 		String sql="UPDATE cart into SET count=? WHERE temp_user_id=?";
@@ -295,12 +283,8 @@ public class CartDAO extends ActionSupport{
 	}
 
 	public int updateItemCount(String userId,int itemId,int itemCount,int price)throws SQLException{
-		System.out.println("updateItemCount");
-		int count=0;
 
-		System.out.println(userId);
-		System.out.println(itemId);
-		System.out.println(itemCount);
+		int count=0;
 
 		String sql="UPDATE cart_info SET item_count=item_count +" +itemCount
 				+" WHERE user_id=? AND item_id=?";
@@ -310,7 +294,6 @@ public class CartDAO extends ActionSupport{
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setInt(2, itemId);
-			System.out.println("----------------------------------------");
 			count=ps.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -324,7 +307,6 @@ public class CartDAO extends ActionSupport{
 	 * ログインをした際にカート内のユーザー情報を引き継ぎ
 	 */
 	public void changeUserId(String tempUserId,String userId)throws SQLException{
-		System.out.println("changeUserId");
 
 		String sql="UPDATE cart_info SET user_id=?,temp_user_id=? where temp_user_id=?";
 
@@ -345,7 +327,6 @@ public class CartDAO extends ActionSupport{
 	 * 在庫を更新するメソッド
 	 */
 	public void changeItemStock(int itemStock,int itemId)throws SQLException{
-		System.out.println("Stockを変更");
 
 		String sql="UPDATE item_info SET item_stock=item_stock-? WHERE item_id=?";
 
@@ -366,7 +347,6 @@ public class CartDAO extends ActionSupport{
 	 * 在庫を更新するメソッド
 	 */
 	public void changeItemStockId(int itemStock,int itemId,String userId)throws SQLException{
-		System.out.println("Stockを変更");
 
 		String sql="UPDATE cart_info SET item_count=item_count+? WHERE item_id=? AND user_id=?";
 
@@ -444,8 +424,6 @@ public class CartDAO extends ActionSupport{
 	}
 	public  ArrayList<CartDTO> UserMiniCart(String userId){
 
-		System.out.println("miniカート");
-
 		String sql="select item_info.item_name, item_info.price, cart_info.item_count from item_info right outer join cart_info on item_info.item_id = cart_info.item_id WHERE cart_info.user_id = ?  LIMIT 6";
 		con=db.getConnection();
 		ArrayList<CartDTO> MiniCartId=new ArrayList<>();
@@ -460,8 +438,6 @@ public class CartDAO extends ActionSupport{
 				CartDTO.setItemName(rs.getString("item_name"));
 				CartDTO.setPrice(rs.getInt("price"));
 				CartDTO.setItemCount(rs.getInt("item_count"));
-
-				System.out.println("miniカート値"+CartDTO.getItemName());
 
 				MiniCartId.add(CartDTO);
 			}
@@ -493,7 +469,6 @@ public class CartDAO extends ActionSupport{
 			while (rs.next()) {
 				CartDTO CartDTO=new CartDTO();
 				CartDTO.setItemName(rs.getString("item_name"));
-				System.out.println("ミニカーとリスト"+rs.getInt("price"));
 				CartDTO.setPrice(rs.getInt("price"));
 				CartDTO.setItemCount(rs.getInt("item_count"));
 

@@ -37,7 +37,6 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 		ps.setString(3,orderNum);
 
 		resultcp = ps.executeUpdate();
-		System.out.println(resultcp+"要素を操作しました");
 
 
 	}catch(SQLException e){

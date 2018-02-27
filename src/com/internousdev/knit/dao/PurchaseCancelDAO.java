@@ -63,13 +63,6 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setReleaseDate(rs.getDate("release_date"));
 			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
 
-			System.out.println("購入履歴"+ dto.getPrice());
-			System.out.println("購入履歴"+ dto.getItemCount());
-			System.out.println("購入履歴"+ dto.getImageFilePath());
-			System.out.println("購入履歴"+ dto.getRegistDate());
-			System.out.println("購入履歴"+ dto.getOrderNum());
-			System.out.println("購入履歴"+ dto.getItemId());
-
 			purchaseCancelDTOList.add(dto);
 			}
 		}
@@ -103,7 +96,6 @@ public int cancelPart(String userId,int itemId,String orderNum) throws SQLExcept
 		ps.setString(3,orderNum);
 
 		resultcp = ps.executeUpdate();
-		System.out.println(resultcp+"件キャンセルしました");
 
 	}catch(SQLException e){
 		e.printStackTrace();
@@ -130,7 +122,6 @@ public int sendFlgChange(String userId) throws SQLException{
 		ps.setString(1,userId);
 
 		resultsp = ps.executeUpdate();
-		System.out.println(resultsp);
 
 	}catch(SQLException e){
 		e.printStackTrace();

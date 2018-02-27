@@ -46,9 +46,7 @@ public class UserUpdateCompleteDAO {
 			ps.setString(3,userId);
 
 			count = ps.executeUpdate();
-			if(count > 0) {
-				System.out.println("結果："+ count);
-			}
+
 		} catch(Exception e){
 			e.printStackTrace();;
 		}finally{

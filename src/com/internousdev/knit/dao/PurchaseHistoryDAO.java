@@ -52,7 +52,6 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
-			System.out.println("item_nameの値"+rs.getString("item_name"));
 			if (!(rs.getString("item_name") == null)) {
 
 
@@ -69,12 +68,6 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			dto.setReleaseCompany(rs.getString("release_company"));
 			dto.setReleaseDate(rs.getDate("release_date"));
 			dto.setTotalPrice((rs.getInt("item_count")) * (rs.getInt("price")));
-
-			System.out.println("購入履歴"+ dto.getPrice());
-			System.out.println("購入履歴"+ dto.getItemCount());
-			System.out.println("購入履歴"+ dto.getImageFilePath());
-			System.out.println("購入履歴"+ dto.getRegistDate());
-			System.out.println("購入履歴"+ dto.getTotalPrice());
 
 			purchaseHistoryDTOList.add(dto);
 			}
@@ -103,7 +96,6 @@ public int deleteAll(String userId) throws SQLException{
 
 
 		resultda = ps.executeUpdate();
-		System.out.println(resultda);
 
 
 	}catch(SQLException e){
@@ -136,7 +128,6 @@ public int deletePart(String userId,int itemId, String orderNum) throws SQLExcep
 		ps.setString(3, orderNum);
 
 		resultdp = ps.executeUpdate();
-		System.out.println(resultdp);
 
 
 	}catch(SQLException e){

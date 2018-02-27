@@ -49,10 +49,6 @@ public class SettlementConfirmDAO {
 			}
 
 
-				System.out.println("宛先ID"+settlementConfirmDTO.getId());
-				System.out.println("苗字"+settlementConfirmDTO.getFamilyName());
-				System.out.println("名前"+settlementConfirmDTO.getFirstName());
-
 			}
 
 		} catch(Exception e) {

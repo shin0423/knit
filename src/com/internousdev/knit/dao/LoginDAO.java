@@ -68,7 +68,6 @@ public class LoginDAO {
 			updateCount = preparedStatement.executeUpdate();
 
 			if (updateCount > 0) {
-				System.out.println("ログイン完了");
 				result = true;
 			}
 		} catch (Exception e) {

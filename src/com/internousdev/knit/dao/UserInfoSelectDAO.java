@@ -19,7 +19,6 @@ public class UserInfoSelectDAO {
 	 * @throws SQLException
 	 */
 	public AddressDataDTO getUserInfor(String userId){
-		System.out.println("USERID : " + userId);
 
 		AddressDataDTO dto = new AddressDataDTO();
 		String sql="SELECT * FROM user_info WHERE user_id = ?";
@@ -37,14 +36,6 @@ public class UserInfoSelectDAO {
 				dto.setFamilyNameKana(rs.getString("family_name_kana"));
 				dto.setFirstNameKana(rs.getString("first_name_kana"));
 				dto.setEmail(rs.getString("email"));
-
-				System.out.println("AddressDataDTO---------------");
-				System.out.println(dto.getUserId());
-				System.out.println(dto.getFamilyName());
-				System.out.println(dto.getFirstName());
-				System.out.println(dto.getFamilyNameKana());
-				System.out.println(dto.getEmail());
-				System.out.println("-------------------------------");
 
 			}
 		}catch(SQLException e){

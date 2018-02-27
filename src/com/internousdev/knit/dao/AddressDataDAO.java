@@ -20,19 +20,6 @@ public class AddressDataDAO {
 
 	public int registerAddress(AddressDataDTO dto) throws SQLException{
 
-	//  確認用プログラム
-
-		System.out.println("登録する値一覧--------------");
-		System.out.println(dto.getUserId());
-		System.out.println(dto.getFamilyName());
-		System.out.println(dto.getFirstName());
-		System.out.println(dto.getFamilyNameKana());
-		System.out.println(dto.getFirstNameKana());
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getTelNumber());
-		System.out.println(dto.getUserAddress());
-		System.out.println("---------------------------");
-
 		//  データベース&SQL
 
 		int updateCount = 0;

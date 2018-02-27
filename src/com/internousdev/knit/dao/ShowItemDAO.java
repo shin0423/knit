@@ -51,20 +51,6 @@ public class ShowItemDAO {
 				//buyItemDTO.setReleaseDate(resultSet.getString("release_date"));
 				buyItemList.add(buyItemDTO);
 
-				//buyItemDTOに値がちゃんと入ってるか確認
-				System.out.println("--------MySQLから値を受け取れてるか確認------");
-				System.out.println(buyItemDTO.getItemId());
-				System.out.println(buyItemDTO.getItemName());
-				System.out.println(buyItemDTO.getItemNameKana());
-				System.out.println(buyItemDTO.getItemDescription());
-				System.out.println(buyItemDTO.getCategoryId());
-				System.out.println(buyItemDTO.getPrice());
-				System.out.println(buyItemDTO.getItemStock());
-				System.out.println(buyItemDTO.getItemImagePath());
-				System.out.println(buyItemDTO.getItemImageName());
-				System.out.println(buyItemDTO.getReleaseCompany());
-
-				System.out.println("------------------確認終了-------------------");
 			}
 		} catch (SQLException e) {
 

@@ -39,7 +39,7 @@ public class DestinationInfoDAO {
 			//MysqlにSQL文を送り結果を受け取る
 			ResultSet resultSet = preparedStatement.executeQuery();
 
-			
+
 			//MySQLから受け取った値を宛先情報DTOに格納
 			while (resultSet.next()) {
 				DestinationInfoDTO DistinationInfoDTO = new DestinationInfoDTO();
@@ -52,15 +52,6 @@ public class DestinationInfoDAO {
 				DistinationInfoDTO.setEmail(resultSet.getString(("email")));
 				DistinationInfoDTO.setTelNumber(resultSet.getString("tel_number"));
 				destinationList.add(DistinationInfoDTO);
-
-				//MySQLから受け取った値をDTOに入れてるか確認
-				System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getUserId());
-				System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFamilyName());
-				System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFirstName());
-				System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFamilyNameKana());
-				System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFirstNameKana());
-				System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getEmail());
-				//MySQLから受け取った値をDTOに入れてるか確認
 			}
 
 		} catch (SQLException e1) {
@@ -103,14 +94,6 @@ while (resultSet.next()) {
 					DistinationInfoDTO.setTelNumber(resultSet.getString("tel_number"));
 					 oneDestinationList.add(DistinationInfoDTO);
 
-						//MySQLから受け取った値をDTOに入れてるか確認
-						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getUserId());
-						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFamilyName());
-						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFirstName());
-						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFamilyNameKana());
-						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getFirstNameKana());
-						System.out.println("MySQLから値取得チェック"+DistinationInfoDTO.getEmail());
-						//MySQLから受け取った値をDTOに入れてるか確認
 }
 
 		} catch (SQLException e) {

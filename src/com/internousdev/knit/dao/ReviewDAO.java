@@ -83,7 +83,8 @@ public class ReviewDAO {
 	 * @param reviewBody
 	 * @throws SQLException
 	 */
-	public void completeReview(String userId, int itemId, int review, String reviewBody) throws SQLException {
+	public int completeReview(String userId, int itemId, int review, String reviewBody) throws SQLException {
+		int count = 0;
 		DateUtil dateUtil = new DateUtil();
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -97,19 +98,15 @@ public class ReviewDAO {
 			preparedStatement.setInt(3, review);
 			preparedStatement.setString(4, reviewBody);
 			preparedStatement.setString(5, dateUtil.getDate());
-			int count = preparedStatement.executeUpdate();
-
-			if (count > 0) {
-				System.out.println(count + "件レビュー追加完了");
-			} else {
-				System.out.println("レビュー失敗");
-			}
+			count = preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			connection.close();
 		}
+
+		return count;
 	}
 
 	public List<ReviewDTO> selectReviewAll(String itemId) throws SQLException{
