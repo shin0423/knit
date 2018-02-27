@@ -37,18 +37,22 @@
 		color:red;
 		}
 
+		/*商品表示*/
 	#left{
 	    top:80px;
 	    margin-left:20px;
 		float:left;
-		width:50%;
+		width:1000px;
 		margin-bottom:80px;
+		display:flex;
+		flex-wrap:wrap;
 		}
 
 	#item{
-		width:470px;
-		height:400px;
+		width:400px;
+		height:390px;
 		margin-bottom:10px;
+		margin-top:10px;
 		padding: 0.5em 1em;
     	margin: 2em 15px;
     	color: #5d627b;
@@ -56,6 +60,7 @@
     	display:inline-block;
     	border-top: solid 5px #5d627b;
     	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    	font-size:0.9em;
 		}
 
 	#item:hover{
@@ -74,9 +79,8 @@
 
 	#right{
 		position:fixed;
-        left:700px;
+        right:0px;
 		top:60px;
-		width:50%;
 		}
 
 

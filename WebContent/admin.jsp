@@ -37,8 +37,9 @@
 		<s:property value="errorMessage" />
 	</s:if>
 	</div>
-	<div id="left">
+
 	<h2>商品の在庫追加、情報の削除</h2>
+	<div id="left">
 	<s:iterator value="session.buyItemList">
 		<div id="item">
 		<table>

@@ -46,6 +46,7 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 		token = rndStr.randomAlphabetic(10);
 		setToken(token);
 		session.put("token", token);
+		//デリート処理
 		int res = admiDAO.deleteAdminItemInfo(itemId);
 
 		if (res > 0) {

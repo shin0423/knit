@@ -47,7 +47,6 @@
 
 
 <s:iterator value="buyItemDTO">
-
 <img id="imageItem" src="<s:property value='itemImagePath' />" alt="画像なし">
 </s:iterator>
 <table class="itemInfoBox">

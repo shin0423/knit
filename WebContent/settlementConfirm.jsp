@@ -14,7 +14,7 @@
 
 </style>
 
-</head>
+</head> 
 <body>
 
 <jsp:include page="headerInclude.jsp"/>

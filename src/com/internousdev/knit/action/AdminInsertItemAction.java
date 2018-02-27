@@ -59,8 +59,8 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 		setToken(token);
 		session.put("token", token);
 
-		System.out.println(categoryId);
 		String result = SUCCESS;
+		//入力情報チェック
 		InputChecker i = new InputChecker();
 
 		if (!i.itemIdChk(itemId).equals("OK")) {
@@ -90,7 +90,8 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 		if (!i.priceChk(price).equals("OK")) {
 			errorList.add(i.priceChk(price));
 		}
-
+		
+		//重複確認
 		out :if (errorList.size() == 0) {
 			int intItemId=Integer.parseInt(itemId);
 			buyItemList = showItemDAO.ShowItem();

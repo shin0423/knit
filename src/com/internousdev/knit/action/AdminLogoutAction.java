@@ -10,7 +10,7 @@ public class AdminLogoutAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	public String execute() {
-		session.put("loginFlg", false);
+		session.put("adminLoginFlg", false);
 		return SUCCESS;
 	}
 

@@ -33,7 +33,7 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 		if(!countCheck.AdminCountChecker(count)){
 			return "errorPage";
 		}
-		//ランダムトークんチェック
+		//ランダムトークンチェック
 		if(!(token.equals(session.get("token").toString()))){
 			return "errorPage";
 		}
@@ -50,11 +50,11 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 			return ERROR;
 
 		}
+		//デリート処理
 		int truthCategoryId = categoryDAO.selectCategory(categoryId);
 		int res = categoryDAO.deleteCategory(categoryId);
-		System.out.println(res);
 		if (res > 0) {
-			System.out.println(categoryDAO.deleteCategoryItem(truthCategoryId));
+			categoryDAO.deleteCategoryItem(truthCategoryId);
 			categoryList.clear();
 			categoryList = categoryDAO.getCategoryList();
 			String[] categoryIdArray = new String[categoryList.size()];

@@ -12,6 +12,7 @@ public class AdmiDAO {
 	private Connection connection = dbConnector.getConnection();
 	private DateUtil dateUtil = new DateUtil();
 
+	//商品情報の追加
 	public int insertAdminItemInfo(String itemId, String itemName, String itemNameKana, String itemDescription,
 			String categoryId, String price, String releaseCompany, String itemStock) throws SQLException {
 		Connection connection = dbConnector.getConnection();
@@ -40,6 +41,7 @@ public class AdmiDAO {
 		return res;
 	}
 
+	//商品在庫の追加
 	public int insertAdminItemCount(int totalStock, String itemId) throws SQLException {
 		String sql = "UPDATE item_info set item_stock=?,update_date=? WHERE item_id=?";
 		int res = 0;
@@ -61,6 +63,7 @@ public class AdmiDAO {
 		return res;
 	}
 
+	//商品の削除
 	public int deleteAdminItemInfo(String itemId) throws SQLException {
 		String sql = "DELETE FROM item_info WHERE item_id=?";
 		int res = 0;

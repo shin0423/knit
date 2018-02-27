@@ -18,9 +18,13 @@ h2{text-align:center;}
 
 p{text-align:center;}
 
-.table01{float:left;}
+.table01{float:left;
+		font-size:0.9em;
+		}
 
-.table02{float:left;}
+.table02{float:left;
+		font-size:0.9em;
+}
 
 .clear{clear:both;}
 
@@ -41,7 +45,9 @@ p{text-align:center;}
 		color:black;}
 
 img{width: 120px;
-    height:160px;}
+    height:160px;
+    min-width: 120px;
+    min-height:160px;}
 
 	/*------ここからボタン↓---------*/
 

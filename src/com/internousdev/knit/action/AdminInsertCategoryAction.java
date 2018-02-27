@@ -46,13 +46,13 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
 		String result=SUCCESS;
 		categoryList = categoryDAO.getCategoryList();
 
+		//入力文字チェック
 		InputChecker i = new InputChecker();
 
 		if (!i.categoryNameChk(categoryName).equals("OK")) {
@@ -67,6 +67,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 			errorList.add(i.categoryDescriptionChk(categoryDescription));
 		}
 
+		//カテゴリー重複確認
 		out :if (errorList.size() == 0) {
 			categoryList = categoryDAO.getCategoryList();
 			for (int j = 0; categoryList.size() > j; j++) {

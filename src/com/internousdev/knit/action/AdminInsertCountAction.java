@@ -57,6 +57,7 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 
 		String result = SUCCESS;
 		errorMessage = null;
+		//ストック数確認、トータル計算
 		InputChecker i = new InputChecker();
 		int res = 0;
 

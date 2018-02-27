@@ -41,8 +41,10 @@ p{text-align:center;}
 .title{text-align: center;}
 
 
-img{width: 100%;
-    height:auto;}
+img{width: 240px;
+    height:320px;
+    min-width: 240px;
+    min-height:320px;}
 
 .cancel{position: fixed;
         top:250px;

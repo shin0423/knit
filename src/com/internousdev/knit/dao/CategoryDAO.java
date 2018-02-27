@@ -15,6 +15,7 @@ public class CategoryDAO {
 	private List<CategoryDTO> categoryList= new ArrayList<>();
 	private DateUtil dateUtil = new DateUtil();
 
+	//カテゴリー情報の取得
 	public List<CategoryDTO> getCategoryList() throws SQLException{
 
 		DBConnector dbConnector = new DBConnector();
@@ -40,6 +41,7 @@ public class CategoryDAO {
 		return categoryList;
 	}
 
+	//カテゴリーの追加
 	public void insertCategoryName(String categoryId,String categoryName,String categoryDescription) throws SQLException{
 
 		DBConnector dbConnector = new DBConnector();
@@ -63,6 +65,7 @@ public class CategoryDAO {
 
 	}
 
+	//カテゴリーIDの取得
 	public int selectCategory(String categoryId) throws SQLException{
 		int result =0;
 		DBConnector dbConnector = new DBConnector();
@@ -84,6 +87,7 @@ public class CategoryDAO {
 		return result;
 	}
 
+	//カテゴリーの削除
 	public int deleteCategory(String categoryId) throws SQLException{
 		DBConnector dbConnector=new DBConnector();
 		Connection connection=dbConnector.getConnection();
@@ -101,6 +105,8 @@ public class CategoryDAO {
 		}
 		return res;
 	}
+
+	//カテゴリーIDの更新
 	public int updateCategoryId(int id,String oldId) throws SQLException{
 		DBConnector dbConnector=new DBConnector();
 		Connection connection=dbConnector.getConnection();
@@ -118,6 +124,8 @@ public class CategoryDAO {
 		}
 		return res;
 	}
+
+	//カテゴリーの商品削除
 	public int deleteCategoryItem(int categoryId) throws SQLException{
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
