@@ -63,14 +63,16 @@
 		<tr>
 			<td><s:property value="price" />円</td>
 		</tr>
-		<tr>
-		<s:if test="itemStock <= 0">
-			<td><div>在庫切れ<br>&nbsp;&#010;</div></td>
+		<s:if test="itemStock == 0">
+		<tr class=stockZero>
+			<td>在庫切れ</td>
+		</tr>
 		</s:if>
 		<s:else>
+		<tr>
 			<td><div class="mais"><s:property value="itemStock" />個</div></td>
-		</s:else>
 		</tr>
+		</s:else>
 		<tr>
 			<td><s:property value="releaseCompany" /></td>
 		</tr>
@@ -100,14 +102,17 @@
 		<tr>
 			<td><s:property value="price" />円</td>
 		</tr>
-		<tr>
+
 		<s:if test="itemStock == 0">
+		<tr class=stockZero>
 			<td>在庫切れ</td>
+		</tr>
 		</s:if>
 		<s:else>
+		<tr>
 			<td><div class="mais"><s:property value="itemStock" />個</div></td>
-		</s:else>
 		</tr>
+		</s:else>
 		<tr>
 			<td><s:property value="releaseCompany" /></td>
 		</tr>
