@@ -43,22 +43,14 @@ public class TopAction extends ActionSupport implements SessionAware {
 		//ランダム文字列を作るためにインスタンス化
 		RandomStringUtils rndStr = new RandomStringUtils();
 
-
-
 		//↓
-
 		session.remove("adminLoginFlg");
 
-
 		try {
-
 
 			categoryList = categoryDAO.getCategoryList();
 
 			session.put("categoryList", categoryList);
-
-
-
 
 			//↓商品を表示させるためのDAOのメソッドを使ってリストに入れる↓
 			buyItemList = showItemDAO.ShowItem();
@@ -73,14 +65,8 @@ public class TopAction extends ActionSupport implements SessionAware {
 				//仮ユーザーIDの変数作成(ランダムな英字を10文字作成)
 				String tempUserId =rndStr.randomAlphabetic(10);
 
-				//発行された仮ユーザーIDの中身をコンソールで確認
-				System.out.println("仮ユーザーIDの値"+tempUserId);
-
 				//仮ユーザーIDをsessionに入れる
 				session.put("tempUserId", tempUserId);
-
-				//sessionに仮ユーザーIDが入ってるか確認
-				System.out.println("sessionのtempUserIdの値"+session.get("tempUserId").toString());
 			}
 
 		} catch (Exception e) {
@@ -90,23 +76,12 @@ public class TopAction extends ActionSupport implements SessionAware {
 if ((boolean)session.get("loginFlg")) {
 			miniCartList = cartDAO.UserMiniCart(session.get("userId").toString());
 
-			if (miniCartList.isEmpty()) {
-				System.out.println("やったぜ！");
-
-			}
-
 			session.put("miniCartList", miniCartList);
 		}else {
 			miniCartList = cartDAO.TempUserMiniCart(session.get("tempUserId").toString());
 
-			if (miniCartList.isEmpty()) {
-				System.out.println("やったぜ！仮");
-
-			}
 			session.put("miniCartList", miniCartList);
 		}
-
-
 
 		return SUCCESS;
 

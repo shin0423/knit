@@ -34,13 +34,11 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException{
-		//System.out.println("tokenの値"+token);
 		if(!(token.equals(session.get("token").toString()))){
 			return "errorPage";
 		}
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 //不正な書き換えがあった場合のチェック
@@ -77,18 +75,6 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 		String result = ERROR;
 		//入力された値の確認
-		System.out.println(userId);
-		System.out.println(password);
-		System.out.println(familyName);
-		System.out.println(firstName);
-		System.out.println(familyNameKana);
-		System.out.println(firstNameKana);
-		System.out.println(sex);
-		System.out.println(email);
-		System.out.println(telNumber);
-		System.out.println(userAddress);
-
-
 		int count1 = 0;
 		int count2 = 0;
 		UserCreateCompleteDAO dao = new UserCreateCompleteDAO();

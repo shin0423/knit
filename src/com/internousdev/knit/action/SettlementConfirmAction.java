@@ -64,7 +64,6 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -76,54 +75,18 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 			session.put("destinationList", destinationList);
 
-System.out.println("destinationリスト"+destinationList.size());
-
 			if (destinationList.size() ==0) {
-				System.out.println("宛先Errorif");
 				destinationError ="a";
 				session.put("destinationError", destinationError);
-				System.out.println(session.get("destinationError").toString());
 			}else {
-				System.out.println("リムーブ");
 				session.remove("destinationError");
 			}
-
-
-
-
 
 			//宛先登録する時に一番最初に表示してあげるための宛先情報を取得
 			oneDestinationList = DestinationInfoDAO.OneDestination(session.get("userId").toString());
 
-
-
-			//登録された宛先があるかどうかチェック
-			//if (destinationList.size() ==0) {
-				//System.out.println("宛先flg");
-				//destinationFlg ="Error";
-				//session.put("destinationFlg", destinationFlg);
-			//}
 			//カート情報取得
 			cartInfoList = cartDAO.showUserCartList(session.get("userId").toString());
-
-
-//			//購入個数、在庫比較処理
-//			for(CartDTO dto:cartInfoList){
-//				int stock=settlementConfirmDAO.getCount(dto.getItemId());
-//				//↓ここがわからない
-//				if(dto.getItemCount()>stock){
-//					buyCountErrorList.add(dto);
-//					System.out.println("カートリスト:"+cartInfoList.size());
-//					System.out.println("カウントエラーリスト:"+buyCountErrorList.size());
-//					buyCountErrorFlg=true;
-//					result="countError";
-//
-//				}
-//			}
-//
-//			if(buyCountErrorList.size()>0){
-//				return result;
-//			}
 
 			session.put("cartInfoList", cartInfoList);
 
@@ -145,16 +108,11 @@ System.out.println("destinationリスト"+destinationList.size());
 	//合計金額を計算
 	public void calcCartTotalPrice(){
 		int cartTotalPrice=0;
-		//System.out.println(cartInfoList.size());
 		for(int i=0; i < cartInfoList.size(); i++) {
 			//+= で足して変数に格納を繰り返す。
-			//System.out.println(cartInfoList.get(i).getTotalPrice());
-			System.out.println("商品の値段"+cartInfoList.get(i).getPrice());
-			System.out.println("商品の個数"+cartInfoList.get(i).getItemCount());
 			cartTotalPrice += cartInfoList.get(i).getPrice() *  cartInfoList.get(i).getItemCount();
 
 		}
-		System.out.println("カートの合計"+cartTotalPrice);
 		session.put("cartTotalPrice", cartTotalPrice);
 	}
 
@@ -216,9 +174,5 @@ System.out.println("destinationリスト"+destinationList.size());
 	public void setToken(String token) {
 		this.token = token;
 	}
-
-
-
-
 
 }
