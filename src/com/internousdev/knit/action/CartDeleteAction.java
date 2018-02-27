@@ -67,7 +67,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			if (!(session.containsKey("userId"))) {
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
 				getAllTotalPrice();
-
+				return ERROR;
 			}else {
 				cartList = dao.showUserCartList(session.get("userId").toString());
 				getAllTotalPrice();
