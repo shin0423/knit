@@ -23,7 +23,7 @@ public class SettlementConfirmDAO {
 				+ "FROM destination_info "
 				+ "where user_id = ?";
 
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
@@ -33,7 +33,9 @@ public class SettlementConfirmDAO {
 			while(resultSet.next()) {
 				SettlementConfirmDTO settlementConfirmDTO = new SettlementConfirmDTO();
 
-				if (!(resultSet.getString("tel_number").equals("未入力"))||(!(resultSet.getString("user_address").equals("未入力")))) {
+				if ((resultSet.getString("tel_number").equals("未入力"))||((resultSet.getString("user_address").equals("未入力")))) {
+
+				}else{
 				settlementConfirmDTO.setId(resultSet.getInt("id"));
 				settlementConfirmDTO.setUserId(resultSet.getString("user_id"));
 				settlementConfirmDTO.setFamilyName(resultSet.getString("family_name"));
