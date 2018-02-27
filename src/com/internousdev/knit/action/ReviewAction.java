@@ -42,7 +42,6 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -56,25 +55,20 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			if (reviewBody.equals("")) {
 				reviewErrorMessage.add("レビューが未入力です");
 				getOptionNum();
-				System.out.println("レビュー内容無しエラー");
 
 			} else if (reviewBody.length() > 100) {
 				reviewErrorMessage.add("レビューは100文字までです");
 				getOptionNum();
-				System.out.println("レビューは100文字まで");
-
 
 			} else if (session.containsKey("userId") && exist) {
 				reviewErrorMessage.add("一度レビューに書き込んだことがある場合は書き込めません");
 				getOptionNum();
 
-
 			} else if ( !reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
 				reviewErrorMessage.add("この商品の購入履歴がないためレビューできません");
 				getOptionNum();
-				System.out.println("この商品の購入情報が無いので書き込み不可");
 
-			} else if ( 5 <= review || review <= 0 ) {
+			} else if ( 6 <= review || review <= 0 ) {
 				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), 1, reviewBody);
 				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
 				reviewErrorMessage.add("星数の異常値を検出した為、星の数1で書き込みを完了しました");

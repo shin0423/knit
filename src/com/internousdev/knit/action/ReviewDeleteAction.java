@@ -38,7 +38,6 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -59,24 +58,37 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 			if (exist) {
 				reviewDeleteDAO.reviewDelete( session.get("userId").toString(), Integer.valueOf(itemId) );
 				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
-				System.out.println("itemId取得テスト"+itemId);
+
 
 				getOptionNum();
+				starDisplay();
 				result = SUCCESS;
 			} else {
 				reviewErrorMessage.add("削除するレビューがありません");
 				getOptionNum();
-				System.out.println("itemId取得テスト"+itemId);
+				starDisplay();
 			}
 
 		} else {
 			reviewErrorMessage.add("レビューを消すにはログインしてください");
 			getOptionNum();
-			System.out.println("itemId取得テスト"+itemId);
+			starDisplay();
 		}
 
 
 		return result;
+	}
+
+	public void starDisplay() {
+		int i;
+		int j;
+		for(i = 0; i < reviewList.size(); i++){
+			String stars = "";
+			for (j = 0; j < reviewList.get(i).getReview(); j++) {
+				stars += "★";
+			}
+			reviewList.get(i).setReviewStar(stars);
+		}
 	}
 
 	public void getOptionNum () {
