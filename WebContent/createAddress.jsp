@@ -12,12 +12,10 @@
  <body>
  <jsp:include page="headerInclude.jsp"/>
  <div class="main">
+
   <s:form action="CreateAddressConfirmAction">
 
-<br>
-<br>
-<br>
-<br>
+ <p class="message">宛先登録画面</p>
 
 <table>
 
@@ -34,7 +32,7 @@
 
 </table>
 
-<p class="message">宛先登録画面</p>
+
  <div class="Address">
 <table>
 <tr>

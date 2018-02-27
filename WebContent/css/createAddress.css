@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
+.main{
+	text-align:center;
+	margin-top:100px;
+	min-height:calc(100vh - 70px);
 
+}
   table{
      border-spacing : 5px 10px;
 	margin:0 auto;
@@ -16,7 +21,13 @@
 
 
   .message{
-		text-align:center;
+	text-align:center;
+	padding:8px 19px;
+	margin:2em 0;
+	color:#2c2c2f;
+	background:#eeeeee;
+	border-top:solid 5px #555555;
+	border-bottom:solid 5px #555555;
 
 	}
 
@@ -74,5 +85,16 @@ text-align : center ;
 
 h5{
 	color:red;
+}
+.messagebox1{
+	white-space: nowrap;
+	border-spacing : 5px 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width:400px;
+	margin-top:5px;
+	background-color:white;
+	border-bottom:1px solid lightgray;
+	border-top:1px solid lightgray;
 }
 

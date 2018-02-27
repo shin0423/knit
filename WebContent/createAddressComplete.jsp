@@ -8,9 +8,9 @@
 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createAddress.css">
 
-<meta http-equiv="refresh"  content="5;URL='SettlementConfirmAction'" />
+<!-- <meta http-equiv="refresh"  content="5;URL='SettlementConfirmAction'" />-->
 
-<meta >
+<meta>
  <title>宛先情報登録完了</title>
 
 
@@ -18,11 +18,15 @@
 
  </head>
  <body >
-  <p class="message">宛先情報登録完了しました。</p>
+ <div class="main">
+ <div class="message">宛先情報登録完了</div>
+ <div class="messagebox1">
+  <div><p>宛先情報登録完了しました。</p></div>
+  <div><p>5秒後に決済確認ページに飛びます</p></div>
 
-  <p class="message">5秒後に決済確認ページに飛びます</p>
   <br>
-  <p>すぐ遷移する場合はこちら<a href='<s:url action="SettlementConfirmAction"/>'>宛先情報選択画面へ</a></p>
+
+  すぐ遷移する場合はこちら<a href='<s:url action="SettlementConfirmAction"/>'>宛先情報選択画面へ</a>
 
   <s:form action="SettlementConfirmAction">
       <s:hidden name="token" value="%{token}" />
@@ -30,6 +34,7 @@
 
   <s:submit class="button" value="決済確認ページに戻る"/>
   </s:form>
-
+</div>
+</div>
  </body>
 </html>
