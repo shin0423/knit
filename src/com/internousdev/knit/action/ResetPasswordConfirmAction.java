@@ -80,15 +80,15 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 				hideUserId = resetPasswordDAO.hideString(userId,0,2);
 				hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,1);
 			}else{
-			hideUserId = resetPasswordDAO.hideString(userId,0,2);
-			hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,2);
+				hideUserId = resetPasswordDAO.hideString(userId,0,2);
+				hideNewLoginPassword = resetPasswordDAO.hideString(newPassword,0,2);
 			}
-			return SUCCESS;
+				return SUCCESS;
 
-		}else{
-			passwordErrorMessage = "入力されたパスワードが異なります。";
-			return ERROR;
-		}
+			}else{
+				passwordErrorMessage = "入力されたパスワードが異なります。";
+				return ERROR;
+			}
 
 		}
 

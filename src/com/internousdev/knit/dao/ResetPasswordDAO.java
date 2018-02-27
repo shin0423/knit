@@ -16,8 +16,8 @@ public class ResetPasswordDAO extends ActionSupport implements SessionAware{
 
 	//ログインidと新規パスワードを格納
 	public Map<String,Object> session;
-	//ログインidと新規パスワードを格納
 	ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
+
 	//一致するログインidが存在するかDBから探す
 	public boolean getUserId(String userId){
 		String sql = "SELECT * FROM user_info where user_id=?";
@@ -44,7 +44,6 @@ public class ResetPasswordDAO extends ActionSupport implements SessionAware{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, newLoginPassword);
 			ps.setString(2, userId);
-
 			ps.executeUpdate();
 			return true;
 		}catch(Exception e){
@@ -52,6 +51,7 @@ public class ResetPasswordDAO extends ActionSupport implements SessionAware{
 			return false;
 		}
 	}
+
 	//文字列の加工と指定範囲以外を*に差し替える
 	//word:加工する文字列
 	//a:開始位置
@@ -88,6 +88,5 @@ public class ResetPasswordDAO extends ActionSupport implements SessionAware{
 	public void setSession(Map<String,Object>session){
 		this.session=session;
 	}
-
 
 }
