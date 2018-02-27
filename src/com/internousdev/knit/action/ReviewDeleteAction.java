@@ -19,6 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 	private int itemId;
 	private String token;
+	private List<Integer> optionNumber = new ArrayList<Integer>();
 	private Map<String, Object> session;
 	private ReviewDeleteDAO reviewDeleteDAO = new ReviewDeleteDAO();
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
@@ -59,19 +60,29 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 				reviewDeleteDAO.reviewDelete( session.get("userId").toString(), Integer.valueOf(itemId) );
 				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
 				System.out.println("itemId取得テスト"+itemId);
+
+				getOptionNum();
 				result = SUCCESS;
 			} else {
 				reviewErrorMessage.add("削除するレビューがありません");
+				getOptionNum();
 				System.out.println("itemId取得テスト"+itemId);
 			}
 
 		} else {
 			reviewErrorMessage.add("レビューを消すにはログインしてください");
+			getOptionNum();
 			System.out.println("itemId取得テスト"+itemId);
 		}
 
 
 		return result;
+	}
+
+	public void getOptionNum () {
+		for (int optionCount = 1; optionCount <= buyItemDTO.getItemStock(); optionCount++) {
+			optionNumber.add(optionCount);
+		}
 	}
 
 	public String getToken() {
@@ -128,6 +139,14 @@ public class ReviewDeleteAction extends ActionSupport implements SessionAware {
 
 	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
 		this.categoryItemList = categoryItemList;
+	}
+
+	public List<Integer> getOptionNumber() {
+		return optionNumber;
+	}
+
+	public void setOptionNumber(List<Integer> optionNumber) {
+		this.optionNumber = optionNumber;
 	}
 
 }

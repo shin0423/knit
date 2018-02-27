@@ -19,6 +19,7 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 	private String token;
 	private int itemId;
 	private int review = 0;
+	private List<Integer> optionNumber = new ArrayList<Integer>();
 	private String reviewBody;
 	private ArrayList<String> reviewStar = new ArrayList<String>();
 	private ArrayList<String> reviewErrorMessage = new ArrayList<String>();
@@ -54,26 +55,41 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			boolean exist = reviewDAO.confirmReviewHistory(session.get("userId").toString(), Integer.valueOf(itemId));
 			if (reviewBody.equals("")) {
 				reviewErrorMessage.add("レビューが未入力です");
+				getOptionNum();
 				System.out.println("レビュー内容無しエラー");
 
 			} else if (reviewBody.length() > 100) {
 				reviewErrorMessage.add("レビューは100文字までです");
+				getOptionNum();
 				System.out.println("レビューは100文字まで");
 
 
 			} else if (session.containsKey("userId") && exist) {
 				reviewErrorMessage.add("一度レビューに書き込んだことがある場合は書き込めません");
+				getOptionNum();
 
 
 			} else if ( !reviewDAO.confirmPurchaseItemHistory(session.get("userId").toString(), Integer.valueOf(itemId)) ) {
 				reviewErrorMessage.add("この商品の購入履歴がないためレビューできません");
+				getOptionNum();
 				System.out.println("この商品の購入情報が無いので書き込み不可");
 
+			} else if ( 5 <= review || review <= 0 ) {
+				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), 1, reviewBody);
+				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
+				reviewErrorMessage.add("星数の異常値を検出した為、星の数1で書き込みを完了しました");
+				starDisplay();
+				getOptionNum();
 
-			} else {
+				itemId = buyItemDTO.getItemId();
+
+
+				result = SUCCESS;
+			} else if ( 1 <= review && review <= 5 ) {
 				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), Integer.valueOf(review), reviewBody);
 				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
 				starDisplay();
+				getOptionNum();
 
 				itemId = buyItemDTO.getItemId();
 
@@ -97,6 +113,12 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 				stars += "★";
 			}
 			reviewList.get(i).setReviewStar(stars);
+		}
+	}
+
+	public void getOptionNum () {
+		for (int optionCount = 1; optionCount <= buyItemDTO.getItemStock(); optionCount++) {
+			optionNumber.add(optionCount);
 		}
 	}
 
@@ -178,6 +200,14 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 	public void setCategoryItemList(List<BuyItemDTO> categoryItemList) {
 		this.categoryItemList = categoryItemList;
+	}
+
+	public List<Integer> getOptionNumber() {
+		return optionNumber;
+	}
+
+	public void setOptionNumber(List<Integer> optionNumber) {
+		this.optionNumber = optionNumber;
 	}
 
 }

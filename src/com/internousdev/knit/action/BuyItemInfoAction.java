@@ -27,6 +27,7 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 
 	private String token;
 
+	@SuppressWarnings("static-access")
 	public String execute() throws SQLException{
 		buyItemDTO=null;
 		BuyItemInfoDAO buyItemInfoDAO = new BuyItemInfoDAO();
