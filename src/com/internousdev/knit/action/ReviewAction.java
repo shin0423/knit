@@ -71,7 +71,6 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			} else if ( !(String.valueOf(review).matches("[+-]?(?:0[xX])?[0-9a-fA-F]+[hH]?")) ) {
 				reviewErrorMessage.add("不正な値を検出した為、書き込みを完了できませんでした");
 				getOptionNum();
-				System.out.println("ちぇっくきのう"+String.valueOf(review).matches("[+-]?(?:0[xX])?[0-9a-fA-F]+[hH]?"));
 
 				result = "input";
 
