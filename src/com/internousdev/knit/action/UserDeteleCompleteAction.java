@@ -54,8 +54,6 @@ public class UserDeteleCompleteAction extends ActionSupport implements SessionAw
 		countComplete+=userDeleteDAO.deleteUserDestinationInfo(deleteUserId);
 		countComplete+=userDeleteDAO.deleteUserInfo(deleteUserId);
 
-		//削除した件数チェック
-		System.out.println(countComplete);
 		session.clear();
 
 		buyItemList = showItemDAO.ShowItem();

@@ -18,6 +18,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	public Map<String,Object> session;
 
 	public String execute() throws SQLException{
+		//不正な書き換えがあった場合の確認
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
 			if(idCheck.checkUser(session.get("userId").toString())){
