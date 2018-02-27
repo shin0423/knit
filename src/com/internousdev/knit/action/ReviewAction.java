@@ -32,6 +32,8 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 	@SuppressWarnings("static-access")
 	public String execute() throws SQLException {
+
+		//セッションにID情報が無ければエラーページ
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
 			if(idCheck.checkUser(session.get("userId").toString())){
@@ -40,17 +42,21 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 		}
 		String result = ERROR;
 
+		//トークン生成
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
 		setToken(token);
 		session.put("token", token);
 
+		//商品情報・レビューリスト・カテゴリーリスト・星情報セット
 		setBuyItemDTO(buyItemInfoDAO.selectBuyItemInfo(String.valueOf(itemId)));
 		setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));
 		setCategoryItemList(buyItemInfoDAO.categoryItemSelect(buyItemDTO.getCategoryId(),itemId));
 		starDisplay();
 
 		if ((boolean) session.get("loginFlg")) {
+
+			//レビュー可能条件
 			boolean exist = reviewDAO.confirmReviewHistory(session.get("userId").toString(), Integer.valueOf(itemId));
 			if (reviewBody.equals("")) {
 				reviewErrorMessage.add("レビューが未入力です");
@@ -105,6 +111,7 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 
 	}
 
+	//星出力メソッド
 	public void starDisplay() {
 		int i;
 		int j;
@@ -117,6 +124,7 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 		}
 	}
 
+	//在庫数をリストに入れる
 	public void getOptionNum () {
 		for (int optionCount = 1; optionCount <= buyItemDTO.getItemStock(); optionCount++) {
 			optionNumber.add(optionCount);

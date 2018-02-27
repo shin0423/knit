@@ -100,18 +100,24 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			 * 管理者か一般ユーザーか判断
 			 */
 			} else if (loginDTO.getAdminFlg().equals("1") ) {
+				//管理者ページの同時操作対策機能
 				AdminCountCheckDAO adminCountCheckDAO = new AdminCountCheckDAO();
 				adminCountCheckDAO.updateAdminCount();
 				session.put("adminCount",adminCountCheckDAO.selectAdminCount());
+
+				//カテゴリーリスト生成
 				CategoryDAO categoryDAO = new CategoryDAO();
 				setCategoryList(categoryDAO.getCategoryList());
+
+				//ユーザー情報取得
 				loginDAO.login(loginDTO);
 				session.put("adminLoginFlg", true);
-				System.out.println("管理者ログイン成功");
+
 				errorMessage=null;
+
+				//トークン
 				RandomStringUtils rndStr = new RandomStringUtils();
 				token = rndStr.randomAlphabetic(10);
-				System.out.println("トークン値"+token);
 				setToken(token);
 				session.put("token", token);
 				result = "admin";
@@ -121,14 +127,19 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				 * 一般ユーザーとしてログイン
 				 */
 			} else if (loginDTO.getAdminFlg().equals("0")) {
+
+				//ユーザー情報取得
 				loginDAO.login(loginDTO);
 				session.put("userId", loginDTO.getUserId());
 				session.put("loginFlg", true);
+
+				//カートリスト生成・仮ユーザーIDとの統合メソッド
 				makeCartList();
+
+				//値段合計
 				int i = 0;
 				i = calcTotalPrice(userCartList);
 				session.put("allTotalPrice", i);
-				System.out.println("一般ログイン成功");
 
 				//小池
 				CartDAO cartDAO = new CartDAO();
