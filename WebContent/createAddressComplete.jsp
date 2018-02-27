@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createAddress.css">
 
-<!-- <meta http-equiv="refresh"  content="5;URL='SettlementConfirmAction'" />-->
+<meta http-equiv="refresh"  content="5;URL='SettlementConfirmAction'" />
 
 <meta>
  <title>宛先情報登録完了</title>

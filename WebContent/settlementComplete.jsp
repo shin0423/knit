@@ -31,13 +31,12 @@
 <br>
 <br>
 <br>
-<div class="comp"><h1>購入手続きが完了致しました。</h1></div>
-<br>
-<br>
-<br>
-<br>
-<div  class="count">５秒後にホームに戻ります</div>
-</div>
 
+<div class="box1">
+<div class="comp"><p>購入手続きが完了致しました。</p></div>
+<br>
+<p>５秒後にホームに戻ります</p>
+</div>
+</div>
 </body>
 </html>
