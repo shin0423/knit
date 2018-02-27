@@ -22,7 +22,6 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 
 	public String execute()throws SQLException{
-		System.out.println(errorMessage);
 		if(session.containsKey("userId")){
 			IdCheck idCheck = new IdCheck();
 			if(idCheck.checkUser(session.get("userId").toString())){
@@ -41,28 +40,25 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 		if(!(boolean) session.get("loginFlg")) {
 			session.put("loginFlg", false);
-			System.out.println("TESSSST");
 		}
 		if((boolean) session.get("loginFlg")) {
-				cartList=dao.showUserCartList(session.get("userId").toString());
-				for(int i = 0 ;cartList.size() > i ; i++){
+			cartList=dao.showUserCartList(session.get("userId").toString());
+			for(int i = 0 ;cartList.size() > i ; i++){
 				try{
 					if(cartList.get(i).getItemName().equals(null)){
 						String name=cartList.get(i).getItemName();
 						System.out.println(name);
 					}
 
-					}catch(NullPointerException e){
-					cartList.get(i).setItemName("noName");
-					System.out.println("やったよ！");
-					e.printStackTrace();
-					}
+				}catch(NullPointerException e){
+				cartList.get(i).setItemName("noName");
+				e.printStackTrace();
 				}
-				for (int i = 0;cartList.size() >i ;i++){
-					if((cartList.get(i).getItemName()).equals("noName") ){
-
-						deleteCartList.add(j,String.valueOf(cartList.get(i).getItemId()));
-						j++;
+			}
+			for (int i = 0;cartList.size() >i ;i++){
+				if((cartList.get(i).getItemName()).equals("noName") ){
+					deleteCartList.add(j,String.valueOf(cartList.get(i).getItemId()));
+					j++;
 					}
 				}
 				if(! deleteCartList.isEmpty()){
@@ -70,29 +66,10 @@ public class CartAction extends ActionSupport implements SessionAware{
 					dao.deleteSeparete(session.get("userId").toString(),Integer.parseInt(deleteCartList.get(i)));
 					}
 				}
-
-
 				dao.changeUserId(session.get("tempUserId").toString(),session.get("userId").toString());
 				cartList.clear();
 				cartList=dao.showUserCartList(session.get("userId").toString());
-
-				for(int i=0; i < cartList.size();i++) {
-					System.out.println("-------------------------");
-					System.out.println(cartList.get(i).getItemId());
-					System.out.println(cartList.get(i).getItemName());
-					System.out.println(cartList.get(i).getItemNameKana());
-					System.out.println(cartList.get(i).getImageFilePath());
-					System.out.println(cartList.get(i).getPrice());
-					System.out.println(cartList.get(i).getReleaseCompany());
-					System.out.println(cartList.get(i).getReleaseDate());
-					System.out.println(cartList.get(i).getItemCount());
-					System.out.println("------------------");
-				}
-
-
-		}else {
-				System.out.println("やったよ");
-
+				}else {
 				for(int i = 0 ;cartList.size() > i ; i++){
 					try{
 						cartList.get(i).getItemName();

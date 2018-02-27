@@ -47,15 +47,11 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 		}
 
 		if(!(token.equals(session.get("token").toString()))){
-			System.out.println("こっちきてくれ");
 			return "errorPage";
-		}else {
-			System.out.println("こっちこないでええええええええ");
 		}
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -72,7 +68,6 @@ public class AdminInsertCountAction extends ActionSupport implements SessionAwar
 			totalStock = intInsertItemStock + itemStock;
 			res = admiDAO.insertAdminItemCount(totalStock, itemId);
 			if (res == 0) {
-				System.out.println("ERROR");
 				result = ERROR;
 			}else{
 				buyItemList = showItemDAO.ShowItem();

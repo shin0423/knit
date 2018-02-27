@@ -24,20 +24,10 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	private String token;
 
 	public String execute() throws SQLException{
-
-
-
-
-		System.out.println("moreUpの値"+moreUp);
-
-		System.out.println("moreDownの値"+moreDown);
-
 		BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
-
 		searchWord = searchWord.replace("　", " ");
 		List<String> searchList = new ArrayList<String>();
 		String[] searchWordList = searchWord.split(" ", 0);
-
 
 		for(int i=0; i < searchWordList.length; i++){
 			if(String.valueOf(searchWordList[i])!=" "){
@@ -50,13 +40,10 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 		System.out.println(searchList.size());
 
 		if (moreUp.equals("")) {
-			System.out.println("moreUp空白"+moreUp);
-
 			moreUp ="0";
 		}
 
 		if (moreDown.equals("")) {
-			System.out.println("moreDown空白"+moreDown);
 			moreDown ="1000000000";
 		}
 

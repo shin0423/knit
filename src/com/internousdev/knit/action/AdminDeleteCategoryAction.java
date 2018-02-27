@@ -39,12 +39,10 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 		}
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
 		result=SUCCESS;
-		System.out.println(categoryId);
 		categoryList = categoryDAO.getCategoryList();
 
 		if( Integer.parseInt(categoryId) > 0 &&  Integer.parseInt(categoryId) < 5){
@@ -56,7 +54,6 @@ public class AdminDeleteCategoryAction extends ActionSupport implements SessionA
 		int res = categoryDAO.deleteCategory(categoryId);
 		System.out.println(res);
 		if (res > 0) {
-			System.out.println("success");
 			System.out.println(categoryDAO.deleteCategoryItem(truthCategoryId));
 			categoryList.clear();
 			categoryList = categoryDAO.getCategoryList();

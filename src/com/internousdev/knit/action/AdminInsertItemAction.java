@@ -51,15 +51,11 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 			return "errorPage";
 		}
 		if(!(token.equals(session.get("token").toString()))){
-			System.out.println("こっちきてくれ");
 			return "errorPage";
-		}else {
-			System.out.println("こっちこないでええええええええ");
 		}
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -110,7 +106,6 @@ public class AdminInsertItemAction extends ActionSupport implements SessionAware
 
 
 			if (!( a < 1000000)) {
-				System.out.println("商品価格異常を検知しました。");
 				return "errorPage";
 			}
 

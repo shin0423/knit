@@ -41,10 +41,7 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 			return "errorPage";
 		}
 		if(!(token.equals(session.get("token").toString()))){
-			System.out.println("こっちきてくれ");
 			return "errorPage";
-		}else {
-			System.out.println("こっちこないでええええええええ");
 		}
 
 		RandomStringUtils rndStr = new RandomStringUtils();
@@ -67,7 +64,6 @@ public class AdminInsertCategoryAction extends ActionSupport implements SessionA
 		}
 
 		if (!i.categoryDescriptionChk(categoryDescription).equals("OK")) {
-			System.out.println(i.categoryDescriptionChk(categoryDescription));
 			errorList.add(i.categoryDescriptionChk(categoryDescription));
 		}
 

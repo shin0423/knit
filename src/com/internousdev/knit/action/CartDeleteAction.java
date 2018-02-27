@@ -48,12 +48,8 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		}
 		CartDAO dao = new CartDAO();
 		String result = ERROR;
-		System.out.println("ITEMID : " + itemId);
-		System.out.println("CHECKLIST : " + checkList);
-
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -67,7 +63,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 
 		}catch(NullPointerException e){
 			errorMsg= "アイテムが選択されていません";
-			System.out.println("やったよ！");
 			e.printStackTrace();
 			if (!(session.containsKey("userId"))) {
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());

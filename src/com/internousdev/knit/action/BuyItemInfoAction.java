@@ -39,13 +39,8 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 			return "unknownItem";
 		}
 
-
-
-
-
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
