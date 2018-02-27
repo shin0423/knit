@@ -137,6 +137,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				makeCartList();
 
 				//値段合計
+				userCartList = cartDAO.showUserCartList(session.get("userId").toString());
 				int i = 0;
 				i = calcTotalPrice(userCartList);
 				session.put("allTotalPrice", i);

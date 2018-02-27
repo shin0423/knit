@@ -27,28 +27,29 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 		BuyItemDAO buyItemDAO=new BuyItemDAO();//検索用DAO
 		searchWord = searchWord.replace("　", " ");
 		List<String> searchList = new ArrayList<String>();
-		String[] searchWordList = searchWord.split(" ", 0);
+		String[] searchWordList = searchWord.split(" ", 0);//複数検索対応するため、スペースで区切って分ける
 
-		for(int i=0; i < searchWordList.length; i++){
+		for(int i=0; i < searchWordList.length; i++){//分けた文章をリストに格納
 			if(String.valueOf(searchWordList[i])!=" "){
 				searchList.add(String.valueOf(searchWordList[i]));
 			}
 		}
-		if(searchList.size() == 0){
+
+		if(searchList.size() == 0){//分けた文がなければ空文字を挿入
 			searchList.add("");
 			}
 		System.out.println(searchList.size());
 
-		if (moreUp.equals("")) {
+		if (moreUp.equals("")) {//値段範囲の最低値がなければ0を入れる
 			moreUp ="0";
 		}
 
-		if (moreDown.equals("")) {
+		if (moreDown.equals("")) {//値段範囲の最高値がなければ1000000000を入れる
 			moreDown ="1000000000";
 		}
 
 
-		buyItemAfterSearchList = buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);
+		buyItemAfterSearchList = buyItemDAO.selectItemByList(searchList,categoryId,moreUp,moreDown);//実際に検索し結果をリストに入れjspに渡す。
 
 
 	return SUCCESS;

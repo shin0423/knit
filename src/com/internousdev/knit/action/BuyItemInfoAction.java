@@ -31,20 +31,20 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException{
 		buyItemDTO=null;
 		BuyItemInfoDAO buyItemInfoDAO = new BuyItemInfoDAO();
-		buyItemDTO=buyItemInfoDAO.selectBuyItemInfo(itemId);
+		buyItemDTO=buyItemInfoDAO.selectBuyItemInfo(itemId);//商品IDを使い商品テーブルから詳細を持ってくる
 		ReviewDAO reviewDAO = new ReviewDAO();
 		setReviewList(reviewDAO.selectReviewAll(itemId));
 		ItemIdChecker checker = new ItemIdChecker();
-		if(!(checker.itemIdChecker(itemId))){
+		if(!(checker.itemIdChecker(itemId))){//urlからない商品IDの商品を参照した場合エラーで弾く
 			return "unknownItem";
 		}
 
-		RandomStringUtils rndStr = new RandomStringUtils();
+		RandomStringUtils rndStr = new RandomStringUtils();//ランダムトークンを使用し、多重にカートにアイテムが入らないようにする
 		token = rndStr.randomAlphabetic(10);
 		setToken(token);
 		session.put("token", token);
 
-		for(int i=0;reviewList.size() > i ; i++){
+		for(int i=0;reviewList.size() > i ; i++){//レビューのテーブルから値を取得し、レビューの星を計算する
 			String stars="";
 			for(int j=0;reviewList.get(i).getReview() > j; j++){
 				stars+="★";
@@ -52,7 +52,7 @@ public class BuyItemInfoAction extends ActionSupport implements SessionAware {
 			reviewList.get(i).setReviewStar(stars);
 		}
 
-		if (buyItemDTO.getItemStock() <= 5) {
+		if (buyItemDTO.getItemStock() <= 5) {//商品購入の際在庫以上に商品追加できないように、プルダウンのオプション個数を制限する
 			for (optionCount = 1; optionCount <= buyItemDTO.getItemStock(); optionCount++) {
 				optionNumber.add(optionCount);
 			}
