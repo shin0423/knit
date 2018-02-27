@@ -56,7 +56,6 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		}
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 
@@ -68,15 +67,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 		destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
 
-
-		//if (!loginDAO.getExistUserId(session.get("userId").toString())) {
-
-		//return "errorPage";
-
-		//	}
-
 		cartList = cartDAO.showUserCartList(session.get("userId").toString());
-
 
 		if (cartList.isEmpty()) {
 			System.out.println("不正操作は許さない");

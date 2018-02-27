@@ -53,7 +53,6 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		//ランダム文字列を作るためにインスタンス化
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
 		setToken(token);
 		session.put("token", token);
 		String result = SUCCESS;

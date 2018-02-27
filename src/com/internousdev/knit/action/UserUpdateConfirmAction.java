@@ -52,19 +52,15 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 				result = ERROR;
 			}else if(!(newPassword.equals(conPassword))) {
 				setErrorMessage("入力された確認パスワードが異なります。");
-				System.out.println("newPassword確認テスト:"+newPassword);
-				System.out.println("conPassword確認テスト:"+conPassword);
 				result = ERROR;
 			}else {
 				session.put("newPassword", newPassword);
-				System.out.println(session.get("newPassword").toString());
 			}
 		}
 
 		if (!(newEmail.equals(""))) {
 			if (newEmail.length() < 10 || newEmail.length() > 32) {
 				setErrorMessage("メールアドレスは10文字以上32文字以下で入力してください。");
-				System.out.println("newEmailテスト"+newEmail);
 				result = ERROR;
 			} else if (!newEmail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
 				setErrorMessage("正しいメールアドレスの形式で入力してください。");
@@ -74,7 +70,6 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 				result = ERROR;
 			} else {
 				session.put("newEmail", newEmail);
-				System.out.println(session.get("newEmail").toString());
 			}
 		}
 

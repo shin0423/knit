@@ -27,9 +27,9 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	private String token;
 
 	private ArrayList<CartDTO> userCartList = new ArrayList<CartDTO>();
-	 private ArrayList<CartDTO> tempUserCartList = new ArrayList<CartDTO>();
-	 private ArrayList<Integer> userCartItemIdList = new ArrayList<Integer>();
-	 private ArrayList<Integer> tempUserCartItemIdList = new ArrayList<Integer>();
+	private ArrayList<CartDTO> tempUserCartList = new ArrayList<CartDTO>();
+	private ArrayList<Integer> userCartItemIdList = new ArrayList<Integer>();
+	private ArrayList<Integer> tempUserCartItemIdList = new ArrayList<Integer>();
 
 	public Map<String,Object> session;
 
@@ -220,8 +220,6 @@ public String getToken() {
 		for (i = 0; i < userCartList.size(); i++) {
 			userCartItemIdList.add(userCartList.get(i).getItemId());
 		}
-		System.out.println("ユーザーカートの商品のIDリスト生成 : " + userCartItemIdList);
-
 		/**
 		 * 仮ユーザーのカート内商品のIDを全取得してリストに入れる
 		 */
@@ -229,7 +227,6 @@ public String getToken() {
 		for (i = 0; i < tempUserCartList.size(); i++) {
 			tempUserCartItemIdList.add(tempUserCartList.get(i).getItemId());
 		}
-		System.out.println("仮ユーザーカートの商品のIDリスト生成 : " + tempUserCartItemIdList);
 
 		/**
 		 * ユーザーカートリストと仮ユーザーカートリストの重複をチェック
@@ -241,7 +238,6 @@ public String getToken() {
 			 * 仮ユーザーカートリストにユーザーカートリストにある物が含まれているか
 			 */
 			boolean exist = userCartItemIdList.contains(Integer.valueOf(tempUserCartItemIdList.get(i)) );
-			System.out.println("カート重複確認 : " + exist);
 
 			/**
 			 * もし含まれていた場合の処理
@@ -254,21 +250,18 @@ public String getToken() {
 				cartDAO.changeItemStockId(Integer.valueOf(tempUserCartList.get(i).getItemCount()),
 						Integer.valueOf(tempUserCartItemIdList.get(i)),
 						session.get("userId").toString());
-				System.out.println(session.get("userId").toString() + "のカートに" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)の重複分" + tempUserCartList.get(i).getItemCount() + "個追加");
 
 				/**
 				 * 仮ユーザーカートリストから重複してた商品を削するメソッド
 				 */
 				cartDAO.deleteSeparete(session.get("tempUserId").toString(),
 						tempUserCartItemIdList.get(i));
-				System.out.println(session.get("tempUserId").toString() + "のカート内の" + tempUserCartItemIdList.get(i) + "(このIDに該当する商品)を削除");
 				/**
 				 * 含まれていなかった場合の処理
 				 */
 			} else {
 				cartDAO.changeUserId(session.get("tempUserId").toString(),
 						session.get("userId").toString());
-				System.out.println(session.get("tempUserId").toString() + "のカート情報を" + session.get("userId").toString() + "のカート情報に統合");
 			}
 
 		}
