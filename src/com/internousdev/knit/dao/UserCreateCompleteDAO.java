@@ -12,6 +12,7 @@ public class UserCreateCompleteDAO {
 
 	private DateUtil dateUtil = new DateUtil();
 	//DB接続ならびに情報の登録
+	//user_infoテーブル
 	public int createUser1(String userId, String password, String familyName, String firstName, String familyNameKana, String firstNameKana, int sex, String email ) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -37,6 +38,7 @@ public class UserCreateCompleteDAO {
 		}
 		return count;
 	}
+	//destination_infoテーブル
 	public int createUser2(String userId, String familyName,String firstName,String familyNameKana,String firstNameKana,String email,String telNumber,String userAddress) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();

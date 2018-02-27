@@ -19,7 +19,7 @@ public class UserCreateConfirmDAO extends ActionSupport implements SessionAware{
 	public boolean getUserId(String userId){
 		//ユーザーIDの取得
 		String sql = "SELECT * FROM user_info where user_id=?";
-//ユーザーIDの確認
+        //ユーザーIDの確認
 		try{
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, userId);

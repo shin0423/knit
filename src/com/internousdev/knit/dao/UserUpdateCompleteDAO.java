@@ -14,7 +14,8 @@ public class UserUpdateCompleteDAO {
 		DBConnector db = new DBConnector();
 
 	    Connection con = db.getConnection();
-//DB接続　情報の登録
+        //DB接続　情報の登録
+	    //パスワードのみ
 	    int count=0;
 		String sql = "UPDATE user_info SET password = ?, update_date = ? WHERE user_id = ? ";
 		try{
@@ -31,7 +32,7 @@ public class UserUpdateCompleteDAO {
 		}
 		return count;
 	}
-
+	//メールアドレスのみ
 	public int userUpdate2(String newEmail,String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 
@@ -54,7 +55,7 @@ public class UserUpdateCompleteDAO {
 		}
 		return count;
 	}
-
+	//パスワード、メールアドレスともに変更するとき
 	public int userUpdate3(String newEmail,String newPassword,String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 
