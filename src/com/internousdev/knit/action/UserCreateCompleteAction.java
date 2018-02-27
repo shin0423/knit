@@ -74,7 +74,6 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		}
 
 		String result = ERROR;
-		//入力された値の確認
 		int count1 = 0;
 		int count2 = 0;
 		UserCreateCompleteDAO dao = new UserCreateCompleteDAO();
@@ -113,13 +112,15 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		}
 		return result ;
 	}
-public String getToken() {
+	//セッターゲッターの設定
+	public String getToken() {
 		return token;
 	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}
-	//セッターゲッターの設定
+
 	public String getUserId(){
 		return userId;
 	}
@@ -204,6 +205,7 @@ public String getToken() {
 	public void setSession(Map<String,Object> session){
 		this.session = session;
 	}
+
 	public Map<String, Object> getSession() {
 		return session;
 	}

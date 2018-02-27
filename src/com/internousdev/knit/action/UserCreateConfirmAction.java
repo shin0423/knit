@@ -42,7 +42,6 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	public Map<String,Object> session;
 
-//ユーザー情報が条件に合うかの確認と登録
 	@SuppressWarnings("static-access")
 	public String execute(){
 		if(userCreateConfirmDAO.getUserId(userId)){
@@ -56,7 +55,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		setToken(token);
 		session.put("token", token);
 		String result = SUCCESS;
-
+		//ユーザー情報が条件に合うかの確認と登録
 		InputChecker i = new InputChecker();
 
 		if(!i.userIdChk(userId).equals("OK")){
