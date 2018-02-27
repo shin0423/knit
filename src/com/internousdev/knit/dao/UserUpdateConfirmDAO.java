@@ -20,7 +20,7 @@ public class UserUpdateConfirmDAO extends ActionSupport implements SessionAware{
 	public boolean getPassword(String password, String userId){
 		//パスワードの取得
 		String sql = "SELECT * FROM user_info where password=? AND user_id=?";
-//パスワードの確認
+        //パスワードの確認
 		try{
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, password);
