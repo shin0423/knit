@@ -98,6 +98,7 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 			}
 		} else {
 			reviewErrorMessage.add("ログインしていない状態でレビューに書き込めません");
+			getOptionNum();
 		}
 
 		return result;
