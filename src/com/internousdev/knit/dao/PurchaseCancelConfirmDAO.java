@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import com.internousdev.knit.dto.PurchaseHistoryDTO;
 import com.internousdev.knit.util.DBConnector;
 
-//購入履歴表示
-//購入履歴削除
 //購入キャンセル機能
 
 

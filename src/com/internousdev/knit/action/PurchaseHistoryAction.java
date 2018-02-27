@@ -27,8 +27,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	private String deleteFlg;
 
-	private String message;
-
 	private String orderNum;
 
 
@@ -80,8 +78,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 			int res = purchaseHistoryDAO.deleteAll(user_id);
 
 			if(res > 0){
-
-				setMessage("注文履歴をすべて削除しました");
 				historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
@@ -93,8 +89,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 			}
 			else if(res == 0){
-
-				//setMessage("商品の削除に失敗しました。");
 				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 				historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
@@ -113,17 +107,10 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 
 			String user_id = session.get("userId").toString();
-			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 			purchaseHistoryDAO.deletePart(user_id,Integer.parseInt(itemId), orderNum);
 
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
-
-			//imageFilePathがとれているかどうかの確認
-			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println(historyList.get(i).getImageFilePath());
-			}
-
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
@@ -152,14 +139,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		this.session = session;
 	}
 
-	public PurchaseHistoryDAO getPurchaseHistoryDAO() {
-		return purchaseHistoryDAO;
-	}
-
-	public void setPurchaseHistoryDAO(PurchaseHistoryDAO purchaseHistoryDAO) {
-		this.purchaseHistoryDAO = purchaseHistoryDAO;
-	}
-
 	public ArrayList<PurchaseHistoryDTO> getHistoryList() {
 		return historyList;
 	}
@@ -182,14 +161,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 	public void setDeleteFlg(String deleteFlg) {
 		this.deleteFlg = deleteFlg;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public String getOrderNum() {

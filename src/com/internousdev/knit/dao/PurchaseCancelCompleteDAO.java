@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 import com.internousdev.knit.util.DBConnector;
 
-//購入履歴表示
-//購入履歴削除
 //購入キャンセル機能
 
 

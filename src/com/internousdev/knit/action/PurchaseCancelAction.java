@@ -53,13 +53,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
 	//userIdに紐づいたsend_flgが0の商品を検索します
 	cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
 
-
-	System.out.println("List = "+ cancelList);
-
-	for (int i = 0; i < cancelList.size(); i++) {
-		System.out.println(cancelList.get(i).getRegistDate());
-	}
-
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date dateTo = null;
@@ -83,9 +76,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     // 差分の時間数を算出します。
     long dayDiff = ( dateTimeTo - dateTimeFrom  ) / (1000 * 60 * 60);
 
-    System.out.println( "注文日時(FROM) : " + sdf.format(dateFrom) );
-    System.out.println( "現在日時(TO) : " + sdf.format(dateTo) );
-    System.out.println( "差分時間数 : " + dayDiff );
 
     //差分時間数が6時間(今はテスト用に即座に変更する)より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
@@ -97,7 +87,6 @@ public class PurchaseCancelAction extends ActionSupport implements  SessionAware
     //購入キャンセル可能商品履歴表示メソッド
 
 		cancelList = purchaseCancelDAO.getPurchaseHistory(userId);
-		System.out.println("List = "+ cancelList);
 
 		Iterator<PurchaseHistoryDTO> iterator = cancelList.iterator();
 

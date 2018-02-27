@@ -105,7 +105,6 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 
 		cancelConfirmList = purchaseCancelConfirmDAO.getPurchaseHistory(userId,orderNum,itemId);
-		System.out.println("List = "+ cancelConfirmList);
 
 		Iterator<PurchaseHistoryDTO> iterator = cancelConfirmList.iterator();
 
