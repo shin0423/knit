@@ -43,12 +43,8 @@ public class PurchaseCancelCompleteAction extends ActionSupport implements  Sess
 
 	String userId =session.get("userId").toString();
 
-	System.out.println(userId);
-	System.out.println("アイテムID" + itemId);
-	System.out.println("注文番号" + orderNum);
-
 		int cancel = purchaseCancelCompleteDAO.cancelPart(userId, itemId, orderNum);
-		System.out.println(cancel);
+
 
 		return result;
 

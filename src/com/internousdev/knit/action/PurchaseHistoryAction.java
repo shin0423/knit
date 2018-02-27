@@ -39,7 +39,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 				return "errorPage";
 			}
 		}
-		System.out.println("きたよー");
+
 
 		//ログインしてなければログインに飛ばす
 
@@ -60,14 +60,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 			//imageFilePathがとれているかどうかの確認
-			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println(historyList.get(i).getImageFilePath());
-
-			}
-			for (int i = 0; i < historyList.size(); i++) {
-				System.out.println("合計金額" + (historyList.get(i).getItemCount() * historyList.get(i).getPrice()));
-
-			};
 
 
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
@@ -86,9 +78,9 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 			int res = purchaseHistoryDAO.deleteAll(user_id);
-			System.out.println("削除候補件数：" + res);
+
 			if(res > 0){
-				System.out.println("削除した");
+
 				setMessage("注文履歴をすべて削除しました");
 				historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
@@ -101,7 +93,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 			}
 			else if(res == 0){
-				System.out.println("削除失敗");
+
 				//setMessage("商品の削除に失敗しました。");
 				Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 				historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
@@ -118,7 +110,7 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 
 		else if(deleteFlg.equals("2")){
 
-			System.out.println("ID:"+itemId);
+
 
 			String user_id = session.get("userId").toString();
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
@@ -140,7 +132,6 @@ public class PurchaseHistoryAction extends ActionSupport implements  SessionAwar
 		}
 		}
 		String result = SUCCESS;
-		System.out.println("きたよー");
 
 		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 		Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();

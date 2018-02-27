@@ -58,10 +58,9 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 		cancelConfirmList = purchaseCancelDAO.getPurchaseHistory(userId);
 
 
-		System.out.println("List = "+ cancelConfirmList);
 
 		for (int i = 0; i < cancelConfirmList.size(); i++) {
-			System.out.println(cancelConfirmList.get(i).getRegistDate());
+
 		}
 
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -89,9 +88,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 	    // 差分の時間数を算出します。
 	    long dayDiff = ( dateTimeTo - dateTimeFrom  ) / (1000 * 60 * 60);
 
-	    System.out.println( "注文日時(FROM) : " + sdf.format(dateFrom) );
-	    System.out.println( "現在日時(TO) : " + sdf.format(dateTo) );
-	    System.out.println( "差分時間数 : " + dayDiff );
+
 
 	    //差分時間数が6時間より大きいときにsend_flgを0から2(発送待機から発送済み状態へ)にします。
 
@@ -105,9 +102,7 @@ public class PurchaseCancelConfirmAction extends ActionSupport implements  Sessi
 
 	String result = SUCCESS;
 
-		System.out.println(orderNum);
-		System.out.println(itemId);
-		System.out.println(userId);
+
 
 		cancelConfirmList = purchaseCancelConfirmDAO.getPurchaseHistory(userId,orderNum,itemId);
 		System.out.println("List = "+ cancelConfirmList);

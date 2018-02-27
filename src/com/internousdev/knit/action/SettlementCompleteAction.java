@@ -51,6 +51,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			}
 		}
 
+		//↓不正操作監視用トークン↓
 		if(!(token.equals(session.get("token").toString()))){
 			return "errorPage";
 		}
@@ -65,12 +66,15 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 		String	result=ERROR;
 
+
+//↓宛先の情報をユーザーIDから検索してListに格納する。
 		destinationList = settlementConfirmDAO.getDestinationInfo(session.get("userId").toString());
 
 		cartList = cartDAO.showUserCartList(session.get("userId").toString());
 
+		//カートリストの中身チェック
 		if (cartList.isEmpty()) {
-			System.out.println("不正操作は許さない");
+
 			return "errorPage";
 		}
 
@@ -82,12 +86,11 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		for (idNum = 0; idNum < cartInfoList.size(); idNum++) {
 			ItemIdChecker itemIdChecker = new ItemIdChecker();
 			boolean exist = itemIdChecker.itemIdChecker(String.valueOf(cartInfoList.get(idNum).getItemId()));
-			System.out.println("購入商品が存在するか : " + exist);
-			System.out.println("存在した商品ID : " + cartInfoList.get(idNum).getItemId());
+
 
 			existList.add(String.valueOf(exist));
 		}
-		System.out.println("existList check : " + existList);
+
 
 		if (existList.contains("false")) {
 			System.out.println("existList.contains check : " + existList.contains("false"));
@@ -96,10 +99,12 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 				if (cartList.get(i).getItemName() == null) {
 					CartDeleteDAO cartDeleteDAO = new CartDeleteDAO();
 					String itemId = String.valueOf(cartList.get(i).getItemId());
-					System.out.println("かーとりすとちぇっく"+cartList.get(i).getItemName());
+
 					cartDeleteDAO.deleteSeparate(session.get("userId").toString(), itemId);
 				}
 			}
+
+			//カートの情報をユーザーIDから検索してListに格納
 			cartList = cartDAO.showUserCartList(session.get("userId").toString());
 			for (int i =0; i < cartList.size(); i++) {
 				System.out.println("カートリストチェック"+cartList);
@@ -107,6 +112,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			setCartList(cartList);
 			session.put("miniCartList", cartList);
 
+			//↓カートの合計を計算する
 			CartAction cartAction = new CartAction();
 			totalPrice = cartAction.calcTotalPrice(cartList);
 			errorMsg="削除されたアイテムがあります。";
@@ -114,13 +120,15 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		} else {
 			//カートリストの数だけfor 購入履歴テーブルに登録 在庫数変動
 			int i = settlementCompleteDAO.setPurchaseHistory(cartInfoList, session.get("userId").toString());
-			System.out.println("購入履歴に入れた数"+i);
+
 
 
 			//購入したユーザーのカート情報を消去
 			cartDAO.deleteCartInfo(session.get("userId").toString());
 
+			//ミニカートのセッションを消す
 			session.remove("miniCartList");
+
 
 			session.put("miniCartList", miniCartList);
 

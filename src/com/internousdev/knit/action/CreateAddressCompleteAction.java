@@ -40,24 +40,17 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		}
 
 		if(!(token.equals(session.get("token").toString()))){
-			System.out.println("こっちきてくれ");
+	
 			return "errorPage";
-		}else {
-			System.out.println("こっちこないでええええええええ");
 		}
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 		token = rndStr.randomAlphabetic(10);
-		System.out.println("トークン値"+token);
+	
 		setToken(token);
 		session.put("token", token);
 
 		String result = ERROR;
-//		System.out.println("エラーです");
-
-		System.out.println("sessionの中身"+session.get("telNumber"));
-
-		System.out.println("渡された値"+telNumber);
 
 
 		if(!(familyName.equals(session.get("familyName").toString()))){
@@ -97,24 +90,6 @@ public class CreateAddressCompleteAction extends ActionSupport implements Sessio
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
 
-
-
-
-
-
-		System.out.println("登録する値一覧（CreateAddressCompleteAction）--------------");
-		System.out.println(dto.getUserId());
-		System.out.println(dto.getFamilyName());
-		System.out.println(dto.getFirstName());
-		System.out.println(dto.getFamilyNameKana());
-		System.out.println(dto.getFirstNameKana());
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getTelNumber());
-		System.out.println(dto.getUserAddress());
-		System.out.println("---------------------------");
-
-
-		System.out.println("宛先情報セット完了");
 
 		AddressDataDAO dao = new AddressDataDAO();
 		if(dao.registerAddress(dto) > 0){

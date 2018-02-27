@@ -81,8 +81,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 
 
 		if(!(token.equals(session.get("token").toString()))){
-			System.out.println("putitemトークン"+token);
-			System.out.println("こっちきてくれええええええ");
+			
 			return "errorPage";
 		}
 
@@ -92,11 +91,11 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 		setToken(token);
 		session.put("token", token);
 
-		System.out.println("countは"+count);
+		
 
 
 		if (!(itemCount<6)) {
-			System.out.println("不正操作我絶対不許");
+			
 			return "errorPage";
 		}
 
@@ -156,7 +155,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 				//ログインユーザーから検索し6件カートの値をとってくる
 				miniCartList = dao.UserMiniCart(session.get("userId").toString());
 				session.put("miniCartList", miniCartList);
-				System.out.println("minilistのサイズ"+miniCartList);
+			
 				cartList = dao.showUserCartList(session.get("userId").toString());
 
 
@@ -183,7 +182,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 						itemCount, iPrice);
 
 				miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
-				System.out.println("ミニカート中身"+miniCartList.size());
+				
 				session.put("miniCartList", miniCartList);
 
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
@@ -193,7 +192,7 @@ public class PutItemIntoCartAction extends ActionSupport implements SessionAware
 						itemCount, iPrice);
 
 				miniCartList = dao.TempUserMiniCart(session.get("tempUserId").toString());
-				System.out.println("ミニカート中身"+miniCartList.size());
+				
 				session.put("miniCartList", miniCartList);
 
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());

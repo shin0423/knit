@@ -32,23 +32,11 @@ public class CreateAddressConfirmAction extends ActionSupport implements Session
 
 		RandomStringUtils rndStr = new RandomStringUtils();
 	token = rndStr.randomAlphabetic(10);
-	System.out.println("トークン値"+token);
+	
 	setToken(token);
 	session.put("token", token);
 
 
-
-		//  確認用プログラム
-
-		System.out.println("CreateAddressConfirmAction--------------------");
-		System.out.println(familyName);
-		System.out.println(firstName);
-		System.out.println(familyNameKana);
-		System.out.println(firstNameKana);
-		System.out.println(email);
-		System.out.println(telNumber);
-		System.out.println(userAddress);
-		System.out.println("------------------------------------------");
 
 		InputChecker i = new InputChecker();
 

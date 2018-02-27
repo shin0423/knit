@@ -28,11 +28,12 @@ public class TopAction extends ActionSupport implements SessionAware {
 	//DAOから受け取るカテゴリーリストを用意
 	List<CategoryDTO> categoryList = new ArrayList<>();
 
-	//ミニカート
+	//ミニカートのList
 	private ArrayList<CartDTO> miniCartList=new ArrayList<CartDTO>();
 
 	public String execute(){
 
+		//カテゴリーのDAOをインスタンス化
 		CategoryDAO categoryDAO = new CategoryDAO();
 
 		//商品一覧のDAOをインスタンス化
@@ -43,13 +44,15 @@ public class TopAction extends ActionSupport implements SessionAware {
 		//ランダム文字列を作るためにインスタンス化
 		RandomStringUtils rndStr = new RandomStringUtils();
 
-		//↓
+		//↓管理者のFlgを消す
 		session.remove("adminLoginFlg");
 
 		try {
 
+			//↓カテゴリーを検索してListに格納
 			categoryList = categoryDAO.getCategoryList();
 
+			//sessionにカテゴリーのListを格納
 			session.put("categoryList", categoryList);
 
 			//↓商品を表示させるためのDAOのメソッドを使ってリストに入れる↓
