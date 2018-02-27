@@ -102,6 +102,20 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("createFirstNameKana", firstNameKana);
 		}
 
+if (!telNumber.equals("") ||!userAddress.equals("")) {
+
+		if (!(telNumber.equals("")) &&(!userAddress.equals(""))){
+
+		}else {
+			errMsgList.add("電話番号と住所どちらも入力するか、どちらも未入力にしてください");
+			return ERROR;
+		}
+}
+
+
+
+
+
 		if(!i.emailChk(email).equals("OK")){
 			errMsgList.add(i.emailChk(email));
 			result = ERROR;
@@ -126,6 +140,8 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("createTelNumber", telNumber);
 		}
 
+
+
 		if(!i.userAddress1Chk(userAddress).equals("OK")){
 			errMsgList.add(i.userAddress1Chk(userAddress));
 			result = ERROR;
@@ -135,6 +151,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			userAddress="未入力";
 			session.put("createUserAddress",userAddress);
 		}
+
 
 		return result;
 	}
