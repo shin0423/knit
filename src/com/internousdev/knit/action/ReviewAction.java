@@ -68,6 +68,13 @@ public class ReviewAction extends ActionSupport implements SessionAware {
 				reviewErrorMessage.add("この商品の購入履歴がないためレビューできません");
 				getOptionNum();
 
+			} else if ( !(String.valueOf(review).matches("[+-]?(?:0[xX])?[0-9a-fA-F]+[hH]?")) ) {
+				reviewErrorMessage.add("不正な値を検出した為、書き込みを完了できませんでした");
+				getOptionNum();
+				System.out.println("ちぇっくきのう"+String.valueOf(review).matches("[+-]?(?:0[xX])?[0-9a-fA-F]+[hH]?"));
+
+				result = "input";
+
 			} else if ( 6 <= review || review <= 0 ) {
 				reviewDAO.completeReview(session.get("userId").toString(), Integer.valueOf(itemId), 1, reviewBody);
 				setReviewList(reviewDAO.selectReviewAll(String.valueOf(itemId)));

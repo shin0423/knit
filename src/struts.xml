@@ -18,6 +18,7 @@
 		<result name="success">buyItemInfo.jsp</result>
 		<result name="error">buyItemInfo.jsp</result>
 		<result name="errorPage">userIdCheck.jsp</result>
+		<result name="input" type="chain">ReviewAction</result>
 	</action>
 
 	<action name="ReviewDeleteAction" class="com.internousdev.knit.action.ReviewDeleteAction" method="execute">
