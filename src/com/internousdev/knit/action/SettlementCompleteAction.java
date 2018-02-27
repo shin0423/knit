@@ -133,6 +133,8 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 			session.put("miniCartList", miniCartList);
 
+			session.put("allTotalPrice", 0);
+
 			result=SUCCESS;
 		}
 
