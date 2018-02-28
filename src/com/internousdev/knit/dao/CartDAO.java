@@ -150,7 +150,7 @@ public class CartDAO extends ActionSupport{
 		Connection con=db.getConnection();
 		ArrayList<CartDTO> cartList=new ArrayList<>();
 
-		String sql="SELECT*FROM cart_info WHERE user_id=?";
+		String sql="SELECT item_id, item_count FROM cart_info WHERE user_id=?";
 
 		try {
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -182,7 +182,7 @@ public class CartDAO extends ActionSupport{
 
 		boolean result=false;
 
-		String sql="SELECT*FROM cart_info WHERE user_id=? AND item_id=?";
+		String sql="SELECT id FROM cart_info WHERE user_id=? AND item_id=?";
 
 		try {
 			con=db.getConnection();
@@ -211,7 +211,7 @@ public class CartDAO extends ActionSupport{
 
 		boolean result=false;
 
-		String sql="SELECT*FROM cart_info WHERE temp_user_id=? AND item_id=?";
+		String sql="SELECT id FROM cart_info WHERE temp_user_id=? AND item_id=?";
 
 		try {
 			con=db.getConnection();
@@ -403,7 +403,7 @@ public class CartDAO extends ActionSupport{
 
 	//ミニカート用 小池 ユーザーIDから6件以下検索し取得する
 	public  void miniCart(String userId){
-		String sql="SELECT * FROM cart_info WHERE user_id = ? LIMIT 6";
+		String sql="SELECT item_count, item_name, price FROM cart_info WHERE user_id = ? LIMIT 6";
 		con=db.getConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

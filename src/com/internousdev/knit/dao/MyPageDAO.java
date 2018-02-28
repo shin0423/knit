@@ -24,7 +24,7 @@ public class MyPageDAO {
 
 		ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 
-		String sql =" SELECT * FROM user_info where user_id = ? ";
+		String sql =" SELECT user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email FROM user_info where user_id = ? ";
 
 		try{
 

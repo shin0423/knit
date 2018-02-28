@@ -27,7 +27,7 @@ public class ShowItemDAO {
 		Connection connection = dbConnector.getConnection();
 
 		//SQL文
-		String sql ="SELECT * FROM item_info";
+		String sql ="SELECT item_id, item_name, item_name_kana, item_description, category_id, price, item_stock, image_file_path, image_file_name, release_company, release_date FROM item_info";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class ShowItemDAO {
 				buyItemDTO.setItemImagePath(resultSet.getString("image_file_path"));
 				buyItemDTO.setItemImageName(resultSet.getString("image_file_name"));
 				buyItemDTO.setReleaseCompany(resultSet.getString("release_company"));
-				//buyItemDTO.setReleaseDate(resultSet.getString("release_date"));
+				buyItemDTO.setReleaseDate(resultSet.getString("release_date"));
 				buyItemList.add(buyItemDTO);
 
 			}

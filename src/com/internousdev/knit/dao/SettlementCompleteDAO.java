@@ -29,7 +29,7 @@ public class SettlementCompleteDAO {
 	//指定ログインユーザーのカート情報をすべて取得
 			public ArrayList<CartDTO> getUserCartList(String userId){
 
-				String sql="SELECT * FROM cart_info LEFT JOIN product_info ON cart_info.item_id = item_info.item_id where cart_info.user_id=?";
+				String sql="SELECT item_name, item_name_kana, image_file_path, price, release_company, release_date, item_id, id, item_count FROM cart_info LEFT JOIN product_info ON cart_info.item_id = item_info.item_id where cart_info.user_id=?";
 
 				try{
 					PreparedStatement preparedStatement=connection.prepareStatement(sql);

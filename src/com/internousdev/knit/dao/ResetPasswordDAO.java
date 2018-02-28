@@ -20,7 +20,7 @@ public class ResetPasswordDAO extends ActionSupport implements SessionAware{
 
 	//一致するログインidが存在するかDBから探す
 	public boolean getUserId(String userId){
-		String sql = "SELECT * FROM user_info where user_id=?";
+		String sql = "SELECT user_id FROM user_info where user_id=?";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);

@@ -25,7 +25,7 @@ public class ReviewDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
-		String sql = "SELECT * FROM review_transaction WHERE user_id = ? AND item_id =?";
+		String sql = "SELECT id FROM review_transaction WHERE user_id = ? AND item_id =?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class ReviewDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
-		String sql = "SELECT * FROM purchase_history_info WHERE user_id = ? AND item_id = ?";
+		String sql = "SELECT id FROM purchase_history_info WHERE user_id = ? AND item_id = ?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class ReviewDAO {
 		List<ReviewDTO> reviewList = new ArrayList<>();
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
-		String sql="SELECT * FROM review_transaction rt JOIN user_info ui ON rt.user_id = ui.user_id WHERE item_id=?";
+		String sql="SELECT first_name, review, review_body, insert_date FROM review_transaction rt JOIN user_info ui ON rt.user_id = ui.user_id WHERE item_id=?";
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

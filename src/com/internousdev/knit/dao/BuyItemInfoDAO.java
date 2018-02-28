@@ -14,7 +14,7 @@ public class BuyItemInfoDAO {
 
 
 	public BuyItemDTO selectBuyItemInfo(String item_id) throws SQLException{
-		String sql="SELECT * FROM item_info WHERE item_id=?";
+		String sql="SELECT item_id, item_name, item_name_kana, item_description, category_id, price, item_stock, image_file_path,image_file_name,release_company, release_date FROM item_info WHERE item_id=?";
 		DBConnector db=new DBConnector();
 		BuyItemDTO buyItemDTO = new BuyItemDTO();
 		Connection con = db.getConnection();
@@ -47,7 +47,7 @@ public class BuyItemInfoDAO {
 	}
 
 	public List<BuyItemDTO> categoryItemSelect(int category_id,int item_id) throws SQLException{
-		String sql="SELECT * FROM item_info WHERE category_id=? AND item_id NOT IN('"+item_id+"') ORDER BY RAND() LIMIT 3";
+		String sql="SELECT image_file_path, item_name, item_id FROM item_info WHERE category_id=? AND item_id NOT IN('"+item_id+"') ORDER BY RAND() LIMIT 3";
 		DBConnector db=new DBConnector();
 		List<BuyItemDTO> categoryItemList = new ArrayList<>();
 		Connection con = db.getConnection();
@@ -71,7 +71,7 @@ public class BuyItemInfoDAO {
 	}
 
 	public List<BuyItemDTO> itemCheck() throws SQLException{
-		String sql="SELECT * FROM item_info";
+		String sql="SELECT item_id FROM item_info";
 		DBConnector db=new DBConnector();
 		List<BuyItemDTO> ItemCheckList = new ArrayList<>();
 		Connection con = db.getConnection();

@@ -21,7 +21,7 @@ public class LoginDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
-		String sql = "SELECT * FROM user_info WHERE user_id = ? AND password = ?";
+		String sql = "SELECT user_id, password, family_name, first_name, family_name_kana, first_name_kana, email, admin_flg FROM user_info WHERE user_id = ? AND password = ?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -90,7 +90,7 @@ public class LoginDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
-		String sql = "SELECT * FROM user_info WHERE user_id = ?";
+		String sql = "SELECT id FROM user_info WHERE user_id = ?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

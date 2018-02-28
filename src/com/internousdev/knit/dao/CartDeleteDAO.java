@@ -96,7 +96,7 @@ public class CartDeleteDAO {
 		Connection con=db.getConnection();
 		CartDTO cartDTO = new CartDTO();
 
-		String sql = "SELECT * FROM cart_info WHERE user_id = ? AND item_id=?";
+		String sql = "SELECT item_count FROM cart_info WHERE user_id = ? AND item_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

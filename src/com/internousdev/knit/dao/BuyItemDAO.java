@@ -20,7 +20,7 @@ public class BuyItemDAO {
 	public List<BuyItemDTO> selectItemByList(List<String> searchList,String categoryId,String moreUp,String moreDown) {
 		Connection con = dbConnector.getConnection();
 
-		String sql="SELECT * FROM item_info WHERE (item_name LIKE '%" + searchList.get(0).toString() + "%' OR item_name_kana LIKE '%"+ searchList.get(0).toString() +"%')";
+		String sql="SELECT item_id, item_name, item_description, category_id, price, item_stock, image_file_path, image_file_name, release_company, release_date FROM item_info WHERE (item_name LIKE '%" + searchList.get(0).toString() + "%' OR item_name_kana LIKE '%"+ searchList.get(0).toString() +"%')";
 		for(int i=1; i < searchList.size();i++){
 			sql = sql + " AND (item_name like '%" + searchList.get(i).toString() + "%' OR item_name_kana LIKE '%"+ searchList.get(i).toString()+"%')";
 		}

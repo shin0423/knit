@@ -21,7 +21,7 @@ public class UserInfoSelectDAO {
 	public AddressDataDTO getUserInfor(String userId){
 
 		AddressDataDTO dto = new AddressDataDTO();
-		String sql="SELECT * FROM user_info WHERE user_id = ?";
+		String sql="SELECT user_id, family_name, first_name, family_name_kana, first_name_kana, email FROM user_info WHERE user_id = ?";
 
 		try{
 			con = db.getConnection();
