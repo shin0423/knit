@@ -48,7 +48,7 @@ footer, section {
 	text-align: center;
 	background-color:#777;
 
-    position: fixed; top: 15%; left: 15%;
+    position: absolute; top: 7em; left: 10em;
 
 	width: 155px;
 	height: 37px;
@@ -81,7 +81,7 @@ table {
 
 table {
 
-    position:fixed;top: 25%; left:15%;
+    position:absolute;top: 20em; left:16em;
     margin-top: 1em;
 
 	width: 500px;
@@ -123,6 +123,7 @@ td {
 	font-size: 15px;
 	background:#fff;
 	border-width: 0.1px;
+
 	border-bottom: solid 4px #555555;
 
 }
@@ -134,7 +135,7 @@ td {
 }
 
 .btnn/*購入履歴*/ {
-	position:fixed ;top: 20%;left: 60%;
+	position:absolute ;top: 12em;left: 60em;
 	float:left;
 
 	width: 193px;
@@ -149,7 +150,7 @@ td {
 }
 
 .btn0 {
-    position:fixed ;top: 35%;left: 60%;
+    position:absolute ;top: 20em;left: 60em;
 
 	width: 193px;
 	margin: 0 auto;
@@ -165,7 +166,7 @@ td {
 
 .btn {
 
-    position: fixed;top: 50%;left:60% ;
+    position:absolute;top: 28em;left:60em ;
    float: right;
 
 	width: 193px;
