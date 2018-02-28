@@ -3,13 +3,14 @@
 min-height:calc(100vh - 70px);
 }
 
-#footer{	clear:both;
-			position:fixed;
-			bottom:0%;
-			left:-20px;
-			right:-20px;
-			width:101%;
-			pointer-events: none;
+#footer{
+	clear:both;
+	position:fixed;
+	bottom:0%;
+	left:-20px;
+	right:-20px;
+	width:101%;
+	pointer-events: none;
 	height:90px;
 	line-height:140px;
 	background: linear-gradient(rgba(192, 192, 192, 0) 40%, rgba(192, 192, 192, 0.8) 70%, rgba(192, 192, 192, 1));
