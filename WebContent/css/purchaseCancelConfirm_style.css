@@ -1,9 +1,12 @@
 @CHARSET "UTF-8";
 
-html{min-width:1000px;
-	font-family: “游ゴシック Medium”, “Yu Gothic Medium”,sans-serif;}
+html{
+	min-width:1000px;
+	font-family: “游ゴシック Medium”, “Yu Gothic Medium”,sans-serif;
+}
 
-table{white-space: nowrap;
+table{
+	white-space: nowrap;
 	border-spacing : 5px 10px;
 	margin-left: auto;
 	margin-right: auto;
@@ -12,45 +15,65 @@ table{white-space: nowrap;
 	margin-left:5px;
 	margin-right:5px;
 	background-color:white;
-	border:15px ridge black;}
+	border:15px ridge black;
+}
 
-h2{text-align:center;}
+h2{
+	text-align:center;
+}
 
-p{text-align:center;}
+p{
+	text-align:center;
+}
 
-.box{width:500px;
+.box{
+	width:500px;
 	margin-left:auto;
-	margin-right:auto;}
+	margin-right:auto;
+}
 
-.clear{clear:both;}
+.clear{
+	clear:both;
+}
 
-.guide{background-color:#808080;
-	   color:#fff;}
+.guide{
+	background-color:#808080;
+	   color:#fff;
+}
 
- .guideto{border-bottom: solid 4px #808080;}
+ .guideto{
+ 	border-bottom: solid 4px #808080;
+ }
 
-.title{text-align: center;}
+.title{
+	text-align: center;
+}
 
-
-
-img{width: 240px;
+img{
+	width: 240px;
     height:320px;
     min-width: 240px;
-    min-height:320px;}
+    min-height:320px;
+}
 
+.cancel{
+	position: fixed;
+    top:250px;
+    left:80%;
+}
 
-.cancel{position: fixed;
-        top:250px;
-        left:80%;}
+#textcm01{
+	width:100%;
+	text-align:center;
+	margin-top:270px;
+}
 
-#textcm01{width:100%;
-		text-align:center;
-		margin-top:270px;}
-
-#textcm02{width:100%;
-		text-align:center;
-		margin-top:200px;
-		margin-bottom:0px;}
+#textcm02{
+	width:100%;
+	text-align:center;
+	margin-top:200px;
+	margin-bottom:0px;
+}
 
 	/*------ここからボタン↓---------*/
 
@@ -59,7 +82,6 @@ img{width: 240px;
 }
 
 .btn {
-
 	width: 245px;
 	margin: 0 auto;
 	margin-top: 2em;
@@ -68,11 +90,9 @@ img{width: 240px;
 	perspective: 300px;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-
 }
 
 .btnn {
-
 	width: 245px;
 	margin: 0 auto;
 	margin-top: 3em;
@@ -81,43 +101,28 @@ img{width: 240px;
 	perspective: 300px;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-
 }
 
 
-
 .btnn a,.btn a,.btn0 a{
-
 	color: black; /*押す前のfontの色*/
-
 	font-family: 'Covered By Your Grace', cursive;
 	font-size: 15px;
 	line-height: 11px;
 }
 
-
-
 /*------*/
 
-
 .button {
-
 	position: relative;
 	display: inline-block;
-
 	padding: .65em 1em; /**/
-
 	border: 2px solid #C0C0C0; 	/*枠の色*/
-
 	text-decoration: none;
 	text-align: center;
-
-
-
 }
 
 .button::after {
-
     position: absolute;
 	top: 4px;
 	left: 4px;
@@ -125,9 +130,7 @@ img{width: 240px;
 	content: '';
 	width: 102%;
 	height: 102%;
-
 	background-color: white;	/*ボタン背景色*/
-
 	-webkit-transform: rotate(1deg);
 	transform: rotate(1deg);
 	-webkit-transition: .3s ease-in-out;
@@ -137,33 +140,23 @@ img{width: 240px;
 /*押した後のfontの色*/
 
 .button:hover {
-
 	color: red;
-
 }
 
 .button:hover::after {
-
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-
 	-webkit-transform: rotate(0);
 	transform: rotate(0);
-
 }
 
-
-
-	@font-face {
-
+@font-face {
 	font-family: 'DoverHeights';
 	src: local('DoverHeights') ,url('DoverHeights.otf');
 }
-	.fontTest{
-
-		font-size:144px;
-		font-family:'DoverHeights';
-
-	}
+.fontTest{
+	font-size:144px;
+	font-family:'DoverHeights';
+}
