@@ -103,9 +103,7 @@
 
 
 	table.itemBoxFirst{
-
 	text-align: center;
-
 	white-space: nowrap;
 	position:relative;
 	top:0;
@@ -115,13 +113,10 @@
 	height:25%;
 	clear:both;
 	overflow:hidden;
-
 	padding: 0.5em 1em;
     margin: 2em 0;
     color: #000;
-
     background: white;
-
     box-shadow:0 3px 5px rgba(0,0,0,0.10);
 	border-top: solid 2px #F0F0F0;
     margin-right:10px;
