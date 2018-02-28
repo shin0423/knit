@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
-	.top{
+.top{
 	text-align:center;
 	position: relative;
 	padding: 0.25em 1em;
 	border-top: solid 2px black;
 	border-bottom: solid 2px black;
 	}
-	.top:before,
-	.top:after{
+.top:before,
+.top:after{
 	content: '';
 	position: absolute;
 	top: -7px;
@@ -16,12 +16,15 @@
   	height: -webkit-calc(100% + 14px);
 	height: calc(100% + 14px);
 	background-color: black;
-	}
-	.top:before {left: 7px;}
-	.top:after {right: 7px;}
-	h1 {
-	}
-	.box1{
+}
+.top:before {
+	left: 7px;
+}
+.top:after {
+	right: 7px;
+}
+
+.box1{
 	width:40%;
     padding: 0.5em 1em;
     margin: 0 auto;
@@ -37,9 +40,8 @@
     padding: 0;
 }
 
-	.comp{
-		text-align:center;
-		color:red;
-
-	}
+.comp{
+	text-align:center;
+	color:red;
+}
 

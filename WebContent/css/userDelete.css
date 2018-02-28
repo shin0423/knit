@@ -17,10 +17,6 @@
 	margin:0;
 	padding:0;
 }
-#checkBtn{
-}
-#submitBtn{
-}
 #button{
 	text-align:center;
 	white-space: nowrap;
@@ -28,7 +24,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	width:400px;
-
 	margin-top:5px;
 	background-color:white;
 	border-bottom:1px solid lightgray;
@@ -37,7 +32,6 @@
 .btn1{
 	float:left;
 	margin:5px 60px;
-
 }
 .btnContainer{
 	overflow:hidden;
@@ -55,5 +49,4 @@
 .explanation{
 	white-space: pre-wrap;
 	text-align: left;
-
 }
