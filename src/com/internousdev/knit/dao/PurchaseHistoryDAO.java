@@ -40,7 +40,7 @@ public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQ
 			+ "ON ubit.item_id = iit.item_id "
 			+ "WHERE ubit.status = 1 "
 			+ "AND ubit.user_id = ? "
-			+ "AND ubit.send_flg = 0 "
+			+ "AND ubit.send_flg IN(0,2) "
 			+ "ORDER BY regist_date DESC";
 
 	try{
